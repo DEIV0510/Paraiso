@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#B85C28" />
+
+  <!-- SEO -->
+  <title>Tienda PARAISOS · Artesanías y productos del Putumayo</title>
+  <meta name="description" content="Artesanías de chaquira con símbolos ancestrales, café del sur, cacao orgánico, hierbas medicinales, miel de abejas nativas y textiles del Putumayo. Hecho con manos del territorio." />
+  <meta name="keywords" content="tienda putumayo, artesanías indígenas, chaquira yaco samai, café del sur, cacao putumayo, miel abeja angelita, copaiba, ruana, productos artesanales colombia" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tienda PARAISOS · Artesanías del Putumayo" />
+  <meta property="og:description" content="Productos artesanales y agroindustriales del sur de Colombia. Hecho a mano por comunidades indígenas y campesinas." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,700;1,900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" />
+
+  <link rel="stylesheet" href="css/tienda.css" />
+
+  <!-- Schema.org Store -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Tienda PARAISOS",
+    "description": "Artesanías y productos del Putumayo: chaquira, café, cacao, miel, hierbas medicinales y textiles tradicionales.",
+    "telephone": "+573157347306",
+    "priceRange": "$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "CRA 13 NRO 12 esquina",
+      "addressRegion": "Putumayo",
+      "addressCountry": "CO"
+    },
+    "sameAs": ["https://www.facebook.com/viajesparaisos/"]
+  }
+  </script>
+</head>
+<body>
+  <!-- ====== LOADER ====== -->
+  <div class="tnd-loader" id="tndLoader" aria-hidden="true">
+    <div class="tnd-loader__logo">T</div>
+  </div>
+
+  <!-- ====== NAVBAR ====== -->
+  <header class="tnd-nav" id="tndNav" role="banner">
+    <div class="tnd-container tnd-nav__inner">
+      <a href="#inicio" class="tnd-nav__brand" aria-label="Tienda PARAISOS">
+        <div class="tnd-nav__brand-mark">T</div>
+        <div class="tnd-nav__brand-text">
+          <strong>Tienda PARAISOS</strong>
+          <em>Putumayo · hecho a mano</em>
+        </div>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="tnd-nav__menu" id="tndMenu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#categorias">Categorías</a></li>
+          <li><a href="#simbolos">Símbolos</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#artesanos">Artesanos</a></li>
+          <li><a href="#envios">Envíos</a></li>
+        </ul>
+      </nav>
+      <div class="tnd-nav__cta-row">
+        <a href="index.html" class="tnd-nav__back" aria-label="Volver a PARAISOS">← PARAISOS</a>
+        <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+           href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20del%20cat%C3%A1logo."
+           target="_blank" rel="noopener">Comprar</a>
+        <button class="tnd-nav__burger" id="tndBurger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section id="inicio" class="tnd-hero">
+    <div class="tnd-hero__pattern" aria-hidden="true"></div>
+    <div class="tnd-container tnd-hero__inner">
+      <div class="tnd-hero__content">
+        <span class="tnd-hero__eyebrow">
+          <span></span> Tienda turística · PARAISOS
+        </span>
+        <h1 class="tnd-hero__title">
+          Velas y artesanías que cuentan <em>historias</em>
+        </h1>
+        <p class="tnd-hero__sub">
+          Velas artesanales coladas a mano con cera natural y piedras volcánicas, chaquira
+          tejida con símbolos ancestrales, café de fincas pequeñas, cacao orgánico y miel
+          nativa. Cada pieza, una historia. Cada compra, un apoyo directo a las comunidades
+          del Putumayo.
+        </p>
+        <div class="tnd-hero__ctas">
+          <a class="tnd-btn tnd-btn--primary tnd-btn--lg" href="#productos">Ver catálogo</a>
+          <a class="tnd-btn tnd-btn--ghost tnd-btn--lg"
+             href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20cotizar%20productos."
+             target="_blank" rel="noopener">Comprar por WhatsApp</a>
+        </div>
+        <ul class="tnd-hero__trust">
+          <li><strong>15+</strong><span>Comunidades aliadas</span></li>
+          <li><strong>100%</strong><span>Hecho a mano</span></li>
+          <li><strong>📦</strong><span>Envíos a Colombia</span></li>
+        </ul>
+      </div>
+
+      <div class="tnd-hero__visual" aria-hidden="true">
+        <div class="tnd-hero__photo tnd-hero__photo--main">
+          <img src="assets/images/tienda/velas-piedras.jpg" alt="Velas artesanales con piedras volcánicas" />
+        </div>
+        <div class="tnd-hero__photo tnd-hero__photo--accent">
+          <img src="assets/images/tienda/velas-terrazo.jpg" alt="Velas terrazo de colores" />
+        </div>
+        <div class="tnd-hero__sticker">
+          Hecho con manos del territorio
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CATEGORÍAS ====== -->
+  <section id="categorias" class="tnd-section">
+    <div class="tnd-container">
+      <header class="tnd-section-head tnd-reveal">
+        <span class="tnd-section-eyebrow">Explora</span>
+        <h2 class="tnd-section-title">Por <em>categoría</em></h2>
+        <p class="tnd-section-sub">
+          Cuatro mundos curados desde el Putumayo. Cada categoría con historia, ingredientes
+          y manos detrás.
+        </p>
+      </header>
+
+      <div class="tnd-categories">
+        <a href="#productos" data-filter="velas" class="tnd-cat tnd-cat--velas tnd-reveal">
+          <div class="tnd-cat__bg"></div>
+          <div class="tnd-cat__pattern"></div>
+          <div class="tnd-cat__body">
+            <span class="tnd-cat__ico">V</span>
+            <strong>Velas artesanales</strong>
+            <em>Cera natural, piedras volcánicas</em>
+            <span class="tnd-cat__arrow">Explorar →</span>
+          </div>
+        </a>
+        <a href="#productos" data-filter="artesania" class="tnd-cat tnd-cat--artesania tnd-reveal">
+          <div class="tnd-cat__bg"></div>
+          <div class="tnd-cat__pattern"></div>
+          <div class="tnd-cat__body">
+            <span class="tnd-cat__ico">A</span>
+            <strong>Artesanías</strong>
+            <em>Chaquira, semillas, mola</em>
+            <span class="tnd-cat__arrow">Explorar →</span>
+          </div>
+        </a>
+        <a href="#productos" data-filter="bebidas" class="tnd-cat tnd-cat--bebidas tnd-reveal">
+          <div class="tnd-cat__bg"></div>
+          <div class="tnd-cat__pattern"></div>
+          <div class="tnd-cat__body">
+            <span class="tnd-cat__ico">B</span>
+            <strong>Café y cacao</strong>
+            <em>Del sur de Colombia</em>
+            <span class="tnd-cat__arrow">Explorar →</span>
+          </div>
+        </a>
+        <a href="#productos" data-filter="medicina" class="tnd-cat tnd-cat--medicina tnd-reveal">
+          <div class="tnd-cat__bg"></div>
+          <div class="tnd-cat__pattern"></div>
+          <div class="tnd-cat__body">
+            <span class="tnd-cat__ico">M</span>
+            <strong>Plantas medicinales</strong>
+            <em>Sabiduría amazónica</em>
+            <span class="tnd-cat__arrow">Explorar →</span>
+          </div>
+        </a>
+        <a href="#productos" data-filter="textil" class="tnd-cat tnd-cat--textil tnd-reveal">
+          <div class="tnd-cat__bg"></div>
+          <div class="tnd-cat__pattern"></div>
+          <div class="tnd-cat__body">
+            <span class="tnd-cat__ico">T</span>
+            <strong>Textiles</strong>
+            <em>Tejidos en telar</em>
+            <span class="tnd-cat__arrow">Explorar →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SÍMBOLOS ANCESTRALES ====== -->
+  <section id="simbolos" class="tnd-section tnd-section--sand">
+    <div class="tnd-container">
+      <header class="tnd-section-head tnd-reveal">
+        <span class="tnd-section-eyebrow">Significado</span>
+        <h2 class="tnd-section-title">Los cinco <em>símbolos</em> ancestrales</h2>
+        <p class="tnd-section-sub">
+          Las pulseras de chaquira llevan tejidos estos motivos. Cada uno cuenta una historia
+          que llevarás contigo después del viaje.
+        </p>
+      </header>
+
+      <div class="tnd-symbols">
+        <article class="tnd-symbol tnd-reveal">
+          <div class="tnd-symbol__art">
+            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
+              <defs><pattern id="tYaco" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="#1976D2"/>
+                <path d="M5 10 L10 5 L15 10 L10 15 Z" fill="#42A5F5"/>
+                <circle cx="10" cy="10" r="2" fill="#fff"/>
+              </pattern></defs>
+              <rect width="120" height="60" fill="url(#tYaco)"/>
+            </svg>
+          </div>
+          <div class="tnd-symbol__body">
+            <strong>Yaco</strong>
+            <em>Agua</em>
+          </div>
+        </article>
+        <article class="tnd-symbol tnd-reveal">
+          <div class="tnd-symbol__art">
+            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
+              <defs><pattern id="tSamai" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#0D47A1"/>
+                <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#F39A1F"/>
+                <circle cx="12" cy="12" r="2.5" fill="#fff"/>
+              </pattern></defs>
+              <rect width="120" height="60" fill="url(#tSamai)"/>
+            </svg>
+          </div>
+          <div class="tnd-symbol__body">
+            <strong>Samai</strong>
+            <em>Espíritu</em>
+          </div>
+        </article>
+        <article class="tnd-symbol tnd-reveal">
+          <div class="tnd-symbol__art">
+            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
+              <defs><pattern id="tLlactu" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+                <circle cx="15" cy="15" r="11" fill="#E67E22"/>
+                <circle cx="15" cy="15" r="7" fill="#FFB74D"/>
+                <circle cx="15" cy="15" r="3" fill="#0D47A1"/>
+                <path d="M0 15 L7 8 L15 4 L23 8 L30 15 L23 22 L15 26 L7 22 Z" fill="none" stroke="#8BC34A" stroke-width="1.5"/>
+              </pattern></defs>
+              <rect width="120" height="60" fill="url(#tLlactu)"/>
+            </svg>
+          </div>
+          <div class="tnd-symbol__body">
+            <strong>Llactu</strong>
+            <em>Plumaje</em>
+          </div>
+        </article>
+        <article class="tnd-symbol tnd-reveal">
+          <div class="tnd-symbol__art">
+            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
+              <defs><pattern id="tMontana" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <path d="M0 18 L6 6 L12 18 L18 6 L24 18 L24 24 L0 24 Z" fill="#0D47A1"/>
+                <path d="M4 18 L8 12 L12 18 Z" fill="#F39A1F"/>
+                <path d="M14 18 L18 12 L22 18 Z" fill="#F39A1F"/>
+                <circle cx="8" cy="14" r="1.5" fill="#fff"/>
+                <circle cx="18" cy="14" r="1.5" fill="#fff"/>
+              </pattern></defs>
+              <rect width="120" height="60" fill="url(#tMontana)"/>
+            </svg>
+          </div>
+          <div class="tnd-symbol__body">
+            <strong>Montaña</strong>
+            <em>Cumbre sagrada</em>
+          </div>
+        </article>
+        <article class="tnd-symbol tnd-reveal">
+          <div class="tnd-symbol__art">
+            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
+              <defs><pattern id="tArco" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+                <path d="M0 0 L9 9 L0 18 Z" fill="#E74C3C"/>
+                <path d="M3 0 L12 9 L3 18 Z" fill="#F39A1F"/>
+                <path d="M6 0 L15 9 L6 18 Z" fill="#FFC107"/>
+                <path d="M9 0 L18 9 L9 18 Z" fill="#8BC34A"/>
+                <path d="M12 0 L21 9 L12 18 Z" fill="#42A5F5"/>
+                <path d="M15 0 L24 9 L15 18 Z" fill="#7E57C2"/>
+              </pattern></defs>
+              <rect width="120" height="60" fill="url(#tArco)"/>
+            </svg>
+          </div>
+          <div class="tnd-symbol__body">
+            <strong>Arco iris</strong>
+            <em>Camino divino</em>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCTOS / CATÁLOGO ====== -->
+  <section id="productos" class="tnd-section">
+    <div class="tnd-container">
+      <header class="tnd-section-head tnd-reveal">
+        <span class="tnd-section-eyebrow">Catálogo</span>
+        <h2 class="tnd-section-title">Productos <em>destacados</em></h2>
+        <p class="tnd-section-sub">
+          Una selección de lo que más se vende y lo que nos enorgullece. Cotiza directamente por WhatsApp.
+        </p>
+      </header>
+
+      <div class="tnd-shop__filters">
+        <button class="tnd-filter is-active" data-cat="todos">Todos</button>
+        <button class="tnd-filter" data-cat="velas">Velas</button>
+        <button class="tnd-filter" data-cat="artesania">Artesanías</button>
+        <button class="tnd-filter" data-cat="bebidas">Café y cacao</button>
+        <button class="tnd-filter" data-cat="medicina">Medicinales</button>
+        <button class="tnd-filter" data-cat="textil">Textiles</button>
+      </div>
+
+      <div class="tnd-shop__grid">
+        <!-- VELAS ARTESANALES (3 productos estrella, fotos reales) -->
+        <article class="tnd-product tnd-reveal" data-cat="velas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="assets/images/tienda/velas-piedras.jpg" alt="Velas artesanales con piedras volcánicas" />
+            <span class="tnd-product__badge">★ Más vendido</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Velas decorativas</span>
+            <h3>Velas Piedras · cuadradas</h3>
+            <p>Cera natural fundida sobre piedras volcánicas del Putumayo. Base con guijarros embebidos, mecha de algodón orgánico. Cuadradas y portavela. Disponible en blanco, beige y café.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">desde $32.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Piedras."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="velas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="assets/images/tienda/velas-terrazo.jpg" alt="Velas artesanales terrazo de colores" />
+            <span class="tnd-product__badge tnd-product__badge--mustard">Colección color</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Velas decorativas</span>
+            <h3>Velas Terrazo · pilares</h3>
+            <p>Pilar cilíndrico con fragmentos de cera reciclada multicolor — estilo terrazo único. Disponibles en naranja, púrpura, verde, azul, fucsia y rojo. Cada vela es irrepetible.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$48.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Terrazo."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="velas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="assets/images/tienda/velas-brick.jpg" alt="Velas brick aromáticas con piedras al pie" />
+            <span class="tnd-product__badge tnd-product__badge--indigo">Aromática</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Velas aromáticas</span>
+            <h3>Velas Brick · aromáticas</h3>
+            <p>Forma de ladrillo en cera de soya con fragancia natural de copoazú, cacao o palo santo. Base con piedras volcánicas para mejor combustión. Hasta 18 horas de aroma.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$38.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Brick%20aromáticas."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="artesania">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1612466453530-ff8b8e2f9b4f?auto=format&fit=crop&w=600&q=70" alt="Pulseras de chaquira tradicionales" />
+            <span class="tnd-product__badge">Hecho a mano</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Artesanía indígena</span>
+            <h3>Pulseras de chaquira</h3>
+            <p>Tejidas a mano con los cinco símbolos ancestrales del Putumayo. Hilo encerado y mostacilla checa de alta calidad.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">desde $35.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20pulseras%20de%20chaquira."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="bebidas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=70" alt="Café del sur de Colombia" />
+            <span class="tnd-product__badge tnd-product__badge--mustard">Orgánico</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Café gourmet</span>
+            <h3>Café del sur · 500g</h3>
+            <p>Tostado lento de fincas del piedemonte amazónico. Notas a chocolate, panela y un fondo cítrico delicado.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$48.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20comprar%20café%20del%20sur."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="bebidas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=600&q=70" alt="Chocolate de cacao del Putumayo" />
+            <span class="tnd-product__badge">Fino de aroma</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Cacao orgánico</span>
+            <h3>Tableta de chocolate 70%</h3>
+            <p>Cacao fino de aroma del Putumayo. Sin azúcar refinada, sin emulsionantes. Empaque biodegradable.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$24.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20chocolate%20de%20cacao."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="medicina">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&q=70" alt="Hierbas medicinales amazónicas" />
+            <span class="tnd-product__badge tnd-product__badge--indigo">Tradicional</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Plantas medicinales</span>
+            <h3>Kit hierbas amazónicas</h3>
+            <p>Chuchuhuasa, ayahuma, ortiga y sangre de drago. Bendecidas por el taita antes de empacar.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$65.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20el%20kit%20de%20hierbas%20amazónicas."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="bebidas">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=70" alt="Miel de abeja angelita" />
+            <span class="tnd-product__badge">Abejas nativas</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Miel pura</span>
+            <h3>Miel de abeja angelita · 250ml</h3>
+            <p>Producida por abejas sin aguijón nativas del Amazonas. Sabor cítrico, propiedades medicinales únicas.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$42.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20miel%20de%20abeja%20angelita."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="textil">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=600&q=70" alt="Ruana putumayense tejida a mano" />
+            <span class="tnd-product__badge tnd-product__badge--mustard">Tejido a mano</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Textil tradicional</span>
+            <h3>Ruana putumayense</h3>
+            <p>Lana virgen tejida en telar de cintura por manos campesinas. Abriga las noches de selva alta.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$185.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20una%20ruana%20putumayense."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="artesania">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f0?auto=format&fit=crop&w=600&q=70" alt="Collares de semillas naturales" />
+            <span class="tnd-product__badge">Semillas naturales</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Bisutería natural</span>
+            <h3>Collares de semillas</h3>
+            <p>Acaí, huayruro, peonia y ojo de buey. Cada semilla recolectada en el bosque, sin tala.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">desde $28.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20collares%20de%20semillas."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="medicina">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=70" alt="Aceite esencial de copaiba" />
+            <span class="tnd-product__badge tnd-product__badge--indigo">Aromaterapia</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Aceite esencial</span>
+            <h3>Aceite de copaiba</h3>
+            <p>Resina amazónica milenaria. Antiinflamatorio natural y conexión espiritual.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">$58.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20aceite%20de%20copaiba."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tnd-product tnd-reveal" data-cat="textil">
+          <div class="tnd-product__media">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=70" alt="Mola decorativa tejida" />
+            <span class="tnd-product__badge tnd-product__badge--mustard">Pieza única</span>
+          </div>
+          <div class="tnd-product__body">
+            <span class="tnd-product__cat">Decoración</span>
+            <h3>Mola decorativa</h3>
+            <p>Aplique textil tradicional con motivos étnicos. Para enmarcar o usar como tapete.</p>
+            <div class="tnd-product__foot">
+              <span class="tnd-product__price">desde $72.000</span>
+              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
+                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesa%20una%20mola."
+                 target="_blank" rel="noopener">Comprar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SOBRE LA TIENDA / ARTESANOS ====== -->
+  <section id="artesanos" class="tnd-section tnd-section--sand">
+    <div class="tnd-container">
+      <div class="tnd-about__grid">
+        <div class="tnd-about__media tnd-reveal">
+          <img src="https://images.unsplash.com/photo-1606820854416-439b3305ff39?auto=format&fit=crop&w=700&q=70" alt="Manos de artesana tejiendo chaquira" />
+          <div class="tnd-about__media-quote">
+            "Cada hilo lleva una intención. Cada pieza, una bendición."
+            <em>— Mama Pastora · Artesana del pueblo Inga</em>
+          </div>
+        </div>
+        <div class="tnd-about__content tnd-reveal">
+          <span class="tnd-section-eyebrow">Nuestros artesanos</span>
+          <h2>Comercio <em>justo</em>, raíz andino-amazónica</h2>
+          <p>
+            Trabajamos directamente con <strong>15 comunidades indígenas y campesinas</strong> del
+            Putumayo. Sin intermediarios, sin precios manipulados. El 70% de cada compra va
+            directo a quien hizo el producto.
+          </p>
+          <p>
+            Nuestros aliados son los pueblos Inga, Kamëntsá, Kofán, y familias campesinas del
+            Valle de Sibundoy y el piedemonte amazónico. Cada producto pasa por sus manos:
+            del bosque al taller, del taller a tu casa.
+          </p>
+          <ul class="tnd-about__stats">
+            <li><strong>15+</strong><span>Comunidades aliadas</span></li>
+            <li><strong>70%</strong><span>Va al artesano</span></li>
+            <li><strong>0%</strong><span>Intermediarios</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CÓMO COMPRAR ====== -->
+  <section id="comprar" class="tnd-section">
+    <div class="tnd-container">
+      <header class="tnd-section-head tnd-reveal">
+        <span class="tnd-section-eyebrow">Cómo comprar</span>
+        <h2 class="tnd-section-title">Tan simple como <em>tres pasos</em></h2>
+        <p class="tnd-section-sub">
+          Sin carrito, sin formularios infinitos. Atención humana por WhatsApp.
+        </p>
+      </header>
+      <div class="tnd-process">
+        <article class="tnd-process__step tnd-reveal">
+          <div class="tnd-process__num">1</div>
+          <h3>Explora el catálogo</h3>
+          <p>Recorre los productos, filtra por categoría, descubre los símbolos ancestrales.</p>
+        </article>
+        <article class="tnd-process__step tnd-reveal">
+          <div class="tnd-process__num">2</div>
+          <h3>Cotiza por WhatsApp</h3>
+          <p>Te respondemos con disponibilidad, formas de pago y opciones de envío en minutos.</p>
+        </article>
+        <article class="tnd-process__step tnd-reveal">
+          <div class="tnd-process__num">3</div>
+          <h3>Recibe en tu casa</h3>
+          <p>Empacado a mano, despachado en 24h. Te enviamos guía de seguimiento.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ENVÍOS / INFO ====== -->
+  <section id="envios" class="tnd-section tnd-section--sand">
+    <div class="tnd-container">
+      <header class="tnd-section-head tnd-reveal">
+        <span class="tnd-section-eyebrow">Logística</span>
+        <h2 class="tnd-section-title">Llegamos a <em>toda Colombia</em></h2>
+      </header>
+      <div class="tnd-info">
+        <div class="tnd-info-card tnd-reveal">
+          <div class="tnd-info-card__ico">E</div>
+          <h3>Envíos a domicilio</h3>
+          <p>Cobertura nacional vía Servientrega, Coordinadora y TCC. Tarifa según destino y peso, te la cotizamos al momento.</p>
+        </div>
+        <div class="tnd-info-card tnd-reveal">
+          <div class="tnd-info-card__ico">P</div>
+          <h3>Formas de pago</h3>
+          <p>Transferencia, Nequi, Daviplata, PSE y tarjeta. Contraentrega disponible solo en Mocoa y municipios cercanos.</p>
+        </div>
+        <div class="tnd-info-card tnd-reveal">
+          <div class="tnd-info-card__ico">G</div>
+          <h3>Garantía artesanal</h3>
+          <p>Si algo llega con desperfectos, lo reemplazamos sin costo. Empaque resistente y seguro de envío incluido.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA FINAL ====== -->
+  <section class="tnd-cta">
+    <div class="tnd-container">
+      <h2>Llévate un pedazo del <em>Putumayo</em></h2>
+      <p>Cada compra apoya directamente a una familia artesana. Cotiza sin compromiso por WhatsApp y te ayudamos a elegir.</p>
+      <div class="tnd-cta__row">
+        <a class="tnd-btn tnd-btn--whatsapp tnd-btn--lg"
+           href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20ver%20el%20catálogo%20completo."
+           target="_blank" rel="noopener">Hablar con la tienda</a>
+        <a class="tnd-btn tnd-btn--indigo tnd-btn--lg" href="#productos">Volver al catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="tnd-footer">
+    <div class="tnd-container">
+      <div class="tnd-footer__grid">
+        <div class="tnd-footer__brand">
+          <strong>Tienda PARAISOS</strong>
+          <em>Putumayo · hecho a mano</em>
+          <p>Artesanías, café, cacao, hierbas medicinales y textiles del sur de Colombia. Comercio justo con comunidades indígenas y campesinas.</p>
+          <div class="tnd-footer__social">
+            <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Categorías</h4>
+          <ul>
+            <li><a href="#productos">Artesanías</a></li>
+            <li><a href="#productos">Café y cacao</a></li>
+            <li><a href="#productos">Plantas medicinales</a></li>
+            <li><a href="#productos">Textiles</a></li>
+            <li><a href="#simbolos">Símbolos ancestrales</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Más de PARAISOS</h4>
+          <ul>
+            <li><a href="index.html">Inicio PARAISOS</a></li>
+            <li><a href="index.html#putumayo">Turismo Putumayo</a></li>
+            <li><a href="index.html#viajes">Viajes y Cruceros</a></li>
+            <li><a href="el-piqueteadero.html">El Sabroso piqueteadero</a></li>
+            <li><a href="nosotros.html">Quiénes somos</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tnd-footer__bottom">
+        © <span id="tndYear"></span> Tienda PARAISOS · una experiencia de
+        <a href="index.html">PARAISOS Agencia de Viajes &amp; Turismo</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== FAB WhatsApp ====== -->
+  <a class="tnd-fab-wa"
+     href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+     target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+  </a>
+
+  <!-- ====== JS ============== -->
+  <script>
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('tndLoader').classList.add('is-hidden'), 700);
+    });
+
+    // Navbar scroll
+    const nav = document.getElementById('tndNav');
+    addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 24), { passive: true });
+
+    // Burger
+    document.getElementById('tndBurger').addEventListener('click', () => nav.classList.toggle('is-open'));
+    document.querySelectorAll('.tnd-nav__menu a').forEach(a =>
+      a.addEventListener('click', () => nav.classList.remove('is-open'))
+    );
+
+    // Active link
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.tnd-nav__menu a');
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { threshold: 0.35 }).observe = (function(target) {
+      sections.forEach(s => this.observe(s));
+    });
+    const ioA = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => ioA.observe(s));
+
+    // Filtros de productos
+    const filters = document.querySelectorAll('.tnd-filter');
+    const products = document.querySelectorAll('.tnd-product');
+    function applyFilter(cat) {
+      filters.forEach(f => f.classList.toggle('is-active', f.dataset.cat === cat));
+      products.forEach(p => {
+        const show = cat === 'todos' || p.dataset.cat === cat;
+        p.classList.toggle('is-hidden', !show);
+      });
+    }
+    filters.forEach(f => f.addEventListener('click', () => applyFilter(f.dataset.cat)));
+
+    // Click en categoría también filtra
+    document.querySelectorAll('.tnd-cat[data-filter]').forEach(c => {
+      c.addEventListener('click', (e) => {
+        const cat = c.dataset.filter;
+        setTimeout(() => applyFilter(cat), 600);
+      });
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.tnd-reveal').forEach(el => io.observe(el));
+
+    // Year
+    document.getElementById('tndYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

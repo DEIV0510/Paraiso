@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 140" role="img" aria-label="El Sabroso piqueteadero">
+  <defs>
+    <linearGradient id="elsYellow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE259"/>
+      <stop offset="100%" stop-color="#FFC107"/>
+    </linearGradient>
+    <linearGradient id="elsRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E74C3C"/>
+      <stop offset="100%" stop-color="#C0392B"/>
+    </linearGradient>
+    <filter id="elsShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- Fondo amarillo redondeado -->
+  <rect x="6" y="6" width="268" height="128" rx="20" fill="url(#elsYellow)" filter="url(#elsShadow)"/>
+
+  <!-- Carita feliz (círculo + ojos + boca grande) -->
+  <g transform="translate(54, 50)">
+    <circle r="36" fill="#FFD83D" stroke="#0F2845" stroke-width="3"/>
+    <!-- Ojos cerrados (líneas curvas tipo carita ^ ^) -->
+    <path d="M -16 -8 Q -12 -14 -8 -8" fill="none" stroke="#0F2845" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 8 -8 Q 12 -14 16 -8" fill="none" stroke="#0F2845" stroke-width="3" stroke-linecap="round"/>
+    <!-- Sonrisa amplia con dientes blancos -->
+    <path d="M -20 4 Q 0 24 20 4 Z" fill="#fff" stroke="#0F2845" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M -20 4 Q 0 24 20 4" fill="none" stroke="#0F2845" stroke-width="3" stroke-linejoin="round"/>
+    <!-- Lengua roja -->
+    <ellipse cx="0" cy="14" rx="7" ry="5" fill="#E74C3C"/>
+  </g>
+
+  <!-- Texto "EL SABROSO" en azul -->
+  <text x="106" y="56" font-family="Montserrat, Arial Black, sans-serif" font-weight="900" font-size="34" fill="#1976D2" letter-spacing="-1">EL SABROSO</text>
+  <!-- Texto "piqueteadero" en rojo -->
+  <text x="106" y="92" font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size="22" fill="url(#elsRed)" letter-spacing="0.5">piqueteadero</text>
+  <!-- Línea decorativa -->
+  <rect x="106" y="105" width="60" height="3" rx="1.5" fill="url(#elsRed)"/>
+</svg>

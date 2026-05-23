@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PARAISOS">
+  <defs>
+    <linearGradient id="fvB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#42A5F5"/>
+      <stop offset="100%" stop-color="#0D47A1"/>
+    </linearGradient>
+    <linearGradient id="fvO" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFB74D"/>
+      <stop offset="100%" stop-color="#E67E22"/>
+    </linearGradient>
+    <linearGradient id="fvOL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFD89B"/>
+      <stop offset="100%" stop-color="#FFB74D"/>
+    </linearGradient>
+    <radialGradient id="fvG" cx="38%" cy="32%" r="68%">
+      <stop offset="0" stop-color="#C9E76B"/>
+      <stop offset="100%" stop-color="#689F38"/>
+    </radialGradient>
+  </defs>
+  <!-- Blue crescent: top → left → bottom-left -->
+  <path d="M 36 8 C 22 8 10 18 10 32 C 10 44 20 54 24 56"
+        stroke="url(#fvB)" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Orange crescent: bottom → right → top-right -->
+  <path d="M 28 56 C 42 56 54 46 54 32 C 54 20 44 10 40 8"
+        stroke="url(#fvO)" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Orange inner highlight -->
+  <path d="M 28 50 C 38 50 48 42 48 32 C 48 22 40 14 36 12"
+        stroke="url(#fvOL)" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <!-- Green sphere bottom-left -->
+  <circle cx="24" cy="56" r="6" fill="#fff"/>
+  <circle cx="24" cy="56" r="4.2" fill="url(#fvG)"/>
+  <!-- Green sphere top-right -->
+  <circle cx="40" cy="8" r="6" fill="#fff"/>
+  <circle cx="40" cy="8" r="4.2" fill="url(#fvG)"/>
+</svg>

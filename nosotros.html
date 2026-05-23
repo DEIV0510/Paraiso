@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1976D2" />
+
+  <title>Nosotros · PARAISOS Agencia de Viajes &amp; Turismo</title>
+  <meta name="description" content="Quiénes somos en PARAISOS: misión, visión 2030, valores corporativos y las 8 políticas que guían nuestro trabajo en turismo andino-amazónico." />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nosotros · PARAISOS" />
+  <meta property="og:description" content="Más que un destino turístico, somos territorio de vida. Conoce nuestra misión, visión y políticas." />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,700;1,800&family=Poppins:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Misma CSS que PARAISOS · temática azul/naranja -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+
+  <!-- Overrides específicos de nosotros.html:
+       1. Navbar al tope (sin topbar arriba en esta página)
+       2. Logo del navbar sin "card" propio (PNG ya transparente)
+       3. Cursor custom como en index — JS al pie del HTML -->
+  <style>
+    /* Navbar al top: 0 (no hay topbar). Mantiene su glassmorphism normal */
+    .navbar { top: 0 !important; }
+
+    /* Logo del navbar siempre limpio sin background propio */
+    .navbar__brand-img {
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+    }
+  </style>
+</head>
+<body class="has-smooth">
+  <!-- ====== CURSOR CUSTOM (mismo que en index) ====== -->
+  <div class="cursor" aria-hidden="true">
+    <div class="cursor__dot"></div>
+    <div class="cursor__ring"></div>
+    <span class="cursor__label"></span>
+  </div>
+
+  <!-- ====== SPRITE SVG (íconos compartidos) ====== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <defs>
+      <symbol id="ico-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+      <symbol id="ico-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></symbol>
+      <symbol id="ico-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 0 0 1.4 0l4-4a1 1 0 0 0 0-1.4l-4-4a1 1 0 0 0-1.4 0l-2 2M13 7l-2-2a1 1 0 0 0-1.4 0l-4 4a1 1 0 0 0 0 1.4l4 4a1 1 0 0 0 1.4 0l2-2"/></symbol>
+      <symbol id="ico-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+      <symbol id="ico-medical" viewBox="0 0 24 24"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .2.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></symbol>
+      <symbol id="ico-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8M12 18V6"/></symbol>
+      <symbol id="ico-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+      <symbol id="ico-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ====== NAVBAR (mismo que PARAISOS, transparente arriba) ====== -->
+  <header id="navbar" class="navbar" role="banner">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand" aria-label="PARAISOS — Inicio" data-magnetic>
+        <img class="navbar__brand-img"
+             src="assets/images/logo-paraisos.png"
+             alt="PARAISOS — Agencia de Viajes & Turismo"
+             width="1400" height="620" />
+      </a>
+      <nav class="navbar__nav" aria-label="Navegación principal">
+        <ul class="navbar__menu" id="primaryMenu">
+          <li><a href="index.html#inicio">Inicio</a></li>
+          <li><a href="index.html#putumayo">Putumayo</a></li>
+          <li><a href="index.html#viajes">Viajes</a></li>
+          <li><a href="el-piqueteadero.html">El Piqueteadero</a></li>
+          <li><a href="la-tienda.html">Tienda</a></li>
+          <li><a href="nosotros.html" class="is-active">Nosotros</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--whatsapp navbar__cta" data-magnetic
+         href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20más%20información."
+         target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+        WhatsApp
+      </a>
+      <button class="navbar__burger" id="navBurger" aria-label="Abrir menú" aria-controls="primaryMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="navbar__progress" id="navProgress" aria-hidden="true"></div>
+  </header>
+
+  <main>
+  <!-- ====== HERO COMPACTO ====== -->
+  <section class="hero" id="inicio" style="min-height: auto; padding-top: calc(var(--navbar-h) + 4rem); padding-bottom: 3rem;" aria-labelledby="nosotrosTitle">
+    <div class="hero__bg" aria-hidden="true">
+      <div class="hero__bg-grid"></div>
+      <div class="hero__glow hero__glow--1"></div>
+      <div class="hero__glow hero__glow--2"></div>
+    </div>
+    <div class="container" style="text-align:center; position:relative; z-index:2; max-width: 820px;">
+      <span class="section-eyebrow" style="padding-left:0;">Quiénes somos</span>
+      <h1 id="nosotrosTitle" class="hero__title" style="font-size: clamp(2.4rem, 5.5vw, 4rem); margin-bottom: 1rem;">
+        Empresa colombiana de origen <span class="hero__title-grad">andino-amazónico</span>
+      </h1>
+      <p class="hero__subtitle" style="margin: 0 auto 1.5rem; max-width: 640px;">
+        Diseñamos experiencias inolvidables en turismo de naturaleza y turismo convencional,
+        dentro y fuera de Colombia. Más que un destino, somos territorio de vida.
+      </p>
+      <div style="display:flex; justify-content:center; gap:.8rem; flex-wrap:wrap;">
+        <a class="btn btn--primary" href="#mision" data-magnetic>Nuestra misión</a>
+        <a class="btn btn--ghost" href="#politicas" data-magnetic>Ver políticas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== MISIÓN ====== -->
+  <section id="mision" class="experience" style="padding-top: var(--gap-6); padding-bottom: var(--gap-6); background: #fff;" aria-labelledby="misionTitle">
+    <div class="container">
+      <div class="experience__grid">
+        <div class="experience__media">
+          <img loading="lazy" decoding="async"
+               src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=70"
+               alt="Equipo de PARAISOS diseñando viajes" />
+          <div class="experience__badge">
+            <strong>12+ años</strong>
+            <span>diseñando experiencias inolvidables</span>
+          </div>
+        </div>
+        <div class="experience__content">
+          <span class="section-eyebrow">Misión</span>
+          <h2 id="misionTitle" class="section-title section-title--left">
+            Nuevas opciones de <span class="text-grad">turismo en la naturaleza</span>
+          </h2>
+          <p class="experience__lead">
+            Ofrecer dentro del sector turístico nuevas e innovadoras opciones de programas y
+            planes de turismo en la naturaleza y turismo convencional, desarrollando actividades
+            educativas y ecológicas.
+          </p>
+          <p class="experience__lead">
+            Actuamos responsablemente tanto en lo <strong>ambiental</strong> como en lo
+            <strong>social y económico</strong>, contribuyendo a generar una cultura fuerte hacia
+            el reconocimiento y protección del patrimonio natural y cultural andino-amazónico
+            del sur de Colombia, y de los destinos nacionales e internacionales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== VISIÓN ====== -->
+  <section class="cta-final" id="vision" style="padding: var(--gap-6) 0;" aria-labelledby="visionTitle">
+    <div class="cta-final__orbits" aria-hidden="true">
+      <div class="cta-final__orb cta-final__orb--1"></div>
+      <div class="cta-final__orb cta-final__orb--2"></div>
+    </div>
+    <div class="container cta-final__inner">
+      <span class="section-eyebrow" style="color: #FFB74D; padding-left: 0;">Visión 2030</span>
+      <h2 id="visionTitle" style="margin: .5rem 0 1.2rem;">
+        Líderes en el <span style="background: var(--grad-orange); -webkit-background-clip: text; background-clip: text; color: transparent;">sur de Colombia</span>
+      </h2>
+      <p style="font-size: 1.05rem; max-width: 720px; margin: 0 auto;">
+        Para el año <strong style="color: #FFB74D;">2030</strong> seremos en el sur de Colombia
+        una organización líder en la realización de productos turísticos con alto valor
+        diferenciador, y una de las empresas turísticas mejor posicionadas con productos únicos
+        y bien calificados.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== VALORES Y PRINCIPIOS ====== -->
+  <section id="valores" class="services" style="padding: var(--gap-6) 0;" aria-labelledby="valoresTitle">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-eyebrow">Nuestro ADN</span>
+        <h2 id="valoresTitle" class="section-title">
+          Valores y <span class="text-grad">principios corporativos</span>
+        </h2>
+        <p class="section-sub">
+          Cómo trabajamos cada día. Lo que nos define ante clientes, aliados y comunidades.
+        </p>
+      </header>
+
+      <div class="services__grid">
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-target"/></svg></span>
+          <h3>Gestión eficiente</h3>
+          <p>Cada minuto y cada peso bien usados, sin desperdicio.</p>
+        </article>
+        <article class="service-card service-card--accent">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-shield"/></svg></span>
+          <h3>Actitud proactiva</h3>
+          <p>Nos adelantamos a las necesidades antes que el cliente las pida.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-smile"/></svg></span>
+          <h3>Amabilidad</h3>
+          <p>Tratamos a cada viajero como invitado a nuestra casa.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-handshake"/></svg></span>
+          <h3>Compromiso</h3>
+          <p>Lo prometido se cumple. Si algo cambia, lo informamos antes.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-star"/></svg></span>
+          <h3>Calidad</h3>
+          <p>Operadores certificados, equipo formado y mejora continua.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-check"/></svg></span>
+          <h3>Cumplimiento</h3>
+          <p>Horarios, itinerarios y compromisos respetados al milímetro.</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">·</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-medical"/></svg></span>
+          <h3>Garantía</h3>
+          <p>Si algo falla, respondemos. Pólizas Colasistencia + Magenta.</p>
+        </article>
+      </div>
+
+      <!-- Principios -->
+      <div style="margin-top: 2.5rem; padding: 1.8rem 2rem; background: var(--c-bg-soft); border-radius: var(--r-lg); border-left: 5px solid var(--c-orange);">
+        <h3 style="font-family: var(--f-head); font-weight: 800; font-size: 1.15rem; margin-bottom: .6rem; color: var(--c-text);">
+          Nuestros principios
+        </h3>
+        <p style="font-size: 1rem; color: var(--c-text-soft); line-height: 1.7; margin: 0;">
+          <strong style="color: var(--c-text);">Servicio personalizado</strong> · cada plan se diseña a tu medida.
+          <strong style="color: var(--c-text);">Honestidad</strong> · precios reales, sin letra pequeña.
+          <strong style="color: var(--c-text);">Comunicación</strong> · respondemos en minutos por WhatsApp.
+          <strong style="color: var(--c-text);">Confiabilidad</strong> · RNT 84258 y trayectoria comprobable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== POLÍTICAS CORPORATIVAS ====== -->
+  <section id="politicas" class="experience" style="padding: var(--gap-6) 0;" aria-labelledby="politicasTitle">
+    <div class="container">
+      <header class="section-head">
+        <span class="section-eyebrow">Política de calidad</span>
+        <h2 id="politicasTitle" class="section-title">
+          "Todos los clientes obtendrán <span class="text-grad">el mejor de los servicios</span>"
+        </h2>
+        <p class="section-sub">
+          Ocho políticas corporativas que rigen nuestra operación día a día.
+        </p>
+      </header>
+
+      <div class="services__grid">
+        <article class="service-card">
+          <div class="service-card__num">01</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-target"/></svg></span>
+          <h3>Política de calidad</h3>
+          <p>"Todos los clientes obtendrán el mejor de los servicios."</p>
+        </article>
+        <article class="service-card service-card--accent">
+          <div class="service-card__num">02</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-smile"/></svg></span>
+          <h3>Atención al usuario</h3>
+          <p>"La satisfacción del turista es nuestro compromiso."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">03</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-handshake"/></svg></span>
+          <h3>Contratación de proveedores</h3>
+          <p>"Los mejores para la mejor experiencia."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">04</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-shield"/></svg></span>
+          <h3>Política de seguridad</h3>
+          <p>"Nos tomamos en serio la seguridad."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">05</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-medical"/></svg></span>
+          <h3>Política de bioseguridad</h3>
+          <p>"Nuestra prioridad es la salud."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">06</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-coin"/></svg></span>
+          <h3>Política de precios</h3>
+          <p>"Los mejores precios del mercado turístico."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">07</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-globe"/></svg></span>
+          <h3>Defensa del territorio</h3>
+          <p>"Primero nuestra gente y nuestro territorio."</p>
+        </article>
+        <article class="service-card">
+          <div class="service-card__num">08</div>
+          <span class="service-card__ico"><svg class="icon"><use href="#ico-phone"/></svg></span>
+          <h3>Política de comunicación</h3>
+          <p>"Asistencia personalizada para nuestros clientes."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA FINAL ====== -->
+  <section class="cta-final" style="padding: var(--gap-7) 0;" aria-labelledby="ctaTitle">
+    <div class="cta-final__orbits" aria-hidden="true">
+      <div class="cta-final__orb cta-final__orb--1"></div>
+      <div class="cta-final__orb cta-final__orb--2"></div>
+      <div class="cta-final__orb cta-final__orb--3"></div>
+    </div>
+    <div class="container cta-final__inner">
+      <h2 id="ctaTitle">"Más que un destino turístico, somos territorio de vida"</h2>
+      <p>Ahora que sabes quiénes somos, déjanos diseñar tu próximo viaje.</p>
+      <div class="cta-final__row">
+        <a class="btn btn--whatsapp btn--lg" data-magnetic
+           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje."
+           target="_blank" rel="noopener">Hablar por WhatsApp</a>
+        <a class="btn btn--ghost btn--lg" href="index.html#asistente" data-magnetic>Cotizar online</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ====== FOOTER (mismo de PARAISOS) ====== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="navbar__brand footer__brand-link">
+          <img class="footer__brand-img"
+               src="assets/images/logo-paraisos.png"
+               alt="PARAISOS — Agencia de Viajes & Turismo"
+               width="1400" height="620" />
+        </a>
+        <p class="footer__slogan">"Más que un destino turístico, somos territorio de vida."</p>
+        <div class="footer__social">
+          <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Nuestro mundo</h4>
+        <ul>
+          <li><a href="index.html#putumayo">Turismo en Putumayo</a></li>
+          <li><a href="index.html#viajes">Viajes nacional/internacional</a></li>
+          <li><a href="el-piqueteadero.html">El Sabroso piqueteadero</a></li>
+          <li><a href="la-tienda.html">Tienda turística</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nosotros</h4>
+        <ul>
+          <li><a href="#mision">Misión</a></li>
+          <li><a href="#vision">Visión 2030</a></li>
+          <li><a href="#valores">Valores y principios</a></li>
+          <li><a href="#politicas">Políticas</a></li>
+          <li><a href="index.html">Volver al inicio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>CRA 13 NRO 12 esquina · Putumayo</li>
+          <li><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></li>
+          <li><a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a></li>
+          <li>Lun–Sáb 8:00 – 19:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <span>© <span id="year"></span> PARAISOS — Agencia de Viajes &amp; Turismo. Todos los derechos reservados.</span>
+        <ul><li><a href="#privacy">Privacidad</a></li><li><a href="#terms">Términos</a></li><li><a href="#cookies">Cookies</a></li></ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating -->
+  <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+     class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="float-wa__pulse"></span>
+    <span class="float-wa__pulse float-wa__pulse--2"></span>
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+  </a>
+
+  <script>
+    /* ===== CURSOR CUSTOM (puntito naranja + ring azul) — igual que index ===== */
+    (function cursor() {
+      const isMobile = matchMedia('(hover: none) and (pointer: coarse)').matches;
+      if (isMobile) return;
+      const cur = document.querySelector('.cursor');
+      if (!cur) return;
+      const dot  = cur.querySelector('.cursor__dot');
+      const ring = cur.querySelector('.cursor__ring');
+      const label = cur.querySelector('.cursor__label');
+      let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+      addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
+      (function tick() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        dot.style.transform  = `translate(${mx}px, ${my}px)`;
+        ring.style.transform = `translate(${rx}px, ${ry}px)`;
+        label.style.transform = `translate(${mx + 20}px, ${my + 12}px)`;
+        requestAnimationFrame(tick);
+      })();
+      document.addEventListener('mouseover', (e) => {
+        const hover = e.target.closest('a, button, .service-card, summary, [data-cursor-label]');
+        cur.classList.toggle('is-hover', !!hover);
+        const lbl = hover?.getAttribute('data-cursor-label');
+        if (lbl) { label.textContent = lbl; cur.classList.add('has-label'); }
+        else { cur.classList.remove('has-label'); }
+      });
+      document.addEventListener('mousedown', () => cur.classList.add('is-drag'));
+      document.addEventListener('mouseup',   () => cur.classList.remove('is-drag'));
+    })();
+
+    // Navbar: scroll glassy + burger toggle + progress bar (igual que en index)
+    const nav = document.getElementById('navbar');
+    const burger = document.getElementById('navBurger');
+    const progress = document.getElementById('navProgress');
+
+    // Glassy state al hacer scroll (mismo umbral que index)
+    const updateNav = () => {
+      const y = window.scrollY;
+      nav.classList.toggle('is-scrolled', y > 24);
+      const max = document.documentElement.scrollHeight - innerHeight;
+      if (progress) progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    };
+    addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Burger mobile
+    burger?.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('no-scroll', open);
+    });
+    document.querySelectorAll('.navbar__menu a').forEach(a =>
+      a.addEventListener('click', () => {
+        nav.classList.remove('is-open');
+        burger?.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('no-scroll');
+      })
+    );
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

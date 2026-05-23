@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFC107" />
+
+  <!-- SEO -->
+  <title>EL SABROSO piqueteadero · Sabores tradicionales del Putumayo</title>
+  <meta name="description" content="Piqueteadero El Sabroso en Putumayo. Chicharrón, picada para compartir, mix de carnes, picadillo de cerdo y maito a la cúrcuma. Reserva o pide a domicilio por WhatsApp." />
+  <meta name="keywords" content="piqueteadero putumayo, el sabroso, chicharrón, picada, maito, comida típica putumayo, mocoa restaurante" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="EL SABROSO piqueteadero" />
+  <meta property="og:description" content="Sabores del Putumayo: chicharrón, picada, maito a la cúrcuma. Reserva o pide a domicilio." />
+  <meta property="og:image" content="assets/images/piqueteadero/picada.jpg" />
+
+  <!-- Favicon (heredado de PARAISOS) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" />
+
+  <link rel="stylesheet" href="css/piqueteadero.css" />
+
+  <!-- Schema.org Restaurant -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "EL SABROSO piqueteadero",
+    "servesCuisine": "Colombiana, andino-amazónica",
+    "description": "Piqueteadero tradicional con sabores del Putumayo: chicharrón, picada, mix, picadillo de cerdo y maito a la cúrcuma.",
+    "telephone": "+573157347306",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "CRA 13 NRO 12 esquina",
+      "addressRegion": "Putumayo",
+      "addressCountry": "CO"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "11:00",
+      "closes": "21:00"
+    },{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "11:00",
+      "closes": "17:00"
+    }],
+    "menu": "el-piqueteadero.html#carta"
+  }
+  </script>
+</head>
+<body>
+  <!-- ====== LOADER ====== -->
+  <div class="els-loader" id="elsLoader" aria-hidden="true">
+    <img src="assets/images/piqueteadero/logo-sabroso.png" alt="EL SABROSO piqueteadero" />
+  </div>
+
+  <!-- ====== NAVBAR ====== -->
+  <header class="els-nav" id="elsNav" role="banner">
+    <div class="els-container els-nav__inner">
+      <a href="#inicio" class="els-nav__brand" aria-label="EL SABROSO piqueteadero">
+        <img src="assets/images/piqueteadero/logo-sabroso.png" alt="EL SABROSO piqueteadero" />
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="els-nav__menu" id="elsMenu">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+          <li><a href="#carta">Nuestra carta</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#info">Visítanos</a></li>
+        </ul>
+      </nav>
+      <div class="els-nav__cta-row">
+        <a href="index.html" class="els-nav__back" aria-label="Volver a PARAISOS">← PARAISOS</a>
+        <a class="els-btn els-btn--primary" style="padding: .7rem 1.2rem; font-size: .82rem;"
+           href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20reservar%20una%20mesa."
+           target="_blank" rel="noopener">Reservar</a>
+        <button class="els-nav__burger" id="elsBurger" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== HERO ====== -->
+  <section id="inicio" class="els-hero">
+    <div class="els-container els-hero__inner">
+      <div class="els-hero__content">
+        <img class="els-hero__logo" src="assets/images/piqueteadero/logo-sabroso.png" alt="EL SABROSO piqueteadero" />
+        <p class="els-hero__tagline">Para compartir, para celebrar…</p>
+        <h1 class="els-hero__title">
+          Sabor de <em>siempre</em>,<br/>
+          mesa para <em>todos</em>
+        </h1>
+        <p class="els-hero__sub">
+          Picadas generosas, chicharrón crocante, pescado fresco y los sabores con los
+          que crecimos en el Putumayo. Tradición servida con cariño.
+        </p>
+        <div class="els-hero__ctas">
+          <a class="els-btn els-btn--primary els-btn--lg"
+             href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20reservar%20una%20mesa."
+             target="_blank" rel="noopener">Reservar mesa</a>
+          <a class="els-btn els-btn--ghost els-btn--lg" href="#carta">Ver la carta ↓</a>
+        </div>
+        <ul class="els-hero__stats">
+          <li><strong>5</strong><span>Platos estrella</span></li>
+          <li><strong>10h</strong><span>Cocina en vivo</span></li>
+          <li><strong>★★★★★</strong><span>De los locales</span></li>
+        </ul>
+      </div>
+      <div class="els-hero__visual" aria-hidden="true">
+        <div class="els-hero__photo els-hero__photo--main">
+          <img src="assets/images/piqueteadero/picada.jpg" alt="PICADA generosa de El Sabroso" />
+          <span class="els-hero__photo-tag">PICADA</span>
+        </div>
+        <div class="els-hero__photo els-hero__photo--sm">
+          <img src="assets/images/piqueteadero/maito.jpg" alt="MAITO a la cúrcuma" />
+          <span class="els-hero__photo-tag">MAITO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SOBRE NOSOTROS ====== -->
+  <section id="sobre-nosotros" class="els-section els-section--cream">
+    <div class="els-container">
+      <header class="els-section-head els-reveal">
+        <span class="els-section-eyebrow">Nuestra historia</span>
+        <h2 class="els-section-title">Cocina con <em>raíz y cariño</em></h2>
+        <p class="els-section-sub">
+          Más que un restaurante, somos un lugar de encuentro donde se sirven los sabores
+          que cuentan quiénes somos.
+        </p>
+      </header>
+
+      <div class="els-about__grid">
+        <div class="els-about__media els-reveal">
+          <img src="assets/images/piqueteadero/chicharron.jpg" alt="Chicharrón con yuca de El Sabroso" />
+          <div class="els-about__media-sticker">¡100% casero!</div>
+        </div>
+        <div class="els-about__content els-reveal">
+          <h2>El sabor del <em style="color: var(--els-red);">Putumayo</em> en cada plato</h2>
+          <p>
+            En <strong>El Sabroso piqueteadero</strong> preparamos lo que comemos en casa:
+            recetas heredadas, ingredientes frescos y porciones generosas. Aquí no servimos
+            comida, servimos memoria.
+          </p>
+          <p>
+            Trabajamos con productores locales del Putumayo, usamos especias de la región
+            y cocinamos lento. Cada plato es una invitación a quedarte.
+          </p>
+          <div class="els-about__features">
+            <div class="els-feature">
+              <span class="els-feature__ico">★</span>
+              <div>
+                <strong>Productos locales</strong>
+                <em>Carne, yuca, pescado y especias del Putumayo</em>
+              </div>
+            </div>
+            <div class="els-feature">
+              <span class="els-feature__ico">♨</span>
+              <div>
+                <strong>Cocina al momento</strong>
+                <em>Nada precocido. Cada orden, fresca.</em>
+              </div>
+            </div>
+            <div class="els-feature">
+              <span class="els-feature__ico">⌂</span>
+              <div>
+                <strong>Ambiente familiar</strong>
+                <em>Mesa larga, música suave, conversación.</em>
+              </div>
+            </div>
+            <div class="els-feature">
+              <span class="els-feature__ico">⊕</span>
+              <div>
+                <strong>Domicilios calientes</strong>
+                <em>En Mocoa y veredas cercanas</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CARTA ====== -->
+  <section id="carta" class="els-section">
+    <div class="els-container">
+      <header class="els-section-head els-reveal">
+        <span class="els-section-eyebrow">Nuestra carta</span>
+        <h2 class="els-section-title">Los <em>platos estrella</em></h2>
+        <p class="els-section-sub">
+          Lo que nos hace famosos. Cinco recetas que vale la pena probar.
+        </p>
+      </header>
+
+      <div class="els-menu__grid">
+        <!-- 1. MIX -->
+        <article class="els-dish els-reveal" data-magnetic>
+          <div class="els-dish__inner">
+            <div class="els-dish__media">
+              <img src="assets/images/piqueteadero/mix.jpg" alt="MIX Chicharrón + Bofe" />
+              <span class="els-dish__badge">★ Más pedido</span>
+              <span class="els-dish__num">01</span>
+            </div>
+            <div class="els-dish__body">
+              <h3 class="els-dish__name">MIX</h3>
+              <span class="els-dish__sub">Chicharrón + Bofe</span>
+              <p class="els-dish__desc">Mezcla generosa de chicharrón crocante y bofe sazonado, acompañado de papa frita en juliana. El plato que une dos sabores en uno solo.</p>
+              <a class="els-dish__cta"
+                 href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20MIX%20Chicharr%C3%B3n%20%2B%20Bofe."
+                 target="_blank" rel="noopener">
+                Pedir por WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. CHICHARRÓN -->
+        <article class="els-dish els-reveal" data-magnetic>
+          <div class="els-dish__inner">
+            <div class="els-dish__media">
+              <img src="assets/images/piqueteadero/chicharron.jpg" alt="Chicharrón con yuca frita" />
+              <span class="els-dish__badge els-dish__badge--red">Clásico</span>
+              <span class="els-dish__num">02</span>
+            </div>
+            <div class="els-dish__body">
+              <h3 class="els-dish__name">CHICHARRÓN</h3>
+              <span class="els-dish__sub">Crocante por fuera, jugoso por dentro</span>
+              <p class="els-dish__desc">Trozos de cerdo dorados al sartén acompañados de yuca frita, cebolla caramelizada y limón fresco. El clásico que nunca falla.</p>
+              <a class="els-dish__cta"
+                 href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20CHICHARR%C3%93N."
+                 target="_blank" rel="noopener">
+                Pedir por WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. PICADA -->
+        <article class="els-dish els-reveal" data-magnetic>
+          <div class="els-dish__inner">
+            <div class="els-dish__media">
+              <img src="assets/images/piqueteadero/picada.jpg" alt="Picada para compartir con limones" />
+              <span class="els-dish__badge">Para compartir</span>
+              <span class="els-dish__num">03</span>
+            </div>
+            <div class="els-dish__body">
+              <h3 class="els-dish__name">PICADA</h3>
+              <span class="els-dish__sub">Tabla familiar variada</span>
+              <p class="els-dish__desc">Tabla generosa con chicharrón, morcilla, longaniza, papa criolla, yuca, plátano y limones frescos. Para 2 a 4 personas.</p>
+              <a class="els-dish__cta"
+                 href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20una%20PICADA%20para%20compartir."
+                 target="_blank" rel="noopener">
+                Pedir por WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. PICADILLO -->
+        <article class="els-dish els-reveal" data-magnetic>
+          <div class="els-dish__inner">
+            <div class="els-dish__media">
+              <img src="assets/images/piqueteadero/picadillo.jpg" alt="Picadillo de cerdo con salsa criolla" />
+              <span class="els-dish__badge els-dish__badge--red">Especialidad</span>
+              <span class="els-dish__num">04</span>
+            </div>
+            <div class="els-dish__body">
+              <h3 class="els-dish__name">PICADILLO</h3>
+              <span class="els-dish__sub">De cerdo con salsa criolla</span>
+              <p class="els-dish__desc">Cerdo finamente picado, salteado con cebolla larga, tomate, cilantro y ají dulce. Servido con arroz y salsa criolla casera.</p>
+              <a class="els-dish__cta"
+                 href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20PICADILLO%20de%20cerdo."
+                 target="_blank" rel="noopener">
+                Pedir por WhatsApp
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5. MAITO (featured ancho completo) -->
+        <article class="els-dish els-dish--feature els-reveal" data-magnetic>
+          <div class="els-dish__inner">
+            <div class="els-dish__media">
+              <img src="assets/images/piqueteadero/maito.jpg" alt="MAITO a la cúrcuma" />
+              <span class="els-dish__badge">★ Plato estrella</span>
+              <span class="els-dish__num">05</span>
+            </div>
+            <div class="els-dish__body">
+              <h3 class="els-dish__name">MAITO</h3>
+              <span class="els-dish__sub">A la cúrcuma</span>
+              <p class="els-dish__desc">Pescado fresco marinado en cúrcuma y hierbas amazónicas, envuelto al estilo ancestral en hoja de plátano. Servido con arroz, patacones, ensalada criolla y limón. Una experiencia única del Putumayo que vale la pena probar al menos una vez en la vida.</p>
+              <a class="els-btn els-btn--primary" style="align-self: flex-start;"
+                 href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20MAITO%20a%20la%20c%C3%BArcuma."
+                 target="_blank" rel="noopener">Pedir Maito</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== GALERÍA ====== -->
+  <section id="galeria" class="els-section els-section--cream">
+    <div class="els-container">
+      <header class="els-section-head els-reveal">
+        <span class="els-section-eyebrow">Para abrir el apetito</span>
+        <h2 class="els-section-title"><em>Galería</em> sabrosa</h2>
+        <p class="els-section-sub">Nuestros platos en imágenes. Toca para verlos en grande.</p>
+      </header>
+      <div class="els-gallery">
+        <a class="els-gallery__item els-gallery__item--lg els-reveal" href="assets/images/piqueteadero/picada.jpg" target="_blank">
+          <img src="assets/images/piqueteadero/picada.jpg" alt="Picada" />
+        </a>
+        <a class="els-gallery__item els-reveal" href="assets/images/piqueteadero/mix.jpg" target="_blank">
+          <img src="assets/images/piqueteadero/mix.jpg" alt="Mix" />
+        </a>
+        <a class="els-gallery__item els-reveal" href="assets/images/piqueteadero/chicharron.jpg" target="_blank">
+          <img src="assets/images/piqueteadero/chicharron.jpg" alt="Chicharrón" />
+        </a>
+        <a class="els-gallery__item els-reveal" href="assets/images/piqueteadero/picadillo.jpg" target="_blank">
+          <img src="assets/images/piqueteadero/picadillo.jpg" alt="Picadillo de cerdo" />
+        </a>
+        <a class="els-gallery__item els-reveal" href="assets/images/piqueteadero/maito.jpg" target="_blank">
+          <img src="assets/images/piqueteadero/maito.jpg" alt="Maito a la cúrcuma" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== INFO ====== -->
+  <section id="info" class="els-section">
+    <div class="els-container">
+      <header class="els-section-head els-reveal">
+        <span class="els-section-eyebrow">Visítanos</span>
+        <h2 class="els-section-title">Te esperamos con la <em>mesa puesta</em></h2>
+      </header>
+      <div class="els-info__grid">
+        <div class="els-info-card els-reveal">
+          <div class="els-info-card__ico">⏰</div>
+          <h3>Horario</h3>
+          <p>
+            <strong>Lun – Sáb</strong><br/>
+            11:00 a.m. – 9:00 p.m.<br/><br/>
+            <strong>Domingo</strong><br/>
+            11:00 a.m. – 5:00 p.m.
+          </p>
+        </div>
+        <div class="els-info-card els-reveal">
+          <div class="els-info-card__ico">📍</div>
+          <h3>Ubicación</h3>
+          <p>
+            CRA 13 NRO 12 esquina<br/>
+            Mocoa, Putumayo<br/>
+            Colombia<br/><br/>
+            <a href="https://www.google.com/maps/search/?api=1&query=carrera+13+%23+12+mocoa+putumayo+colombia" target="_blank" rel="noopener">Ver en Google Maps →</a>
+          </p>
+        </div>
+        <div class="els-info-card els-reveal">
+          <div class="els-info-card__ico">📞</div>
+          <h3>Reservas y domicilios</h3>
+          <p>
+            <strong>WhatsApp</strong><br/>
+            <a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a><br/><br/>
+            Pedido mínimo para domicilio: $30.000 COP
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CTA FINAL ====== -->
+  <section class="els-cta-final">
+    <div class="els-container">
+      <h2>¿Tienes <em>hambre</em>?</h2>
+      <p>Reserva tu mesa o pide a domicilio. Te respondemos en minutos por WhatsApp.</p>
+      <div class="els-cta-final__row">
+        <a class="els-btn els-btn--whatsapp els-btn--lg"
+           href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20reservar%20o%20pedir%20a%20domicilio."
+           target="_blank" rel="noopener">Pedir por WhatsApp</a>
+        <a class="els-btn els-btn--yellow els-btn--lg" href="tel:+573157347306">Llamar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="els-footer">
+    <div class="els-container">
+      <div class="els-footer__grid">
+        <div>
+          <img src="assets/images/piqueteadero/logo-sabroso.png" alt="EL SABROSO piqueteadero" />
+          <p>Cocina tradicional del Putumayo. Para compartir, para celebrar, para volver.</p>
+          <div class="els-footer__social">
+            <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Carta rápida</h4>
+          <ul>
+            <li><a href="#carta">★ MIX (Chicharrón + Bofe)</a></li>
+            <li><a href="#carta">Chicharrón con yuca</a></li>
+            <li><a href="#carta">Picada para compartir</a></li>
+            <li><a href="#carta">Picadillo de cerdo</a></li>
+            <li><a href="#carta">Maito a la cúrcuma</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Más de PARAISOS</h4>
+          <ul>
+            <li><a href="index.html">Inicio PARAISOS</a></li>
+            <li><a href="index.html#putumayo">Turismo Putumayo</a></li>
+            <li><a href="index.html#viajes">Viajes y Cruceros</a></li>
+            <li><a href="la-tienda.html">Tienda turística</a></li>
+            <li><a href="nosotros.html">Quiénes somos</a></li>
+            <li><a href="index.html#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="els-footer__bottom">
+        © <span id="elsYear"></span> EL SABROSO piqueteadero · una experiencia de
+        <a href="index.html">PARAISOS Agencia de Viajes &amp; Turismo</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== FAB WhatsApp ====== -->
+  <a class="els-fab-wa"
+     href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
+     target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+  </a>
+
+  <!-- ====== JS ligero (loader, navbar, reveal) ====== -->
+  <script>
+    // Loader
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('elsLoader').classList.add('is-hidden'), 800);
+    });
+
+    // Navbar scrolled
+    const nav = document.getElementById('elsNav');
+    addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 24), { passive: true });
+
+    // Burger menu
+    const burger = document.getElementById('elsBurger');
+    burger?.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+    });
+    document.querySelectorAll('.els-nav__menu a').forEach(a =>
+      a.addEventListener('click', () => nav.classList.remove('is-open'))
+    );
+
+    // Active link según sección visible
+    const sections = document.querySelectorAll('section[id]');
+    const links = document.querySelectorAll('.els-nav__menu a');
+    const ioActive = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => ioActive.observe(s));
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.els-reveal').forEach(el => io.observe(el));
+
+    // Year
+    document.getElementById('elsYear').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
