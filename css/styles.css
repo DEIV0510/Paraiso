@@ -94,9 +94,13 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* overflow-x: clip evita el scroll horizontal SIN romper el momentum
+     scroll de iOS Safari (a diferencia de overflow: hidden que sí rompe). */
+  overflow-x: clip;
+  max-width: 100vw;
   overscroll-behavior-y: none;
 }
+html { overflow-x: clip; }
 body.no-scroll { overflow: hidden; }
 
 img, svg, video { max-width: 100%; display: block; }
@@ -505,9 +509,12 @@ p  { margin: 0; color: var(--c-text-soft); }
   border-radius: var(--r-lg);
   overflow: hidden;
   box-shadow: var(--sh-xl);
-  background: #fff;
+  background: var(--c-blue-soft);
   transition: box-shadow .35s var(--ease);
 }
+.hero__card--1 { background: linear-gradient(135deg, #BBDEFB, #90CAF9); }
+.hero__card--2 { background: linear-gradient(135deg, #FFE0B2, #FFCC80); }
+.hero__card--3 { background: linear-gradient(135deg, #C8E6C9, #A5D6A7); }
 .hero__card img { width: 100%; height: 100%; object-fit: cover; }
 .hero__card--1 {
   width: 62%; height: 65%;
@@ -1169,14 +1176,21 @@ p  { margin: 0; color: var(--c-text-soft); }
   .hero__visual { height: 380px; max-width: 560px; margin: 0 auto; width: 100%; }
   .topbar { font-size: .7rem; }
 }
+/* Navbar mobile (≤880px): logo + hamburger SOLO. Menú es fixed cuando se abre. */
+@media (max-width: 880px) {
+  .navbar__brand-img { height: 40px; max-width: 160px; object-fit: contain; }
+  .navbar__inner { gap: .5rem; padding: 0 1rem; }
+}
+
 @media (max-width: 540px) {
-  /* Navbar más compacto en mobile: 60px en vez de 76px */
-  :root { --navbar-h: 60px; }
+  /* Navbar mobile: 64px de alto · logo 40px (cabe holgado con 12px margen) */
+  :root { --navbar-h: 64px; }
   .topbar { display: none; }
   .navbar { top: 0; }
-  .navbar__brand-img { height: 42px; }
+  .navbar__menu { top: var(--navbar-h); }
+  .navbar__brand-img { height: 40px; }
   .navbar__burger { width: 40px; height: 40px; }
-  /* Hero arranca pegado al navbar para no dejar espacio muerto arriba */
+  /* Hero arranca pegado al navbar sin espacio muerto */
   .hero { padding-top: calc(var(--navbar-h) + .8rem); }
   .hero__stats { grid-template-columns: 1fr 1fr; }
   .hero__stats li:last-child { grid-column: 1 / -1; }
@@ -1185,14 +1199,6 @@ p  { margin: 0; color: var(--c-text-soft); }
   .hero__trust { display: none; }
   body { cursor: auto; }
   a, button { cursor: pointer; }
-}
-
-/* Navbar mobile: logo grande y hamburger limpio, nada más visible.
-   El menú (.navbar__menu) ya está position: fixed en mobile así que
-   no ocupa espacio entre logo y burger. */
-@media (max-width: 880px) {
-  .navbar__brand-img { height: 44px; max-width: 170px; }
-  .navbar__inner { gap: .5rem; padding: 0 1rem; }
 }
 
 /* ---------- PREFERS-REDUCED-MOTION ---------- */

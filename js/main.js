@@ -568,10 +568,12 @@ prepareReveals();
 (function destinosGrid() {
   const grid = $('#destinosGrid');
   if (!grid) return;
+  // Fallback gradient si la imagen de Unsplash falla en cargar
+  const fallback = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%231976D2"/><stop offset="100%" stop-color="%23F39A1F"/></linearGradient></defs><rect width="300" height="400" fill="url(%23g)"/></svg>');
   grid.innerHTML = D.destinos.map(d => `
     <article class="dest-card" data-id="${d.id}" data-magnetic data-magnetic-strength="0.15" data-cursor-label="Ver">
       <div class="dest-card__inner">
-        <img loading="lazy" src="${d.img}" alt="${d.nombre}" />
+        <img loading="lazy" src="${d.img}" onerror="this.onerror=null;this.src='${fallback}';this.style.opacity='.7';" alt="${d.nombre}" />
         <span class="dest-card__cat">${d.categoria}</span>
         <span class="dest-card__viewers"><span class="pulse"></span><span>${d.viewers}</span> viendo</span>
         <div class="dest-card__overlay">

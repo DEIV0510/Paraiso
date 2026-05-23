@@ -3505,9 +3505,35 @@
    📱 MOBILE FINAL · UX y performance polish (SIN romper scroll iOS)
    ===================================================================== */
 @media (max-width: 768px) {
-  /* ¡IMPORTANTE! NO usar `overflow-x: hidden` en html en iOS porque
-     rompe el momentum scroll. El body ya lo tiene desde el styles base. */
+  /* Usamos overflow-x: clip en body/html (no rompe iOS momentum scroll) */
   img, video, iframe { max-width: 100%; height: auto; }
+
+  /* Forzar que los grids "catálogo" sean SIEMPRE 2 cols vertical en mobile,
+     NUNCA scroll horizontal. Si alguna regla se filtra, esto la sobreescribe. */
+  .destinos-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    grid-auto-flow: row !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-mask-image: none !important;
+            mask-image: none !important;
+  }
+  .destinos-grid > .dest-card { scroll-snap-align: unset; min-width: 0; }
+  .services__grid,
+  .policies__grid,
+  .allies__grid,
+  .shop__grid,
+  .tnd-shop__grid {
+    display: grid !important;
+    grid-auto-flow: row !important;
+    overflow: visible !important;
+    margin: 0 !important;
+  }
+
+  /* Contenedores no se desbordan del viewport */
+  .container { max-width: 100vw; }
 
   /* iOS Safari: inputs con font-size < 16px hacen auto-zoom al tocar.
      Forzamos 16px para evitar ese comportamiento molesto. */
