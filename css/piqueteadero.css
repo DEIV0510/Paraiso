@@ -197,6 +197,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.1; color: var(--els-text); font-famil
 .els-nav__menu a.is-active::after { transform: scaleX(1); }
 .els-nav__menu a:hover { color: var(--els-red); }
 .els-nav__cta-row { display: flex; gap: .6rem; align-items: center; }
+.els-nav__back-mobile { display: none; }
 .els-nav__back {
   font-size: .8rem;
   font-weight: 600;
@@ -986,6 +987,23 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.1; color: var(--els-text); font-famil
   .els-nav__menu a::after { display: none; }
   .els-nav__burger { display: flex; }
   .els-nav__back { display: none; }
+  .els-nav__back-mobile {
+    display: block;
+    border-top: 1px solid var(--els-line);
+    margin-top: .5rem;
+    padding-top: .5rem;
+  }
+  .els-nav__back-mobile a {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .85rem 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--els-red);
+    border-radius: var(--els-r-md);
+  }
+  .els-nav__back-mobile a:hover { background: rgba(255,193,7,.15); }
   /* El CTA "Reservar" del navbar se oculta en mobile (acción ya
      disponible en hero, FAB WhatsApp y dentro del hamburger menu).
      Esto libera espacio para que el logo respire. */
