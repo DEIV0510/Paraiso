@@ -956,7 +956,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.1; color: var(--els-text); font-famil
 }
 
 @media (max-width: 768px) {
-  :root { --els-nav-h: 64px; }
+  :root { --els-nav-h: 60px; }
   .els-nav__menu {
     position: fixed;
     top: var(--els-nav-h);
@@ -984,7 +984,16 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.1; color: var(--els-text); font-famil
   .els-nav__menu a::after { display: none; }
   .els-nav__burger { display: flex; }
   .els-nav__back { display: none; }
-  .els-nav__brand img { height: 40px; }
+  /* El CTA "Reservar" del navbar se oculta en mobile (acción ya
+     disponible en hero, FAB WhatsApp y dentro del hamburger menu).
+     Esto libera espacio para que el logo respire. */
+  .els-nav__cta-row .els-btn { display: none; }
+  .els-nav__brand img { height: 42px; }
+  .els-nav__inner { gap: .5rem; padding: 0 1rem; }
+  .els-nav__burger { width: 40px; height: 40px; }
+
+  /* Hero pegado al navbar (sin espacio muerto arriba) */
+  .els-hero { padding-top: calc(var(--els-nav-h) + 1rem) !important; padding-bottom: 2rem !important; min-height: auto !important; }
 
   .els-hero { min-height: auto; padding-top: calc(var(--els-nav-h) + 1.5rem); padding-bottom: 2.5rem; }
   .els-hero__logo { width: min(300px, 80%); margin-bottom: 1rem; }
@@ -1037,14 +1046,12 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.1; color: var(--els-text); font-famil
   .els-cta-final__row .els-btn { width: 100%; }
 }
 
-/* Mobile UX polish */
+/* Mobile UX polish (sin overflow-x: hidden en html — rompe iOS scroll) */
 @media (max-width: 768px) {
-  html, body { overflow-x: hidden; }
   /* iOS no auto-zoom en inputs */
   input, select, textarea { font-size: 16px !important; }
   /* Tap targets */
   .els-btn { min-height: 44px; }
-  .els-dish { will-change: transform; }
 }
 
 @media (prefers-reduced-motion: reduce) {

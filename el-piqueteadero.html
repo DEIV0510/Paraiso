@@ -454,10 +454,12 @@
 
   <!-- ====== JS ligero (loader, navbar, reveal) ====== -->
   <script>
-    // Loader
-    window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('elsLoader').classList.add('is-hidden'), 800);
-    });
+    // Loader: timeout absoluto desde que el script arranca (no esperamos
+    // al evento `load` porque si algún asset queda colgado, el loader
+    // bloquearía al usuario indefinidamente)
+    setTimeout(() => {
+      document.getElementById('elsLoader')?.classList.add('is-hidden');
+    }, 1400);
 
     // Navbar scrolled
     const nav = document.getElementById('elsNav');

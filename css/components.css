@@ -3502,11 +3502,11 @@
 }
 
 /* =====================================================================
-   📱 MOBILE FINAL · UX y performance polish
+   📱 MOBILE FINAL · UX y performance polish (SIN romper scroll iOS)
    ===================================================================== */
 @media (max-width: 768px) {
-  /* Prevenir overflow horizontal (causa común de scrolls indeseados) */
-  html, body { overflow-x: hidden; }
+  /* ¡IMPORTANTE! NO usar `overflow-x: hidden` en html en iOS porque
+     rompe el momentum scroll. El body ya lo tiene desde el styles base. */
   img, video, iframe { max-width: 100%; height: auto; }
 
   /* iOS Safari: inputs con font-size < 16px hacen auto-zoom al tocar.
@@ -3526,19 +3526,6 @@
   /* Tap targets: botones del wizard y counters deben tener altura mínima 44px */
   .wizard__nav .btn { min-height: 44px; padding: .75rem 1.1rem; }
   .counter__ctrls button { min-width: 38px; min-height: 38px; }
-
-  /* Mejora rendering performance: hint al browser */
-  .pillar-card,
-  .dest-card,
-  .symbol-card,
-  .exp-card,
-  .service-card,
-  .cruise-card,
-  .product-card,
-  .sabroso-dish { will-change: transform; }
-
-  /* Touch scroll smooth en iOS */
-  body { -webkit-overflow-scrolling: touch; }
 
   /* Botones full-width en mobile xs para CTAs principales */
   .hero__cta-row .btn { min-height: 48px; }

@@ -1170,9 +1170,14 @@ p  { margin: 0; color: var(--c-text-soft); }
   .topbar { font-size: .7rem; }
 }
 @media (max-width: 540px) {
+  /* Navbar más compacto en mobile: 60px en vez de 76px */
+  :root { --navbar-h: 60px; }
   .topbar { display: none; }
   .navbar { top: 0; }
-  .hero { padding-top: calc(var(--navbar-h) + 1.5rem); }
+  .navbar__brand-img { height: 42px; }
+  .navbar__burger { width: 40px; height: 40px; }
+  /* Hero arranca pegado al navbar para no dejar espacio muerto arriba */
+  .hero { padding-top: calc(var(--navbar-h) + .8rem); }
   .hero__stats { grid-template-columns: 1fr 1fr; }
   .hero__stats li:last-child { grid-column: 1 / -1; }
   .hero__visual { height: 320px; }
@@ -1180,6 +1185,14 @@ p  { margin: 0; color: var(--c-text-soft); }
   .hero__trust { display: none; }
   body { cursor: auto; }
   a, button { cursor: pointer; }
+}
+
+/* Navbar mobile: logo grande y hamburger limpio, nada más visible.
+   El menú (.navbar__menu) ya está position: fixed en mobile así que
+   no ocupa espacio entre logo y burger. */
+@media (max-width: 880px) {
+  .navbar__brand-img { height: 44px; max-width: 170px; }
+  .navbar__inner { gap: .5rem; padding: 0 1rem; }
 }
 
 /* ---------- PREFERS-REDUCED-MOTION ---------- */

@@ -697,10 +697,10 @@
 
   <!-- ====== JS ============== -->
   <script>
-    // Loader
-    window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('tndLoader').classList.add('is-hidden'), 700);
-    });
+    // Loader con timeout absoluto (no espera al evento `load`)
+    setTimeout(() => {
+      document.getElementById('tndLoader')?.classList.add('is-hidden');
+    }, 1400);
 
     // Navbar scroll
     const nav = document.getElementById('tndNav');

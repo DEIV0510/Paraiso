@@ -1145,7 +1145,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; color: var(--tnd-text); font-fami
 }
 
 @media (max-width: 768px) {
-  :root { --tnd-nav-h: 64px; }
+  :root { --tnd-nav-h: 60px; }
   .tnd-nav__menu {
     position: fixed;
     top: var(--tnd-nav-h);
@@ -1173,9 +1173,16 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; color: var(--tnd-text); font-fami
   .tnd-nav__menu a::after { display: none; }
   .tnd-nav__burger { display: flex; }
   .tnd-nav__back { display: none; }
-  .tnd-nav__brand-mark { width: 36px; height: 36px; font-size: 1.05rem; }
+  /* CTA del navbar oculto en mobile (acción disponible en hero, FAB y hamburger) */
+  .tnd-nav__cta-row .tnd-btn { display: none; }
+  .tnd-nav__brand-mark { width: 38px; height: 38px; font-size: 1.1rem; }
   .tnd-nav__brand-text strong { font-size: 1rem; }
   .tnd-nav__brand-text em { font-size: .62rem; }
+  .tnd-nav__inner { gap: .5rem; padding: 0 1rem; }
+  .tnd-nav__burger { width: 40px; height: 40px; }
+
+  /* Hero pegado al navbar (sin espacio muerto arriba) */
+  .tnd-hero { padding-top: calc(var(--tnd-nav-h) + 1rem) !important; padding-bottom: 2rem !important; min-height: auto !important; }
 
   .tnd-hero { min-height: auto; padding-top: calc(var(--tnd-nav-h) + 1.5rem); padding-bottom: 2.5rem; }
   .tnd-hero__title { font-size: clamp(2rem, 8vw, 2.8rem); }
@@ -1292,14 +1299,12 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.15; color: var(--tnd-text); font-fami
   .tnd-cta__row .tnd-btn { width: 100%; }
 }
 
-/* Mobile UX polish */
+/* Mobile UX polish (sin overflow-x: hidden en html — rompe iOS scroll) */
 @media (max-width: 768px) {
-  html, body { overflow-x: hidden; }
   /* iOS no auto-zoom en inputs */
   input, select, textarea { font-size: 16px !important; }
   /* Tap targets */
   .tnd-btn { min-height: 44px; }
-  .tnd-product, .tnd-cat, .tnd-symbol { will-change: transform; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -143,12 +143,29 @@ new SmoothScroll();
 /* ======================================================================
    LOADER
    ====================================================================== */
+/* Oculta el loader pase lo que pase con los recursos.
+   Usamos un timeout absoluto que arranca al ejecutarse el script —
+   NO esperamos al evento `load` porque si algún recurso queda colgado
+   (GeoJSON, imagen pesada en red lenta) el `load` nunca dispara y el
+   usuario se queda mirando el loader bloqueado. */
+const hideLoader = () => {
+  const loader = document.getElementById('loader');
+  if (!loader || loader.classList.contains('is-hidden')) return;
+  loader.classList.add('is-hidden');
+  document.body.classList.add('is-loaded');
+  if (typeof triggerInitialReveals === 'function') {
+    requestAnimationFrame(() => triggerInitialReveals());
+  }
+};
+
+// Tiempo del loader: mobile 2.2s · desktop 3.5s
+const LOADER_DURATION = isMobile ? 2200 : 3500;
+setTimeout(hideLoader, LOADER_DURATION);
+
+// Mouse parallax 3D solo desktop (no aplica en touch).
 window.addEventListener('load', () => {
   const loader = $('#loader');
   if (!loader) return;
-
-  // Mouse parallax 3D solo en desktop (no aplica en touch). El logo
-  // sigue al cursor en perspectiva mientras el loader está visible.
   const wrap = $('#loaderWrap');
   if (wrap && !isMobile && !reducedMotion) {
     let raf = null;
@@ -170,14 +187,6 @@ window.addEventListener('load', () => {
     }
     loader.addEventListener('mousemove', onMove);
   }
-
-  // Tiempo del loader: mobile 2.2s (más rápido) · desktop 3.5s (animación completa)
-  const loadDuration = isMobile ? 2200 : 3500;
-  setTimeout(() => {
-    loader.classList.add('is-hidden');
-    document.body.classList.add('is-loaded');
-    requestAnimationFrame(() => triggerInitialReveals());
-  }, loadDuration);
 });
 
 /* ======================================================================
