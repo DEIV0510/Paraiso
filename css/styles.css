@@ -364,6 +364,7 @@ p  { margin: 0; color: var(--c-text-soft); }
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh; /* iOS/Android: altura real sin saltos por la barra del navegador */
   padding-top: calc(var(--navbar-h) + var(--topbar-h) + 3rem);
   padding-bottom: 5rem;
   background: var(--grad-sky);
