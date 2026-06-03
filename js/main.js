@@ -26,56 +26,56 @@ window.PARAISOS_DATA = {
   destinos: [
     { id:'putumayo', nombre:'Putumayo · Nuestra casa', flag:'🇨🇴', region:'Andino-amazónica · Sur de Colombia',
       lat:1.15, lng:-76.65,
-      img:'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/putumayo.jpg',
       desc:'Territorio andino-amazónico con 3 Parques Nacionales Naturales, 15 pueblos indígenas, cascadas, ríos cristalinos y experiencias vivenciales únicas. Aquí nacen las nubes que dan vida al sur de Colombia.',
       categoria:'Aventura & Cultura', tag:'Territorio de vida',
       features:['Fin del Mundo','Cascada Hornoyaco','Cañón Mandiyaco','Limpia con taita','Sembrando vida','Yagesito','Ruta del cacao','Kayaking & Rappel'],
       precio:'$1.490.000 COP', duracion:'4–7 días', temporada:'Todo el año', viewers:128 },
     { id:'cartagena', nombre:'Cartagena', flag:'🇨🇴', region:'Caribe colombiano',
       lat:10.39, lng:-75.51,
-      img:'https://images.unsplash.com/photo-1583309217394-d178fff204d0?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/cartagena.jpg',
       desc:'Murallas coloniales, calles empedradas y atardeceres frente al Caribe. La ciudad heroica te espera.',
       categoria:'Playa & Cultura', tag:'UNESCO',
       features:['Centro histórico','Islas del Rosario','Gastronomía','Atardeceres'],
       precio:'$1.290.000 COP', duracion:'4–6 días', temporada:'Diciembre – Abril', viewers:142 },
     { id:'san-andres', nombre:'San Andrés', flag:'🇨🇴', region:'Isla del Caribe',
       lat:12.58, lng:-81.71,
-      img:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/san-andres.jpg',
       desc:'El mar de los siete colores, snorkel en arrecifes vivos y playas de arena blanca.',
       categoria:'Playa', tag:'Top',
       features:['Mar 7 colores','Snorkel','Hoyo Soplador','Johnny Cay'],
       precio:'$1.690.000 COP', duracion:'4–7 días', temporada:'Enero – Mayo', viewers:198 },
     { id:'santa-marta', nombre:'Santa Marta', flag:'🇨🇴', region:'Caribe colombiano',
       lat:11.24, lng:-74.21,
-      img:'https://images.unsplash.com/photo-1591608971362-f08b2a75731a?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/santa-marta.jpg',
       desc:'Donde la sierra nevada se besa con el mar. Tayrona, Minca y playas eternas.',
       categoria:'Playa & Naturaleza', tag:'Aventura',
       features:['PNN Tayrona','Minca','Ciudad Perdida','Snorkel'],
       precio:'$1.190.000 COP', duracion:'4–6 días', temporada:'Diciembre – Marzo', viewers:113 },
     { id:'eje-cafetero', nombre:'Eje Cafetero', flag:'🇨🇴', region:'Andes colombianos',
       lat:4.81, lng:-75.69,
-      img:'https://images.unsplash.com/photo-1606820854416-439b3305ff39?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/eje-cafetero.jpg',
       desc:'Valle del Cocora, palmas de cera y haciendas cafeteras. El paisaje cultural patrimonio.',
       categoria:'Naturaleza', tag:'UNESCO',
       features:['Valle del Cocora','Tour del café','Salento','Termales'],
       precio:'$1.090.000 COP', duracion:'4–5 días', temporada:'Todo el año', viewers:87 },
     { id:'tumaco', nombre:'Tumaco', flag:'🇨🇴', region:'Pacífico colombiano',
       lat:1.81, lng:-78.76,
-      img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/tumaco.jpg',
       desc:'La perla del Pacífico. Playas vírgenes, manglares y avistamiento de ballenas.',
       categoria:'Playa & Naturaleza', tag:'Off the beaten path',
       features:['Ballenas jorobadas','Manglares','Cocoteros','Cultura afro'],
       precio:'$1.390.000 COP', duracion:'4–6 días', temporada:'Julio – Octubre', viewers:41 },
     { id:'huila', nombre:'Huila', flag:'🇨🇴', region:'Sur Andes',
       lat:2.93, lng:-75.28,
-      img:'https://images.unsplash.com/photo-1601921004897-b7d2080c64ac?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/huila.jpg',
       desc:'Desierto de la Tatacoa, parque arqueológico San Agustín y cielos sin igual.',
       categoria:'Aventura & Cultura', tag:'UNESCO',
       features:['Desierto Tatacoa','San Agustín','Astronomía','Café'],
       precio:'$990.000 COP', duracion:'3–5 días', temporada:'Junio – Septiembre', viewers:62 },
     { id:'atacames', nombre:'Atacames', flag:'🇪🇨', region:'Ecuador · Pacífico',
       lat:0.86, lng:-79.85,
-      img:'https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=900&q=70',
+      img:'assets/images/destinos/atacames.jpg',
       desc:'Playas ecuatorianas con sabor a coco, rumba y descanso a precios increíbles.',
       categoria:'Playa', tag:'Internacional',
       features:['Playa','Rumba','Gastronomía','Spa'],
@@ -619,26 +619,28 @@ prepareReveals();
   if (!grid) return;
 
   const fotos = [
-    {src:'https://images.unsplash.com/photo-1583309217394-d178fff204d0?auto=format&fit=crop&w=700&q=65', cat:'cartagena', alt:'Cartagena'},
-    {src:'https://images.unsplash.com/photo-1554310603-d39d43033735?auto=format&fit=crop&w=700&q=65', cat:'cartagena', alt:'Cartagena calle'},
-    {src:'https://images.unsplash.com/photo-1574958269340-fa927503f3dd?auto=format&fit=crop&w=700&q=65', cat:'cartagena', alt:'Cartagena murallas'},
-    {src:'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=700&q=65', cat:'san-andres', alt:'San Andrés'},
-    {src:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=65', cat:'san-andres', alt:'Playa San Andrés'},
-    {src:'https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&w=700&q=65', cat:'san-andres', alt:'Mar caribe'},
-    {src:'https://images.unsplash.com/photo-1591608971362-f08b2a75731a?auto=format&fit=crop&w=700&q=65', cat:'santa-marta', alt:'Santa Marta'},
-    {src:'https://images.unsplash.com/photo-1535850579364-6bef6c20ae42?auto=format&fit=crop&w=700&q=65', cat:'santa-marta', alt:'Tayrona'},
-    {src:'https://images.unsplash.com/photo-1606820854416-439b3305ff39?auto=format&fit=crop&w=700&q=65', cat:'eje-cafetero', alt:'Eje cafetero'},
-    {src:'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=700&q=65', cat:'eje-cafetero', alt:'Café'},
-    {src:'https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=700&q=65', cat:'atacames', alt:'Atacames'},
-    {src:'https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=700&q=65', cat:'cruceros', alt:'Crucero Caribe'},
-    {src:'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=700&q=65', cat:'cruceros', alt:'Crucero Mediterráneo'},
-    {src:'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=700&q=65', cat:'cruceros', alt:'Crucero Asia'},
-    {src:'https://images.unsplash.com/photo-1601921004897-b7d2080c64ac?auto=format&fit=crop&w=700&q=65', cat:'huila', alt:'Tatacoa'},
-    {src:'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=65', cat:'putumayo', alt:'Selva Putumayo'},
-    {src:'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=700&q=65', cat:'cartagena', alt:'Atardecer caribe'},
-    {src:'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=700&q=65', cat:'san-andres', alt:'Buceo'},
-    {src:'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=700&q=65', cat:'eje-cafetero', alt:'Cocora'},
-    {src:'https://images.unsplash.com/photo-1525428039590-2dc9f0b41bb1?auto=format&fit=crop&w=700&q=65', cat:'santa-marta', alt:'Sierra nevada'}
+    {src:'assets/images/galeria/33.jpg', cat:'putumayo', alt:'Cascada en la selva del Putumayo'},
+    {src:'assets/images/galeria/19.jpg', cat:'putumayo', alt:'Río de aguas esmeralda'},
+    {src:'assets/images/galeria/35.jpg', cat:'putumayo', alt:'Cascada Hornoyaco'},
+    {src:'assets/images/galeria/15.jpg', cat:'putumayo', alt:'Jaguar en su hábitat'},
+    {src:'assets/images/galeria/21.jpg', cat:'putumayo', alt:'Mono en el dosel amazónico'},
+    {src:'assets/images/galeria/22.jpg', cat:'putumayo', alt:'Perezosos en el árbol'},
+    {src:'assets/images/galeria/49.jpg', cat:'putumayo', alt:'Ave tropical del Putumayo'},
+    {src:'assets/images/galeria/61.jpg', cat:'putumayo', alt:'Tángara multicolor'},
+    {src:'assets/images/galeria/41.jpg', cat:'putumayo', alt:'Mujer indígena del territorio'},
+    {src:'assets/images/galeria/47.jpg', cat:'putumayo', alt:'Comunidad indígena amazónica'},
+    {src:'assets/images/galeria/23.jpg', cat:'putumayo', alt:'Rafting en río cristalino'},
+    {src:'assets/images/galeria/10.jpg', cat:'putumayo', alt:'Ceremonia ancestral con taita'},
+    {src:'assets/images/galeria/26.jpg', cat:'eje-cafetero', alt:'Montañas verdes de los Andes'},
+    {src:'assets/images/galeria/52.jpg', cat:'eje-cafetero', alt:'Experiencia del café'},
+    {src:'assets/images/galeria/80.jpg', cat:'cartagena', alt:'Gastronomía frente al mar'},
+    {src:'assets/images/galeria/67.jpg', cat:'cartagena', alt:'Cócteles de bienvenida'},
+    {src:'assets/images/galeria/66.jpg', cat:'san-andres', alt:'Spa y bienestar'},
+    {src:'assets/images/galeria/69.jpg', cat:'san-andres', alt:'Buffet todo incluido'},
+    {src:'assets/images/galeria/70.jpg', cat:'santa-marta', alt:'Lounge frente al mar'},
+    {src:'assets/images/galeria/68.jpg', cat:'santa-marta', alt:'Bebidas tropicales'},
+    {src:'assets/images/galeria/83.jpg', cat:'atacames', alt:'Amigos disfrutando el resort'},
+    {src:'assets/images/galeria/85.jpg', cat:'atacames', alt:'Diversión en la piscina'}
   ];
   const cats = ['todas', ...new Set(fotos.map(f => f.cat))];
   filters.innerHTML = cats.map((c, i) =>
@@ -664,7 +666,7 @@ prepareReveals();
   grid.addEventListener('click', (e) => {
     const img = e.target.closest('img');
     if (!img) return;
-    lbImg.src = img.src.replace('&w=700', '&w=1600');
+    lbImg.src = img.src;
     lbImg.alt = img.alt;
     lb.hidden = false;
     document.body.classList.add('no-scroll');
@@ -853,4 +855,25 @@ prepareReveals();
     localStorage.setItem('paraisos_cookies', '1');
     cb.hidden = true;
   });
+})();
+
+/* ------------------ VIDEO HERO FONDO ------------------ */
+(function heroVideo() {
+  const hero  = document.querySelector('.hero');
+  const video = document.querySelector('.hero__video-el');
+  if (!hero || !video) return;
+
+  // Marca el hero cuando el video empiece a reproducirse (quita el gradiente cielo)
+  let loaded = false;
+  function markLoaded() {
+    if (loaded) return;
+    loaded = true;
+    hero.classList.add('video-loaded');
+  }
+
+  video.addEventListener('canplay', markLoaded, { once: true });
+  video.addEventListener('playing', markLoaded, { once: true });
+
+  // Fallback: si en 3 s el video no disparó canplay, marcar igual
+  setTimeout(markLoaded, 3000);
 })();

@@ -247,6 +247,16 @@
   <main id="smoothMain">
   <section id="inicio" class="hero" aria-labelledby="heroTitle">
     <div class="hero__bg" aria-hidden="true">
+      <!-- Video de fondo local MP4 -->
+      <div class="hero__video-wrap">
+        <video class="hero__video-el"
+          autoplay muted loop playsinline preload="auto"
+          aria-hidden="true" tabindex="-1">
+          <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- Overlay de marca para legibilidad del texto -->
+      <div class="hero__video-overlay"></div>
       <div class="hero__bg-grid"></div>
       <div class="hero__glow hero__glow--1"></div>
       <div class="hero__glow hero__glow--2"></div>
@@ -304,8 +314,8 @@
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__card hero__card--1" data-parallax="0.04">
           <img loading="eager" decoding="async"
-               src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=70"
-               alt="Selva amazónica del Putumayo" />
+               src="assets/images/galeria/40.jpg"
+               alt="Cascada Fin del Mundo, Putumayo" />
           <span class="hero__pin">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
             Putumayo, Colombia
@@ -314,8 +324,8 @@
         </div>
         <div class="hero__card hero__card--2" data-parallax="0.08">
           <img loading="lazy" decoding="async"
-               src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=700&q=70"
-               alt="Playas turquesa de San Andrés" />
+               src="assets/images/galeria/78.jpg"
+               alt="Playas y mar turquesa" />
           <span class="hero__badge-live">
             <span class="pulse"></span>
             <strong id="liveCounter">37</strong> personas reservando ahora
@@ -323,8 +333,8 @@
         </div>
         <div class="hero__card hero__card--3" data-parallax="0.12">
           <img loading="lazy" decoding="async"
-               src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=500&q=70"
-               alt="Crucero por el Caribe" />
+               src="assets/images/galeria/85.jpg"
+               alt="Resort todo incluido frente al mar" />
         </div>
 
         <div id="paperPlane" class="hero__plane" aria-hidden="true"></div>
@@ -430,7 +440,7 @@
       <div class="pillars__grid">
         <a href="#putumayo" class="pillar-card pillar-card--1" data-magnetic>
           <div class="pillar-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=70" alt="Putumayo - selva amazónica" />
+            <img loading="lazy" src="assets/images/galeria/33.jpg" alt="Putumayo - selva amazónica" />
             <span class="pillar-card__num">01</span>
           </div>
           <div class="pillar-card__body">
@@ -445,7 +455,7 @@
 
         <a href="#viajes" class="pillar-card pillar-card--2" data-magnetic>
           <div class="pillar-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1583309217394-d178fff204d0?auto=format&fit=crop&w=700&q=70" alt="Viajes nacionales e internacionales" />
+            <img loading="lazy" src="assets/images/galeria/77.jpg" alt="Viajes nacionales e internacionales" />
             <span class="pillar-card__num">02</span>
           </div>
           <div class="pillar-card__body">
@@ -516,7 +526,7 @@
 
       <div class="putumayo__hero">
         <div class="putumayo__media">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1100&q=75" alt="Selva amazónica del Putumayo" />
+          <img loading="lazy" src="assets/images/galeria/19.jpg" alt="Río esmeralda del Putumayo" />
           <div class="putumayo__media-badge">
             <strong>"No se diga más…</strong>
             <em>Putumayo te espera"</em>
@@ -1034,8 +1044,8 @@
     <div class="container experience__grid">
       <div class="experience__media">
         <img loading="lazy" decoding="async"
-             src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=70"
-             alt="Familia disfrutando un viaje organizado por PARAISOS" />
+             src="assets/images/galeria/45.jpg"
+             alt="Viajeros disfrutando una experiencia PARAISOS" />
         <div class="experience__badge">
           <strong>4.9★</strong>
           <span>según 1.200+ reseñas verificadas</span>

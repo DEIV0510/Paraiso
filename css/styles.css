@@ -370,6 +370,36 @@ p  { margin: 0; color: var(--c-text-soft); }
   overflow: hidden;
 }
 .hero__bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+/* ------ VIDEO FONDO YOUTUBE ------ */
+.hero__video-wrap {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero__video-el {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+/* Overlay: gradiente ink/azul marca PARAISOS para legibilidad */
+.hero__video-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(160deg,
+      rgba(15,40,69,.80) 0%,
+      rgba(25,118,210,.28) 48%,
+      rgba(15,40,69,.75) 100%);
+  z-index: 1;
+}
+/* Quitar el fondo cielo cuando el video cargue — el overlay lo reemplaza */
+.hero.video-loaded { background: #0F2845; }
+
 .hero__bg-grid {
   position: absolute; inset: 0;
   background-image:

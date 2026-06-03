@@ -1,0 +1,16 @@
+# Tooling / editor
+.claude/
+.playwright-mcp/
+
+# Dependencias
+node_modules/
+
+# Sistema operativo
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Temporales
+*.log
+*.tmp
