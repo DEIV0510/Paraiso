@@ -97,8 +97,12 @@
   key.shadow.camera.top = 16;   key.shadow.camera.bottom = -16;
   key.shadow.bias = -0.0005;
   scene.add(key);
-  scene.add(Object.assign(new THREE.DirectionalLight(0xFFCC88, 0.45), { position: new THREE.Vector3(-6, 6, 4) }));
-  scene.add(Object.assign(new THREE.DirectionalLight(0x66BBFF, 0.55), { position: new THREE.Vector3(0, 4, -10) }));
+  const fill = new THREE.DirectionalLight(0xFFCC88, 0.45);
+  fill.position.set(-6, 6, 4);
+  scene.add(fill);
+  const rim = new THREE.DirectionalLight(0x66BBFF, 0.55);
+  rim.position.set(0, 4, -10);
+  scene.add(rim);
 
   /* ---------------------------------------------------------------------
      PROYECCIÓN lat/lng → mundo (XZ plano)

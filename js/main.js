@@ -29,29 +29,29 @@ window.PARAISOS_DATA = {
       img:'assets/images/destinos/putumayo.jpg',
       desc:'Territorio andino-amazónico con 3 Parques Nacionales Naturales, 15 pueblos indígenas, cascadas, ríos cristalinos y experiencias vivenciales únicas. Aquí nacen las nubes que dan vida al sur de Colombia.',
       categoria:'Aventura & Cultura', tag:'Territorio de vida',
-      features:['Fin del Mundo','Cascada Hornoyaco','Cañón Mandiyaco','Limpia con taita','Sembrando vida','Yagesito','Ruta del cacao','Kayaking & Rappel'],
-      precio:'$1.490.000 COP', duracion:'4–7 días', temporada:'Todo el año', viewers:128 },
+      features:['Fin del Mundo','Cascada Hornoyaco','Cañón Mandiyaco','Limpia espiritual','Sembrando vida','Yagesito','Ruta del cacao','Kayaking & Rappel'],
+      precio:'$999.000 COP', duracion:'Plan fin de semana', temporada:'Todo el año', viewers:128 },
     { id:'cartagena', nombre:'Cartagena', flag:'🇨🇴', region:'Caribe colombiano',
       lat:10.39, lng:-75.51,
       img:'assets/images/destinos/cartagena.jpg',
       desc:'Murallas coloniales, calles empedradas y atardeceres frente al Caribe. La ciudad heroica te espera.',
       categoria:'Playa & Cultura', tag:'UNESCO',
       features:['Centro histórico','Islas del Rosario','Gastronomía','Atardeceres'],
-      precio:'$1.290.000 COP', duracion:'4–6 días', temporada:'Diciembre – Abril', viewers:142 },
+      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Abril', viewers:142 },
     { id:'san-andres', nombre:'San Andrés', flag:'🇨🇴', region:'Isla del Caribe',
       lat:12.58, lng:-81.71,
       img:'assets/images/destinos/san-andres.jpg',
       desc:'El mar de los siete colores, snorkel en arrecifes vivos y playas de arena blanca.',
       categoria:'Playa', tag:'Top',
       features:['Mar 7 colores','Snorkel','Hoyo Soplador','Johnny Cay'],
-      precio:'$1.690.000 COP', duracion:'4–7 días', temporada:'Enero – Mayo', viewers:198 },
+      precio:'$1.250.000 COP', duracion:'4–7 días', temporada:'Enero – Mayo', viewers:198 },
     { id:'santa-marta', nombre:'Santa Marta', flag:'🇨🇴', region:'Caribe colombiano',
       lat:11.24, lng:-74.21,
       img:'assets/images/destinos/santa-marta.jpg',
       desc:'Donde la sierra nevada se besa con el mar. Tayrona, Minca y playas eternas.',
       categoria:'Playa & Naturaleza', tag:'Aventura',
       features:['PNN Tayrona','Minca','Ciudad Perdida','Snorkel'],
-      precio:'$1.190.000 COP', duracion:'4–6 días', temporada:'Diciembre – Marzo', viewers:113 },
+      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Marzo', viewers:113 },
     { id:'eje-cafetero', nombre:'Eje Cafetero', flag:'🇨🇴', region:'Andes colombianos',
       lat:4.81, lng:-75.69,
       img:'assets/images/destinos/eje-cafetero.jpg',
@@ -65,7 +65,7 @@ window.PARAISOS_DATA = {
       desc:'La perla del Pacífico. Playas vírgenes, manglares y avistamiento de ballenas.',
       categoria:'Playa & Naturaleza', tag:'Off the beaten path',
       features:['Ballenas jorobadas','Manglares','Cocoteros','Cultura afro'],
-      precio:'$1.390.000 COP', duracion:'4–6 días', temporada:'Julio – Octubre', viewers:41 },
+      precio:'$680.000 COP', duracion:'4–6 días', temporada:'Julio – Octubre', viewers:41 },
     { id:'huila', nombre:'Huila', flag:'🇨🇴', region:'Sur Andes',
       lat:2.93, lng:-75.28,
       img:'assets/images/destinos/huila.jpg',
@@ -79,7 +79,7 @@ window.PARAISOS_DATA = {
       desc:'Playas ecuatorianas con sabor a coco, rumba y descanso a precios increíbles.',
       categoria:'Playa', tag:'Internacional',
       features:['Playa','Rumba','Gastronomía','Spa'],
-      precio:'$2.190.000 COP', duracion:'6–8 días', temporada:'Junio – Octubre', viewers:74 }
+      precio:'$699.000 COP', duracion:'6–8 días', temporada:'Junio – Octubre', viewers:74 }
   ]
 };
 
@@ -582,7 +582,7 @@ prepareReveals();
           <p class="dest-card__desc">${d.desc}</p>
           <div class="dest-card__meta">
             <span>${d.region}</span>
-            <span><strong>${d.precio}</strong></span>
+            <span>Desde <strong>${d.precio}</strong></span>
           </div>
         </div>
         <span class="dest-card__cta">Cotizar por WhatsApp →</span>

@@ -1683,6 +1683,37 @@
   line-height: 1.65;
 }
 
+.pueblos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+@media (max-width: 880px) { .pueblos { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .pueblos { grid-template-columns: 1fr; } }
+.pueblos li {
+  background: #fff;
+  padding: 1.2rem 1.3rem;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-line);
+  box-shadow: var(--sh-sm);
+}
+.pueblos h4 {
+  font-size: 1rem;
+  font-family: var(--f-head); font-weight: 800;
+  color: var(--c-green-dark);
+  margin-bottom: .35rem;
+}
+.pueblos p { font-size: .86rem; line-height: 1.55; color: var(--c-text-soft); }
+.pueblos__otros {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  color: var(--c-text-soft);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+
 .symbols-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1929,6 +1960,29 @@
   border-color: var(--c-orange-light);
 }
 .service-card--accent .service-card__num { color: var(--c-orange-light); }
+
+.student-deal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.6rem 1.8rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #FFF7EB 100%);
+  border: 1px solid var(--c-orange-light);
+  border-radius: var(--r-lg);
+}
+.student-deal h3 {
+  font-size: 1.2rem;
+  font-family: var(--f-head); font-weight: 800;
+  color: var(--c-text);
+  margin-bottom: .3rem;
+}
+.student-deal p { font-size: .92rem; line-height: 1.55; color: var(--c-text-soft); max-width: 60ch; }
+.student-deal .btn { flex-shrink: 0; }
+@media (max-width: 768px) {
+  .student-deal { flex-direction: column; align-items: flex-start; padding: 1.2rem; gap: 1rem; }
+}
 
 /* ============== MISIÓN · VISIÓN · VALORES ============== */
 .mvv {
