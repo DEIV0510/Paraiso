@@ -1,0 +1,6 @@
+{
+  "redirects": [
+    { "source": "/el-piqueteadero.html", "destination": "/", "permanent": false },
+    { "source": "/el-piqueteadero", "destination": "/", "permanent": false }
+  ]
+}
