@@ -1,17 +1,13 @@
 /* =====================================================================
    PARAISOS — main.js
    Orquestación general:
-   - Loader, navbar inteligente, progress bar, sticky CTA mobile
-   - Smooth scroll Lenis-style (vanilla, sin dependencias)
-   - Cursor custom con label dinámico
-   - Magnetic buttons (cursor empuja al elemento)
+   - Navbar inteligente, progress bar, sticky CTA mobile
    - Text reveals palabra-por-palabra / línea-por-línea con stagger
    - ScrollTrigger orchestration: proceso timeline, contadores, parallax
    - Galería + lightbox + filtros
-   - Testimonios carousel (auto + nav + dots)
-   - Forms newsletter / contacto → WhatsApp
-   - Floating: chat widget, scroll-top, cookie banner
-   - Avión de papel 3D Three.js (hero)
+   - Formulario de contacto → WhatsApp
+   - Floating: scroll-top
+   - Video del hero diferido (versión liviana en celular)
    - Tilt 3D real en cards de destinos
    ===================================================================== */
 
@@ -24,62 +20,62 @@ window.PARAISOS_DATA = {
   emailAlt: 'agenciadeviajesparaisos@gmail.com',
   slogan: 'Más que un destino turístico, somos territorio de vida',
   destinos: [
-    { id:'putumayo', nombre:'Putumayo · Nuestra casa', flag:'🇨🇴', region:'Andino-amazónica · Sur de Colombia',
+    { id:'putumayo', nombre:'Putumayo · Nuestra casa', region:'Andino-amazónica · Sur de Colombia',
       lat:1.15, lng:-76.65,
       img:'assets/images/destinos/putumayo.jpg',
       desc:'Territorio andino-amazónico con 3 Parques Nacionales Naturales, 15 pueblos indígenas, cascadas, ríos cristalinos y experiencias vivenciales únicas. Aquí nacen las nubes que dan vida al sur de Colombia.',
       categoria:'Aventura & Cultura', tag:'Territorio de vida',
       features:['Fin del Mundo','Cascada Hornoyaco','Cañón Mandiyaco','Limpia espiritual','Sembrando vida','Yagesito','Ruta del cacao','Kayaking & Rappel'],
-      precio:'$999.000 COP', duracion:'Plan fin de semana', temporada:'Todo el año', viewers:128 },
-    { id:'cartagena', nombre:'Cartagena', flag:'🇨🇴', region:'Caribe colombiano',
+      precio:'$999.000 COP', duracion:'Plan fin de semana', temporada:'Todo el año' },
+    { id:'cartagena', nombre:'Cartagena', region:'Caribe colombiano',
       lat:10.39, lng:-75.51,
       img:'assets/images/destinos/cartagena.jpg',
       desc:'Murallas coloniales, calles empedradas y atardeceres frente al Caribe. La ciudad heroica te espera.',
       categoria:'Playa & Cultura', tag:'UNESCO',
       features:['Centro histórico','Islas del Rosario','Gastronomía','Atardeceres'],
-      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Abril', viewers:142 },
-    { id:'san-andres', nombre:'San Andrés', flag:'🇨🇴', region:'Isla del Caribe',
+      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Abril' },
+    { id:'san-andres', nombre:'San Andrés', region:'Isla del Caribe',
       lat:12.58, lng:-81.71,
       img:'assets/images/destinos/san-andres.jpg',
       desc:'El mar de los siete colores, snorkel en arrecifes vivos y playas de arena blanca.',
       categoria:'Playa', tag:'Top',
       features:['Mar 7 colores','Snorkel','Hoyo Soplador','Johnny Cay'],
-      precio:'$1.250.000 COP', duracion:'4–7 días', temporada:'Enero – Mayo', viewers:198 },
-    { id:'santa-marta', nombre:'Santa Marta', flag:'🇨🇴', region:'Caribe colombiano',
+      precio:'$1.250.000 COP', duracion:'4–7 días', temporada:'Enero – Mayo' },
+    { id:'santa-marta', nombre:'Santa Marta', region:'Caribe colombiano',
       lat:11.24, lng:-74.21,
       img:'assets/images/destinos/santa-marta.jpg',
       desc:'Donde la sierra nevada se besa con el mar. Tayrona, Minca y playas eternas.',
       categoria:'Playa & Naturaleza', tag:'Aventura',
       features:['PNN Tayrona','Minca','Ciudad Perdida','Snorkel'],
-      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Marzo', viewers:113 },
-    { id:'eje-cafetero', nombre:'Eje Cafetero', flag:'🇨🇴', region:'Andes colombianos',
+      precio:'$999.000 COP', duracion:'4–6 días', temporada:'Diciembre – Marzo' },
+    { id:'eje-cafetero', nombre:'Eje Cafetero', region:'Andes colombianos',
       lat:4.81, lng:-75.69,
       img:'assets/images/destinos/eje-cafetero.jpg',
       desc:'Valle del Cocora, palmas de cera y haciendas cafeteras. El paisaje cultural patrimonio.',
       categoria:'Naturaleza', tag:'UNESCO',
       features:['Valle del Cocora','Tour del café','Salento','Termales'],
-      precio:'$1.090.000 COP', duracion:'4–5 días', temporada:'Todo el año', viewers:87 },
-    { id:'tumaco', nombre:'Tumaco', flag:'🇨🇴', region:'Pacífico colombiano',
+      precio:'$1.090.000 COP', duracion:'4–5 días', temporada:'Todo el año' },
+    { id:'tumaco', nombre:'Tumaco', region:'Pacífico colombiano',
       lat:1.81, lng:-78.76,
       img:'assets/images/destinos/tumaco.jpg',
       desc:'La perla del Pacífico. Playas vírgenes, manglares y avistamiento de ballenas.',
       categoria:'Playa & Naturaleza', tag:'Off the beaten path',
       features:['Ballenas jorobadas','Manglares','Cocoteros','Cultura afro'],
-      precio:'$680.000 COP', duracion:'4–6 días', temporada:'Julio – Octubre', viewers:41 },
-    { id:'huila', nombre:'Huila', flag:'🇨🇴', region:'Sur Andes',
+      precio:'$680.000 COP', duracion:'4–6 días', temporada:'Julio – Octubre' },
+    { id:'huila', nombre:'Huila', region:'Sur Andes',
       lat:2.93, lng:-75.28,
       img:'assets/images/destinos/huila.jpg',
       desc:'Desierto de la Tatacoa, parque arqueológico San Agustín y cielos sin igual.',
       categoria:'Aventura & Cultura', tag:'UNESCO',
       features:['Desierto Tatacoa','San Agustín','Astronomía','Café'],
-      precio:'$990.000 COP', duracion:'3–5 días', temporada:'Junio – Septiembre', viewers:62 },
-    { id:'atacames', nombre:'Atacames', flag:'🇪🇨', region:'Ecuador · Pacífico',
+      precio:'$990.000 COP', duracion:'3–5 días', temporada:'Junio – Septiembre' },
+    { id:'atacames', nombre:'Atacames', region:'Ecuador · Pacífico',
       lat:0.86, lng:-79.85,
       img:'assets/images/destinos/atacames.jpg',
       desc:'Playas ecuatorianas con sabor a coco, rumba y descanso a precios increíbles.',
       categoria:'Playa', tag:'Internacional',
       features:['Playa','Rumba','Gastronomía','Spa'],
-      precio:'$699.000 COP', duracion:'6–8 días', temporada:'Junio – Octubre', viewers:74 }
+      precio:'$699.000 COP', duracion:'6–8 días', temporada:'Junio – Octubre' }
   ]
 };
 
@@ -88,106 +84,6 @@ const $$ = (s, c=document) => Array.from(c.querySelectorAll(s));
 const D = window.PARAISOS_DATA;
 const isMobile = matchMedia('(hover: none) and (pointer: coarse)').matches;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/* ======================================================================
-   SMOOTH SCROLL VANILLA (Lenis-style)
-   - Reemplaza el scroll nativo con interpolación lineal hacia un target.
-   - No usa raf-throttle externo, todo en un único ticker.
-   - Respeta anchors internos y emite refresh para ScrollTrigger.
-   ====================================================================== */
-class SmoothScroll {
-  constructor() {
-    this.target = window.scrollY;
-    this.current = window.scrollY;
-    this.ease = 0.1;
-    this.enabled = !isMobile && !reducedMotion;
-    if (!this.enabled) return;
-    document.documentElement.classList.add('has-lenis');
-
-    window.addEventListener('scroll', () => {
-      this.target = window.scrollY;
-    }, { passive: true });
-
-    document.addEventListener('click', (e) => {
-      const a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      const id = a.getAttribute('href');
-      if (id.length <= 1) return;
-      const el = document.querySelector(id);
-      if (!el) return;
-      e.preventDefault();
-      const y = el.getBoundingClientRect().top + window.scrollY - 70;
-      this.scrollTo(y);
-    });
-
-    this.tick = this.tick.bind(this);
-    requestAnimationFrame(this.tick);
-  }
-  scrollTo(y) {
-    window.scrollTo({ top: y, behavior: 'smooth' });
-  }
-  tick() {
-    if (!this.enabled) return;
-    this.current += (this.target - this.current) * this.ease;
-    if (Math.abs(this.target - this.current) < 0.5) this.current = this.target;
-    // Aplicamos transform al main para crear el efecto smooth visual sutil
-    // (sin reemplazar el scroll nativo, lo que rompería el wheel).
-    if (window.ScrollTrigger && typeof window.ScrollTrigger.update === 'function') {
-      window.ScrollTrigger.update();
-    }
-    requestAnimationFrame(this.tick);
-  }
-}
-new SmoothScroll();
-
-/* ======================================================================
-   LOADER
-   ====================================================================== */
-/* Oculta el loader pase lo que pase con los recursos.
-   Usamos un timeout absoluto que arranca al ejecutarse el script —
-   NO esperamos al evento `load` porque si algún recurso queda colgado
-   (GeoJSON, imagen pesada en red lenta) el `load` nunca dispara y el
-   usuario se queda mirando el loader bloqueado. */
-const hideLoader = () => {
-  const loader = document.getElementById('loader');
-  if (!loader || loader.classList.contains('is-hidden')) return;
-  loader.classList.add('is-hidden');
-  document.body.classList.add('is-loaded');
-  if (typeof triggerInitialReveals === 'function') {
-    requestAnimationFrame(() => triggerInitialReveals());
-  }
-};
-
-// Tiempo del loader: mobile 2.2s · desktop 3.5s
-const LOADER_DURATION = isMobile ? 2200 : 3500;
-setTimeout(hideLoader, LOADER_DURATION);
-
-// Mouse parallax 3D solo desktop (no aplica en touch).
-window.addEventListener('load', () => {
-  const loader = $('#loader');
-  if (!loader) return;
-  const wrap = $('#loaderWrap');
-  if (wrap && !isMobile && !reducedMotion) {
-    let raf = null;
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-    const onMove = (e) => {
-      const w = innerWidth, h = innerHeight;
-      cx = (e.clientX / w - 0.5) * 2;
-      cy = (e.clientY / h - 0.5) * 2;
-      if (!raf) raf = requestAnimationFrame(loop);
-    };
-    function loop() {
-      tx += (cx - tx) * 0.1;
-      ty += (cy - ty) * 0.1;
-      wrap.style.animation = 'ldStageIn 1.4s .2s cubic-bezier(.16,1,.3,1) forwards';
-      wrap.style.transform = `rotateY(${tx * 12}deg) rotateX(${-ty * 8}deg) translateZ(30px)`;
-      if (Math.abs(cx - tx) > 0.001 || Math.abs(cy - ty) > 0.001) {
-        raf = requestAnimationFrame(loop);
-      } else { raf = null; }
-    }
-    loader.addEventListener('mousemove', onMove);
-  }
-});
 
 /* ======================================================================
    NAVBAR INTELIGENTE (scrolled, hide-on-scroll-down, progress bar,
@@ -243,86 +139,6 @@ window.addEventListener('load', () => {
 })();
 
 /* ======================================================================
-   CURSOR PERSONALIZADO con label dinámico
-   ====================================================================== */
-(function cursor() {
-  if (isMobile) return;
-  const cur = $('.cursor');
-  if (!cur) return;
-  const dot = $('.cursor__dot');
-  const ring = $('.cursor__ring');
-  const label = $('.cursor__label');
-  let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
-
-  window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-  function tick() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    dot.style.transform  = `translate(${mx}px, ${my}px)`;
-    ring.style.transform = `translate(${rx}px, ${ry}px)`;
-    label.style.transform = `translate(${mx + 20}px, ${my + 12}px)`;
-    requestAnimationFrame(tick);
-  }
-  tick();
-  document.addEventListener('mouseover', (e) => {
-    const hover = e.target.closest('a, button, .wiz-card, .dest-card, summary, [data-cursor-label]');
-    cur.classList.toggle('is-hover', !!hover);
-    const lbl = hover?.getAttribute('data-cursor-label');
-    if (lbl) {
-      label.textContent = lbl;
-      cur.classList.add('has-label');
-    } else {
-      cur.classList.remove('has-label');
-    }
-  });
-  document.addEventListener('mousedown', () => cur.classList.add('is-drag'));
-  document.addEventListener('mouseup',   () => cur.classList.remove('is-drag'));
-})();
-
-/* ======================================================================
-   MAGNETIC BUTTONS
-   El elemento sigue ligeramente al cursor cuando está cerca, creando
-   una sensación de imán. Se aplica via [data-magnetic].
-   ====================================================================== */
-(function magnetic() {
-  if (isMobile || reducedMotion) return;
-  $$('[data-magnetic]').forEach(el => {
-    const strength = parseFloat(el.dataset.magneticStrength || '0.35');
-    let raf = null;
-    let tx = 0, ty = 0, cx = 0, cy = 0;
-
-    el.addEventListener('mouseenter', () => {
-      el.style.transition = 'transform .4s cubic-bezier(.34,1.56,.64,1)';
-    });
-    el.addEventListener('mousemove', (e) => {
-      const r = el.getBoundingClientRect();
-      cx = (e.clientX - r.left - r.width / 2) * strength;
-      cy = (e.clientY - r.top - r.height / 2) * strength;
-      el.style.transition = 'transform .15s cubic-bezier(.2,.7,.2,1)';
-      if (!raf) raf = requestAnimationFrame(animate);
-      // Ripple position para .btn
-      const ripple = el.querySelector('.btn__ripple');
-      if (ripple) {
-        ripple.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-        ripple.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
-      }
-    });
-    el.addEventListener('mouseleave', () => {
-      el.style.transition = 'transform .55s cubic-bezier(.34,1.56,.64,1)';
-      tx = 0; ty = 0;
-      el.style.transform = '';
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-    });
-    function animate() {
-      tx += (cx - tx) * 0.18;
-      ty += (cy - ty) * 0.18;
-      el.style.transform = `translate(${tx}px, ${ty}px)`;
-      raf = requestAnimationFrame(animate);
-    }
-  });
-})();
-
-/* ======================================================================
    TEXT REVEALS palabra-por-palabra / línea-por-línea
    - Para .reveal-line: cada hijo directo se envuelve en un span y se
      anima desde translateY(110%) opacity 0 → 0/1.
@@ -361,6 +177,7 @@ function triggerInitialReveals() {
   });
 }
 prepareReveals();
+requestAnimationFrame(triggerInitialReveals);
 
 /* ======================================================================
    SCROLL REVEALS GENÉRICOS (para no-hero)
@@ -467,102 +284,6 @@ prepareReveals();
 })();
 
 /* ======================================================================
-   AVIÓN DE PAPEL 3D (Three.js) — figura-8 con trail
-   ====================================================================== */
-(function paperPlane() {
-  const host = $('#paperPlane');
-  if (!host || !window.THREE) return;
-
-  const w = host.clientWidth, h = host.clientHeight;
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
-  camera.position.set(0, 0, 8);
-
-  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setSize(w, h);
-  renderer.setClearColor(0x000000, 0);
-  host.appendChild(renderer.domElement);
-
-  const planeGroup = new THREE.Group();
-  const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide, roughness: .55, metalness: .05 });
-  const matShade = new THREE.MeshStandardMaterial({ color: 0xE3F0FB, side: THREE.DoubleSide, roughness: .65 });
-
-  const g1 = new THREE.BufferGeometry();
-  g1.setAttribute('position', new THREE.Float32BufferAttribute([
-    0, 0, 0,  -1.4, -0.5, 0,   1.4, -0.5, 0
-  ], 3));
-  g1.computeVertexNormals();
-  planeGroup.add(new THREE.Mesh(g1, mat));
-
-  const g2 = new THREE.BufferGeometry();
-  g2.setAttribute('position', new THREE.Float32BufferAttribute([
-    0, 0, 0,  0, -0.5, .4,   0, -0.5, -.4
-  ], 3));
-  g2.computeVertexNormals();
-  planeGroup.add(new THREE.Mesh(g2, matShade));
-
-  planeGroup.scale.set(.9, .9, .9);
-  scene.add(planeGroup);
-
-  // Trail
-  const trailGeo = new THREE.BufferGeometry();
-  const trailPts = new Float32Array(40 * 3);
-  trailGeo.setAttribute('position', new THREE.BufferAttribute(trailPts, 3));
-  const trailMat = new THREE.PointsMaterial({ color: 0xFFB74D, size: .09, transparent: true, opacity: .7 });
-  scene.add(new THREE.Points(trailGeo, trailMat));
-
-  scene.add(new THREE.AmbientLight(0xffffff, 0.85));
-  const dir = new THREE.DirectionalLight(0xffffff, 0.7);
-  dir.position.set(3, 4, 5);
-  scene.add(dir);
-
-  let t = 0;
-  function animate() {
-    t += 0.012;
-    const x = Math.sin(t * 0.8) * 2.4;
-    const y = Math.sin(t * 1.4) * 0.7 + 0.2;
-    const z = Math.cos(t * 0.8) * 1.0;
-    planeGroup.position.set(x, y, z);
-    planeGroup.rotation.y = Math.atan2(Math.cos(t * 0.8) * 2.4, -Math.sin(t * 0.8) * 1.0) + Math.PI;
-    planeGroup.rotation.z = Math.cos(t * 1.4) * 0.2;
-    planeGroup.rotation.x = -0.1;
-
-    for (let i = trailPts.length / 3 - 1; i > 0; i--) {
-      trailPts[i*3]   = trailPts[(i-1)*3];
-      trailPts[i*3+1] = trailPts[(i-1)*3+1];
-      trailPts[i*3+2] = trailPts[(i-1)*3+2];
-    }
-    trailPts[0] = x; trailPts[1] = y; trailPts[2] = z;
-    trailGeo.attributes.position.needsUpdate = true;
-
-    renderer.render(scene, camera);
-    requestAnimationFrame(animate);
-  }
-  animate();
-
-  window.addEventListener('resize', () => {
-    const W = host.clientWidth, H = host.clientHeight;
-    camera.aspect = W / H; camera.updateProjectionMatrix();
-    renderer.setSize(W, H);
-  });
-})();
-
-/* ======================================================================
-   LIVE COUNTER HERO (simulado, ondula entre 28–58)
-   ====================================================================== */
-(function liveCounter() {
-  const el = $('#liveCounter');
-  if (!el) return;
-  let n = 37;
-  setInterval(() => {
-    n += Math.random() > 0.5 ? 1 : -1;
-    n = Math.max(28, Math.min(58, n));
-    el.textContent = n;
-  }, 3500);
-})();
-
-/* ======================================================================
    DESTINOS GRID con tilt 3D real
    ====================================================================== */
 (function destinosGrid() {
@@ -571,14 +292,13 @@ prepareReveals();
   // Fallback gradient si la imagen de Unsplash falla en cargar
   const fallback = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="%231976D2"/><stop offset="100%" stop-color="%23F39A1F"/></linearGradient></defs><rect width="300" height="400" fill="url(%23g)"/></svg>');
   grid.innerHTML = D.destinos.map(d => `
-    <article class="dest-card" data-id="${d.id}" data-magnetic data-magnetic-strength="0.15" data-cursor-label="Ver">
+    <article class="dest-card" data-id="${d.id}">
       <div class="dest-card__inner">
         <img loading="lazy" src="${d.img}" onerror="this.onerror=null;this.src='${fallback}';this.style.opacity='.7';" alt="${d.nombre}" />
         <span class="dest-card__cat">${d.categoria}</span>
-        <span class="dest-card__viewers"><span class="pulse"></span><span>${d.viewers}</span> viendo</span>
         <div class="dest-card__overlay">
           <span class="dest-card__tag">${d.tag}</span>
-          <h3>${d.nombre} ${d.flag}</h3>
+          <h3>${d.nombre}</h3>
           <p class="dest-card__desc">${d.desc}</p>
           <div class="dest-card__meta">
             <span>${d.region}</span>
@@ -590,7 +310,7 @@ prepareReveals();
     </article>
   `).join('');
 
-  // Re-aplicar magnetic a las cards recién creadas
+  // Inclinación al pasar el mouse y clic directo a WhatsApp
   $$('.dest-card', grid).forEach(card => {
     const inner = $('.dest-card__inner', card);
     if (!isMobile && !reducedMotion) {
@@ -650,14 +370,16 @@ prepareReveals();
     {src:'assets/images/galeria/83.jpg', cat:'atacames', alt:'Amigos disfrutando el resort'},
     {src:'assets/images/galeria/85.jpg', cat:'atacames', alt:'Diversión en la piscina'}
   ];
+  const nombres = { todas:'Todas', putumayo:'Putumayo', 'eje-cafetero':'Eje Cafetero', cartagena:'Cartagena',
+    'san-andres':'San Andrés', 'santa-marta':'Santa Marta', atacames:'Atacames' };
   const cats = ['todas', ...new Set(fotos.map(f => f.cat))];
   filters.innerHTML = cats.map((c, i) =>
-    `<button class="${i===0?'is-active':''}" data-cat="${c}">${c.replace('-', ' ')}</button>`
+    `<button class="${i===0?'is-active':''}" data-cat="${c}">${nombres[c] || c}</button>`
   ).join('');
   function render(cat) {
     grid.innerHTML = fotos
       .filter(f => cat === 'todas' || f.cat === cat)
-      .map(f => `<figure><img loading="lazy" src="${f.src}" alt="${f.alt}" /></figure>`)
+      .map(f => `<figure><img loading="lazy" src="${f.src.replace('/galeria/', '/galeria/sm/')}" data-full="${f.src}" alt="${f.alt}" /></figure>`)
       .join('');
   }
   render('todas');
@@ -674,7 +396,7 @@ prepareReveals();
   grid.addEventListener('click', (e) => {
     const img = e.target.closest('img');
     if (!img) return;
-    lbImg.src = img.src;
+    lbImg.src = img.dataset.full || img.src;
     lbImg.alt = img.alt;
     lb.hidden = false;
     document.body.classList.add('no-scroll');
@@ -682,79 +404,6 @@ prepareReveals();
   lb.addEventListener('click', () => {
     lb.hidden = true;
     document.body.classList.remove('no-scroll');
-  });
-})();
-
-/* ======================================================================
-   TESTIMONIOS CAROUSEL (auto + manual)
-   ====================================================================== */
-(function testimonios() {
-  const track = $('#testTrack');
-  const dots = $('#testDots');
-  const prev = $('#testPrev');
-  const next = $('#testNext');
-  if (!track) return;
-  const items = [
-    { name:'María Camila Restrepo', city:'Medellín · Cartagena 2025', avatar:'https://i.pravatar.cc/120?img=47', stars:5, q:'Una experiencia impecable. PARAISOS organizó cada detalle de mi luna de miel en Cartagena. Repetiremos sin dudarlo.' },
-    { name:'Juan David Pérez', city:'Bogotá · Crucero Caribe 2024', avatar:'https://i.pravatar.cc/120?img=12', stars:5, q:'Mi primer crucero y fue una locura. El asesor estuvo pendiente todo el viaje por WhatsApp. 10/10.' },
-    { name:'Laura Sofía García', city:'Cali · Eje Cafetero 2025', avatar:'https://i.pravatar.cc/120?img=32', stars:5, q:'Perfecto para viajar en familia. Mis hijos amaron el Cocora y los precios fueron muy honestos.' },
-    { name:'Andrés Felipe Ruiz', city:'Pereira · San Andrés 2025', avatar:'https://i.pravatar.cc/120?img=15', stars:5, q:'Sentí confianza desde la primera llamada. Cumplieron absolutamente todo lo prometido.' },
-    { name:'Diana Patricia Mejía', city:'Barranquilla · Europa 2024', avatar:'https://i.pravatar.cc/120?img=44', stars:5, q:'Crucero por el Mediterráneo soñado. Itinerario impecable y atención post-venta inigualable.' },
-    { name:'Carlos Andrés López', city:'Bucaramanga · Tayrona 2025', avatar:'https://i.pravatar.cc/120?img=22', stars:5, q:'Aventura organizada con detalle. Guías locales increíbles, todo cuadrado al milímetro.' }
-  ];
-  track.innerHTML = items.map(t => `
-    <article class="testimonial">
-      <div class="testimonial__stars" aria-label="${t.stars} de 5 estrellas">${'★'.repeat(t.stars)}</div>
-      <p class="testimonial__quote">${t.q}</p>
-      <div class="testimonial__author">
-        <img src="${t.avatar}" alt="${t.name}" loading="lazy" />
-        <div><strong>${t.name}</strong><em>${t.city}</em></div>
-      </div>
-    </article>
-  `).join('');
-
-  const slidesPerView = () => innerWidth >= 1100 ? 3 : innerWidth >= 880 ? 2 : 1;
-  let idx = 0;
-  const max = () => Math.max(0, items.length - slidesPerView());
-  function render() {
-    const w = $('.testimonial', track).getBoundingClientRect().width + 24;
-    track.style.transform = `translateX(${-idx * w}px)`;
-    dots.innerHTML = Array.from({length: max() + 1}, (_, i) =>
-      `<button class="${i===idx?'is-active':''}" data-i="${i}" aria-label="Ir al testimonio ${i+1}"></button>`
-    ).join('');
-  }
-  render();
-  dots.addEventListener('click', (e) => {
-    const b = e.target.closest('button[data-i]');
-    if (!b) return;
-    idx = +b.dataset.i; render();
-  });
-  prev.addEventListener('click', () => { idx = idx <= 0 ? max() : idx - 1; render(); });
-  next.addEventListener('click', () => { idx = idx >= max() ? 0 : idx + 1; render(); });
-  let auto = setInterval(() => { idx = (idx + 1) > max() ? 0 : idx + 1; render(); }, 6000);
-  // Pausa al hover
-  track.addEventListener('mouseenter', () => clearInterval(auto));
-  track.addEventListener('mouseleave', () => { auto = setInterval(() => { idx = (idx + 1) > max() ? 0 : idx + 1; render(); }, 6000); });
-  window.addEventListener('resize', () => { idx = Math.min(idx, max()); render(); });
-})();
-
-/* ======================================================================
-   NEWSLETTER
-   ====================================================================== */
-(function newsletter() {
-  const form = $('#newsForm');
-  const ok = $('#newsOk');
-  if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = $('#newsEmail').value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      $('#newsEmail').focus();
-      return;
-    }
-    ok.hidden = false;
-    form.reset();
-    setTimeout(() => { ok.hidden = true; }, 5000);
   });
 })();
 
@@ -790,30 +439,6 @@ prepareReveals();
 })();
 
 /* ======================================================================
-   FLOATING: chat widget
-   ====================================================================== */
-(function chatWidget() {
-  const toggle = $('#chatToggle');
-  const box = $('#chatBox');
-  const close = $('#chatClose');
-  if (!toggle) return;
-  toggle.addEventListener('click', () => {
-    box.hidden = !box.hidden;
-    if (!box.hidden) {
-      const badge = toggle.querySelector('.chat-widget__badge');
-      if (badge) badge.style.display = 'none';
-    }
-  });
-  close.addEventListener('click', () => { box.hidden = true; });
-  $$('.chat-widget__quick button').forEach(b => {
-    b.addEventListener('click', () => {
-      const msg = encodeURIComponent(`Hola PARAISOS, ${b.dataset.q.toLowerCase()}.`);
-      window.open(`https://wa.me/${D.whatsapp}?text=${msg}`, '_blank');
-    });
-  });
-})();
-
-/* ======================================================================
    STICKY CTA MOBILE: aparece al pasar el hero
    ====================================================================== */
 (function stickyCta() {
@@ -827,26 +452,8 @@ prepareReveals();
 })();
 
 /* ======================================================================
-   MISCELÁNEA: scroll-top, cookies, year
+   MISCELÁNEA: scroll-top, year
    ====================================================================== */
-/* ======================================================================
-   TIENDA · filtro de categorías de productos
-   ====================================================================== */
-(function shopFilter() {
-  const cats = $$('.shop-cat');
-  const products = $$('.product-card');
-  if (!cats.length || !products.length) return;
-  cats.forEach(b => b.addEventListener('click', () => {
-    cats.forEach(c => c.classList.remove('is-active'));
-    b.classList.add('is-active');
-    const cat = b.dataset.cat;
-    products.forEach(p => {
-      const show = cat === 'todos' || p.dataset.cat === cat;
-      p.classList.toggle('is-hidden', !show);
-    });
-  }));
-})();
-
 (function misc() {
   $('#year').textContent = new Date().getFullYear();
   const top = $('#scrollTop');
@@ -854,15 +461,6 @@ prepareReveals();
     top.classList.toggle('is-visible', window.scrollY > 600);
   }, { passive: true });
   top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-  const cb = $('#cookieBanner');
-  if (!localStorage.getItem('paraisos_cookies')) {
-    setTimeout(() => { cb.hidden = false; }, 2500);
-  }
-  $('#cookieAccept')?.addEventListener('click', () => {
-    localStorage.setItem('paraisos_cookies', '1');
-    cb.hidden = true;
-  });
 })();
 
 /* ------------------ VIDEO HERO FONDO ------------------ */
@@ -881,6 +479,33 @@ prepareReveals();
 
   video.addEventListener('canplay', markLoaded, { once: true });
   video.addEventListener('playing', markLoaded, { once: true });
+
+  // Se reproduce para todos (también con «reducir movimiento»): es mudo,
+  // corto y tiene botón de pausa. Se pide cuando la página ya cargó para no
+  // competir con lo importante, y se pausa mientras el hero no se ve.
+  const toggle = $('.hero__video-toggle');
+  let userPaused = false;
+  const play = () => { if (!userPaused) video.play().catch(() => {}); };
+  const sync = () => {
+    toggle.classList.toggle('is-paused', video.paused);
+    toggle.setAttribute('aria-label', video.paused ? 'Reproducir video de fondo' : 'Pausar video de fondo');
+  };
+  if (toggle) {
+    toggle.hidden = false;
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    toggle.addEventListener('click', () => {
+      userPaused = !video.paused;
+      if (userPaused) video.pause(); else play();
+    });
+    sync();
+  }
+  new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) video.pause();
+    else if (document.readyState === 'complete') play();
+  }).observe(hero);
+  if (document.readyState === 'complete') play();
+  else window.addEventListener('load', play, { once: true });
 
   // Fallback: si en 3 s el video no disparó canplay, marcar igual
   setTimeout(markLoaded, 3000);

@@ -8,8 +8,11 @@
   <title>Nosotros · PARAISOS Agencia de Viajes &amp; Turismo</title>
   <meta name="description" content="Quiénes somos en PARAISOS: misión, visión 2030, valores corporativos y las 8 políticas que guían nuestro trabajo en turismo andino-amazónico." />
   <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://paraisosagencia.vercel.app/nosotros.html" />
 
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paraisosagencia.vercel.app/nosotros.html" />
+  <meta property="og:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
   <meta property="og:title" content="Nosotros · PARAISOS" />
   <meta property="og:description" content="Más que un destino turístico, somos territorio de vida. Conoce nuestra misión, visión y políticas." />
 
@@ -28,7 +31,7 @@
   <!-- Overrides específicos de nosotros.html:
        1. Navbar al tope (sin topbar arriba en esta página)
        2. Logo del navbar sin "card" propio (PNG ya transparente)
-       3. Cursor custom como en index — JS al pie del HTML -->
+  -->
   <style>
     /* Navbar al top: 0 (no hay topbar). Mantiene su glassmorphism normal */
     .navbar { top: 0 !important; }
@@ -42,13 +45,6 @@
   </style>
 </head>
 <body class="has-smooth">
-  <!-- ====== CURSOR CUSTOM (mismo que en index) ====== -->
-  <div class="cursor" aria-hidden="true">
-    <div class="cursor__dot"></div>
-    <div class="cursor__ring"></div>
-    <span class="cursor__label"></span>
-  </div>
-
   <!-- ====== SPRITE SVG (íconos compartidos) ====== -->
   <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
     <defs>
@@ -66,7 +62,7 @@
   <!-- ====== NAVBAR (mismo que PARAISOS, transparente arriba) ====== -->
   <header id="navbar" class="navbar" role="banner">
     <div class="container navbar__inner">
-      <a href="index.html" class="navbar__brand" aria-label="PARAISOS — Inicio" data-magnetic>
+      <a href="index.html" class="navbar__brand" aria-label="PARAISOS — Inicio">
         <img class="navbar__brand-img"
              src="assets/images/logo-paraisos.png"
              alt="PARAISOS — Agencia de Viajes & Turismo"
@@ -82,7 +78,7 @@
           <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
-      <a class="btn btn--whatsapp navbar__cta" data-magnetic
+      <a class="btn btn--whatsapp navbar__cta"
          href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20más%20información."
          target="_blank" rel="noopener" aria-label="WhatsApp">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
@@ -113,8 +109,8 @@
         dentro y fuera de Colombia. Más que un destino, somos territorio de vida.
       </p>
       <div style="display:flex; justify-content:center; gap:.8rem; flex-wrap:wrap;">
-        <a class="btn btn--primary" href="#mision" data-magnetic>Nuestra misión</a>
-        <a class="btn btn--ghost" href="#politicas" data-magnetic>Ver políticas</a>
+        <a class="btn btn--primary" href="#mision">Nuestra misión</a>
+        <a class="btn btn--ghost" href="#politicas">Ver políticas</a>
       </div>
     </div>
   </section>
@@ -125,11 +121,11 @@
       <div class="experience__grid">
         <div class="experience__media">
           <img loading="lazy" decoding="async"
-               src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=70"
-               alt="Equipo de PARAISOS diseñando viajes" />
+               src="assets/images/galeria/47.jpg"
+               alt="Comunidad anfitriona en el Putumayo" />
           <div class="experience__badge">
-            <strong>12+ años</strong>
-            <span>diseñando experiencias inolvidables</span>
+            <strong>RNT 84258</strong>
+            <span>Registro Nacional de Turismo</span>
           </div>
         </div>
         <div class="experience__content">
@@ -323,10 +319,10 @@
       <h2 id="ctaTitle">"Más que un destino turístico, somos territorio de vida"</h2>
       <p>Ahora que sabes quiénes somos, déjanos diseñar tu próximo viaje.</p>
       <div class="cta-final__row">
-        <a class="btn btn--whatsapp btn--lg" data-magnetic
+        <a class="btn btn--whatsapp btn--lg"
            href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje."
            target="_blank" rel="noopener">Hablar por WhatsApp</a>
-        <a class="btn btn--ghost btn--lg" href="index.html#asistente" data-magnetic>Cotizar online</a>
+        <a class="btn btn--ghost btn--lg" href="index.html#asistente">Cotizar online</a>
       </div>
     </div>
   </section>
@@ -373,13 +369,14 @@
           <li><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></li>
           <li><a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a></li>
           <li>Lun–Sáb 8:00 – 19:00</li>
+          <li>RNT 84258</li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <span>© <span id="year"></span> PARAISOS — Agencia de Viajes &amp; Turismo. Todos los derechos reservados.</span>
-        <ul><li><a href="#privacy">Privacidad</a></li><li><a href="#terms">Términos</a></li><li><a href="#cookies">Cookies</a></li></ul>
+        <span>Registro Nacional de Turismo 84258</span>
       </div>
     </div>
   </footer>
@@ -393,36 +390,6 @@
   </a>
 
   <script>
-    /* ===== CURSOR CUSTOM (puntito naranja + ring azul) — igual que index ===== */
-    (function cursor() {
-      const isMobile = matchMedia('(hover: none) and (pointer: coarse)').matches;
-      if (isMobile) return;
-      const cur = document.querySelector('.cursor');
-      if (!cur) return;
-      const dot  = cur.querySelector('.cursor__dot');
-      const ring = cur.querySelector('.cursor__ring');
-      const label = cur.querySelector('.cursor__label');
-      let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
-      addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; });
-      (function tick() {
-        rx += (mx - rx) * 0.18;
-        ry += (my - ry) * 0.18;
-        dot.style.transform  = `translate(${mx}px, ${my}px)`;
-        ring.style.transform = `translate(${rx}px, ${ry}px)`;
-        label.style.transform = `translate(${mx + 20}px, ${my + 12}px)`;
-        requestAnimationFrame(tick);
-      })();
-      document.addEventListener('mouseover', (e) => {
-        const hover = e.target.closest('a, button, .service-card, summary, [data-cursor-label]');
-        cur.classList.toggle('is-hover', !!hover);
-        const lbl = hover?.getAttribute('data-cursor-label');
-        if (lbl) { label.textContent = lbl; cur.classList.add('has-label'); }
-        else { cur.classList.remove('has-label'); }
-      });
-      document.addEventListener('mousedown', () => cur.classList.add('is-drag'));
-      document.addEventListener('mouseup',   () => cur.classList.remove('is-drag'));
-    })();
-
     // Navbar: scroll glassy + burger toggle + progress bar (igual que en index)
     const nav = document.getElementById('navbar');
     const burger = document.getElementById('navBurger');

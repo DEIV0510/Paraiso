@@ -23,7 +23,7 @@
    - El contorno del país aparece naturalmente como la unión de los
      límites de los departamentos perimetrales.
    ===================================================================== */
-(function () {
+function initColombiaMap() {
   'use strict';
   if (!window.THREE) { console.warn('Three.js no cargó'); return; }
 
@@ -462,7 +462,7 @@
 
     const label = document.createElement('div');
     label.className = 'map-3d__label';
-    label.innerHTML = `<span class="flag">${d.flag}</span> ${d.nombre}`;
+    label.textContent = d.nombre;
     label.dataset.id = d.id;
     label.addEventListener('click', () => selectDestino(d.id, true));
     overlay.appendChild(label);
@@ -626,7 +626,7 @@
       popup.hidden = false;
       popup.innerHTML = `
         <img src="${d.img}" alt="${d.nombre}" />
-        <h4>${d.nombre} ${d.flag}</h4>
+        <h4>${d.nombre}</h4>
         <p>${d.desc.substring(0, 95)}…</p>
         <a class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener"
            href="https://wa.me/${D.whatsapp}?text=${encodeURIComponent(`Hola PARAISOS, quiero cotizar un viaje a ${d.nombre}.`)}">
@@ -644,16 +644,14 @@
     panelContent.innerHTML = `
       <img src="${d.img}" alt="${d.nombre}" />
       <span class="region">${d.region}</span>
-      <h3>${d.nombre} ${d.flag}</h3>
+      <h3>${d.nombre}</h3>
       <p>${d.desc}</p>
       <div class="features">${d.features.map(f => `<span>${f}</span>`).join('')}</div>
       <div class="meta">
         <div><span>Precio desde</span><strong>${d.precio}</strong></div>
         <div><span>Duración</span><strong>${d.duracion}</strong></div>
         <div><span>Mejor temporada</span><strong>${d.temporada}</strong></div>
-        <div><span>Viendo ahora</span><strong>${d.viewers}</strong></div>
       </div>
-      <span class="viewers"><span class="pulse"></span><strong>${d.viewers}</strong> personas viendo este destino</span>
       <a class="btn btn--whatsapp" target="_blank" rel="noopener"
          href="https://wa.me/${D.whatsapp}?text=${encodeURIComponent(`Hola PARAISOS, quiero cotizar un viaje a ${d.nombre}. Vi su información en el mapa interactivo.`)}">
         Cotizar este destino
@@ -661,7 +659,7 @@
   }
 
   chipsHost.innerHTML = destinos.map(d =>
-    `<button class="map-3d__chip" data-id="${d.id}">${d.flag} ${d.nombre}</button>`
+    `<button class="map-3d__chip" data-id="${d.id}">${d.nombre}</button>`
   ).join('');
   chipsHost.addEventListener('click', (e) => {
     const b = e.target.closest('.map-3d__chip');
@@ -861,4 +859,27 @@
     loadingEl.style.opacity = '0';
     setTimeout(() => loadingEl && loadingEl.remove(), 400);
   })();
+}
+
+/* Carga diferida: Three.js y el GeoJSON se piden solo cuando el mapa está
+   por entrar en pantalla, no al abrir la página. */
+(function lazyMap() {
+  const host = document.getElementById('canvas3d');
+  if (!host) return;
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+    if (window.THREE) return initColombiaMap();
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    s.onload = initColombiaMap;
+    s.onerror = () => console.warn('Three.js no cargó');
+    document.head.appendChild(s);
+  };
+  if (!('IntersectionObserver' in window)) return start();
+  const io = new IntersectionObserver((entries) => {
+    if (entries.some(e => e.isIntersecting)) { io.disconnect(); start(); }
+  }, { rootMargin: '800px 0px' });
+  io.observe(host);
 })();

@@ -35,7 +35,7 @@
   destHost.innerHTML = D.destinos.map(d => `
     <button class="wiz-card wiz-card--destino" data-value="${d.nombre}">
       <img loading="lazy" src="${d.img}" alt="${d.nombre}" />
-      <strong>${d.flag} ${d.nombre}</strong>
+      <strong>${d.nombre}</strong>
     </button>
   `).join('');
 

@@ -12,7 +12,7 @@
   <meta name="keywords" content="agencia de viajes Colombia, Putumayo turismo, cruceros Caribe, cruceros Europa, paquetes turísticos, Cartagena, San Andrés, Fin del Mundo, Hornoyaco, ecoturismo Putumayo, PARAISOS" />
   <meta name="author" content="PARAISOS - Agencia de Viajes & Turismo" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
-  <link rel="canonical" href="https://paraisos-viajes.com/" />
+  <link rel="canonical" href="https://paraisosagencia.vercel.app/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -20,8 +20,8 @@
   <meta property="og:site_name" content="PARAISOS - Agencia de Viajes & Turismo" />
   <meta property="og:title" content="PARAISOS — Más que un destino, somos territorio de vida" />
   <meta property="og:description" content="Cotiza por WhatsApp. Putumayo, cruceros, Cartagena, San Andrés y mucho más." />
-  <meta property="og:url" content="https://paraisos-viajes.com/" />
-  <meta property="og:image" content="https://paraisos-viajes.com/assets/images/og-cover.jpg" />
+  <meta property="og:url" content="https://paraisosagencia.vercel.app/" />
+  <meta property="og:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
@@ -29,7 +29,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PARAISOS — Agencia de Viajes & Turismo" />
   <meta name="twitter:description" content="Más que un destino turístico, somos territorio de vida. Cotiza por WhatsApp." />
-  <meta name="twitter:image" content="https://paraisos-viajes.com/assets/images/og-cover.jpg" />
+  <meta name="twitter:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
 
   <!-- Favicon extraído del logo oficial (símbolo O) -->
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
@@ -51,6 +51,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,700;1,800&family=Poppins:wght@300;400;500;600;700&display=swap" />
 
   <!-- Estilos propios -->
+  <link rel="preload" as="image" href="assets/images/hero-poster.jpg" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="css/components.css" />
 
@@ -62,8 +63,10 @@
     "name": "PARAISOS - Agencia de Viajes & Turismo",
     "alternateName": "Viajes PARAISOS",
     "slogan": "Más que un destino turístico, somos territorio de vida",
-    "description": "Agencia colombiana de origen andino-amazónico. Especialistas en Putumayo, cruceros por Caribe/Europa/Asia y planes nacionales e internacionales.",
-    "url": "https://paraisos-viajes.com/",
+    "description": "Agencia colombiana de origen andino-amazónico. Especialistas en Putumayo, cruceros por Caribe/Europa/Asia y planes nacionales e internacionales. Registro Nacional de Turismo 84258.",
+    "url": "https://paraisosagencia.vercel.app/",
+    "image": "https://paraisosagencia.vercel.app/assets/images/og-cover.jpg",
+    "logo": "https://paraisosagencia.vercel.app/assets/images/logo-paraisos.png",
     "telephone": "+573157347306",
     "email": "gerencia.paraisos@gmail.com",
     "address": {
@@ -91,9 +94,9 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"¿Qué seguros incluyen los viajes?","acceptedAnswer":{"@type":"Answer","text":"Contamos con cubrimiento de Colasistencia y Magenta con pólizas contra accidentes. Los paquetes internacionales incluyen seguro de viaje con cobertura médica, equipaje y cancelación. Los nacionales lo ofrecen como opcional."}},
+      {"@type":"Question","name":"¿Qué seguros incluyen los viajes?","acceptedAnswer":{"@type":"Answer","text":"Contamos con cubrimiento de Colasistencia y Magenta con pólizas contra accidentes. Para viajes internacionales te asesoramos sobre la asistencia médica de viaje que pide cada destino."}},
       {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Recibimos efectivo, Nequi y transferencia a nuestra cuenta de ahorros Bancolombia; los datos de la cuenta te los compartimos por WhatsApp al momento de pagar. No recibimos tarjetas. Si quieres financiar tu viaje, tenemos convenio con cooperativas que te hacen el estudio de crédito."}},
-      {"@type":"Question","name":"¿Cuál es la política de cancelación?","acceptedAnswer":{"@type":"Answer","text":"Más de 30 días: reembolso del 80%. Entre 15–30 días: 50%. Menos de 15 días: no aplica reembolso, ofrecemos reprogramación."}}
+      {"@type":"Question","name":"¿Cuál es la política de cancelación?","acceptedAnswer":{"@type":"Answer","text":"Depende de cada proveedor (aerolínea, hotel o naviera). Las condiciones de cambio y cancelación te las entregamos por escrito en la cotización, antes de que pagues."}}
     ]
   }
   </script>
@@ -165,46 +168,22 @@
     </defs>
   </svg>
 
-  <!-- ====== LOADING SCREEN ====== -->
-  <div id="loader" class="loader loader--dark" aria-hidden="true">
-    <div class="loader__stage">
-      <div class="loader__logo-wrap" id="loaderWrap">
-        <span class="loader__halo" aria-hidden="true"></span>
-        <img class="loader__logo-img"
-             src="assets/images/loader-bg.png"
-             alt="PARAISOS — Agencia de Viajes & Turismo"
-             width="1400" height="933" />
-        <span class="loader__shimmer" aria-hidden="true"></span>
-        <span class="loader__ray" aria-hidden="true"></span>
-      </div>
-    </div>
-    <div class="loader__bar"><div class="loader__bar-fill"></div></div>
-    <span class="loader__rnt">territorio de vida</span>
-  </div>
-
-  <!-- ====== CURSOR CUSTOM ====== -->
-  <div class="cursor" aria-hidden="true">
-    <div class="cursor__dot"></div>
-    <div class="cursor__ring"></div>
-    <span class="cursor__label"></span>
-  </div>
-
   <!-- ====== TOP MARQUEE ====== -->
   <div class="topbar" id="topbar" aria-label="Anuncios">
     <div class="topbar__track">
       <span>Putumayo · 5 experiencias vivenciales únicas</span><span>·</span>
-      <span>Crucero Caribe 7 días con 25% off</span><span>·</span>
-      <span>San Andrés todo incluido ¡Disponible!</span><span>·</span>
-      <span>Vuelos + hotel desde $890.000 COP</span><span>·</span>
+      <span>Putumayo fin de semana desde $999.000</span><span>·</span>
+      <span>Tumaco desde $680.000 · Atacames desde $699.000</span><span>·</span>
       <span>Financia tu viaje con cooperativas en convenio</span><span>·</span>
       <span>Colegios y universidades: descuentos con carnet</span><span>·</span>
+      <span>Registro Nacional de Turismo 84258</span><span>·</span>
       <span>Cotiza hoy en WhatsApp</span><span>·</span>
       <span>Putumayo · 5 experiencias vivenciales únicas</span><span>·</span>
-      <span>Crucero Caribe 7 días con 25% off</span><span>·</span>
-      <span>San Andrés todo incluido ¡Disponible!</span><span>·</span>
-      <span>Vuelos + hotel desde $890.000 COP</span><span>·</span>
+      <span>Putumayo fin de semana desde $999.000</span><span>·</span>
+      <span>Tumaco desde $680.000 · Atacames desde $699.000</span><span>·</span>
       <span>Financia tu viaje con cooperativas en convenio</span><span>·</span>
       <span>Colegios y universidades: descuentos con carnet</span><span>·</span>
+      <span>Registro Nacional de Turismo 84258</span><span>·</span>
       <span>Cotiza hoy en WhatsApp</span><span>·</span>
     </div>
   </div>
@@ -212,7 +191,7 @@
   <!-- ====== NAVBAR ====== -->
   <header id="navbar" class="navbar" role="banner">
     <div class="container navbar__inner">
-      <a href="#inicio" class="navbar__brand" aria-label="PARAISOS — Inicio" data-magnetic>
+      <a href="#inicio" class="navbar__brand" aria-label="PARAISOS — Inicio">
         <img class="navbar__brand-img"
              src="assets/images/logo-paraisos.png"
              alt="PARAISOS — Agencia de Viajes & Turismo"
@@ -231,7 +210,7 @@
         </ul>
       </nav>
 
-      <a class="btn btn--whatsapp navbar__cta" data-magnetic
+      <a class="btn btn--whatsapp navbar__cta"
          href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20reservar%20un%20viaje."
          target="_blank" rel="noopener" aria-label="Reservar por WhatsApp">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -247,14 +226,15 @@
 
   <!-- ====== HERO ====== -->
   <main id="smoothMain">
-  <section id="inicio" class="hero" aria-labelledby="heroTitle">
+  <section id="inicio" class="hero hero--video" aria-labelledby="heroTitle">
     <div class="hero__bg" aria-hidden="true">
       <!-- Video de fondo local MP4 -->
       <div class="hero__video-wrap">
         <video class="hero__video-el"
-          autoplay muted loop playsinline webkit-playsinline preload="metadata"
+          muted loop playsinline webkit-playsinline preload="none"
           poster="assets/images/hero-poster.jpg"
           aria-hidden="true" tabindex="-1">
+          <source src="assets/videos/hero-bg-m.mp4" type="video/mp4" media="(max-width: 768px)">
           <source src="assets/videos/hero-bg.mp4" type="video/mp4">
         </video>
       </div>
@@ -287,29 +267,29 @@
         </p>
 
         <div class="hero__cta-row reveal-up">
-          <a class="btn btn--primary" data-magnetic
+          <a class="btn btn--primary"
              href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje."
              target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
             Cotizar ahora
             <span class="btn__ripple"></span>
           </a>
-          <a class="btn btn--ghost" href="#putumayo" data-magnetic data-cursor-label="Descubrir">
+          <a class="btn btn--ghost" href="#putumayo">
             Conoce Putumayo
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
         </div>
 
         <ul class="hero__stats reveal-up" role="list">
-          <li><strong data-count-to="48">0</strong><span>destinos curados</span></li>
-          <li><strong data-count-to="15">0</strong><span>pueblos indígenas en Putumayo</span></li>
-          <li><strong data-count-to="9800" data-suffix="+">0</strong><span>viajeros felices</span></li>
+          <li><strong data-count-to="15">15</strong><span>pueblos indígenas en Putumayo</span></li>
+          <li><strong data-count-to="3">3</strong><span>Parques Nacionales Naturales</span></li>
+          <li><strong data-count-to="10">10</strong><span>servicios turísticos</span></li>
         </ul>
 
         <div class="hero__trust reveal-up">
-          <span>Avalados por:</span>
+          <span>Respaldo:</span>
           <div class="hero__trust-logos">
-            <span>Cobertura de Magenta</span><span>·</span><span>Colasistencia</span>
+            <span>RNT 84258</span><span>·</span><span>Pólizas Colasistencia y Magenta</span>
           </div>
         </div>
       </div>
@@ -317,7 +297,7 @@
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__card hero__card--1" data-parallax="0.04">
           <img loading="eager" decoding="async"
-               src="assets/images/galeria/40.jpg"
+               src="assets/images/galeria/sm/40.jpg"
                alt="Cascada Fin del Mundo, Putumayo" />
           <span class="hero__pin">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
@@ -327,20 +307,14 @@
         </div>
         <div class="hero__card hero__card--2" data-parallax="0.08">
           <img loading="lazy" decoding="async"
-               src="assets/images/galeria/78.jpg"
+               src="assets/images/galeria/sm/78.jpg"
                alt="Playas y mar turquesa" />
-          <span class="hero__badge-live">
-            <span class="pulse"></span>
-            <strong id="liveCounter">37</strong> personas reservando ahora
-          </span>
         </div>
         <div class="hero__card hero__card--3" data-parallax="0.12">
           <img loading="lazy" decoding="async"
-               src="assets/images/galeria/85.jpg"
+               src="assets/images/galeria/sm/85.jpg"
                alt="Resort todo incluido frente al mar" />
         </div>
-
-        <div id="paperPlane" class="hero__plane" aria-hidden="true"></div>
 
         <div class="hero__quote">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="#F39A1F"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
@@ -381,6 +355,11 @@
       <span>scroll</span>
       <div class="hero__scroll-line"></div>
     </a>
+
+    <button class="hero__video-toggle" type="button" aria-label="Pausar video de fondo" hidden>
+      <svg class="hero__video-toggle-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
+      <svg class="hero__video-toggle-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
+    </button>
   </section>
 
   <!-- ====== PROCESO ====== -->
@@ -420,7 +399,7 @@
           <div class="process__num">04</div>
           <div class="process__ico"><svg class="icon"><use href="#ico-plane"/></svg></div>
           <h3>Disfruta tu viaje</h3>
-          <p>Soporte 24/7 antes, durante y después. Tu asesor está a un mensaje.</p>
+          <p>Te acompañamos antes, durante y después del viaje. Tu asesor está a un mensaje.</p>
         </article>
       </div>
     </div>
@@ -441,9 +420,9 @@
       </header>
 
       <div class="pillars__grid">
-        <a href="#putumayo" class="pillar-card pillar-card--1" data-magnetic>
+        <a href="#putumayo" class="pillar-card pillar-card--1">
           <div class="pillar-card__media">
-            <img loading="lazy" src="assets/images/galeria/33.jpg" alt="Putumayo - selva amazónica" />
+            <img loading="lazy" src="assets/images/galeria/sm/33.jpg" alt="Putumayo - selva amazónica" />
             <span class="pillar-card__num">01</span>
           </div>
           <div class="pillar-card__body">
@@ -456,9 +435,9 @@
           </div>
         </a>
 
-        <a href="#viajes" class="pillar-card pillar-card--2" data-magnetic>
+        <a href="#viajes" class="pillar-card pillar-card--2">
           <div class="pillar-card__media">
-            <img loading="lazy" src="assets/images/galeria/77.jpg" alt="Viajes nacionales e internacionales" />
+            <img loading="lazy" src="assets/images/galeria/sm/77.jpg" alt="Viajes nacionales e internacionales" />
             <span class="pillar-card__num">02</span>
           </div>
           <div class="pillar-card__body">
@@ -471,7 +450,7 @@
           </div>
         </a>
 
-        <a href="la-tienda.html" class="pillar-card pillar-card--4" data-magnetic>
+        <a href="la-tienda.html" class="pillar-card pillar-card--4">
           <div class="pillar-card__media">
             <img loading="lazy" src="assets/images/tienda/velas-piedras.jpg" alt="Tienda turística - velas artesanales del Putumayo" />
             <span class="pillar-card__num">03</span>
@@ -707,7 +686,7 @@
       </div>
 
       <div class="putumayo__cta">
-        <a class="btn btn--whatsapp btn--lg" data-magnetic
+        <a class="btn btn--whatsapp btn--lg"
            href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20plan%20al%20Putumayo%20con%20experiencias%20vivenciales."
            target="_blank" rel="noopener">
           Vivir Putumayo con PARAISOS
@@ -863,8 +842,8 @@
 
         <div class="wizard__nav">
           <button type="button" class="btn btn--ghost" id="wizPrev" disabled>← Atrás</button>
-          <button type="button" class="btn btn--primary" id="wizNext" data-magnetic>Continuar →</button>
-          <a class="btn btn--whatsapp" id="wizSend" href="#" target="_blank" rel="noopener" hidden data-magnetic>
+          <button type="button" class="btn btn--primary" id="wizNext">Continuar →</button>
+          <a class="btn btn--whatsapp" id="wizSend" href="#" target="_blank" rel="noopener" hidden>
             Enviar por WhatsApp
           </a>
         </div>
@@ -897,58 +876,43 @@
         </h3>
       </header>
       <div class="cruceros__grid">
-        <article class="cruise-card" data-magnetic>
+        <article class="cruise-card">
           <div class="cruise-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1599640842225-85d111c60e6b?auto=format&fit=crop&w=900&q=70" alt="Crucero por el Caribe"/></div>
           <div class="cruise-card__body">
             <span class="cruise-card__tag">7–10 días</span>
             <h3>Mar Caribe</h3>
             <p>Puertos: Cartagena, Aruba, Curaçao, Cozumel y Bahamas.</p>
-            <ul class="cruise-card__perks">
-              <li>✓ Todo incluido a bordo</li>
-              <li>✓ Excursiones opcionales</li>
-              <li>✓ Salidas semanales</li>
-            </ul>
             <div class="cruise-card__foot">
-              <span><strong>Desde</strong> $2.490.000 COP</span>
-              <a class="btn btn--primary btn--sm" data-magnetic
+              <span>Tarifa según fecha, naviera y cabina</span>
+              <a class="btn btn--primary btn--sm"
                  href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20crucero%20por%20el%20Caribe."
                  target="_blank" rel="noopener">Cotizar</a>
             </div>
           </div>
         </article>
-        <article class="cruise-card" data-magnetic>
-          <div class="cruise-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=900&q=70" alt="Crucero por el Mediterráneo"/></div>
+        <article class="cruise-card">
+          <div class="cruise-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=900&q=70" alt="Santorini, puerto del crucero por el Mediterráneo"/></div>
           <div class="cruise-card__body">
             <span class="cruise-card__tag">10–14 días</span>
             <h3>Europa · Mediterráneo</h3>
             <p>Puertos: Barcelona, Roma, Niza, Mykonos y Santorini.</p>
-            <ul class="cruise-card__perks">
-              <li>✓ Excursiones premium</li>
-              <li>✓ Cabina con balcón</li>
-              <li>✓ Asistente bilingüe</li>
-            </ul>
             <div class="cruise-card__foot">
-              <span><strong>Desde</strong> $7.890.000 COP</span>
-              <a class="btn btn--primary btn--sm" data-magnetic
+              <span>Tarifa según fecha, naviera y cabina</span>
+              <a class="btn btn--primary btn--sm"
                  href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20crucero%20por%20el%20Mediterr%C3%A1neo."
                  target="_blank" rel="noopener">Cotizar</a>
             </div>
           </div>
         </article>
-        <article class="cruise-card" data-magnetic>
+        <article class="cruise-card">
           <div class="cruise-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=70" alt="Crucero por Asia"/></div>
           <div class="cruise-card__body">
             <span class="cruise-card__tag">12–16 días</span>
             <h3>Asia · Sudeste asiático</h3>
             <p>Puertos: Singapur, Bangkok, Ho Chi Minh, Hong Kong y Tokio.</p>
-            <ul class="cruise-card__perks">
-              <li>✓ Visa asistida</li>
-              <li>✓ Gastronomía premium</li>
-              <li>✓ Tours culturales</li>
-            </ul>
             <div class="cruise-card__foot">
-              <span><strong>Desde</strong> $11.500.000 COP</span>
-              <a class="btn btn--primary btn--sm" data-magnetic
+              <span>Tarifa según fecha, naviera y cabina</span>
+              <a class="btn btn--primary btn--sm"
                  href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20crucero%20por%20Asia."
                  target="_blank" rel="noopener">Cotizar</a>
             </div>
@@ -1062,7 +1026,7 @@
           <h3 id="studentTitle">Excursiones de colegios y universidades</h3>
           <p>Grandes descuentos para estudiantes presentando su carnet. Cuéntanos el destino y el tamaño del grupo y te armamos la propuesta.</p>
         </div>
-        <a class="btn btn--whatsapp" data-magnetic
+        <a class="btn btn--whatsapp"
            href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20una%20excursi%C3%B3n%20para%20un%20colegio%20o%20universidad."
            target="_blank" rel="noopener">Cotizar excursión</a>
       </aside>
@@ -1077,11 +1041,11 @@
              src="assets/images/galeria/45.jpg"
              alt="Viajeros disfrutando una experiencia PARAISOS" />
         <div class="experience__badge">
-          <strong>4.9★</strong>
-          <span>según 1.200+ reseñas verificadas</span>
+          <strong>RNT 84258</strong>
+          <span>Registro Nacional de Turismo</span>
         </div>
         <div class="experience__sticker">
-          <span>Operador</span><strong>Certificado</strong>
+          <span>Guías</span><strong>Certificados</strong>
         </div>
       </div>
       <div class="experience__content">
@@ -1097,11 +1061,11 @@
         <ul class="experience__features">
           <li>
             <span class="ico"><svg class="icon"><use href="#ico-check"/></svg></span>
-            <div><strong>Todo incluido</strong><em>Vuelos, hoteles, traslados y experiencias en un solo paquete.</em></div>
+            <div><strong>Planes a tu medida</strong><em>Vuelos, hoteles, traslados y experiencias en una sola cotización.</em></div>
           </li>
           <li>
             <span class="ico"><svg class="icon"><use href="#ico-clock"/></svg></span>
-            <div><strong>Soporte 24/7</strong><em>Asesor dedicado por WhatsApp antes, durante y después del viaje.</em></div>
+            <div><strong>Acompañamiento en cada etapa</strong><em>Un asesor por WhatsApp antes, durante y después del viaje.</em></div>
           </li>
           <li>
             <span class="ico"><svg class="icon"><use href="#ico-shield"/></svg></span>
@@ -1109,21 +1073,15 @@
           </li>
           <li>
             <span class="ico"><svg class="icon"><use href="#ico-star"/></svg></span>
-            <div><strong>Operadores oficiales certificados</strong><em>Más de 12 años de experiencia en el sector turístico.</em></div>
+            <div><strong>Guías con tarjeta profesional</strong><em>Certificaciones en competencias laborales y capacitación permanente.</em></div>
           </li>
         </ul>
-        <div class="experience__counters">
-          <div><strong data-count-to="9800" data-suffix="+">0</strong><span>viajeros</span></div>
-          <div><strong data-count-to="48">0</strong><span>destinos</span></div>
-          <div><strong data-count-to="12">0</strong><span>años</span></div>
-          <div><strong data-count-to="4.9" data-decimal="1">0</strong><span>rating</span></div>
-        </div>
       </div>
     </div>
 
     <!-- Misión · Visión · Valores · Políticas → ahora viven en nosotros.html -->
     <div class="container" style="text-align:center; margin-top: 2rem;">
-      <a class="btn btn--ghost btn--lg" href="nosotros.html" data-magnetic>
+      <a class="btn btn--ghost btn--lg" href="nosotros.html">
         Conoce nuestra misión, visión y políticas →
       </a>
     </div>
@@ -1163,163 +1121,6 @@
   </section>
 
 
-  <!-- Sección antigua del piqueteadero (ahora vive en el-piqueteadero.html) -->
-  <section class="sabroso-hidden-old" hidden style="display:none" aria-labelledby="sabrosoTitle">
-    <div class="sabroso__bg" aria-hidden="true"></div>
-
-    <!-- Hero del piqueteadero con el logo de EL SABROSO -->
-    <div class="container sabroso__hero">
-      <div class="sabroso__brand-card">
-        <img class="sabroso__logo" src="assets/images/piqueteadero/logo-sabroso.svg" alt="EL SABROSO piqueteadero" width="280" height="140" />
-        <div class="sabroso__brand-text">
-          <span class="section-eyebrow">Gastronomía típica</span>
-          <h2 id="sabrosoTitle" class="section-title section-title--left">
-            Sabor con <span class="text-grad">tradición y picante</span>
-          </h2>
-          <p>
-            El sabroso piqueteadero es el lugar para compartir las delicias del Putumayo:
-            chicharrón crocante, picadas para la mesa, mojojoy, pescado a la brasa y los
-            sabores con los que crecimos. <strong>Para compartir, para celebrar, para volver.</strong>
-          </p>
-          <div class="sabroso__brand-ctas">
-            <a class="btn btn--primary" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20reservar%20una%20mesa."
-               target="_blank" rel="noopener">Reservar mesa</a>
-            <a class="btn btn--ghost" href="#sabrosoCarta" data-magnetic>Ver la carta ↓</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Carta con los 5 platos del piqueteadero -->
-    <div class="container">
-      <h3 id="sabrosoCarta" class="sabroso__subhead">
-        <span>Nuestra carta · platos estrella</span>
-      </h3>
-
-      <div class="sabroso__menu">
-        <article class="sabroso-dish">
-          <div class="sabroso-dish__media">
-            <img loading="lazy"
-                 src="assets/images/piqueteadero/mix.jpg"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=70'"
-                 alt="MIX Chicharrón + Bofe" />
-            <span class="sabroso-dish__badge">★ El más pedido</span>
-          </div>
-          <div class="sabroso-dish__body">
-            <span class="sabroso-dish__num">01</span>
-            <strong>MIX</strong>
-            <em>Chicharrón + Bofe</em>
-            <p>Mezcla generosa de chicharrón crocante y bofe sazonado con papa frita en juliana. El plato que une dos sabores en uno.</p>
-            <a class="btn btn--whatsapp btn--sm" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20MIX%20Chicharr%C3%B3n%20+%20Bofe."
-               target="_blank" rel="noopener">Pedir MIX</a>
-          </div>
-        </article>
-
-        <article class="sabroso-dish">
-          <div class="sabroso-dish__media">
-            <img loading="lazy"
-                 src="assets/images/piqueteadero/chicharron.jpg"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=700&q=70'"
-                 alt="Chicharrón sabroso con yuca" />
-            <span class="sabroso-dish__badge sabroso-dish__badge--gold">Clásico</span>
-          </div>
-          <div class="sabroso-dish__body">
-            <span class="sabroso-dish__num">02</span>
-            <strong>CHICHARRÓN</strong>
-            <em>Crocante por fuera, jugoso por dentro</em>
-            <p>Trozos de cerdo dorados al sartén acompañados de yuca frita, cebolla caramelizada y limón. El clásico que nunca falla.</p>
-            <a class="btn btn--whatsapp btn--sm" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20CHICHARR%C3%93N."
-               target="_blank" rel="noopener">Pedir Chicharrón</a>
-          </div>
-        </article>
-
-        <article class="sabroso-dish">
-          <div class="sabroso-dish__media">
-            <img loading="lazy"
-                 src="assets/images/piqueteadero/picada.jpg"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=70'"
-                 alt="Picada para compartir" />
-            <span class="sabroso-dish__badge sabroso-dish__badge--red">Para compartir</span>
-          </div>
-          <div class="sabroso-dish__body">
-            <span class="sabroso-dish__num">03</span>
-            <strong>PICADA</strong>
-            <em>Tabla familiar variada</em>
-            <p>Tabla generosa con chicharrón, morcilla, longaniza, papa criolla, yuca, plátano y limones frescos. Para 2–4 personas.</p>
-            <a class="btn btn--whatsapp btn--sm" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20una%20PICADA%20para%20compartir."
-               target="_blank" rel="noopener">Pedir Picada</a>
-          </div>
-        </article>
-
-        <article class="sabroso-dish">
-          <div class="sabroso-dish__media">
-            <img loading="lazy"
-                 src="assets/images/piqueteadero/picadillo.jpg"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=700&q=70'"
-                 alt="Picadillo de cerdo con salsa criolla" />
-            <span class="sabroso-dish__badge">Especialidad</span>
-          </div>
-          <div class="sabroso-dish__body">
-            <span class="sabroso-dish__num">04</span>
-            <strong>PICADILLO</strong>
-            <em>De cerdo con salsa criolla</em>
-            <p>Cerdo finamente picado salteado con cebolla larga, tomate, cilantro y ají dulce. Servido con salsa criolla y arroz.</p>
-            <a class="btn btn--whatsapp btn--sm" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20PICADILLO%20de%20cerdo."
-               target="_blank" rel="noopener">Pedir Picadillo</a>
-          </div>
-        </article>
-
-        <article class="sabroso-dish sabroso-dish--feature">
-          <div class="sabroso-dish__media">
-            <img loading="lazy"
-                 src="assets/images/piqueteadero/maito.jpg"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1535140728325-a4d3707eee94?auto=format&fit=crop&w=900&q=70'"
-                 alt="MAITO de pescado a la cúrcuma" />
-            <span class="sabroso-dish__badge sabroso-dish__badge--gold">Plato estrella</span>
-          </div>
-          <div class="sabroso-dish__body">
-            <span class="sabroso-dish__num">05</span>
-            <strong>MAITO</strong>
-            <em>A la cúrcuma</em>
-            <p>Pescado fresco marinado en cúrcuma, hierbas amazónicas y envuelto al estilo ancestral. Servido con arroz, patacones, ensalada criolla y limón. Una experiencia única del Putumayo.</p>
-            <a class="btn btn--whatsapp btn--sm" data-magnetic
-               href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20pedir%20el%20MAITO%20a%20la%20c%C3%BArcuma."
-               target="_blank" rel="noopener">Pedir Maito</a>
-          </div>
-        </article>
-      </div>
-
-      <!-- Info útil del lugar -->
-      <div class="sabroso__info">
-        <div class="gastro-info-block">
-          <strong>Horario</strong>
-          <span>Lun–Sáb · 11 a.m. – 9 p.m.<br/>Dom · 11 a.m. – 5 p.m.</span>
-        </div>
-        <div class="gastro-info-block">
-          <strong>Eventos privados</strong>
-          <span>Salón disponible para celebraciones,<br/>reuniones de empresa y grupos.</span>
-        </div>
-        <div class="gastro-info-block">
-          <strong>Domicilios</strong>
-          <span>Llevadas en Mocoa y veredas cercanas.<br/>Pide por WhatsApp.</span>
-        </div>
-      </div>
-
-      <div class="sabroso__cta">
-        <a class="btn btn--whatsapp btn--lg" data-magnetic
-           href="https://wa.me/573157347306?text=Hola%20EL%20SABROSO%2C%20quiero%20reservar%20o%20pedir%20a%20domicilio."
-           target="_blank" rel="noopener">
-          Reservar o pedir a domicilio
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ====== PILAR 4 · TIENDA (teaser → la-tienda.html) ====== -->
   <section id="tienda" class="tienda-teaser" aria-labelledby="tiendaTeaserTitle">
     <div class="container tienda-teaser__inner">
@@ -1340,10 +1141,10 @@
           <li><span>✓</span> Envíos a toda Colombia · empaque biodegradable</li>
         </ul>
         <div class="tienda-teaser__ctas">
-          <a class="btn btn--primary btn--lg" href="la-tienda.html" data-magnetic>
+          <a class="btn btn--primary btn--lg" href="la-tienda.html">
             Entrar a la tienda →
           </a>
-          <a class="btn btn--whatsapp" data-magnetic
+          <a class="btn btn--whatsapp"
              href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20ver%20el%20catálogo."
              target="_blank" rel="noopener">Ver catálogo por WhatsApp</a>
         </div>
@@ -1357,192 +1158,13 @@
     </div>
   </section>
 
-  <!-- Sección antigua oculta (contenido ahora en la-tienda.html) -->
-  <section class="tienda-hidden-old" hidden style="display:none" aria-labelledby="shopTitle">
-    <div class="container">
-      <header class="section-head">
-        <span class="section-eyebrow">Tienda turística</span>
-        <h2 id="shopTitle" class="section-title">
-          Llévate <span class="text-grad">un pedazo del Putumayo</span>
-        </h2>
-        <p class="section-sub">
-          Artesanías hechas a mano por comunidades indígenas y campesinas, productos
-          agroindustriales del sur de Colombia. Todo cuidadosamente seleccionado.
-        </p>
-      </header>
-
-      <div class="shop__categories">
-        <button class="shop-cat is-active" data-cat="todos">Todos</button>
-        <button class="shop-cat" data-cat="artesania">Artesanías</button>
-        <button class="shop-cat" data-cat="bebidas">Café y cacao</button>
-        <button class="shop-cat" data-cat="medicina">Plantas medicinales</button>
-        <button class="shop-cat" data-cat="textil">Textiles</button>
-      </div>
-
-      <div class="shop__grid">
-        <article class="product-card" data-cat="artesania">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1612466453530-ff8b8e2f9b4f?auto=format&fit=crop&w=600&q=70" alt="Pulsera de chaquira tradicional" />
-            <span class="product-card__badge">Hecho a mano</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Artesanía indígena</span>
-            <h3>Pulseras de chaquira</h3>
-            <p>Tejidas por comunidades indígenas con los símbolos ancestrales: Yaco, Samai, Llactu, Montaña y Arco iris.</p>
-            <div class="product-card__foot">
-              <strong>desde $35.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20me%20interesan%20las%20pulseras%20de%20chaquira."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="bebidas">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=70" alt="Café orgánico del sur de Colombia" />
-            <span class="product-card__badge">Orgánico</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Café gourmet</span>
-            <h3>Café del sur (500g)</h3>
-            <p>Tostado lento, cultivado en fincas pequeñas del piedemonte amazónico. Notas a chocolate y panela.</p>
-            <div class="product-card__foot">
-              <strong>$48.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20comprar%20café%20del%20sur."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="bebidas">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=600&q=70" alt="Cacao orgánico en grano y tableta" />
-            <span class="product-card__badge">Fino de aroma</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Cacao orgánico</span>
-            <h3>Tableta de chocolate puro</h3>
-            <p>70% cacao del Putumayo. Sin químicos, sin azúcar refinada. Empaque eco-friendly.</p>
-            <div class="product-card__foot">
-              <strong>$24.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20comprar%20chocolate%20de%20cacao%20del%20Putumayo."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="medicina">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&q=70" alt="Hierbas medicinales amazónicas" />
-            <span class="product-card__badge">Tradicional</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Plantas medicinales</span>
-            <h3>Kit de hierbas amazónicas</h3>
-            <p>Selección de chuchuhuasa, ayahuma, ortiga y sangre de drago. Bendecidas por el taita.</p>
-            <div class="product-card__foot">
-              <strong>$65.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20el%20kit%20de%20hierbas%20amazónicas."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="bebidas">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=70" alt="Miel de abejas nativas" />
-            <span class="product-card__badge">Abejas nativas</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Miel pura</span>
-            <h3>Miel de abeja angelita (250ml)</h3>
-            <p>Producida por abejas sin aguijón nativas del Amazonas. Sabor cítrico delicado y propiedades medicinales.</p>
-            <div class="product-card__foot">
-              <strong>$42.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20miel%20de%20abeja%20angelita."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="textil">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=600&q=70" alt="Ruana tejida a mano" />
-            <span class="product-card__badge">Tejido a mano</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Textil tradicional</span>
-            <h3>Ruana putumayense</h3>
-            <p>Lana virgen tejida por manos campesinas en telar de cintura. Abriga las noches de selva alta.</p>
-            <div class="product-card__foot">
-              <strong>$185.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20una%20ruana%20putumayense."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="artesania">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f0?auto=format&fit=crop&w=600&q=70" alt="Collares y aretes de semillas" />
-            <span class="product-card__badge">Semillas naturales</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Bisutería natural</span>
-            <h3>Collares de semillas</h3>
-            <p>Acaí, huayruro, peonia y ojo de buey. Cada semilla recolectada en el bosque, sin tala.</p>
-            <div class="product-card__foot">
-              <strong>desde $28.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20me%20interesan%20los%20collares%20de%20semillas."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="product-card" data-cat="medicina">
-          <div class="product-card__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=70" alt="Aceites esenciales naturales" />
-            <span class="product-card__badge">100% natural</span>
-          </div>
-          <div class="product-card__body">
-            <span class="product-card__cat">Aceites esenciales</span>
-            <h3>Aceite de copaiba</h3>
-            <p>Resina amazónica milenaria. Antiinflamatorio natural y aromaterapia para conexión espiritual.</p>
-            <div class="product-card__foot">
-              <strong>$58.000 COP</strong>
-              <a class="btn btn--primary btn--sm" data-magnetic
-                 href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20aceite%20de%20copaiba."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="shop__cta">
-        <p>Más productos en nuestro catálogo completo</p>
-        <a class="btn btn--whatsapp btn--lg" data-magnetic
-           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20ver%20el%20catálogo%20completo%20de%20la%20tienda."
-           target="_blank" rel="noopener">
-          Ver catálogo completo
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ====== GALERÍA ====== -->
   <section id="galeria" class="gallery" aria-labelledby="galTitle">
     <div class="container">
       <header class="section-head">
         <span class="section-eyebrow">Galería</span>
         <h2 id="galTitle" class="section-title">Momentos <span class="text-grad">capturados</span></h2>
-        <p class="section-sub">Postales reales de viajeros que confiaron en PARAISOS.</p>
+        <p class="section-sub">Fotos de nuestros destinos y experiencias, del Putumayo al Caribe.</p>
       </header>
       <div class="gallery__filters" id="galFilters" role="tablist"></div>
       <div class="gallery__grid" id="galGrid"></div>
@@ -1550,24 +1172,6 @@
     <div class="lightbox" id="lightbox" hidden>
       <button class="lightbox__close" aria-label="Cerrar">×</button>
       <img id="lightboxImg" alt="" />
-    </div>
-  </section>
-
-  <!-- ====== TESTIMONIOS ====== -->
-  <section class="testimonials" aria-labelledby="testTitle">
-    <div class="container">
-      <header class="section-head">
-        <span class="section-eyebrow">Testimonios</span>
-        <h2 id="testTitle" class="section-title">Lo que dicen <span class="text-grad">nuestros viajeros</span></h2>
-      </header>
-      <div class="testimonials__viewport">
-        <div class="testimonials__track" id="testTrack"></div>
-        <div class="testimonials__nav">
-          <button id="testPrev" aria-label="Anterior">←</button>
-          <div class="testimonials__dots" id="testDots"></div>
-          <button id="testNext" aria-label="Siguiente">→</button>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1579,30 +1183,14 @@
         <h2 id="faqTitle" class="section-title">Resolvemos tus <span class="text-grad">dudas</span></h2>
       </header>
       <div class="accordion" id="faqAcc">
-        <details><summary>¿Qué seguros incluyen los viajes?</summary><p>Contamos con cubrimiento de <strong>Colasistencia y Magenta</strong> con pólizas contra accidentes. Los paquetes internacionales incluyen seguro de viaje con cobertura médica, equipaje y cancelación. Los nacionales lo ofrecen como opcional.</p></details>
+        <details><summary>¿Qué seguros incluyen los viajes?</summary><p>Contamos con cubrimiento de <strong>Colasistencia y Magenta</strong> con pólizas contra accidentes. Para viajes internacionales te asesoramos sobre la asistencia médica de viaje que pide cada destino.</p></details>
         <details><summary>¿Qué formas de pago aceptan?</summary><p>Recibimos <strong>efectivo, Nequi y transferencia a nuestra cuenta de ahorros Bancolombia</strong>; los datos de la cuenta te los compartimos por WhatsApp al momento de pagar. No recibimos tarjetas. Si quieres financiar tu viaje, tenemos convenio con cooperativas que te hacen el estudio de crédito.</p></details>
-        <details><summary>¿Cuál es la política de cancelación?</summary><p>Más de 30 días de antelación: reembolso del 80%. Entre 15–30 días: 50%. Menos de 15 días: no aplica reembolso, pero ofrecemos reprogramación.</p></details>
+        <details><summary>¿Cuál es la política de cancelación?</summary><p>Depende de cada proveedor (aerolínea, hotel o naviera). Las condiciones de cambio y cancelación te las entregamos por escrito en la cotización, antes de que pagues.</p></details>
         <details><summary>¿Qué incluyen las experiencias vivenciales en Putumayo?</summary><p>Acompañamiento de guías profesionales con tarjeta y baquianos locales, según la actividad. Coordinamos la ceremonia ancestral de limpia espiritual, siembra de árboles, talleres etnobilingües, ruta del cacao, yagesito y más, siempre con autorización de la comunidad anfitriona.</p></details>
         <details><summary>¿Qué documentos necesito para viajar?</summary><p>Nacionales: cédula. Internacionales: pasaporte con vigencia mínima de 6 meses, visas según destino y certificados de vacunación si aplica. Te asesoramos en todo el trámite.</p></details>
         <details><summary>¿Trabajan con empresas, colegios y grupos?</summary><p>Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet estudiantil, y diseñamos experiencias vivenciales para fortalecimiento empresarial y prácticas estudiantiles con enfoque étnico y de territorio. Hemos trabajado con OEI y la Gobernación del Putumayo.</p></details>
-        <details><summary>¿Cómo se confirma una reserva?</summary><p>Con un abono inicial mínimo del 30% y el saldo según las condiciones del plan*. Recibirás voucher digital con todos los detalles. Comunicación 24/7 por WhatsApp.</p></details>
+        <details><summary>¿Cómo se confirma una reserva?</summary><p>Con el abono que te indicamos en la cotización; el saldo se paga según las condiciones del plan. Te enviamos la confirmación con todos los detalles por WhatsApp o correo.</p></details>
       </div>
-    </div>
-  </section>
-
-  <!-- ====== NEWSLETTER ====== -->
-  <section class="newsletter" aria-labelledby="newsTitle">
-    <div class="container newsletter__inner">
-      <div>
-        <h2 id="newsTitle">Ofertas exclusivas en tu correo</h2>
-        <p>Suscríbete y sé el primero en conocer nuevos destinos, planes y promociones de temporada.</p>
-      </div>
-      <form class="newsletter__form" id="newsForm" novalidate>
-        <input type="email" id="newsEmail" placeholder="tu@email.com" required aria-label="Email" />
-        <button class="btn btn--primary" type="submit" data-magnetic>Suscribirme</button>
-        <span class="newsletter__hint">Sin spam · Consulta nuestra <a href="#privacy">política de privacidad</a>.</span>
-        <span class="newsletter__ok" id="newsOk" hidden>✓ ¡Listo! Revisa tu bandeja de entrada.</span>
-      </form>
     </div>
   </section>
 
@@ -1615,12 +1203,12 @@
     </div>
     <div class="container cta-final__inner">
       <h2 id="ctaTitle">"Más que un destino turístico, somos territorio de vida"</h2>
-      <p>Habla con un asesor humano en menos de 60 segundos. Sin compromiso.</p>
+      <p>Te atiende una persona de nuestro equipo por WhatsApp, de lunes a sábado. Sin compromiso.</p>
       <div class="cta-final__row">
-        <a class="btn btn--whatsapp btn--lg" data-magnetic
+        <a class="btn btn--whatsapp btn--lg"
            href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20que%20me%20asesoren%20con%20mi%20pr%C3%B3ximo%20viaje."
            target="_blank" rel="noopener">WhatsApp directo</a>
-        <a class="btn btn--ghost btn--lg" href="tel:+573157347306" data-magnetic>+57 315 734 7306</a>
+        <a class="btn btn--ghost btn--lg" href="tel:+573157347306">+57 315 734 7306</a>
       </div>
     </div>
   </section>
@@ -1638,6 +1226,7 @@
           <li><span class="contact__ico"><svg class="icon"><use href="#ico-inbox"/></svg></span><div><strong>Reservas</strong><a href="mailto:agenciadeviajesparaisos@gmail.com">agenciadeviajesparaisos@gmail.com</a></div></li>
           <li><span class="contact__ico"><svg class="icon"><use href="#ico-facebook"/></svg></span><div><strong>Facebook</strong><a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener">/viajesparaisos</a></div></li>
           <li><span class="contact__ico"><svg class="icon"><use href="#ico-clock"/></svg></span><div><strong>Horario</strong><em>Lun–Sáb 8:00 a.m. – 7:00 p.m.</em></div></li>
+          <li><span class="contact__ico"><svg class="icon"><use href="#ico-shield"/></svg></span><div><strong>Registro Nacional de Turismo</strong><em>RNT 84258</em></div></li>
         </ul>
         <a class="contact__map"
            href="https://www.google.com/maps/search/?api=1&query=calle+11+%23+9-146+barrio+progreso+mocoa+putumayo+colombia"
@@ -1671,7 +1260,7 @@
           </select>
         </label>
         <label class="field"><span>Mensaje</span><textarea name="msg" rows="4" placeholder="Cuéntanos fechas tentativas, número de personas, presupuesto…"></textarea></label>
-        <button class="btn btn--whatsapp btn--lg" type="submit" data-magnetic>Enviar por WhatsApp</button>
+        <button class="btn btn--whatsapp btn--lg" type="submit">Enviar por WhatsApp</button>
       </form>
     </div>
   </section>
@@ -1689,9 +1278,9 @@
         </a>
         <p class="footer__slogan">"Más que un destino turístico, somos territorio de vida."</p>
         <div class="footer__social">
-          <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook" data-magnetic><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
-          <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp" data-magnetic><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></a>
-          <a href="mailto:gerencia.paraisos@gmail.com" aria-label="Email" data-magnetic><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+          <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg></a>
+          <a href="mailto:gerencia.paraisos@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
       </div>
       <div>
@@ -1720,13 +1309,14 @@
           <li><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></li>
           <li><a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a></li>
           <li>Lun–Sáb 8:00 – 19:00</li>
+          <li>RNT 84258</li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
         <span>© <span id="year"></span> PARAISOS — Agencia de Viajes &amp; Turismo. Todos los derechos reservados.</span>
-        <ul><li><a href="#privacy">Privacidad</a></li><li><a href="#terms">Términos</a></li><li><a href="#cookies">Cookies</a></li></ul>
+        <span>Registro Nacional de Turismo 84258</span>
       </div>
     </div>
   </footer>
@@ -1737,42 +1327,12 @@
     <span class="float-wa__pulse"></span>
     <span class="float-wa__pulse float-wa__pulse--2"></span>
     <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
-    <span class="float-wa__tip">Chat con asesor</span>
+    <span class="float-wa__tip">Escríbenos</span>
   </a>
-
-  <div class="chat-widget" id="chatWidget">
-    <button class="chat-widget__toggle" id="chatToggle" aria-label="Abrir chat">
-      <svg class="icon" width="22" height="22"><use href="#ico-chat"/></svg>
-      <span class="chat-widget__badge">1</span>
-    </button>
-    <div class="chat-widget__box" id="chatBox" hidden>
-      <header>
-        <div>
-          <strong>Asesor PARAISOS</strong>
-          <em>En línea · responde en minutos</em>
-        </div>
-        <button id="chatClose" aria-label="Cerrar chat">×</button>
-      </header>
-      <div class="chat-widget__msg">
-        ¡Hola! Soy tu asesor de PARAISOS. ¿En qué te puedo ayudar hoy?
-      </div>
-      <div class="chat-widget__quick">
-        <button data-q="Quiero un plan al Putumayo con experiencias vivenciales">Putumayo vivencial</button>
-        <button data-q="Información sobre cruceros">Cruceros</button>
-        <button data-q="Plan para luna de miel">Luna de miel</button>
-        <button data-q="Tengo otra consulta">Otra consulta</button>
-      </div>
-    </div>
-  </div>
 
   <button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
-
-  <div class="cookie-banner" id="cookieBanner" hidden>
-    <p>Usamos cookies para mejorar tu experiencia. Al continuar aceptas nuestra <a href="#cookies">política de cookies</a>.</p>
-    <button class="btn btn--primary btn--sm" id="cookieAccept">Aceptar</button>
-  </div>
 
   <div class="sticky-cta" id="stickyCta" hidden>
     <a href="tel:+573157347306" class="sticky-cta__call" aria-label="Llamar"><svg class="icon" width="16" height="16"><use href="#ico-phone"/></svg> Llamar</a>
@@ -1783,7 +1343,6 @@
   </div>
 
   <!-- Scripts CDN -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 

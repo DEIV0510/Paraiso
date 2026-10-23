@@ -2,5 +2,11 @@
   "redirects": [
     { "source": "/el-piqueteadero.html", "destination": "/", "permanent": false },
     { "source": "/el-piqueteadero", "destination": "/", "permanent": false }
+  ],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
   ]
 }
