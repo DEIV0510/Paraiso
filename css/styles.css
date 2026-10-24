@@ -114,7 +114,7 @@ main section[tabindex="-1"]:focus { outline: none; }
    el lienzo) y nav.js las pinta todas antes de saltar a un ancla (cv-off). */
 main > section:not(#inicio):not(#mapa) {
   content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
+  contain-intrinsic-size: auto var(--cis, 900px);   /* --cis: alto estimado por sección */
 }
 html.cv-off main > section:not(#inicio):not(#mapa) { content-visibility: visible; }
 

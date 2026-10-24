@@ -74,7 +74,8 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const selectors = [
     '.section-head', '.map-3d', '.wizard',
     '.experience__media', '.experience__content', '.allies__list',
-    '.accordion details', '.contact__info', '.contact__form',
+    '.tienda-teaser__inner', '.gallery__grid', '.accordion',
+    '.contact__info', '.contact__form',
     '.service-card', '.putumayo__media', '.putumayo__intro', '.putumayo__col'
   ].join(',');
   const items = $$(selectors).filter(el => !el.closest('.hero'));
@@ -89,94 +90,170 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 })();
 
 /* ======================================================================
-   GALERÍA + LIGHTBOX + FILTROS
+   GALERÍA: FILTROS + VISOR
+   Las 12 fotos están en index.html (se ven sin JS). Aquí se crean los
+   filtros (botones con aria-pressed) y el visor: un <dialog> modal con la
+   foto grande, Esc para cerrar, flechas (teclado, botones o deslizar) para
+   cambiar de foto, el foco atrapado y devuelto a la foto que lo abrió.
    ====================================================================== */
 (function galeria() {
   const grid = $('#galGrid');
-  const filters = $('#galFilters');
   if (!grid) return;
+  const items = $$('li', grid);
+  const filters = $('#galFilters');
+  const status = $('#galStatus');
 
-  const fotos = [
-    {src:'assets/images/galeria/33.jpg', cat:'putumayo', alt:'Cascada en la selva del Putumayo'},
-    {src:'assets/images/galeria/24.jpg', cat:'putumayo', alt:'Cascada Fin del Mundo'},
-    {src:'assets/images/galeria/19.jpg', cat:'putumayo', alt:'Río de aguas esmeralda'},
-    {src:'assets/images/galeria/62.jpg', cat:'putumayo', alt:'Aventura en la cascada'},
-    {src:'assets/images/galeria/35.jpg', cat:'putumayo', alt:'Cascada Hornoyaco'},
-    {src:'assets/images/galeria/36.jpg', cat:'putumayo', alt:'Salto de agua en la selva'},
-    {src:'assets/images/galeria/26.jpg', cat:'putumayo', alt:'Cascada entre la montaña'},
-    {src:'assets/images/galeria/15.jpg', cat:'putumayo', alt:'Jaguar en su hábitat'},
-    {src:'assets/images/galeria/21.jpg', cat:'putumayo', alt:'Mono en el dosel amazónico'},
-    {src:'assets/images/galeria/22.jpg', cat:'putumayo', alt:'Perezosos en el árbol'},
-    {src:'assets/images/galeria/49.jpg', cat:'putumayo', alt:'Ave tropical del Putumayo'},
-    {src:'assets/images/galeria/61.jpg', cat:'putumayo', alt:'Tángara multicolor'},
-    {src:'assets/images/galeria/60.jpg', cat:'putumayo', alt:'Ave del Putumayo'},
-    {src:'assets/images/galeria/54.jpg', cat:'putumayo', alt:'Flor de heliconia y mariposa'},
-    {src:'assets/images/galeria/20.jpg', cat:'putumayo', alt:'Selva amazónica'},
-    {src:'assets/images/galeria/37.jpg', cat:'putumayo', alt:'Bosque de niebla'},
-    {src:'assets/images/galeria/41.jpg', cat:'putumayo', alt:'Mujer indígena del territorio'},
-    {src:'assets/images/galeria/47.jpg', cat:'putumayo', alt:'Comunidad indígena amazónica'},
-    {src:'assets/images/galeria/73.jpg', cat:'putumayo', alt:'Danza y cultura ancestral'},
-    {src:'assets/images/galeria/10.jpg', cat:'putumayo', alt:'Ceremonia ancestral con taita'},
-    {src:'assets/images/galeria/23.jpg', cat:'putumayo', alt:'Rafting en río cristalino'},
-    {src:'assets/images/galeria/52.jpg', cat:'eje-cafetero', alt:'Experiencia del café'},
-    {src:'assets/images/galeria/80.jpg', cat:'cartagena', alt:'Gastronomía frente al mar'},
-    {src:'assets/images/galeria/67.jpg', cat:'cartagena', alt:'Cócteles de bienvenida'},
-    {src:'assets/images/galeria/66.jpg', cat:'san-andres', alt:'Bebidas tropicales del resort'},
-    {src:'assets/images/galeria/69.jpg', cat:'san-andres', alt:'Buffet todo incluido'},
-    {src:'assets/images/galeria/70.jpg', cat:'santa-marta', alt:'Lounge frente al mar'},
-    {src:'assets/images/galeria/68.jpg', cat:'santa-marta', alt:'Bebidas tropicales'},
-    {src:'assets/images/galeria/83.jpg', cat:'atacames', alt:'Amigos disfrutando el resort'},
-    {src:'assets/images/galeria/85.jpg', cat:'atacames', alt:'Diversión en la piscina'}
-  ];
-  const nombres = { todas:'Todas', putumayo:'Putumayo', 'eje-cafetero':'Eje Cafetero', cartagena:'Cartagena',
-    'san-andres':'San Andrés', 'santa-marta':'Santa Marta', atacames:'Atacames' };
-  const cats = ['todas', ...new Set(fotos.map(f => f.cat))];
-  filters.innerHTML = cats.map((c, i) =>
-    `<button class="${i===0?'is-active':''}" data-cat="${c}">${nombres[c] || c}</button>`
-  ).join('');
-  function render(cat) {
-    grid.innerHTML = fotos
-      .filter(f => cat === 'todas' || f.cat === cat)
-      .map(f => `<figure><img loading="lazy" src="${f.src.replace('/galeria/', '/galeria/sm/')}" data-full="${f.src}" alt="${f.alt}" /></figure>`)
-      .join('');
+  /* ---------- Filtros ---------- */
+  const nombres = { todas: 'Todas', naturaleza: 'Naturaleza', fauna: 'Fauna', cultura: 'Cultura', playas: 'Playas y resorts' };
+  if (filters) {
+    const cats = ['todas', ...new Set(items.map(li => li.dataset.cat))];
+    filters.innerHTML = cats.map((c, i) =>
+      `<button type="button" data-cat="${c}" aria-pressed="${i === 0}">${nombres[c] || c}</button>`
+    ).join('');
+    filters.hidden = false;
+    filters.addEventListener('click', (e) => {
+      const b = e.target.closest('button');
+      if (!b) return;
+      $$('button', filters).forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+      const cat = b.dataset.cat;
+      let n = 0;
+      items.forEach(li => {
+        const show = cat === 'todas' || li.dataset.cat === cat;
+        li.hidden = !show;
+        if (show) n++;
+      });
+      if (status) status.textContent = `${n} fotos: ${b.textContent}.`;
+    });
   }
-  render('todas');
-  filters.addEventListener('click', (e) => {
-    const b = e.target.closest('button');
-    if (!b) return;
-    $$('button', filters).forEach(x => x.classList.remove('is-active'));
-    b.classList.add('is-active');
-    render(b.dataset.cat);
+
+  /* ---------- Visor ---------- */
+  const lb = $('#lightbox');
+  const img = $('#lightboxImg');
+  const cap = $('#lightboxCap');
+  if (!lb || !img || !cap) return;
+  const btnClose = $('.lightbox__close', lb);
+  const btnPrev = $('.lightbox__prev', lb);
+  const btnNext = $('.lightbox__next', lb);
+  const canModal = typeof lb.showModal === 'function';
+  let list = [];        // fotos visibles (respeta el filtro)
+  let index = 0;
+  let opener = null;
+
+  function show(i) {
+    index = (i + list.length) % list.length;
+    const thumb = $('img', list[index]);
+    const n = list[index].dataset.n;
+    const w = thumb.getAttribute('width');
+    const h = thumb.getAttribute('height');
+    img.removeAttribute('src');
+    img.width = w; img.height = h;
+    img.sizes = '(max-width: 768px) 100vw, 85vw';
+    img.srcset = `assets/images/galeria/w960/${n}.webp 960w, assets/images/galeria/w1400/${n}.webp ${w}w`;
+    img.src = `assets/images/galeria/w960/${n}.webp`;
+    img.alt = '';   // la descripción está en el pie de foto, que nombra el diálogo
+    cap.textContent = `${thumb.alt}. Foto ${index + 1} de ${list.length}.`;
+    const solo = list.length < 2;
+    btnPrev.hidden = solo;
+    btnNext.hidden = solo;
+  }
+
+  function open(button) {
+    list = items.filter(li => !li.hidden).map(li => $('.gallery__item', li));
+    opener = button;
+    show(list.indexOf(button));
+    document.documentElement.classList.add('lightbox-open');
+    if (canModal) lb.showModal(); else lb.setAttribute('open', '');
+    btnClose.focus();
+  }
+
+  function close() {
+    if (canModal && lb.open) lb.close();
+    else { lb.removeAttribute('open'); onClosed(); }
+  }
+
+  function onClosed() {
+    document.documentElement.classList.remove('lightbox-open');
+    img.removeAttribute('src');
+    img.removeAttribute('srcset');
+    if (opener && document.contains(opener)) opener.focus();
+  }
+
+  grid.addEventListener('click', (e) => {
+    const b = e.target.closest('.gallery__item');
+    if (b) open(b);
+  });
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', () => show(index - 1));
+  btnNext.addEventListener('click', () => show(index + 1));
+  // Esc: el <dialog> lanza «cancel» y luego «close»
+  lb.addEventListener('close', onClosed);
+  // Clic en el fondo oscuro (fuera de la foto y de los botones) cierra
+  lb.addEventListener('click', (e) => {
+    if (e.target === lb || e.target.classList.contains('lightbox__figure')) close();
   });
 
-  const lb = $('#lightbox');
-  const lbImg = $('#lightboxImg');
-  grid.addEventListener('click', (e) => {
-    const img = e.target.closest('img');
-    if (!img) return;
-    lbImg.src = img.dataset.full || img.src;
-    lbImg.alt = img.alt;
-    lb.hidden = false;
-    document.body.classList.add('no-scroll');
+  lb.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && list.length > 1) { e.preventDefault(); show(index - 1); }
+    else if (e.key === 'ArrowRight' && list.length > 1) { e.preventDefault(); show(index + 1); }
+    else if (e.key === 'Escape' && !canModal) { e.preventDefault(); close(); }
+    else if (e.key === 'Tab') {
+      // El foco da la vuelta entre los botones del visor
+      const f = [btnClose, btnPrev, btnNext].filter(b => !b.hidden);
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!f.includes(document.activeElement)) { e.preventDefault(); first.focus(); }
+    }
   });
-  lb.addEventListener('click', () => {
-    lb.hidden = true;
-    document.body.classList.remove('no-scroll');
-  });
+
+  // Deslizar con el dedo para cambiar de foto
+  let x0 = null, y0 = 0;
+  lb.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) { x0 = null; return; }
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+  }, { passive: true });
+  lb.addEventListener('touchend', (e) => {
+    if (x0 === null || list.length < 2) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    const dy = e.changedTouches[0].clientY - y0;
+    x0 = null;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) show(index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
 })();
 
 /* ======================================================================
    FORMULARIO DE CONTACTO → WhatsApp (nombre opcional, destino y mensaje)
+   El destino es obligatorio: si falta, el error se dice con texto, se
+   marca aria-invalid y el foco vuelve al campo.
    ====================================================================== */
 (function contactForm() {
   const form = $('#contactForm');
   if (!form) return;
+  const dest = form.elements.destino;
+  const err = $('#cfDestErr');
+  const setError = (on) => {
+    if (!dest || !err) return;
+    err.hidden = !on;
+    dest.closest('.field').classList.toggle('is-error', on);
+    if (on) {
+      dest.setAttribute('aria-invalid', 'true');
+      dest.setAttribute('aria-describedby', err.id);
+    } else {
+      dest.removeAttribute('aria-invalid');
+      dest.removeAttribute('aria-describedby');
+    }
+  };
+  // El error se limpia al elegir (no en blur, para no mover el botón bajo el clic)
+  if (dest) dest.addEventListener('change', () => { if (dest.value) setError(false); });
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(form);
     const name = String(fd.get('name') || '').trim();
     const destino = String(fd.get('destino') || '').trim();
     const msg = String(fd.get('msg') || '').trim();
+    if (!destino) { setError(true); dest.focus(); return; }
+    setError(false);
     const lines = [
       name ? `Hola PARAISOS, soy ${name}. Quiero cotizar un viaje.` : 'Hola PARAISOS, quiero cotizar un viaje.',
       `Destino: ${destino}`

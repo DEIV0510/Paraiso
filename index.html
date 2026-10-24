@@ -99,9 +99,13 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"¿Qué seguros incluyen los viajes?","acceptedAnswer":{"@type":"Answer","text":"Contamos con cubrimiento de Colasistencia y Magenta con pólizas contra accidentes. Para viajes internacionales te asesoramos sobre la asistencia médica de viaje que pide cada destino."}},
-      {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Recibimos efectivo, Nequi y transferencia a nuestra cuenta de ahorros Bancolombia; los datos de la cuenta te los compartimos por WhatsApp al momento de pagar. No recibimos tarjetas. Si quieres financiar tu viaje, tenemos convenio con cooperativas que te hacen el estudio de crédito."}},
-      {"@type":"Question","name":"¿Cuál es la política de cancelación?","acceptedAnswer":{"@type":"Answer","text":"Depende de cada proveedor (aerolínea, hotel o naviera). Las condiciones de cambio y cancelación te las entregamos por escrito en la cotización, antes de que pagues."}}
+      {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Efectivo, Nequi o transferencia a nuestra cuenta de ahorros Bancolombia; los datos te los damos al momento de pagar. No recibimos tarjetas, pero puedes financiar tu viaje con cooperativas en convenio, previo estudio de crédito."}},
+      {"@type":"Question","name":"¿Cómo se confirma una reserva?","acceptedAnswer":{"@type":"Answer","text":"Te enviamos una cotización con las tarifas según la disponibilidad del momento. Cuando haces el pago acordado, te confirmamos la reserva por WhatsApp."}},
+      {"@type":"Question","name":"¿Cuál es la política de cancelación?","acceptedAnswer":{"@type":"Answer","text":"Depende de cada proveedor: aerolínea, hotel o naviera. Te damos esas condiciones en la cotización, antes de que pagues."}},
+      {"@type":"Question","name":"¿Con qué seguros cuentan?","acceptedAnswer":{"@type":"Answer","text":"Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes."}},
+      {"@type":"Question","name":"¿Qué documentos necesito para viajar?","acceptedAnswer":{"@type":"Answer","text":"Dentro de Colombia, tu cédula. Para viajar a otro país, pregúntanos qué pide tu destino: pasaporte, visa o vacunas."}},
+      {"@type":"Question","name":"¿Qué incluyen las experiencias vivenciales en Putumayo?","acceptedAnswer":{"@type":"Answer","text":"Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos."}},
+      {"@type":"Question","name":"¿Trabajan con colegios, universidades y empresas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles."}}
     ]
   }
   </script>
@@ -140,11 +144,14 @@
       <!-- contacto -->
       <symbol id="ico-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
       <symbol id="ico-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
-      <symbol id="ico-inbox" viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
       <symbol id="ico-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
       <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
 
-      <symbol id="ico-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+      <!-- nosotros (guías con tarjeta profesional) y visor de la galería -->
+      <symbol id="ico-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16a3.2 3.2 0 0 1 6 0M15 10h4M15 14h4"/></symbol>
+      <symbol id="ico-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+      <symbol id="ico-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+      <symbol id="ico-chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
       <!-- WhatsApp relleno (no de trazo): botones «Cotizar» de las tarjetas -->
       <symbol id="ico-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></symbol>
     </defs>
@@ -790,7 +797,7 @@
         <img loading="lazy" decoding="async"
              src="assets/images/galeria/w960/45.webp"
              srcset="assets/images/galeria/w480/45.webp 480w, assets/images/galeria/w960/45.webp 960w, assets/images/galeria/w1400/45.webp 1400w"
-             sizes="(max-width: 880px) 92vw, 550px"
+             sizes="(max-width: 600px) 92vw, 550px"
              width="1400" height="837"
              alt="Grupo de viajeros de PARAISOS en una jornada de senderismo" />
       </div>
@@ -799,42 +806,51 @@
         <p class="experience__lead">
           Somos una empresa turística colombiana de origen andino-amazónico. Facilitamos
           experiencias de turismo de naturaleza y turismo convencional, dentro y fuera de
-          Colombia, con compromiso social y ambiental.
+          Colombia. Diseñamos nuestros propios programas o trabajamos con agencias de viajes
+          aliadas, con alto compromiso social y ambiental.
         </p>
-        <ul class="experience__features">
-          <li>
-            <span class="ico"><svg class="icon"><use href="#ico-star"/></svg></span>
-            <div><strong>Guías con tarjeta profesional</strong><em>Certificaciones en competencias laborales y capacitación permanente.</em></div>
-          </li>
-          <li>
-            <span class="ico"><svg class="icon"><use href="#ico-map"/></svg></span>
-            <div><strong>Itinerarios a tu medida</strong><em>Según tu tiempo, tu grupo y tus gustos; directos o con agencias aliadas.</em></div>
-          </li>
-          <li>
-            <span class="ico"><svg class="icon"><use href="#ico-chat"/></svg></span>
-            <div><strong>Acompañamiento en cada etapa</strong><em>Te atendemos antes, durante y después del viaje.</em></div>
-          </li>
-        </ul>
-        <a class="btn btn--ghost" href="nosotros.html">Misión, visión y políticas</a>
+        <a class="btn btn--ghost" href="nosotros.html">Conoce misión, visión y políticas</a>
       </div>
     </div>
 
+    <div class="container">
+      <ul class="experience__features">
+        <li>
+          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-map"/></svg></span>
+          <div><strong>Planes a tu medida</strong><span>Según tu tiempo, tu grupo, tus gustos y tu estado físico.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-chat"/></svg></span>
+          <div><strong>Acompañamiento en cada etapa</strong><span>Antes, durante y después del viaje.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-shield"/></svg></span>
+          <div><strong>Pólizas Colasistencia y Magenta</strong><span>Cubrimiento con pólizas contra accidentes.</span></div>
+        </li>
+        <li>
+          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-id"/></svg></span>
+          <div><strong>Guías con tarjeta profesional</strong><span>Y baquianos especializados en cada actividad.</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Respaldo: experiencia contractual del Portafolio 2026, pólizas y RNT -->
     <div class="container allies">
       <h3 class="allies__title">Respaldo</h3>
       <dl class="allies__list">
-        <div>
+        <div class="allies__item allies__item--wide">
           <dt>OEI</dt>
-          <dd>Organización de Estados Iberoamericanos. Prestación de servicios 2016, contratos C-5211781/13 AC006-019-16 y AC006-021-16.</dd>
+          <dd>Organización de Estados Iberoamericanos. Prestación de servicios, 2016. Contratos <span class="nowrap">C-5211781/13</span> <span class="nowrap">AC006-019-16</span> y <span class="nowrap">AC006-021-16</span>.</dd>
         </div>
-        <div>
+        <div class="allies__item allies__item--wide">
           <dt>Gobernación del Putumayo</dt>
-          <dd>Suministro de bienes y servicios, contratos CSM-460-2014 y CSM-833-2014.</dd>
+          <dd>Suministro de bienes y servicios, 2014. Contratos <span class="nowrap">CSM-460-2014</span> y <span class="nowrap">CSM-833-2014</span>.</dd>
         </div>
-        <div>
+        <div class="allies__item">
           <dt>Colasistencia y Magenta</dt>
           <dd>Pólizas contra accidentes.</dd>
         </div>
-        <div>
+        <div class="allies__item">
           <dt>RNT 84258</dt>
           <dd>Registro Nacional de Turismo.</dd>
         </div>
@@ -842,57 +858,78 @@
     </div>
   </section>
 
-  <!-- ====== TIENDA (franja hacia la-tienda.html) ====== -->
+  <!-- ====== TIENDA (franja hacia la-tienda.html) ======
+       Texto del Portafolio 2026; sin precios ni catálogo. -->
   <section id="tienda" class="tienda-teaser" aria-labelledby="tiendaTeaserTitle">
     <div class="container tienda-teaser__inner">
-      <div class="tienda-teaser__media">
-        <img loading="lazy" decoding="async"
-             src="assets/images/tienda/velas-piedras-600.webp"
-             srcset="assets/images/tienda/velas-piedras-600.webp 600w, assets/images/tienda/velas-piedras-1000.webp 1000w"
-             sizes="(max-width: 880px) 92vw, 360px"
-             width="1000" height="1333"
-             alt="Velas artesanales de colores en un estante de la tienda" class="tienda-teaser__photo" />
-      </div>
-      <div class="tienda-teaser__content">
-        <h2 id="tiendaTeaserTitle" class="section-title">Productos artesanales y agroindustriales del Putumayo</h2>
-        <p>
-          Promovemos y vendemos productos de origen putumayense, hechos con comunidades étnicas
-          y campesinas. También organizamos jornadas de compra de artesanía con visita a talleres.
-        </p>
-        <a class="btn btn--ghost" href="la-tienda.html">Ver la tienda</a>
-      </div>
+      <img class="tienda-teaser__photo" loading="lazy" decoding="async"
+           src="assets/images/tienda/velas-piedras-600.webp"
+           srcset="assets/images/tienda/velas-piedras-600.webp 600w, assets/images/tienda/velas-piedras-1000.webp 1000w"
+           sizes="(max-width: 540px) 96px, (max-width: 880px) 180px, 220px"
+           width="1000" height="1333"
+           alt="Velas artesanales de colores" />
+      <h2 id="tiendaTeaserTitle" class="section-title tienda-teaser__title">Productos del Putumayo</h2>
+      <p class="tienda-teaser__text">
+        Productos artesanales y agroindustriales de origen putumayense, con participación de
+        comunidades étnicas y campesinas. También organizamos jornadas de compra de artesanía
+        con visita a talleres.
+      </p>
+      <a class="btn btn--ghost tienda-teaser__btn" href="la-tienda.html">Ver la tienda</a>
     </div>
   </section>
 
-  <!-- ====== GALERÍA ====== -->
+  <!-- ====== GALERÍA ======
+       12 fotos horizontales del cliente (todas 5:3, la grilla queda pareja).
+       Cada foto es un botón que abre el visor (#lightbox, al final del body).
+       data-cat: naturaleza · fauna · cultura · playas. Los filtros los crea
+       main.js; sin JS la grilla se ve completa. -->
   <section id="galeria" class="gallery" aria-labelledby="galTitle">
     <div class="container">
-      <header class="section-head">
+      <header class="section-head section-head--compact">
         <h2 id="galTitle" class="section-title">Galería</h2>
       </header>
-      <div class="gallery__filters" id="galFilters" role="tablist"></div>
-      <div class="gallery__grid" id="galGrid"></div>
-    </div>
-    <div class="lightbox" id="lightbox" hidden>
-      <button class="lightbox__close" aria-label="Cerrar">×</button>
-      <img id="lightboxImg" alt="" />
+      <div class="gallery__filters" id="galFilters" role="group" aria-label="Filtrar fotos" hidden></div>
+      <p class="sr-only" id="galStatus" role="status"></p>
+      <ul class="gallery__grid" id="galGrid">
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="33"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/33.webp" srcset="assets/images/galeria/w480/33.webp 480w, assets/images/galeria/w960/33.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada en la selva del Putumayo vista desde arriba" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="15"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/15.webp" srcset="assets/images/galeria/w480/15.webp 480w, assets/images/galeria/w960/15.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Tigrillo caminando sobre un tronco en la selva" /></button></li>
+        <li data-cat="cultura"><button type="button" class="gallery__item" data-n="47"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/47.webp" srcset="assets/images/galeria/w480/47.webp 480w, assets/images/galeria/w960/47.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Taita indígena junto a una fogata con un grupo de viajeros" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="34"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/34.webp" srcset="assets/images/galeria/w480/34.webp 480w, assets/images/galeria/w960/34.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Pozo de agua verde esmeralda en el Putumayo" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="23"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/23.webp" srcset="assets/images/galeria/w480/23.webp 480w, assets/images/galeria/w960/23.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Neumating en un río del Putumayo" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="22"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/22.webp" srcset="assets/images/galeria/w480/22.webp 480w, assets/images/galeria/w960/22.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Dos monos titíes en una rama" /></button></li>
+        <li data-cat="playas"><button type="button" class="gallery__item" data-n="78"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/78.webp" srcset="assets/images/galeria/w480/78.webp 480w, assets/images/galeria/w960/78.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Resort con piscina frente a una playa con palmeras" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="35"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/35.webp" srcset="assets/images/galeria/w480/35.webp 480w, assets/images/galeria/w960/35.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada y pozo de agua cristalina en el Putumayo" /></button></li>
+        <li data-cat="cultura"><button type="button" class="gallery__item" data-n="9"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/9.webp" srcset="assets/images/galeria/w480/9.webp 480w, assets/images/galeria/w960/9.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Petroglifo tallado en una roca" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="40"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/40.webp" srcset="assets/images/galeria/w480/40.webp 480w, assets/images/galeria/w960/40.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Bañista bajo una cascada en el Putumayo" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="49"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/49.webp" srcset="assets/images/galeria/w480/49.webp 480w, assets/images/galeria/w960/49.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Ave silvestre comiendo plátano maduro" /></button></li>
+        <li data-cat="playas"><button type="button" class="gallery__item" data-n="77"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/77.webp" srcset="assets/images/galeria/w480/77.webp 480w, assets/images/galeria/w960/77.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Muelle con asoleadoras sobre el mar" /></button></li>
+      </ul>
+      <p class="gallery__more">
+        <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#ico-facebook"/></svg>
+          Más fotos en Facebook
+        </a>
+      </p>
     </div>
   </section>
 
   <!-- ====== FAQ ====== -->
   <section id="faq" class="faq" aria-labelledby="faqTitle">
     <div class="container faq__inner">
-      <header class="section-head section-head--compact">
+      <header class="faq__head">
         <h2 id="faqTitle" class="section-title">Preguntas frecuentes</h2>
+        <p class="faq__ask">¿Tienes otra pregunta? <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20tengo%20una%20pregunta." target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
       </header>
+      <!-- Respuestas de 1 o 2 frases. Si cambia una, cambiar también el JSON-LD
+           FAQPage del <head>. -->
       <div class="accordion" id="faqAcc">
-        <details><summary>¿Qué seguros incluyen los viajes?</summary><p>Contamos con cubrimiento de <strong>Colasistencia y Magenta</strong> con pólizas contra accidentes. Para viajes internacionales te asesoramos sobre la asistencia médica de viaje que pide cada destino.</p></details>
-        <details><summary>¿Qué formas de pago aceptan?</summary><p>Recibimos <strong>efectivo, Nequi y transferencia a nuestra cuenta de ahorros Bancolombia</strong>; los datos de la cuenta te los compartimos por WhatsApp al momento de pagar. No recibimos tarjetas. Si quieres financiar tu viaje, tenemos convenio con cooperativas que te hacen el estudio de crédito.</p></details>
-        <details><summary>¿Cuál es la política de cancelación?</summary><p>Depende de cada proveedor (aerolínea, hotel o naviera). Las condiciones de cambio y cancelación te las entregamos por escrito en la cotización, antes de que pagues.</p></details>
-        <details><summary>¿Qué incluyen las experiencias vivenciales en Putumayo?</summary><p>Acompañamiento de guías profesionales con tarjeta y baquianos locales, según la actividad. Coordinamos la ceremonia ancestral de limpia espiritual, siembra de árboles, talleres etnobilingües, ruta del cacao, yagesito y más, siempre con autorización de la comunidad anfitriona.</p></details>
-        <details><summary>¿Qué documentos necesito para viajar?</summary><p>Nacionales: cédula. Internacionales: pasaporte con vigencia mínima de 6 meses, visas según destino y certificados de vacunación si aplica. Te asesoramos en todo el trámite.</p></details>
-        <details><summary>¿Trabajan con empresas, colegios y grupos?</summary><p>Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet estudiantil, y diseñamos experiencias vivenciales para fortalecimiento empresarial y prácticas estudiantiles con enfoque étnico y de territorio. Hemos trabajado con OEI y la Gobernación del Putumayo.</p></details>
-        <details><summary>¿Cómo se confirma una reserva?</summary><p>Con el abono que te indicamos en la cotización; el saldo se paga según las condiciones del plan. Te enviamos la confirmación con todos los detalles por WhatsApp o correo.</p></details>
+        <details><summary>¿Qué formas de pago aceptan?</summary><p>Efectivo, Nequi o transferencia a nuestra cuenta de ahorros Bancolombia; los datos te los damos al momento de pagar. No recibimos tarjetas, pero puedes financiar tu viaje con cooperativas en convenio, previo estudio de crédito.</p></details>
+        <details><summary>¿Cómo se confirma una reserva?</summary><p>Te enviamos una cotización con las tarifas según la disponibilidad del momento. Cuando haces el pago acordado, te confirmamos la reserva por WhatsApp.</p></details>
+        <details><summary>¿Cuál es la política de cancelación?</summary><p>Depende de cada proveedor: aerolínea, hotel o naviera. Te damos esas condiciones en la cotización, antes de que pagues.</p></details>
+        <details><summary>¿Con qué seguros cuentan?</summary><p>Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes.</p></details>
+        <details><summary>¿Qué documentos necesito para viajar?</summary><p>Dentro de Colombia, tu cédula. Para viajar a otro país, pregúntanos qué pide tu destino: pasaporte, visa o vacunas.</p></details>
+        <details><summary>¿Qué incluyen las experiencias vivenciales en Putumayo?</summary><p>Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos.</p></details>
+        <details><summary>¿Trabajan con colegios, universidades y empresas?</summary><p>Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles.</p></details>
       </div>
     </div>
   </section>
@@ -901,49 +938,76 @@
   <section id="contacto" class="contact" aria-labelledby="contactTitle">
     <div class="container contact__grid">
       <div class="contact__info">
-        <h2 id="contactTitle" class="section-title section-title--left">Visítanos o escríbenos</h2>
+        <h2 id="contactTitle" class="section-title">Visítanos o escríbenos</h2>
+        <!-- El horario es un dato previo del sitio: falta que el cliente lo confirme -->
         <ul class="contact__list">
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-pin"/></svg></span><div><strong>Dirección</strong><em>Calle 11 Nro 9-146 · Barrio Progreso · Mocoa, Putumayo, Colombia</em></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-chat"/></svg></span><div><strong>WhatsApp</strong><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-mail"/></svg></span><div><strong>Email</strong><a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-inbox"/></svg></span><div><strong>Reservas</strong><a href="mailto:agenciadeviajesparaisos@gmail.com">agenciadeviajesparaisos@gmail.com</a></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-facebook"/></svg></span><div><strong>Facebook</strong><a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener">/viajesparaisos</a></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-clock"/></svg></span><div><strong>Horario</strong><em>Lun–Sáb 8:00 a.m. – 7:00 p.m.</em></div></li>
-          <li><span class="contact__ico"><svg class="icon"><use href="#ico-shield"/></svg></span><div><strong>Registro Nacional de Turismo</strong><em>RNT 84258</em></div></li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-pin"/></svg></span>
+            <div>
+              <strong>Dirección</strong>
+              <span>Calle 11 Nro 9-146, Barrio Progreso, Mocoa, Putumayo</span>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=calle+11+%23+9-146+barrio+progreso+mocoa+putumayo+colombia" target="_blank" rel="noopener">Ver en Google Maps</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-chat"/></svg></span>
+            <div><strong>WhatsApp</strong><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-mail"/></svg></span>
+            <div>
+              <strong>Correo</strong>
+              <a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a>
+              <a href="mailto:agenciadeviajesparaisos@gmail.com">agenciadeviajesparaisos@gmail.com</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-facebook"/></svg></span>
+            <div><strong>Facebook</strong><a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener">/viajesparaisos</a></div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-clock"/></svg></span>
+            <div><strong>Horario</strong><span>Lunes a sábado, 8:00 a. m. a 7:00 p. m.</span></div>
+          </li>
+          <li>
+            <span class="contact__ico" aria-hidden="true"><svg class="icon"><use href="#ico-shield"/></svg></span>
+            <div><strong>Registro Nacional de Turismo</strong><span>RNT 84258</span></div>
+          </li>
         </ul>
-        <a class="contact__map"
-           href="https://www.google.com/maps/search/?api=1&query=calle+11+%23+9-146+barrio+progreso+mocoa+putumayo+colombia"
-           target="_blank" rel="noopener" aria-label="Abrir ubicación en Google Maps">
-          <div class="contact__map-bg" aria-hidden="true"></div>
-          <div class="contact__map-pin" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-          </div>
-          <div class="contact__map-info">
-            <strong>Calle 11 Nro 9-146 · Barrio Progreso</strong>
-            <em>Mocoa, Putumayo · Toca para abrir en Google Maps</em>
-          </div>
-        </a>
       </div>
-      <form class="contact__form" id="contactForm" novalidate>
-        <h3>Escríbenos por WhatsApp</h3>
-        <label class="field"><span>Tu nombre (opcional)</span><input type="text" name="name" autocomplete="name" maxlength="80" /></label>
-        <label class="field"><span>Destino</span>
-          <select name="destino">
+      <!-- Abre WhatsApp con el mensaje listo (main.js). Solo pide nombre
+           (opcional), destino y mensaje. -->
+      <form class="contact__form" id="contactForm" novalidate aria-labelledby="contactFormTitle">
+        <h3 id="contactFormTitle">Escríbenos por WhatsApp</h3>
+        <div class="field">
+          <label for="cfName">Tu nombre (opcional)</label>
+          <input type="text" id="cfName" name="name" autocomplete="name" maxlength="80" />
+        </div>
+        <div class="field">
+          <label for="cfDest">Destino</label>
+          <select id="cfDest" name="destino" required>
+            <option value="">Elige un destino</option>
             <option>Putumayo</option>
-            <option>Cartagena</option><option>San Andrés</option><option>Santa Marta</option>
-            <option>Eje Cafetero</option><option>Tumaco</option><option>Huila</option>
+            <option>Cartagena</option>
+            <option>San Andrés</option>
+            <option>Santa Marta</option>
+            <option>Eje Cafetero</option>
+            <option>Tumaco</option>
+            <option>Huila</option>
             <option>Atacames (Ecuador)</option>
             <option>Crucero</option>
             <option>Excursión de colegio o universidad</option>
-            <option>Plan empresarial o educativo</option>
+            <option>Plan para empresa o práctica estudiantil</option>
             <option>Otro destino</option>
           </select>
-        </label>
-        <label class="field"><span>Mensaje</span><textarea name="msg" rows="4" maxlength="1000" placeholder="Fechas tentativas, número de personas y lo que te gustaría hacer"></textarea></label>
+          <p class="field__error" id="cfDestErr" hidden>Elige un destino para cotizar.</p>
+        </div>
+        <div class="field">
+          <label for="cfMsg">Mensaje (opcional)</label>
+          <textarea id="cfMsg" name="msg" rows="3" maxlength="1000" autocomplete="off" placeholder="Fechas, número de personas y lo que te gustaría hacer"></textarea>
+        </div>
         <button class="btn btn--whatsapp btn--lg" type="submit">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
           Cotizar por WhatsApp
         </button>
         <p class="contact__note">Se abre WhatsApp con tu mensaje listo. Solo tienes que enviarlo.</p>
@@ -981,6 +1045,26 @@
       </div>
     </div>
   </footer>
+
+  <!-- ====== VISOR DE LA GALERÍA ======
+       <dialog> modal fuera de <main>: así no lo encierra el content-visibility
+       de las secciones. Esc cierra, las flechas cambian de foto, el foco queda
+       dentro y vuelve a la foto que lo abrió (main.js). -->
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCap">
+    <button type="button" class="lightbox__btn lightbox__close" aria-label="Cerrar">
+      <svg class="icon" aria-hidden="true"><use href="#ico-x"/></svg>
+    </button>
+    <button type="button" class="lightbox__btn lightbox__prev" aria-label="Foto anterior">
+      <svg class="icon" aria-hidden="true"><use href="#ico-chevron-left"/></svg>
+    </button>
+    <figure class="lightbox__figure">
+      <img id="lightboxImg" alt="" width="1400" height="837" decoding="async" />
+      <figcaption class="lightbox__cap" id="lightboxCap" aria-live="polite"></figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__next" aria-label="Foto siguiente">
+      <svg class="icon" aria-hidden="true"><use href="#ico-chevron-right"/></svg>
+    </button>
+  </dialog>
 
   <!-- ====== ACCIONES FIJAS ======
        Escritorio: botón redondo de WhatsApp. Celular (≤768 px): barra inferior,
