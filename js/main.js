@@ -2,6 +2,7 @@
    PARAISOS — main.js (solo el inicio)
    - Datos compartidos (PARAISOS_DATA) que leen el mapa y el asistente
    - Realce al hacer scroll (solo un realce: sin JS todo se ve)
+   - Mapa: chips, lista de tarifas y panel (funcionan sin el 3D)
    - Galería y visor (las tarjetas de destino están en el HTML)
    - Formulario de contacto → WhatsApp
    - Video del hero: se reproduce para todos, con botón de pausa
@@ -15,45 +16,43 @@
    tarjetas de #viajes están escritas en index.html: si cambia una tarifa,
    hay que cambiarla aquí, en esas tarjetas y en la cinta superior.
    precio: tarifa «desde» confirmada por el cliente, o null («Precio por
-   WhatsApp»). Solo Putumayo tiene plan confirmado (fin de semana). */
-const destImg = (id) => ({
-  img: `assets/images/destinos/${id}-480.webp`,
-  srcset: `assets/images/destinos/${id}-480.webp 480w, assets/images/destinos/${id}-960.webp 960w`
-});
+   WhatsApp»). Solo Putumayo tiene plan confirmado (fin de semana).
+   Sin fotos: el material del cliente no trae fotos verificadas de cada
+   destino (las tarjetas, el panel del mapa y el asistente van sin foto). */
 window.PARAISOS_DATA = {
   whatsapp: '573157347306',
   destinos: [
     { id:'putumayo', nombre:'Putumayo', region:'Andes y Amazonía',
-      lat:1.15, lng:-76.65, ...destImg('putumayo'),
+      lat:1.15, lng:-76.65,
       desc:'Territorio andino-amazónico con 3 parques nacionales naturales, cascadas y ríos cristalinos.',
       features:['Fin del Mundo','Cascada del Hornoyaco','Cañón del Mandiyaco','Limpia con taita indígena','Sembrando vida','Yagesito','Ruta del cacao','Kayaking y rappel'],
       precio:'$999.000', plan:'Plan fin de semana' },
     { id:'cartagena', nombre:'Cartagena', region:'Caribe colombiano',
-      lat:10.39, lng:-75.51, ...destImg('cartagena'),
+      lat:10.39, lng:-75.51,
       desc:'Ciudad amurallada frente al mar Caribe.',
       precio:'$999.000' },
     { id:'san-andres', nombre:'San Andrés', region:'Isla del Caribe',
-      lat:12.58, lng:-81.71, ...destImg('san-andres'),
+      lat:12.58, lng:-81.71,
       desc:'Isla del Caribe colombiano con playas de arena blanca.',
       precio:'$1.250.000' },
     { id:'santa-marta', nombre:'Santa Marta', region:'Caribe colombiano',
-      lat:11.24, lng:-74.21, ...destImg('santa-marta'),
+      lat:11.24, lng:-74.21,
       desc:'Playas del Caribe al pie de la Sierra Nevada.',
       precio:'$999.000' },
     { id:'eje-cafetero', nombre:'Eje Cafetero', region:'Andes colombianos',
-      lat:4.81, lng:-75.69, ...destImg('eje-cafetero'),
+      lat:4.81, lng:-75.69,
       desc:'Paisaje cultural cafetero y Valle del Cocora.',
       precio:null },
     { id:'tumaco', nombre:'Tumaco', region:'Pacífico colombiano',
-      lat:1.81, lng:-78.76, ...destImg('tumaco'),
+      lat:1.81, lng:-78.76,
       desc:'Playas y manglares del Pacífico nariñense.',
       precio:'$680.000' },
     { id:'huila', nombre:'Huila', region:'Andes del sur',
-      lat:2.93, lng:-75.28, ...destImg('huila'),
+      lat:2.93, lng:-75.28,
       desc:'Desierto de la Tatacoa y Parque Arqueológico de San Agustín.',
       precio:null },
     { id:'atacames', nombre:'Atacames', region:'Pacífico de Ecuador',
-      lat:0.86, lng:-79.85, ...destImg('atacames'),
+      lat:0.86, lng:-79.85,
       desc:'Playas del Pacífico ecuatoriano.',
       precio:'$699.000' }
   ]
@@ -76,7 +75,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     '.experience__media', '.experience__content', '.allies__list',
     '.tienda-teaser__inner', '.gallery__grid', '.accordion',
     '.contact__info', '.contact__form',
-    '.service-card', '.putumayo__media', '.putumayo__intro', '.putumayo__col'
+    '.putumayo__media', '.putumayo__intro', '.putumayo__col'
   ].join(',');
   const items = $$(selectors).filter(el => !el.closest('.hero'));
   const io = new IntersectionObserver((entries) => {
@@ -87,6 +86,129 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
   items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
+})();
+
+/* ======================================================================
+   MAPA: CHIPS, LISTA DE TARIFAS Y PANEL
+   Se arman al cargar la página desde PARAISOS_DATA, sin esperar a Three.js:
+   la sección mide lo mismo antes y después del 3D, y si el 3D no carga
+   (red lenta, CDN bloqueado) los chips y la lista siguen funcionando.
+   El mapa 3D (colombia-map-3d.js) se engancha con PARAISOS_MAP.attach()
+   para volar al destino, marcar el pin y abrir la ficha.
+   ====================================================================== */
+window.PARAISOS_MAP = (function mapUI() {
+  const chips = $('#destChips');
+  const panel = $('#destPanel');
+  const empty = $('#panelEmpty');
+  const content = $('#panelContent');
+  if (!chips || !panel || !empty || !content || !Array.isArray(D.destinos)) return null;
+
+  const touchUI = () => matchMedia('(hover: none), (pointer: coarse), (max-width: 768px)').matches;
+  const priceLine = (d) => (d.precio ? `Desde ${d.precio}` : 'Precio por WhatsApp');
+  // «al Eje Cafetero», «al Huila»: esos destinos llevan artículo
+  const toDest = (d) => (/^(eje-cafetero|huila)$/.test(d.id) ? 'al ' : 'a ') + d.nombre;
+  const waHref = (d) => `https://wa.me/${D.whatsapp}?text=${encodeURIComponent(`Hola, PARAISOS. Quiero cotizar un viaje ${toDest(d)}.`)}`;
+  const WA_ICON = '<svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>';
+  let hooks = null;
+  let selectedId = null;
+
+  // Región viva para lectores de pantalla (el panel no lo es)
+  const live = document.createElement('p');
+  live.className = 'sr-only';
+  live.setAttribute('role', 'status');
+  live.setAttribute('aria-live', 'polite');
+  chips.insertAdjacentElement('afterend', live);
+
+  chips.innerHTML = D.destinos.map(d =>
+    `<button type="button" class="map-3d__chip" data-id="${d.id}" aria-pressed="false">${d.nombre}</button>`
+  ).join('');
+
+  // Estado inicial del panel: instrucción corta + tarifas «desde» de cada destino
+  const howText = () => (touchUI()
+    ? 'Toca un punto del mapa o un destino de la lista.'
+    : 'Haz clic en un punto del mapa o en un destino de la lista.');
+  empty.innerHTML = `
+    <h3>Elige un destino</h3>
+    <p class="map-3d__how">${howText()}</p>
+    <ul class="map-3d__fares">${D.destinos.map(d => `
+      <li><button type="button" class="map-3d__fare" data-id="${d.id}"><span>${d.nombre}</span> <strong>${priceLine(d)}</strong></button></li>`).join('')}
+    </ul>`;
+
+  function renderPanel(d) {
+    const feats = Array.isArray(d.features) && d.features.length
+      ? `<div class="features">${d.features.map(f => `<span>${f}</span>`).join('')}</div>` : '';
+    const price = d.precio
+      ? `<div><span>Desde</span><strong>${d.precio}</strong></div>`
+      : '<div><span>Tarifa</span><strong>Precio por WhatsApp</strong></div>';
+    const plan = d.plan ? String(d.plan).replace(/^plan\s+/i, '') : '';
+    content.innerHTML = `
+      ${d.region ? `<span class="region">${d.region}</span>` : ''}
+      <h3 tabindex="-1">${d.nombre}</h3>
+      ${d.desc ? `<p>${d.desc}</p>` : ''}
+      ${feats}
+      <div class="meta">${price}${plan ? `<div><span>Plan</span><strong>${plan.charAt(0).toUpperCase() + plan.slice(1)}</strong></div>` : ''}</div>
+      <a class="btn btn--whatsapp" target="_blank" rel="noopener" href="${waHref(d)}">${WA_ICON}<span>Cotizar por WhatsApp</span></a>`;
+    empty.hidden = true;
+    content.hidden = false;
+  }
+
+  // En celular el panel queda debajo del mapa: lo trae a la vista si no se ve
+  function revealPanel() {
+    let top = 0;
+    $$('.topbar, .navbar').forEach(el => {
+      const pos = getComputedStyle(el).position;
+      if (pos === 'fixed' || pos === 'sticky') top = Math.max(top, el.getBoundingClientRect().bottom);
+    });
+    const offset = Math.min(Math.max(top, 0), 180) + 12;
+    const r = panel.getBoundingClientRect();
+    if (r.top > offset && r.top < innerHeight * 0.6) return;
+    window.scrollTo({ top: Math.max(0, scrollY + r.top - offset), behavior: reducedMotion ? 'auto' : 'smooth' });
+  }
+
+  function select(id, how) {
+    const d = D.destinos.find(x => x.id === id);
+    if (!d) return;
+    selectedId = id;
+    $$('.map-3d__chip', chips).forEach(c => {
+      const on = c.dataset.id === id;
+      c.classList.toggle('is-active', on);
+      c.setAttribute('aria-pressed', String(on));
+    });
+    renderPanel(d);
+    live.textContent = `${d.nombre}: ${d.precio ? 'desde ' + d.precio : 'precio por WhatsApp'}.`;
+    if (hooks && hooks.select) hooks.select(id, how);
+    if (touchUI() && how !== 'keyboard') revealPanel();
+  }
+
+  chips.addEventListener('click', (e) => {
+    const b = e.target.closest('.map-3d__chip');
+    if (b) select(b.dataset.id, e.detail === 0 ? 'keyboard' : 'chip');
+  });
+  empty.addEventListener('click', (e) => {
+    const b = e.target.closest('.map-3d__fare');
+    if (!b) return;
+    select(b.dataset.id, e.detail === 0 ? 'keyboard' : 'list');
+    // El botón pulsado desaparece: el foco pasa al título del destino
+    const h = $('h3', content);
+    if (h) h.focus({ preventScroll: true });
+  });
+
+  return {
+    select,
+    priceLine,
+    waHref,
+    touchUI,
+    get selectedId() { return selectedId; },
+    // El 3D se engancha cuando termina de cargar
+    attach(h) { hooks = h; if (selectedId && h.select) h.select(selectedId, 'restore'); },
+    // Sin 3D: el lienzo se oculta y la lista queda a lo ancho
+    fallback() {
+      const box = $('.map-3d');
+      if (box) box.classList.add('map-3d--sin-3d');
+      const p = $('.map-3d__how', empty);
+      if (p) p.textContent = 'Elige un destino de la lista.';
+    }
+  };
 })();
 
 /* ======================================================================
@@ -104,7 +226,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const status = $('#galStatus');
 
   /* ---------- Filtros ---------- */
-  const nombres = { todas: 'Todas', naturaleza: 'Naturaleza', fauna: 'Fauna', cultura: 'Cultura', playas: 'Playas y resorts' };
+  const nombres = { todas: 'Todas', naturaleza: 'Naturaleza', fauna: 'Fauna', cultura: 'Cultura' };
   if (filters) {
     const cats = ['todas', ...new Set(items.map(li => li.dataset.cat))];
     filters.innerHTML = cats.map((c, i) =>
@@ -275,10 +397,15 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // Se reproduce para todos (también con «reducir movimiento»): es mudo,
   // corto y tiene botón de pausa. Se pide cuando la página ya cargó para no
-  // competir con lo importante, y se pausa mientras el hero no se ve.
+  // competir con lo importante, y solo mientras el hero se ve: si se entra
+  // con un #ancla (p. ej. desde Nosotros a index.html#contacto) no arranca
+  // ni se descarga hasta que se sube al inicio.
   const toggle = $('.hero__video-toggle');
   let userPaused = false;
-  const play = () => { if (!userPaused) video.play().catch(() => {}); };
+  let inView = false;
+  const play = () => {
+    if (!userPaused && inView && document.readyState === 'complete') video.play().catch(() => {});
+  };
   const sync = () => {
     toggle.classList.toggle('is-paused', video.paused);
     toggle.setAttribute('aria-label', video.paused ? 'Reproducir video de fondo' : 'Pausar video de fondo');
@@ -293,10 +420,13 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     });
     sync();
   }
-  new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) video.pause();
-    else if (document.readyState === 'complete') play();
-  }).observe(hero);
-  if (document.readyState === 'complete') play();
-  else window.addEventListener('load', play, { once: true });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(([e]) => {
+      inView = e.isIntersecting;
+      if (inView) play(); else video.pause();
+    }).observe(hero);
+  } else {
+    inView = true;
+  }
+  if (document.readyState !== 'complete') window.addEventListener('load', play, { once: true });
 })();

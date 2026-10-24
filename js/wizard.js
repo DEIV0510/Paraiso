@@ -76,21 +76,15 @@
       card.className = 'wiz-card wiz-card--destino';
       card.dataset.value = name;
       card.setAttribute('aria-pressed', 'false');
-      if (d.img) {
-        const img = document.createElement('img');
-        img.alt = '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        if (d.srcset) {
-          img.srcset = d.srcset;
-          img.sizes = '(max-width: 640px) 45vw, 190px';
-        }
-        img.src = d.img;
-        card.appendChild(img);
-      }
+      // Sin foto (no hay fotos verificadas de cada destino): nombre y región
       const label = document.createElement('strong');
       label.textContent = name;
       card.appendChild(label);
+      if (d.region) {
+        const region = document.createElement('em');
+        region.textContent = d.region;
+        card.appendChild(region);
+      }
       frag.appendChild(card);
     });
     // Los destinos van antes de «Crucero» y «Otro destino», que están en el HTML
@@ -408,16 +402,6 @@
     }
     updateSendHref();
   });
-
-  /* --------------- FOTOS DEL PASO 2: cargarlas antes de mostrarlas --------------- */
-  if (destHost && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      if (!entries.some((en) => en.isIntersecting)) return;
-      $$('img', destHost).forEach((img) => { img.loading = 'eager'; });
-      io.disconnect();
-    }, { rootMargin: '400px 0px' });
-    io.observe(root);
-  }
 
   /* --------------- INICIO --------------- */
   render();

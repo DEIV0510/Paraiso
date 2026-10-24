@@ -8,7 +8,7 @@
 
   <!-- SEO: title ≤ 60 caracteres y description ≤ 155 -->
   <title>Agencia de viajes en Mocoa, Putumayo | PARAISOS</title>
-  <meta name="description" content="Agencia de viajes en Mocoa, Putumayo (RNT 84258). Eco planes en Putumayo, Cartagena, San Andrés, Santa Marta y cruceros. Cotiza por WhatsApp." />
+  <meta name="description" content="Agencia de viajes en Mocoa, Putumayo (RNT 84258). Eco planes en Putumayo, viajes a Cartagena, San Andrés, Santa Marta y cruceros. Cotiza por WhatsApp." />
   <meta name="author" content="PARAISOS - Agencia de Viajes &amp; Turismo" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://paraisosagencia.vercel.app/" />
@@ -47,16 +47,16 @@
   <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
   <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=20261024" />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024b" />
 
   <!-- Póster del hero: vertical en celular, horizontal en el resto (mismas
-       condiciones que el video y el fondo de .hero__video-wrap) -->
-  <link rel="preload" as="image" href="assets/images/hero-poster-v.webp" media="(max-width: 540px) and (orientation: portrait)" />
-  <link rel="preload" as="image" href="assets/images/hero-poster.webp" media="(min-width: 540.02px), (orientation: landscape)" />
+       condiciones que el video, su atributo poster y el fondo de .hero__video-wrap) -->
+  <link rel="preload" as="image" href="assets/images/hero-poster-v-1080.webp" media="(max-width: 540px) and (orientation: portrait)" />
+  <link rel="preload" as="image" href="assets/images/hero-poster-h-1600.webp" media="(min-width: 540.02px), (orientation: landscape)" />
 
   <!-- Estilos propios -->
-  <link rel="stylesheet" href="css/styles.css?v=20261024" />
-  <link rel="stylesheet" href="css/components.css?v=20261024" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024b" />
+  <link rel="stylesheet" href="css/components.css?v=20261024b" />
 
   <!-- «js» activa los realces que dependen de JS; si se entra con #ancla, todas
        las secciones se pintan completas para que el salto caiga en su sitio -->
@@ -128,17 +128,16 @@
   }
   </script>
 
-  <!-- Schema.org FAQ: las 7 preguntas de #faq, con el mismo texto -->
+  <!-- Schema.org FAQ: las 6 preguntas de #faq, con el mismo texto -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {"@type":"Question","name":"¿Qué formas de pago aceptan?","acceptedAnswer":{"@type":"Answer","text":"Efectivo, Nequi o transferencia a nuestra cuenta de ahorros Bancolombia; los datos te los damos al momento de pagar. No recibimos tarjetas, pero puedes financiar tu viaje con cooperativas en convenio, previo estudio de crédito."}},
-      {"@type":"Question","name":"¿Cómo se confirma una reserva?","acceptedAnswer":{"@type":"Answer","text":"Te enviamos una cotización con las tarifas según la disponibilidad del momento. Cuando haces el pago acordado, te confirmamos la reserva por WhatsApp."}},
-      {"@type":"Question","name":"¿Cuál es la política de cancelación?","acceptedAnswer":{"@type":"Answer","text":"Depende de cada proveedor: aerolínea, hotel o naviera. Te damos esas condiciones en la cotización, antes de que pagues."}},
+      {"@type":"Question","name":"¿Cómo se define el precio de mi viaje?","acceptedAnswer":{"@type":"Answer","text":"Te enviamos una cotización con las tarifas según la disponibilidad del momento de la compra. El valor depende del número de pasajeros, el destino, los días, la fecha y el tipo de alojamiento."}},
       {"@type":"Question","name":"¿Con qué seguros cuentan?","acceptedAnswer":{"@type":"Answer","text":"Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes."}},
-      {"@type":"Question","name":"¿Qué documentos necesito para viajar?","acceptedAnswer":{"@type":"Answer","text":"Dentro de Colombia, tu cédula. Para viajar a otro país, pregúntanos qué pide tu destino: pasaporte, visa o vacunas."}},
+      {"@type":"Question","name":"¿Qué documentos necesito para viajar?","acceptedAnswer":{"@type":"Answer","text":"Dentro de Colombia, tu documento de identidad: cédula, o tarjeta de identidad o registro civil para los menores. Para viajar a otro país, pregúntanos qué pide tu destino."}},
       {"@type":"Question","name":"¿Qué incluyen las experiencias vivenciales en Putumayo?","acceptedAnswer":{"@type":"Answer","text":"Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos."}},
       {"@type":"Question","name":"¿Trabajan con colegios, universidades y empresas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles."}}
     ]
@@ -149,7 +148,7 @@
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
   <!-- ====== SPRITE SVG · íconos profesionales (Lucide-style) ====== -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <defs>
       <!-- generales -->
       <symbol id="ico-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></symbol>
@@ -170,7 +169,7 @@
       <symbol id="ico-bed" viewBox="0 0 24 24"><path d="M2 20V8M22 20v-6a2 2 0 0 0-2-2H8M2 14h20M6 12V8a2 2 0 0 1 2-2h4"/><circle cx="6" cy="10" r="1"/></symbol>
       <symbol id="ico-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
       <symbol id="ico-feather" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></symbol>
-      <symbol id="ico-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 0 0 1.4 0l4-4a1 1 0 0 0 0-1.4l-4-4a1 1 0 0 0-1.4 0l-2 2M13 7l-2-2a1 1 0 0 0-1.4 0l-4 4a1 1 0 0 0 0 1.4l4 4a1 1 0 0 0 1.4 0l2-2"/></symbol>
+      <symbol id="ico-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></symbol>
 
       <!-- políticas -->
       <symbol id="ico-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
@@ -222,9 +221,10 @@
     <div class="container navbar__inner">
       <a href="#inicio" class="navbar__brand">
         <img class="navbar__brand-img"
-             src="assets/images/logo-paraisos.png"
+             src="assets/images/logo-paraisos-130.png"
+             srcset="assets/images/logo-paraisos-130.png 1x, assets/images/logo-paraisos-260.png 2x, assets/images/logo-paraisos-390.png 3x"
              alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
-             width="1400" height="620" />
+             width="452" height="200" />
       </a>
 
       <!-- La hamburguesa va antes del menú: con el menú abierto, Tab pasa a sus enlaces -->
@@ -242,7 +242,7 @@
           <li><a href="#contacto">Contacto</a></li>
           <li class="navbar__menu-cta">
             <a class="btn btn--whatsapp" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+              <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
               Cotizar por WhatsApp
             </a>
           </li>
@@ -252,7 +252,7 @@
       <a class="btn btn--whatsapp navbar__cta"
          href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
          target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
         Cotizar por WhatsApp
       </a>
     </div>
@@ -263,17 +263,23 @@
   <!-- ====== INICIO ====== -->
   <section id="inicio" class="hero hero--video" aria-labelledby="heroTitle">
     <div class="hero__bg" aria-hidden="true">
-      <!-- Video de fondo: vertical en celular, horizontal en el resto. Lo
-           reproduce main.js al terminar de cargar la página (para todos, con
-           botón de pausa). El póster es el fondo de .hero__video-wrap, así
-           se ve mientras carga o si el navegador bloquea la reproducción. -->
+      <!-- Video de fondo (2 tomas reales del Putumayo, bucle de 14 s, sin
+           reescalar donde se puede): vertical 608×1080 en celular; 1920×1080
+           en pantallas grandes o de alta densidad; 1600×900 en el resto.
+           Lo reproduce main.js al terminar de cargar la página (para todos,
+           con botón de pausa) y solo mientras el hero se ve. El póster es el
+           atributo poster (lo pone el script de abajo según la pantalla, así
+           no se pide dos veces) y además el fondo de .hero__video-wrap, que
+           se ve aunque no haya JS o el navegador bloquee la reproducción. -->
       <div class="hero__video-wrap">
         <video class="hero__video-el"
           muted loop playsinline webkit-playsinline preload="none" disableremoteplayback
           aria-hidden="true" tabindex="-1">
-          <source src="assets/videos/hero-bg-v.mp4" type="video/mp4" media="(max-width: 540px) and (orientation: portrait)">
-          <source src="assets/videos/hero-bg-h.mp4" type="video/mp4">
+          <source src="assets/videos/hero-bg-v-1080.mp4" type="video/mp4" media="(max-width: 540px) and (orientation: portrait)">
+          <source src="assets/videos/hero-bg-h-1920.mp4" type="video/mp4" media="(min-width: 1600px), (min-width: 700px) and (min-height: 600px) and (min-resolution: 1.5dppx)">
+          <source src="assets/videos/hero-bg-h-1600.mp4" type="video/mp4">
         </video>
+        <script>(function(v){v.poster=matchMedia('(max-width: 540px) and (orientation: portrait)').matches?'assets/images/hero-poster-v-1080.webp':'assets/images/hero-poster-h-1600.webp';})(document.currentScript.previousElementSibling);</script>
       </div>
       <!-- Velo de tinta para que el texto se lea sobre cualquier toma -->
       <div class="hero__video-overlay"></div>
@@ -291,7 +297,7 @@
           <a class="btn btn--whatsapp btn--lg"
              href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
              target="_blank" rel="noopener">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
             Cotizar por WhatsApp
           </a>
           <a class="btn btn--ghost btn--lg" href="#viajes">Ver destinos</a>
@@ -308,6 +314,10 @@
   </section>
 
   <!-- ====== DESTINOS Y CRUCEROS ======
+       Tarjetas de tarifa sin foto: el material del cliente no trae fotos
+       verificadas de cada destino (las piezas de Decameron no dicen el lugar
+       y las del Putumayo no son de Tumaco, Huila ni el Eje Cafetero). Cuando
+       el cliente mande fotos reales, se agregan con un <img> arriba del nombre.
        Cada tarjeta es un enlace a WhatsApp con el destino en el mensaje.
        Las tarifas «desde» también están en js/main.js (mapa y asistente) y
        en la cinta superior: si cambian, hay que cambiarlas en los tres. -->
@@ -320,159 +330,93 @@
       <ul class="destinos-grid" id="destinosGrid">
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20Putumayo." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/putumayo-480.webp"
-              srcset="assets/images/destinos/putumayo-480.webp 480w, assets/images/destinos/putumayo-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Putumayo</h3>
-              <p class="dest-card__region">Andes y Amazonía</p>
-              <p class="dest-card__price"><span>Fin de semana desde</span> <strong>$999.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Putumayo</h3>
+            <p class="dest-card__region">Andes y Amazonía</p>
+            <p class="dest-card__price"><span>Fin de semana desde</span> <strong>$999.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20Cartagena." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/cartagena-480.webp"
-              srcset="assets/images/destinos/cartagena-480.webp 480w, assets/images/destinos/cartagena-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Cartagena</h3>
-              <p class="dest-card__region">Caribe colombiano</p>
-              <p class="dest-card__price"><span>Desde</span> <strong>$999.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Cartagena</h3>
+            <p class="dest-card__region">Caribe colombiano</p>
+            <p class="dest-card__price"><span>Desde</span> <strong>$999.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20San%20Andr%C3%A9s." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/san-andres-480.webp"
-              srcset="assets/images/destinos/san-andres-480.webp 480w, assets/images/destinos/san-andres-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">San Andrés</h3>
-              <p class="dest-card__region">Isla del Caribe</p>
-              <p class="dest-card__price"><span>Desde</span> <strong>$1.250.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">San Andrés</h3>
+            <p class="dest-card__region">Isla del Caribe</p>
+            <p class="dest-card__price"><span>Desde</span> <strong>$1.250.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20Santa%20Marta." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/santa-marta-480.webp"
-              srcset="assets/images/destinos/santa-marta-480.webp 480w, assets/images/destinos/santa-marta-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Santa Marta</h3>
-              <p class="dest-card__region">Caribe colombiano</p>
-              <p class="dest-card__price"><span>Desde</span> <strong>$999.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Santa Marta</h3>
+            <p class="dest-card__region">Caribe colombiano</p>
+            <p class="dest-card__price"><span>Desde</span> <strong>$999.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20al%20Eje%20Cafetero." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/eje-cafetero-480.webp"
-              srcset="assets/images/destinos/eje-cafetero-480.webp 480w, assets/images/destinos/eje-cafetero-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Eje Cafetero</h3>
-              <p class="dest-card__region">Andes colombianos</p>
-              <p class="dest-card__price"><span>Tarifa</span> <strong class="is-ask">Precio por WhatsApp</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Eje Cafetero</h3>
+            <p class="dest-card__region">Andes colombianos</p>
+            <p class="dest-card__price"><span>Tarifa</span> <strong class="is-ask">Precio por WhatsApp</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20Tumaco." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/tumaco-480.webp"
-              srcset="assets/images/destinos/tumaco-480.webp 480w, assets/images/destinos/tumaco-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="958" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Tumaco</h3>
-              <p class="dest-card__region">Pacífico colombiano</p>
-              <p class="dest-card__price"><span>Desde</span> <strong>$680.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Tumaco</h3>
+            <p class="dest-card__region">Pacífico colombiano</p>
+            <p class="dest-card__price"><span>Desde</span> <strong>$680.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20al%20Huila." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/huila-480.webp"
-              srcset="assets/images/destinos/huila-480.webp 480w, assets/images/destinos/huila-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="574" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Huila</h3>
-              <p class="dest-card__region">Andes del sur</p>
-              <p class="dest-card__price"><span>Tarifa</span> <strong class="is-ask">Precio por WhatsApp</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Huila</h3>
+            <p class="dest-card__region">Andes del sur</p>
+            <p class="dest-card__price"><span>Tarifa</span> <strong class="is-ask">Precio por WhatsApp</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
         <li>
           <a class="dest-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje%20a%20Atacames." target="_blank" rel="noopener">
-            <img class="dest-card__img" src="assets/images/destinos/atacames-480.webp"
-              srcset="assets/images/destinos/atacames-480.webp 480w, assets/images/destinos/atacames-960.webp 960w"
-              sizes="(min-width: 1240px) 280px, (min-width: 961px) 23vw, 46vw"
-              width="960" height="632" alt="" loading="lazy" decoding="async" />
-            <div class="dest-card__body">
-              <h3 class="dest-card__name">Atacames</h3>
-              <p class="dest-card__region">Pacífico de Ecuador</p>
-              <p class="dest-card__price"><span>Desde</span> <strong>$699.000</strong></p>
-              <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-            </div>
+            <h3 class="dest-card__name">Atacames</h3>
+            <p class="dest-card__region">Pacífico de Ecuador</p>
+            <p class="dest-card__price"><span>Desde</span> <strong>$699.000</strong></p>
+            <span class="btn btn--whatsapp btn--sm dest-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
           </a>
         </li>
       </ul>
 
       <!-- Cruceros: región y cotización (itinerarios con agencias aliadas) -->
       <div class="cruceros">
-        <header class="cruceros__head">
+        <div class="cruceros__head">
           <h3 class="cruceros__title">Cruceros</h3>
-          <p class="section-sub">Itinerarios y fechas con agencias aliadas.</p>
-        </header>
-        <ul class="cruceros__grid">
+          <p class="cruceros__sub">Itinerarios y fechas con agencias aliadas.</p>
+        </div>
+        <ul class="cruceros__list">
           <li>
             <a class="cruise-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20crucero%20por%20el%20Caribe." target="_blank" rel="noopener">
-              <img class="cruise-card__img" src="assets/images/cruceros/caribe-480.webp"
-                srcset="assets/images/cruceros/caribe-480.webp 480w, assets/images/cruceros/caribe-800.webp 800w"
-                sizes="(max-width: 767px) 128px, (max-width: 1240px) 30vw, 380px"
-                width="800" height="534" alt="" loading="lazy" decoding="async" />
-              <div class="cruise-card__body">
-                <h4 class="cruise-card__name">Caribe</h4>
-                <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-              </div>
+              <span class="cruise-card__name">Caribe</span>
+              <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
             </a>
           </li>
           <li>
             <a class="cruise-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20crucero%20por%20el%20Mediterr%C3%A1neo." target="_blank" rel="noopener">
-              <img class="cruise-card__img" src="assets/images/cruceros/mediterraneo-480.webp"
-                srcset="assets/images/cruceros/mediterraneo-480.webp 480w, assets/images/cruceros/mediterraneo-800.webp 800w"
-                sizes="(max-width: 767px) 128px, (max-width: 1240px) 30vw, 380px"
-                width="800" height="534" alt="" loading="lazy" decoding="async" />
-              <div class="cruise-card__body">
-                <h4 class="cruise-card__name">Mediterráneo</h4>
-                <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-              </div>
+              <span class="cruise-card__name">Mediterráneo</span>
+              <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
             </a>
           </li>
           <li>
             <a class="cruise-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20crucero%20por%20Asia." target="_blank" rel="noopener">
-              <img class="cruise-card__img" src="assets/images/cruceros/asia-480.webp"
-                srcset="assets/images/cruceros/asia-480.webp 480w, assets/images/cruceros/asia-800.webp 800w"
-                sizes="(max-width: 767px) 128px, (max-width: 1240px) 30vw, 380px"
-                width="800" height="534" alt="" loading="lazy" decoding="async" />
-              <div class="cruise-card__body">
-                <h4 class="cruise-card__name">Asia</h4>
-                <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
-              </div>
+              <span class="cruise-card__name">Asia</span>
+              <span class="btn btn--whatsapp btn--sm cruise-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>Cotizar<span class="sr-only"> por WhatsApp</span></span>
             </a>
           </li>
         </ul>
@@ -545,6 +489,7 @@
 
         <div class="putumayo__col putumayo__col--pueblos">
           <h3 class="putumayo__subhead">15 pueblos indígenas</h3>
+          <p class="pueblos__intro">Estos son los principales:</p>
           <ul class="pueblos">
             <li>
               <details>
@@ -584,7 +529,8 @@
             </li>
           </ul>
           <p class="pueblos__otros">
-            También hay parcialidades Yanacona, Pijao, Pastos, Quillasinga, Embera, Nasa y Awá.
+            También hacen presencia o habitan el territorio parcialidades de los pueblos
+            Yanacona, Pijao, Pastos, Quillasinga, Embera, Nasa y Awá.
           </p>
         </div>
       </div>
@@ -599,10 +545,13 @@
         <p class="section-sub">Elige un destino para ver la tarifa y cotizar.</p>
       </header>
 
+      <!-- Chips y lista de tarifas: los arma main.js al cargar la página
+           (funcionan aunque el 3D no cargue); el 3D lo dibuja colombia-map-3d.js -->
       <div class="map-3d__chips" id="destChips" role="group" aria-label="Elegir destino"></div>
 
       <div class="map-3d">
         <div id="canvas3d" class="map-3d__canvas">
+          <div class="map-3d__loading" aria-hidden="true">Cargando el mapa…</div>
           <div class="map-3d__hint"></div>
           <div class="map-3d__compass" aria-hidden="true">
             <span>N</span>
@@ -615,7 +564,7 @@
         <aside class="map-3d__panel" id="destPanel">
           <div class="map-3d__panel-empty" id="panelEmpty">
             <h3>Elige un destino</h3>
-            <p>Toca un punto del mapa o elige un destino.</p>
+            <p class="map-3d__how">Toca un punto del mapa o un destino de la lista.</p>
           </div>
           <div class="map-3d__panel-content" id="panelContent" hidden></div>
         </aside>
@@ -663,8 +612,8 @@
             <h3 id="wizH2" tabindex="-1"><span class="sr-only">Paso 2 de 5: </span>¿A dónde quieres ir?</h3>
             <div class="wizard__grid wizard__grid--destinos" id="wizDestinos" role="group" aria-labelledby="wizH2" data-key="destino">
               <!-- wizard.js agrega aquí los destinos de PARAISOS_DATA -->
-              <button type="button" class="wiz-card" data-value="Crucero" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-ship"/></svg></span><strong>Crucero</strong><em>Con agencias aliadas</em></button>
-              <button type="button" class="wiz-card" data-value="Otro destino" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-pin"/></svg></span><strong>Otro destino</strong><em>Nacional o internacional</em></button>
+              <button type="button" class="wiz-card wiz-card--destino" data-value="Crucero" aria-pressed="false"><strong>Crucero</strong><em>Con agencias aliadas</em></button>
+              <button type="button" class="wiz-card wiz-card--destino" data-value="Otro destino" aria-pressed="false"><strong>Otro destino</strong><em>Nacional o internacional</em></button>
             </div>
           </div>
 
@@ -728,7 +677,7 @@
           <button type="button" class="btn btn--ghost wizard__prev" id="wizPrev" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg><span class="wizard__prev-label">Atrás</span></button>
           <button type="button" class="btn btn--primary" id="wizNext">Continuar</button>
           <a class="btn btn--whatsapp" id="wizSend" href="https://wa.me/573157347306" target="_blank" rel="noopener" hidden>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
             Cotizar por WhatsApp
           </a>
         </div>
@@ -785,7 +734,7 @@
           </li>
           <li class="service">
             <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-plane"/></svg></span>
-            <h3>Tiquetes aéreos</h3>
+            <h3>Tiquetes aéreos y vuelos chárter</h3>
             <p>Venta de tiquetes aéreos comerciales y vuelos chárter.</p>
           </li>
           <li class="service">
@@ -795,13 +744,13 @@
           </li>
           <li class="service">
             <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-bed"/></svg></span>
-            <h3>Reservaciones</h3>
-            <p>Hoteles, restaurantes e ingresos a sitios turísticos, entre otros.</p>
+            <h3>Reservas de hoteles y restaurantes</h3>
+            <p>También ingresos a sitios turísticos, entre otros.</p>
           </li>
           <li class="service">
             <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-tent"/></svg></span>
-            <h3>Organización de eventos</h3>
-            <p>Eventos feriales de tipo artesanal, gastronómico, deportivo y cultural.</p>
+            <h3>Organización de eventos feriales</h3>
+            <p>De tipo artesanal, gastronómico, deportivo y cultural.</p>
           </li>
         </ul>
         <p class="services__cover">
@@ -818,7 +767,7 @@
         <a class="btn btn--whatsapp"
            href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20una%20excursi%C3%B3n%20para%20un%20colegio%20o%20universidad."
            target="_blank" rel="noopener">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
           Cotizar por WhatsApp
         </a>
       </aside>
@@ -899,7 +848,7 @@
     <div class="container tienda-teaser__inner">
       <img class="tienda-teaser__photo" loading="lazy" decoding="async"
            src="assets/images/tienda/velas-piedras-600.webp"
-           srcset="assets/images/tienda/velas-piedras-600.webp 600w, assets/images/tienda/velas-piedras-1000.webp 1000w"
+           srcset="assets/images/tienda/velas-piedras-300.webp 300w, assets/images/tienda/velas-piedras-600.webp 600w, assets/images/tienda/velas-piedras-1000.webp 1000w"
            sizes="(max-width: 540px) 96px, (max-width: 880px) 180px, 220px"
            width="1000" height="1333"
            alt="Velas artesanales de colores" />
@@ -916,7 +865,7 @@
   <!-- ====== GALERÍA ======
        12 fotos horizontales del cliente (todas 5:3, la grilla queda pareja).
        Cada foto es un botón que abre el visor (#lightbox, al final del body).
-       data-cat: naturaleza · fauna · cultura · playas. Los filtros los crea
+       data-cat: naturaleza · fauna · cultura. Los filtros los crea
        main.js; sin JS la grilla se ve completa. -->
   <section id="galeria" class="gallery" aria-labelledby="galTitle">
     <div class="container">
@@ -927,17 +876,17 @@
       <p class="sr-only" id="galStatus" role="status"></p>
       <ul class="gallery__grid" id="galGrid">
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="33"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/33.webp" srcset="assets/images/galeria/w480/33.webp 480w, assets/images/galeria/w960/33.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada en la selva del Putumayo vista desde arriba" /></button></li>
-        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="15"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/15.webp" srcset="assets/images/galeria/w480/15.webp 480w, assets/images/galeria/w960/15.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Tigrillo caminando sobre un tronco en la selva" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="15"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/15.webp" srcset="assets/images/galeria/w480/15.webp 480w, assets/images/galeria/w960/15.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Tigrillo caminando sobre una baranda de guadua" /></button></li>
         <li data-cat="cultura"><button type="button" class="gallery__item" data-n="47"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/47.webp" srcset="assets/images/galeria/w480/47.webp 480w, assets/images/galeria/w960/47.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Taita indígena junto a una fogata con un grupo de viajeros" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="34"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/34.webp" srcset="assets/images/galeria/w480/34.webp 480w, assets/images/galeria/w960/34.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Pozo de agua verde esmeralda en el Putumayo" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="23"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/23.webp" srcset="assets/images/galeria/w480/23.webp 480w, assets/images/galeria/w960/23.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Neumating en un río del Putumayo" /></button></li>
         <li data-cat="fauna"><button type="button" class="gallery__item" data-n="22"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/22.webp" srcset="assets/images/galeria/w480/22.webp 480w, assets/images/galeria/w960/22.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Dos monos titíes en una rama" /></button></li>
-        <li data-cat="playas"><button type="button" class="gallery__item" data-n="78"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/78.webp" srcset="assets/images/galeria/w480/78.webp 480w, assets/images/galeria/w960/78.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Resort con piscina frente a una playa con palmeras" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="29"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/29.webp" srcset="assets/images/galeria/w480/29.webp 480w, assets/images/galeria/w960/29.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Valle con niebla, bosque y palmas al pie de las montañas" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="35"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/35.webp" srcset="assets/images/galeria/w480/35.webp 480w, assets/images/galeria/w960/35.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada y pozo de agua cristalina en el Putumayo" /></button></li>
         <li data-cat="cultura"><button type="button" class="gallery__item" data-n="9"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/9.webp" srcset="assets/images/galeria/w480/9.webp 480w, assets/images/galeria/w960/9.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Petroglifo tallado en una roca" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="40"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/40.webp" srcset="assets/images/galeria/w480/40.webp 480w, assets/images/galeria/w960/40.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Bañista bajo una cascada en el Putumayo" /></button></li>
         <li data-cat="fauna"><button type="button" class="gallery__item" data-n="49"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/49.webp" srcset="assets/images/galeria/w480/49.webp 480w, assets/images/galeria/w960/49.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Ave silvestre comiendo plátano maduro" /></button></li>
-        <li data-cat="playas"><button type="button" class="gallery__item" data-n="77"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/77.webp" srcset="assets/images/galeria/w480/77.webp 480w, assets/images/galeria/w960/77.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Muelle con asoleadoras sobre el mar" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="21"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/21.webp" srcset="assets/images/galeria/w480/21.webp 480w, assets/images/galeria/w960/21.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Dos aves negras con antifaz amarillo asomadas entre dos troncos" /></button></li>
       </ul>
       <p class="gallery__more">
         <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener">
@@ -959,10 +908,9 @@
            FAQPage del <head>. -->
       <div class="accordion" id="faqAcc">
         <details><summary>¿Qué formas de pago aceptan?</summary><p>Efectivo, Nequi o transferencia a nuestra cuenta de ahorros Bancolombia; los datos te los damos al momento de pagar. No recibimos tarjetas, pero puedes financiar tu viaje con cooperativas en convenio, previo estudio de crédito.</p></details>
-        <details><summary>¿Cómo se confirma una reserva?</summary><p>Te enviamos una cotización con las tarifas según la disponibilidad del momento. Cuando haces el pago acordado, te confirmamos la reserva por WhatsApp.</p></details>
-        <details><summary>¿Cuál es la política de cancelación?</summary><p>Depende de cada proveedor: aerolínea, hotel o naviera. Te damos esas condiciones en la cotización, antes de que pagues.</p></details>
+        <details><summary>¿Cómo se define el precio de mi viaje?</summary><p>Te enviamos una cotización con las tarifas según la disponibilidad del momento de la compra. El valor depende del número de pasajeros, el destino, los días, la fecha y el tipo de alojamiento.</p></details>
         <details><summary>¿Con qué seguros cuentan?</summary><p>Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes.</p></details>
-        <details><summary>¿Qué documentos necesito para viajar?</summary><p>Dentro de Colombia, tu cédula. Para viajar a otro país, pregúntanos qué pide tu destino: pasaporte, visa o vacunas.</p></details>
+        <details><summary>¿Qué documentos necesito para viajar?</summary><p>Dentro de Colombia, tu documento de identidad: cédula, o tarjeta de identidad o registro civil para los menores. Para viajar a otro país, pregúntanos qué pide tu destino.</p></details>
         <details><summary>¿Qué incluyen las experiencias vivenciales en Putumayo?</summary><p>Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos.</p></details>
         <details><summary>¿Trabajan con colegios, universidades y empresas?</summary><p>Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles.</p></details>
       </div>
@@ -1056,14 +1004,15 @@
     <div class="container footer__top">
       <a href="#inicio" class="footer__brand-link">
         <img class="footer__brand-img"
-             src="assets/images/logo-paraisos.png"
+             src="assets/images/logo-paraisos-130.png"
+             srcset="assets/images/logo-paraisos-130.png 1x, assets/images/logo-paraisos-260.png 2x, assets/images/logo-paraisos-390.png 3x"
              alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
-             width="1400" height="620" loading="lazy" decoding="async" />
+             width="452" height="200" loading="lazy" decoding="async" />
       </a>
-      <p class="footer__slogan">Más que un destino turístico, somos territorio de vida.</p>
+      <p class="footer__slogan">Más que un destino, somos territorio de vida.</p>
       <div class="footer__social">
         <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook de PARAISOS"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
-        <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp de PARAISOS"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+        <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp de PARAISOS"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg></a>
       </div>
     </div>
     <div class="footer__bottom">
@@ -1103,25 +1052,28 @@
 
   <!-- ====== ACCIONES FIJAS ======
        Escritorio: botón redondo de WhatsApp. Celular (≤768 px): barra inferior,
-       que en el inicio aparece al pasar el hero (data-after). -->
-  <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
-     class="float-wa" id="floatWa" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-    <span class="float-wa__tip" aria-hidden="true">Cotizar por WhatsApp</span>
-  </a>
-
-  <div class="sticky-cta" id="stickyCta" data-after="#inicio">
-    <a href="tel:+573157347306" class="sticky-cta__call"><svg class="icon" aria-hidden="true"><use href="#ico-phone"/></svg> Llamar</a>
-    <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener" class="sticky-cta__wa">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      Cotizar por WhatsApp
+       que en el inicio aparece al pasar el hero (data-after). Van dentro de un
+       <aside> con nombre, igual que en Nosotros y la Tienda. -->
+  <aside class="quick-contact" aria-label="Contacto rápido">
+    <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
+       class="float-wa" id="floatWa" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+      <svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+      <span class="float-wa__tip" aria-hidden="true">Cotizar por WhatsApp</span>
     </a>
-  </div>
+
+    <div class="sticky-cta" id="stickyCta" data-after="#inicio">
+      <a href="tel:+573157347306" class="sticky-cta__call"><svg class="icon" aria-hidden="true"><use href="#ico-phone"/></svg> Llamar</a>
+      <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener" class="sticky-cta__wa">
+        <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+        Cotizar por WhatsApp
+      </a>
+    </div>
+  </aside>
 
   <!-- Scripts propios -->
-  <script src="js/nav.js?v=20261024" defer></script>
-  <script src="js/main.js?v=20261024" defer></script>
-  <script src="js/colombia-map-3d.js?v=20261024" defer></script>
-  <script src="js/wizard.js?v=20261024" defer></script>
+  <script src="js/nav.js?v=20261024b" defer></script>
+  <script src="js/main.js?v=20261024b" defer></script>
+  <script src="js/colombia-map-3d.js?v=20261024b" defer></script>
+  <script src="js/wizard.js?v=20261024b" defer></script>
 </body>
 </html>

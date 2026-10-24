@@ -41,11 +41,11 @@
   <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
   <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=20261024" />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024b" />
 
   <!-- Misma CSS que el inicio y Nosotros -->
-  <link rel="stylesheet" href="css/styles.css?v=20261024" />
-  <link rel="stylesheet" href="css/components.css?v=20261024" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024b" />
+  <link rel="stylesheet" href="css/components.css?v=20261024b" />
 
   <!-- «js» activa los realces que dependen de JS; si se entra con #ancla, todas
        las secciones se pintan completas para que el salto caiga en su sitio -->
@@ -123,9 +123,10 @@
     <div class="container navbar__inner">
       <a href="index.html" class="navbar__brand">
         <img class="navbar__brand-img"
-             src="assets/images/logo-paraisos.png"
+             src="assets/images/logo-paraisos-130.png"
+             srcset="assets/images/logo-paraisos-130.png 1x, assets/images/logo-paraisos-260.png 2x, assets/images/logo-paraisos-390.png 3x"
              alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
-             width="1400" height="620" />
+             width="452" height="200" />
       </a>
 
       <!-- La hamburguesa va antes del menú: con el menú abierto, Tab pasa a sus enlaces -->
@@ -162,9 +163,9 @@
 
   <main id="contenido" tabindex="-1">
   <!-- ====== PRIMER PLIEGUE ======
-       Texto del Portafolio 2026. La foto solo se ve en escritorio; en celular
-       los productos quedan justo debajo. Es el mismo archivo de la tarjeta
-       «Velas de colores», así que no se descarga dos veces. -->
+       Texto del Portafolio 2026. La foto (tallas de madera pintadas, del
+       material del cliente) solo se ve en escritorio y no se repite en el
+       catálogo; en celular los productos quedan justo debajo. -->
   <section id="inicio" class="page-hero page-hero--tienda" aria-labelledby="tiendaTitle">
     <div class="container page-hero__grid">
       <div class="page-hero__text">
@@ -180,18 +181,18 @@
              href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
              target="_blank" rel="noopener">
             <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
-            Pregunta disponibilidad y precio por WhatsApp
+            <span>Pregunta<span class="btn__long"> disponibilidad y precio</span> por WhatsApp</span>
           </a>
           <a class="btn btn--ghost" href="#productos">Ver productos</a>
         </div>
       </div>
       <figure class="page-hero__media">
-        <img src="assets/images/tienda/velas-colores-960.webp"
-             srcset="assets/images/tienda/velas-colores-480.webp 480w, assets/images/tienda/velas-colores-960.webp 960w"
+        <img src="assets/images/tienda/artesania-aves-960.webp"
+             srcset="assets/images/tienda/artesania-aves-480.webp 480w, assets/images/tienda/artesania-aves-960.webp 960w"
              sizes="(max-width: 899px) 46vw, 480px"
              width="960" height="720"
              fetchpriority="high" decoding="async"
-             alt="Velas cilíndricas de colores en un estante" />
+             alt="Tallas de madera pintadas con guacamayas y un tucán" />
       </figure>
     </div>
   </section>
@@ -336,11 +337,11 @@
         <p class="shop__legal">El exceso de alcohol es perjudicial para la salud. Prohíbase el expendio de bebidas embriagantes a menores de edad.</p>
       </section>
 
-      <!-- Artesanía y pintura (rótulos del cliente: «Artesanía» y «Bio Arte») -->
+      <!-- Artesanía y pintura (series del cliente «Artesanía» y «Bio Arte»; la autoría de las pinturas no está confirmada) -->
       <section class="shop__group" id="artesania" aria-labelledby="artesaniaTitle">
         <div class="shop__group-head">
           <h3 id="artesaniaTitle" class="shop__group-title">Artesanía y pintura</h3>
-          <p class="shop__group-sub">Tallas de madera y pinturas de Bio Arte.</p>
+          <p class="shop__group-sub">Tallas de madera y pinturas.</p>
         </div>
         <ul class="shop__grid shop__grid--tall">
           <li>
@@ -415,7 +416,7 @@
            href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
            target="_blank" rel="noopener">
           <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
-          Pregunta disponibilidad y precio por WhatsApp
+          <span>Pregunta<span class="btn__long"> disponibilidad y precio</span> por WhatsApp</span>
         </a>
       </div>
     </div>
@@ -446,11 +447,12 @@
     <div class="container footer__top">
       <a href="index.html" class="footer__brand-link">
         <img class="footer__brand-img"
-             src="assets/images/logo-paraisos.png"
+             src="assets/images/logo-paraisos-130.png"
+             srcset="assets/images/logo-paraisos-130.png 1x, assets/images/logo-paraisos-260.png 2x, assets/images/logo-paraisos-390.png 3x"
              alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
-             width="1400" height="620" loading="lazy" decoding="async" />
+             width="452" height="200" loading="lazy" decoding="async" />
       </a>
-      <p class="footer__slogan">Más que un destino turístico, somos territorio de vida.</p>
+      <p class="footer__slogan">Más que un destino, somos territorio de vida.</p>
       <div class="footer__social">
         <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook de PARAISOS"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
         <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp de PARAISOS"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg></a>
@@ -491,6 +493,6 @@
     </div>
   </aside>
 
-  <script src="js/nav.js?v=20261024" defer></script>
+  <script src="js/nav.js?v=20261024b" defer></script>
 </body>
 </html>

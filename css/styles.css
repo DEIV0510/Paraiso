@@ -7,23 +7,18 @@
 
 /* ---------- VARIABLES ---------- */
 :root {
-  /* Marca */
-  --c-blue:        #1976D2;
+  /* Marca (el azul #1976D2 es el theme-color del <head>) */
   --c-blue-dark:   #0D47A1;
-  --c-blue-light:  #42A5F5;
   --c-blue-tint:   #E3F2FD;
   --c-orange:      #F39A1F;
   --c-orange-dark: #E67E22;
-  --c-orange-light:#FFB74D;
   --c-green:       #8BC34A;
-  --c-green-dark:  #689F38;
 
   /* Texto / fondo */
   --c-text:        #0F2845;   /* tinta */
   --c-text-soft:   #5A6B82;   /* 5,4:1 sobre blanco */
   --c-bg:          #FFFFFF;
   --c-bg-soft:     #F8FAFD;
-  --c-bg-ink:      #0A1A2F;   /* pie de página */
   --c-line:        #E4ECF6;   /* divisores decorativos */
   --c-line-strong: #7A8BA3;   /* bordes de campos y controles: 3,5:1 */
   --c-error:       #B3261E;
@@ -36,16 +31,11 @@
   --focus:         #0D47A1;
 
   /* Sombras: solo para lo que flota sobre el contenido */
-  --sh-sm:  0 1px 3px rgba(15,40,69,.08);
   --sh-md:  0 6px 18px rgba(15,40,69,.10);
   --sh-lg:  0 12px 32px rgba(15,40,69,.14);
 
-  /* Esquinas rectas (los controles redondos usan 50 % escrito a mano) */
-  --r-sm: 0;
-  --r-md: 0;
-  --r-lg: 0;
-  --r-xl: 0;
-  --r-full: 0;
+  /* Esquinas rectas en todo: no hay tokens de radio. Solo el botón flotante
+     de WhatsApp y la pausa del video son redondos (50 % escrito a mano). */
 
   /* Espaciado */
   --gap-4: 2rem;
@@ -134,7 +124,6 @@ body {
   max-width: 100vw;
   overscroll-behavior-y: none;
 }
-body.no-scroll { overflow: hidden; }
 
 img, svg, video { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; transition: color .2s var(--ease); }
@@ -162,10 +151,9 @@ input, textarea, select { font: inherit; color: inherit; }
   margin: 0 auto;
   padding: 0 clamp(1rem, 3vw, 2rem);
 }
-/* Palabra de acento en títulos: color sólido (azul en claro, naranja en oscuro) */
+/* Palabra de acento en títulos: color sólido azul oscuro (en el hero
+   oscuro el acento «de vida» va en naranja con .hero__title-script) */
 .text-accent { color: var(--c-blue-dark); }
-.hero--video .text-accent,
-.cta-final .text-accent { color: var(--c-orange); }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
@@ -179,11 +167,6 @@ h1 { font-weight: 900; letter-spacing: -.02em; }
 h2 { font-weight: 800; letter-spacing: -.015em; }
 h3 { font-weight: 700; }
 p  { margin: 0; color: var(--c-text-soft); }
-
-/* ---------- REVELADOS ----------
-   Las clases del hero ya no ocultan nada: el hero se ve desde el primer
-   pintado, con o sin JS. El realce al hacer scroll (.reveal) lo pone el JS. */
-.reveal-line { display: block; }
 
 /* ---------- BOTONES ----------
    Principal (cotizar por WhatsApp y acciones del asistente): naranja con
@@ -396,10 +379,10 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
-  background: var(--c-text) url(../assets/images/hero-poster.webp) center / cover no-repeat;
+  background: var(--c-text) url(../assets/images/hero-poster-h-1600.webp) center / cover no-repeat;
 }
 @media (max-width: 540px) and (orientation: portrait) {
-  .hero__video-wrap { background-image: url(../assets/images/hero-poster-v.webp); }
+  .hero__video-wrap { background-image: url(../assets/images/hero-poster-v-1080.webp); }
 }
 .hero__video-el {
   position: absolute;
@@ -483,6 +466,12 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
    blanco sólido (sin transparencias que bajen el contraste) y el acento
    «de vida» en naranja. El subtítulo cabe en una línea en escritorio. */
 .hero--video { background: var(--c-text); }
+/* Sombra corta y suave (no es un brillo): separa el texto de la espuma de
+   las cascadas sin oscurecer más el video */
+.hero--video .hero__kicker,
+.hero--video .hero__title,
+.hero--video .hero__subtitle,
+.hero--video .hero__trust { text-shadow: 0 1px 2px rgba(10,26,47,.6), 0 2px 14px rgba(10,26,47,.45); }
 .hero--video .hero__title { color: #fff; }
 .hero--video .hero__title-script { color: var(--c-orange); }
 .hero--video .hero__kicker { color: #fff; }
@@ -538,8 +527,10 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   object-fit: contain;
 }
 
-/* ---------- RESPONSIVE: MENÚ + HERO ---------- */
-@media (max-width: 880px) {
+/* ---------- RESPONSIVE: MENÚ + HERO ----------
+   Menú de celular hasta 1000 px: entre 881 y 955 px el menú completo no
+   cabe y el botón «Cotizar por WhatsApp» se salía de la pantalla. */
+@media (max-width: 1000px) {
   /* Menú desplegable bajo el header. Cerrado está oculto de verdad
      (visibility + inert que pone nav.js), así no tapa ni recibe toques. */
   .navbar__brand { margin-right: auto; }
@@ -589,9 +580,15 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 }
 
 @media (max-width: 540px) {
-  /* Celular: menú de 64 px y cinta de 30 px */
-  :root { --navbar-h: 64px; --topbar-h: 30px; }
-  .topbar { font-size: .75rem; }
+  /* Celular: menú de 64 px y cinta de 36 px. La cinta se toca para pausarla:
+     su área táctil llega a 44 px con 8 px invisibles sobre el margen vacío
+     del menú (el enlace del logo y la hamburguesa empiezan más abajo). El
+     recorte con clip-path reemplaza a overflow: hidden para que esos 8 px
+     reciban el toque. */
+  :root { --navbar-h: 64px; --topbar-h: 36px; }
+  .topbar { font-size: .75rem; overflow: visible; clip-path: inset(0 0 -8px 0); }
+  .topbar::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 8px; }
+  html.header-hidden .topbar::after { display: none; }
   .topbar__list li { padding: 0 1rem; }
   .topbar__list li::after { margin-left: 2rem; }
   .navbar__brand-img { height: 40px; }
@@ -607,10 +604,12 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
     padding-top: calc(var(--navbar-h) + var(--topbar-h) + 2rem);
     padding-bottom: calc(44px + 2.25rem);   /* deja libre el botón de pausa */
   }
+  /* Velo más claro que en escritorio para que las cascadas se reconozcan;
+     la sombra suave del texto lo separa de las zonas claras del video */
   .hero--video .hero__video-overlay {
     background: linear-gradient(180deg,
-      rgba(15,40,69,.64) 0%, rgba(15,40,69,.75) 30%,
-      rgba(15,40,69,.72) 70%, rgba(15,40,69,.80) 100%);
+      rgba(15,40,69,.60) 0%, rgba(15,40,69,.70) 26%, rgba(15,40,69,.68) 50%,
+      rgba(15,40,69,.62) 75%, rgba(15,40,69,.55) 100%);
   }
   .hero__video-toggle { left: 1rem; bottom: 1rem; }
   .hero__title { font-size: clamp(2.1rem, 8vw, 2.8rem); margin-bottom: 1rem; }
@@ -638,7 +637,8 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   }
   html { scroll-behavior: auto; }
   /* Cinta quieta y desplazable */
-  .topbar { overflow-x: auto; scrollbar-width: none; }
+  .topbar { overflow-x: auto; scrollbar-width: none; clip-path: none; }
+  .topbar::after { display: none; }
   .topbar::-webkit-scrollbar { display: none; }
   .topbar__track { animation: none; }
   .topbar__list[aria-hidden="true"] { display: none; }

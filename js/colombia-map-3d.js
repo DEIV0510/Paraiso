@@ -4,30 +4,33 @@
    Mapa 3D de Colombia con los 33 departamentos (GeoJSON local; si la red
    falla, un contorno embebido).
 
-   - Océano con olas suaves, cielo en degradado, arcos entre destinos y barco.
+   - Océano, cielo en degradado, arcos entre destinos y barco: todo quieto
+     (sin olas, giro solo ni luces que corren). Solo se dibuja cuando algo
+     cambia: arrastre, zoom, vuelo a un destino o cambio de tamaño.
    - Pines con etiqueta HTML. Las etiquetas que se pisan o se salen del lienzo
      se ocultan por prioridad: primero la elegida y las que tienen tarifa.
    - Escritorio: arrastrar gira; Ctrl/Cmd + rueda acerca. La rueda sola sigue
      bajando la página (se muestra un aviso breve).
    - Táctil: un dedo en horizontal gira, en vertical baja la página; dos dedos
      acercan.
-   - Elegir un destino (pin, etiqueta, chip o lista del panel) actualiza el
-     panel. En escritorio abre además una ficha corta sobre el pin.
+   - Los chips, la lista de tarifas y el panel viven en main.js
+     (PARAISOS_MAP) y funcionan sin este archivo. Aquí se engancha el 3D:
+     al elegir un destino el mapa vuela al pin y, en escritorio, abre una
+     ficha corta sobre él.
    - El bucle de render se detiene fuera de pantalla y con la pestaña oculta.
-     Con «reducir movimiento» no gira solo y solo dibuja mientras hay algo
-     que mover.
    ===================================================================== */
 function initColombiaMap() {
   'use strict';
-  if (!window.THREE || !window.PARAISOS_DATA) { console.warn('[mapa] Three.js o los datos no cargaron'); return; }
+  const ui = window.PARAISOS_MAP;
+  if (!window.THREE || !window.PARAISOS_DATA || !ui) {
+    console.warn('[mapa] Three.js o los datos no cargaron');
+    if (ui) ui.fallback();
+    return;
+  }
 
   const host = document.getElementById('canvas3d');
   const overlay = document.getElementById('mapLabels');
   const popup = document.getElementById('mapPopup');
-  const panel = document.getElementById('destPanel');
-  const panelEmpty = document.getElementById('panelEmpty');
-  const panelContent = document.getElementById('panelContent');
-  const chipsHost = document.getElementById('destChips');
   if (!host || !overlay) return;
   const hintEl = host.querySelector('.map-3d__hint');
   const compassNeedle = host.querySelector('.map-3d__compass-needle');
@@ -50,33 +53,23 @@ function initColombiaMap() {
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const lerp = (a, b, k) => a + (b - a) * k;
   const shortName = (d) => String(d.nombre || '').split(' · ')[0];
-  const priceLine = (d) => (d.precio ? `Desde ${d.precio}` : 'Precio por WhatsApp');
-  // Solo Putumayo tiene plan confirmado («Plan fin de semana»).
-  const planOf = (d) => {
-    const raw = d.plan || (d.id === 'putumayo' ? 'Plan fin de semana' : '');
-    const s = String(raw).replace(/^plan\s+/i, '').trim();
-    return s ? s.charAt(0).toUpperCase() + s.slice(1) : '';
-  };
-  const waNumber = D.whatsapp || '573157347306';
-  // «al Eje Cafetero», «al Huila»: esos destinos llevan artículo
-  const toDest = (d) => (/^(eje-cafetero|huila)$/.test(d.id) ? 'al ' : 'a ') + shortName(d);
-  const waHref = (d) => `https://wa.me/${waNumber}?text=${encodeURIComponent(`Hola, PARAISOS. Quiero cotizar un viaje ${toDest(d)}.`)}`;
-  const WA_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';
+  const WA_ICON = '<svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>';
 
   // Un dedo en vertical = scroll de la página; en horizontal lo maneja el mapa.
   host.style.touchAction = 'pan-y';
 
   /* ---------------------------------------------------------------------
-     AVISO DE CARGA mientras se arma el país
+     AVISO DE CARGA mientras se arma el país (está en el HTML desde el
+     principio; si no estuviera, se crea)
      --------------------------------------------------------------------- */
-  const loadingEl = document.createElement('div');
-  loadingEl.className = 'map-3d__loading';
-  loadingEl.setAttribute('aria-hidden', 'true');
-  loadingEl.style.cssText = 'position:absolute;inset:0;z-index:6;display:grid;place-items:center;' +
-    'background:rgba(221,235,248,.92);color:#0D47A1;font:600 .95rem/1.4 Poppins,system-ui,sans-serif;' +
-    'transition:opacity .4s;pointer-events:none';
-  loadingEl.textContent = 'Cargando el mapa…';
-  host.appendChild(loadingEl);
+  let loadingEl = host.querySelector('.map-3d__loading');
+  if (!loadingEl) {
+    loadingEl = document.createElement('div');
+    loadingEl.className = 'map-3d__loading';
+    loadingEl.setAttribute('aria-hidden', 'true');
+    loadingEl.textContent = 'Cargando el mapa…';
+    host.appendChild(loadingEl);
+  }
 
   /* ---------------------------------------------------------------------
      ESCENA / CÁMARA / RENDERER
@@ -223,6 +216,24 @@ function initColombiaMap() {
     curveSegments: 10,
     steps: 1
   };
+  // Islas (San Andrés, Providencia, Gorgona…): con la altura del continente
+  // y el bisel de 0,12 se veían como torres. Van bajas y casi sin bisel.
+  const ISLAND_MAX_DEG = 0.3;          // lado mayor del polígono, en grados (Quindío mide 0,57)
+  const ISLAND_DEPTH = 0.32;
+  const ISLAND_TOP_Y = ISLAND_DEPTH + 0.03;
+  const islandSettings = {
+    depth: ISLAND_DEPTH,
+    bevelEnabled: true,
+    bevelThickness: 0.03,
+    bevelSize: 0.02,
+    bevelSegments: 1,
+    curveSegments: 6,
+    steps: 1
+  };
+  const islands = [];                  // cajas lng/lat de las islas, para bajar sus pines
+  // Alto de la superficie en un punto (para pines y arcos)
+  const surfaceY = (lat, lng) => (islands.some(b =>
+    lng >= b.w - 0.15 && lng <= b.e + 0.15 && lat >= b.s - 0.15 && lat <= b.n + 0.15) ? ISLAND_TOP_Y : COUNTRY_TOP_Y);
 
   // Quita vértices más cercanos que `tol` grados (≈1 px en pantalla): el
   // GeoJSON trae ~24.000 puntos y extruirlos todos bloquea el celular.
@@ -242,8 +253,16 @@ function initColombiaMap() {
   // `acc`; al final todo se une en una sola malla y una sola línea (dos
   // llamadas de dibujo en vez de ~70 por cuadro).
   function addPolygon(rings, acc) {
-    const outer = simplifyRing(rings[0] || []);
+    const raw = rings[0] || [];
+    if (raw.length < 4) return false;
+    let w = Infinity, e = -Infinity, s = Infinity, n = -Infinity;
+    raw.forEach(([lng, lat]) => { w = Math.min(w, lng); e = Math.max(e, lng); s = Math.min(s, lat); n = Math.max(n, lat); });
+    const isIsland = Math.max(e - w, n - s) < ISLAND_MAX_DEG;
+    // Las islas conservan sus vértices (son pocos y simplificarlas las deforma)
+    const outer = isIsland ? raw : simplifyRing(raw);
     if (outer.length < 4) return false;
+    if (isIsland) islands.push({ w, e, s, n });
+    const topY = isIsland ? ISLAND_TOP_Y : COUNTRY_TOP_Y;
 
     const shape = new THREE.Shape();
     outer.forEach(([lng, lat], i) => {
@@ -263,7 +282,7 @@ function initColombiaMap() {
       holes.push(ring);
     }
 
-    let geo = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+    let geo = new THREE.ExtrudeGeometry(shape, isIsland ? islandSettings : extrudeSettings);
     if (geo.index) { const flat = geo.toNonIndexed(); geo.dispose(); geo = flat; }
     geo.rotateX(-Math.PI / 2);
     geo.computeVertexNormals();
@@ -274,7 +293,7 @@ function initColombiaMap() {
       for (let i = 0; i < ring.length - 1; i++) {
         const a = project(ring[i][1], ring[i][0]);
         const b = project(ring[i + 1][1], ring[i + 1][0]);
-        acc.lines.push(a.x, COUNTRY_TOP_Y, a.z, b.x, COUNTRY_TOP_Y, b.z);
+        acc.lines.push(a.x, topY, a.z, b.x, topY, b.z);
       }
     });
     return true;
@@ -375,12 +394,13 @@ function initColombiaMap() {
     });
     countryGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), outlineMat));
 
-    // San Andrés como cilindro aparte (con el GeoJSON real ya viene incluido)
+    // San Andrés como disco bajo aparte (con el GeoJSON real ya viene incluido)
     const sa = project(12.58, -81.71);
-    const island = new THREE.Mesh(new THREE.CylinderGeometry(0.45, 0.55, COUNTRY_DEPTH * 0.7, 18), bodyMat);
-    island.position.set(sa.x, COUNTRY_DEPTH * 0.35 - 0.1, sa.z);
+    const island = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.2, ISLAND_TOP_Y, 18), bodyMat);
+    island.position.set(sa.x, ISLAND_TOP_Y / 2, sa.z);
     island.castShadow = true;
     countryGroup.add(island);
+    islands.push({ w: -81.75, e: -81.67, s: 12.5, n: 12.6 });
     countryGroup.visible = true;
   }
 
@@ -470,7 +490,7 @@ function initColombiaMap() {
     if (useTranslate) { label.style.left = '0px'; label.style.top = '0px'; }
     label.addEventListener('click', () => {
       if (dragMoved) return;
-      selectDestino(d.id, 'map');
+      ui.select(d.id, 'map');
     });
     overlay.appendChild(label);
 
@@ -498,36 +518,43 @@ function initColombiaMap() {
       .map(el => ({ l: el.offsetLeft, t: el.offsetTop, r: el.offsetLeft + el.offsetWidth, b: el.offsetTop + el.offsetHeight }));
   }
 
-  /* ---------------------------------------------------------------------
-     ARCOS entre destinos con una luz que los recorre
-     --------------------------------------------------------------------- */
-  const arcGroup = new THREE.Group();
-  scene.add(arcGroup);
-  const arcs = [];
-  const arcOrder = ['cartagena', 'san-andres', 'santa-marta', 'eje-cafetero', 'huila', 'tumaco', 'putumayo'];
-  const arcLineMat = new THREE.LineBasicMaterial({ color: 0x42A5F5, transparent: true, opacity: 0.4 });
-  const arcDotGeo = new THREE.SphereGeometry(0.08, 12, 12);
-  const arcDotMat = new THREE.MeshBasicMaterial({ color: 0xFFB74D });
-  for (let i = 0; i < arcOrder.length - 1; i++) {
-    const a = destinos.find(x => x.id === arcOrder[i]);
-    const b = destinos.find(x => x.id === arcOrder[i + 1]);
-    if (!a || !b) continue;
-    const pa = project(a.lat, a.lng);
-    const pb = project(b.lat, b.lng);
-    const dist = Math.hypot(pa.x - pb.x, pa.z - pb.z);
-    const curve = new THREE.QuadraticBezierCurve3(
-      new THREE.Vector3(pa.x, COUNTRY_TOP_Y + 0.3, pa.z),
-      new THREE.Vector3((pa.x + pb.x) / 2, dist * 0.45 + 1.8, (pa.z + pb.z) / 2),
-      new THREE.Vector3(pb.x, COUNTRY_TOP_Y + 0.3, pb.z)
-    );
-    arcGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(40)), arcLineMat));
-    const dot = new THREE.Mesh(arcDotGeo, arcDotMat);
-    arcGroup.add(dot);
-    arcs.push({ curve, dot, phase: i * 0.3 });
+  // Asienta cada pin sobre su superficie (las islas son más bajas)
+  function seatPins() {
+    pins.forEach(p => {
+      const d = p.userData.destino;
+      p.position.y = surfaceY(d.lat, d.lng) - COUNTRY_TOP_Y;
+    });
   }
 
   /* ---------------------------------------------------------------------
-     BARCO navegando por el Caribe (gira junto con el mapa)
+     ARCOS entre destinos (líneas quietas). Se rehacen cuando el país está
+     construido, para que los de San Andrés arranquen sobre la isla.
+     --------------------------------------------------------------------- */
+  const arcGroup = new THREE.Group();
+  scene.add(arcGroup);
+  const arcOrder = ['cartagena', 'san-andres', 'santa-marta', 'eje-cafetero', 'huila', 'tumaco', 'putumayo'];
+  const arcLineMat = new THREE.LineBasicMaterial({ color: 0x42A5F5, transparent: true, opacity: 0.4 });
+  function buildArcs() {
+    arcGroup.children.slice().forEach(c => { arcGroup.remove(c); if (c.geometry) c.geometry.dispose(); });
+    for (let i = 0; i < arcOrder.length - 1; i++) {
+      const a = destinos.find(x => x.id === arcOrder[i]);
+      const b = destinos.find(x => x.id === arcOrder[i + 1]);
+      if (!a || !b) continue;
+      const pa = project(a.lat, a.lng);
+      const pb = project(b.lat, b.lng);
+      const dist = Math.hypot(pa.x - pb.x, pa.z - pb.z);
+      const curve = new THREE.QuadraticBezierCurve3(
+        new THREE.Vector3(pa.x, surfaceY(a.lat, a.lng) + 0.3, pa.z),
+        new THREE.Vector3((pa.x + pb.x) / 2, dist * 0.45 + 1.8, (pa.z + pb.z) / 2),
+        new THREE.Vector3(pb.x, surfaceY(b.lat, b.lng) + 0.3, pb.z)
+      );
+      arcGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(curve.getPoints(40)), arcLineMat));
+    }
+  }
+  buildArcs();
+
+  /* ---------------------------------------------------------------------
+     BARCO quieto en el Caribe (gira junto con el mapa)
      --------------------------------------------------------------------- */
   const boatPivot = new THREE.Group();
   scene.add(boatPivot);
@@ -570,11 +597,32 @@ function initColombiaMap() {
   }
   let flyTo = null;
   let selectedId = null;
-  let userPicked = false;
-  let lastInteract = -Infinity;
-  const autoRotateOn = () => !reduced && !userPicked && !isDragging && performance.now() - lastInteract > 5000;
+  let userMoved = false;            // el usuario ya giró, acercó o eligió algo
 
   function setZoom(z) { zoom = clamp(z, minZoom, maxZoom); }
+
+  // Lienzo angosto (celular): el encuadre se ajusta a los 8 pines con un
+  // margen de ~10 % (San Andrés y Atacames quedaban fuera o en el borde).
+  function fitPins() {
+    if (cw >= 560 || !pins.length) return;
+    let w = Infinity, e = -Infinity, n = Infinity, s = -Infinity;
+    pins.forEach(p => { w = Math.min(w, p.position.x); e = Math.max(e, p.position.x); n = Math.min(n, p.position.z); s = Math.max(s, p.position.z); });
+    focus.set((w + e) / 2, 0, (n + s) / 2 + 0.6);
+    const v = new THREE.Vector3();
+    const fits = (z) => {
+      camera.position.set(focus.x, focus.y + z * Math.sin(rotX), focus.z + z * Math.cos(rotX));
+      camera.lookAt(focus);
+      camera.updateMatrixWorld();
+      return pins.every(p => {
+        v.set(p.position.x, COUNTRY_TOP_Y + 0.6, p.position.z).project(camera);
+        const x = (v.x * 0.5 + 0.5) * cw, y = (-v.y * 0.5 + 0.5) * ch;
+        return x > cw * 0.1 && x < cw * 0.9 && y > ch * 0.14 && y < ch * 0.94;
+      });
+    };
+    let z = 12;
+    while (z < maxZoom && !fits(z)) z += 0.5;
+    zoom = z;
+  }
 
   /* ---------------------------------------------------------------------
      INTERACCIÓN: puntero (ratón, dedo, lápiz) y rueda
@@ -586,10 +634,9 @@ function initColombiaMap() {
   let lastPointerType = 'mouse';
 
   function interacted() {
-    lastInteract = performance.now();
+    userMoved = true;
     if (flyTo && focusPin) focusOffset.subVectors(focus, pinWorld(focusPin, rotY, focusGoal));
     flyTo = null;              // el usuario manda: se cancela el vuelo en curso
-    ambientOnly = false;
     wake();
   }
 
@@ -690,7 +737,7 @@ function initColombiaMap() {
     if (dragMoved) { dragMoved = false; return; }
     if (e.target.closest && (e.target.closest('#mapPopup') || e.target.closest('.map-3d__label'))) return;
     const pin = pinAt(e.clientX, e.clientY, lastPointerType === 'mouse' ? 18 : 28);
-    if (pin) selectDestino(pin.userData.id, 'map');
+    if (pin) ui.select(pin.userData.id, 'map');
     else closePopup();
   });
 
@@ -702,15 +749,11 @@ function initColombiaMap() {
       noticeEl.className = 'map-3d__notice';
       noticeEl.setAttribute('aria-hidden', 'true');
       noticeEl.textContent = `Usa ${zoomKey} + rueda para acercar`;
-      noticeEl.style.cssText = 'position:absolute;left:50%;top:50%;z-index:7;transform:translate(-50%,-50%);' +
-        'background:rgba(15,40,69,.9);color:#fff;padding:.75rem 1.15rem;' +
-        'font:600 .95rem/1.3 Poppins,system-ui,sans-serif;white-space:nowrap;' +
-        'pointer-events:none;opacity:0;transition:opacity .2s';
       host.appendChild(noticeEl);
     }
-    noticeEl.style.opacity = '1';
+    noticeEl.classList.add('is-shown');
     clearTimeout(noticeTimer);
-    noticeTimer = setTimeout(() => { noticeEl.style.opacity = '0'; }, 1500);
+    noticeTimer = setTimeout(() => { noticeEl.classList.remove('is-shown'); }, 1500);
   }
   host.addEventListener('wheel', (e) => {
     if (!(e.ctrlKey || e.metaKey)) { showZoomNotice(); return; }
@@ -721,17 +764,8 @@ function initColombiaMap() {
   }, { passive: false });
 
   /* ---------------------------------------------------------------------
-     REGIÓN VIVA para lectores de pantalla (el panel ya no lo es)
-     --------------------------------------------------------------------- */
-  const live = document.createElement('p');
-  live.className = 'sr-only';
-  live.setAttribute('role', 'status');
-  live.setAttribute('aria-live', 'polite');
-  (chipsHost || panel || host).insertAdjacentElement('afterend', live);
-  if (panel) panel.removeAttribute('aria-live');
-
-  /* ---------------------------------------------------------------------
-     ELEGIR DESTINO: vuelo, panel, ficha y chips
+     ELEGIR DESTINO (parte 3D): pin marcado, vuelo y ficha. Los chips, la
+     lista, el panel y la región viva los maneja PARAISOS_MAP (main.js).
      --------------------------------------------------------------------- */
   let labelOrder = pins.slice();
   function sortLabels() {
@@ -760,79 +794,22 @@ function initColombiaMap() {
     flyTo = { t: 0, fromRot: rotY, toRot, fromZoom: zoom, toZoom: SELECT_ZOOM, fromFocus: focus.clone() };
   }
 
-  function selectDestino(id, how) {
+  function select3D(id, how) {
     const pin = pinById[id];
-    const d = pin ? pin.userData.destino : destinos.find(x => x.id === id);
-    if (!d) return;
+    if (!pin) return;
     selectedId = id;
-    userPicked = true;
+    userMoved = true;
     pins.forEach(p => {
       const sel = p.userData.id === id;
       p.userData.head.scale.setScalar(sel ? 1.6 : 1);
       p.userData.label.classList.toggle('is-active', sel);
     });
-    if (chipsHost) {
-      chipsHost.querySelectorAll('.map-3d__chip').forEach(c => {
-        const on = c.dataset.id === id;
-        c.classList.toggle('is-active', on);
-        c.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-    }
     sortLabels();
     measureLabels();
-    if (pin) startFlyTo(pin);
-    renderPanel(d);
-    live.textContent = `${shortName(d)}: ${d.precio ? 'desde ' + d.precio : 'precio por WhatsApp'}.`;
-
-    const touch = isTouchUI();
-    if (!touch && how !== 'keyboard' && pin) openPopup(d); else closePopup();
-    if (touch && how !== 'keyboard') revealPanel();
-    lastInteract = performance.now();
+    startFlyTo(pin);
+    // Ficha sobre el pin solo en escritorio y con ratón (en táctil manda el panel)
+    if (!isTouchUI() && how !== 'keyboard' && how !== 'restore') openPopup(pin.userData.destino); else closePopup();
     requestRender();
-  }
-
-  function renderPanel(d) {
-    if (!panelContent) return;
-    const name = shortName(d);
-    const feats = Array.isArray(d.features) && d.features.length
-      ? `<div class="features">${d.features.map(f => `<span>${f}</span>`).join('')}</div>` : '';
-    const price = d.precio
-      ? `<div><span>Desde</span><strong>${d.precio}</strong></div>`
-      : '<div><span>Tarifa</span><strong>Precio por WhatsApp</strong></div>';
-    const plan = planOf(d);
-    const img = d.img
-      ? `<img src="${d.img}"${d.srcset ? ` srcset="${d.srcset}" sizes="(max-width: 980px) 92vw, 420px"` : ''} alt="" width="640" height="400" decoding="async" />`
-      : '';
-    panelContent.innerHTML = `
-      ${img}
-      ${d.region ? `<span class="region">${d.region}</span>` : ''}
-      <h3 tabindex="-1">${name}</h3>
-      ${d.desc ? `<p>${d.desc}</p>` : ''}
-      ${feats}
-      <div class="meta">${price}${plan ? `<div><span>Plan</span><strong>${plan}</strong></div>` : ''}</div>
-      <a class="btn btn--whatsapp" target="_blank" rel="noopener" href="${waHref(d)}">${WA_ICON}<span>Cotizar por WhatsApp</span></a>`;
-    if (panelEmpty) panelEmpty.hidden = true;
-    panelContent.hidden = false;
-  }
-
-  // Estado inicial del panel: instrucción corta + tarifas «desde» de cada destino.
-  function renderEmpty() {
-    if (!panelEmpty) return;
-    const how = isTouchUI() ? 'Toca un punto del mapa o elige un destino.' : 'Haz clic en un punto del mapa o elige un destino.';
-    panelEmpty.innerHTML = `
-      <h3>Elige un destino</h3>
-      <p>${how}</p>
-      <ul class="map-3d__fares">${destinos.map(d => `
-        <li><button type="button" class="map-3d__fare" data-id="${d.id}"><span>${shortName(d)}</span> <strong>${priceLine(d)}</strong></button></li>`).join('')}
-      </ul>`;
-    panelEmpty.addEventListener('click', (e) => {
-      const b = e.target.closest && e.target.closest('.map-3d__fare');
-      if (!b) return;
-      selectDestino(b.dataset.id, e.detail === 0 ? 'keyboard' : 'list');
-      // El botón pulsado desaparece: el foco pasa al título del destino.
-      const h = panelContent && panelContent.querySelector('h3');
-      if (h) h.focus({ preventScroll: true });
-    });
   }
 
   let popupW = 0, popupH = 0;
@@ -841,8 +818,8 @@ function initColombiaMap() {
     const name = shortName(d);
     popup.innerHTML = `
       <h4>${name}</h4>
-      <p>${priceLine(d)}</p>
-      <a class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener" href="${waHref(d)}" aria-label="Cotizar ${name} por WhatsApp">${WA_ICON}<span>Cotizar</span></a>`;
+      <p>${ui.priceLine(d)}</p>
+      <a class="btn btn--whatsapp btn--sm" target="_blank" rel="noopener" href="${ui.waHref(d)}" aria-label="Cotizar ${name} por WhatsApp">${WA_ICON}<span>Cotizar</span></a>`;
     popup.dataset.id = d.id;
     if (useTranslate) { popup.style.left = '0px'; popup.style.top = '0px'; }
     popup.hidden = false;
@@ -850,37 +827,9 @@ function initColombiaMap() {
     popupH = popup.offsetHeight;
   }
   function closePopup() {
-    if (popup && !popup.hidden) { popup.hidden = true; popup.dataset.id = ''; }
+    if (popup && !popup.hidden) { popup.hidden = true; popup.dataset.id = ''; requestRender(); }
   }
 
-  // En celular el panel queda debajo del mapa: lo trae a la vista si no se ve.
-  function revealPanel() {
-    if (!panel) return;
-    // Alto de lo fijo arriba (cinta + menú) para no dejar el panel debajo.
-    let top = 0;
-    document.querySelectorAll('.topbar, .navbar').forEach(el => {
-      const pos = getComputedStyle(el).position;
-      if (pos === 'fixed' || pos === 'sticky') top = Math.max(top, el.getBoundingClientRect().bottom);
-    });
-    const offset = clamp(top, 0, 180) + 12;
-    const r = panel.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    if (r.top > offset && r.top < vh * 0.6) return;
-    window.scrollTo({ top: Math.max(0, window.scrollY + r.top - offset), behavior: reduced ? 'auto' : 'smooth' });
-  }
-
-  if (chipsHost) {
-    chipsHost.setAttribute('role', 'group');
-    chipsHost.setAttribute('aria-label', 'Elegir destino');
-    chipsHost.innerHTML = destinos.map(d =>
-      `<button type="button" class="map-3d__chip" data-id="${d.id}" aria-pressed="false">${shortName(d)}</button>`
-    ).join('');
-    chipsHost.addEventListener('click', (e) => {
-      const b = e.target.closest && e.target.closest('.map-3d__chip');
-      if (b) selectDestino(b.dataset.id, e.detail === 0 ? 'keyboard' : 'chip');
-    });
-  }
-  renderEmpty();
 
   if (hintEl) {
     hintEl.textContent = isTouchUI()
@@ -899,22 +848,20 @@ function initColombiaMap() {
 
   /* ---------------------------------------------------------------------
      BUCLE DE RENDER
-     Corre solo con el mapa en pantalla y la pestaña visible. Si solo se
-     mueven el agua y el barco, dibuja a ~30 cuadros por segundo.
+     Solo dibuja cuando algo cambia (arrastre, zoom, vuelo, inercia, cambio
+     de tamaño) y con el mapa en pantalla y la pestaña visible. Quieto, el
+     hilo principal queda libre.
      --------------------------------------------------------------------- */
   const tmpV = new THREE.Vector3();
   const clock = new THREE.Clock();
-  let animT = 0, ambientPlaced = false;
+  let ambientPlaced = false;
   let rafId = 0, running = false, needsRender = true;
   let inView = false, pageVisible = !document.hidden;
-  let ambientOnly = false, lastFrameAt = 0;
   let compassDeg = NaN;
 
-  function frame(now) {
+  function frame() {
     rafId = 0;
     if (!inView || !pageVisible) { running = false; return; }
-    if (ambientOnly && now - lastFrameAt < 25) { rafId = requestAnimationFrame(frame); return; }
-    lastFrameAt = now;
     if (tick()) rafId = requestAnimationFrame(frame);
     else running = false;
   }
@@ -922,13 +869,13 @@ function initColombiaMap() {
     if (running || !inView || !pageVisible) return;
     running = true;
     clock.getDelta();        // descarta el tiempo que estuvo en pausa
-    ambientOnly = false;
     rafId = requestAnimationFrame(frame);
   }
   function requestRender() { needsRender = true; wake(); }
 
+  // Agua, espuma y barco se ubican una sola vez (sin olas ni recorrido)
   function updateAmbient(dt) {
-    const t = animT;
+    const t = 0;
     // Océano
     for (let i = 0; i < oCount; i++) {
       const x = oArr[i * 3], y = oArr[i * 3 + 1];
@@ -946,8 +893,6 @@ function initColombiaMap() {
       if (foamPos[idx + 2] > 20) foamPos[idx + 2] = -20; else if (foamPos[idx + 2] < -20) foamPos[idx + 2] = 20;
     }
     foamGeo.attributes.position.needsUpdate = true;
-    // Luz que recorre los arcos
-    arcs.forEach(a => { a.curve.getPoint((t * 0.18 + a.phase) % 1, a.dot.position); });
     // Barco
     const boatU = (t * 0.06) % 1;
     const idx = Math.floor(boatU * boatPath.length);
@@ -973,10 +918,12 @@ function initColombiaMap() {
     });
 
     const placed = obstacles.slice();
+    // La etiqueta del pin con la ficha abierta se oculta: la ficha ya lo nombra
+    const popId = popup && !popup.hidden ? popup.dataset.id : '';
     labelOrder.forEach(p => {
       const u = p.userData;
       const active = u.id === selectedId;
-      let show = u.onScreen;
+      let show = u.onScreen && u.id !== popId;
       let x = u.sx;
       const y = u.sy;
       if (show) {
@@ -1037,7 +984,6 @@ function initColombiaMap() {
           velY *= damp; velX *= damp;
           moving = true;
         } else { velY = 0; velX = 0; }
-        if (autoRotateOn()) { rotY += 0.108 * dt; moving = true; }
       } else {
         moving = true;
       }
@@ -1059,15 +1005,13 @@ function initColombiaMap() {
     camera.position.set(focus.x, focus.y + zoom * Math.sin(rotX), focus.z + zoom * Math.cos(rotX));
     camera.lookAt(focus);
 
-    if (!reduced) animT += dt;
-    if (!reduced || !ambientPlaced) { updateAmbient(dt); ambientPlaced = true; }
+    if (!ambientPlaced) { updateAmbient(0); ambientPlaced = true; }
 
     renderer.render(scene, camera);   // actualiza las matrices que usa updateScreen
     updateScreen();
     needsRender = false;
 
-    ambientOnly = !moving && !reduced;
-    return !reduced || moving || needsRender;
+    return moving || needsRender;
   }
 
   function resize() {
@@ -1078,6 +1022,7 @@ function initColombiaMap() {
       camera.aspect = cw / ch;
       camera.updateProjectionMatrix();
       renderer.setSize(cw, ch);
+      if (!userMoved) fitPins();
     }
     measureLabels();
     requestRender();
@@ -1106,8 +1051,10 @@ function initColombiaMap() {
 
   // Primer cuadro ya mismo (compila los shaders antes de que el mapa entre
   // en pantalla). El país aparece cuando termina de construirse.
+  fitPins();
   measureLabels();
   tick();
+  ui.attach({ select: select3D });
 
   /* ---------------------------------------------------------------------
      CARGA DEL PAÍS: archivo local y, si falla, el Gist público
@@ -1153,7 +1100,9 @@ function initColombiaMap() {
       countryGroup.clear ? countryGroup.clear() : countryGroup.children.slice().forEach(c => countryGroup.remove(c));
       buildCountryFallback();
     }
-    loadingEl.style.opacity = '0';
+    seatPins();
+    buildArcs();
+    loadingEl.classList.add('is-done');
     setTimeout(() => loadingEl.remove(), 450);
     if (running) needsRender = true;
     else tick();             // dibuja el país aunque el mapa aún no esté en pantalla
@@ -1172,8 +1121,16 @@ function initColombiaMap() {
     if (window.THREE) return initColombiaMap();
     const s = document.createElement('script');
     s.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+    // Integridad (SRI): si el CDN sirviera otro archivo, no se ejecuta
+    s.integrity = 'sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu';
+    s.crossOrigin = 'anonymous';
+    s.referrerPolicy = 'no-referrer';
     s.onload = initColombiaMap;
-    s.onerror = () => console.warn('[mapa] Three.js no cargó');
+    // Sin 3D (CDN bloqueado, sin red o archivo distinto): queda la lista a lo ancho
+    s.onerror = () => {
+      console.warn('[mapa] Three.js no cargó');
+      if (window.PARAISOS_MAP) window.PARAISOS_MAP.fallback();
+    };
     document.head.appendChild(s);
   };
   if (!('IntersectionObserver' in window)) return start();

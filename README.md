@@ -24,12 +24,14 @@ css/fonts.css            fuentes autoalojadas (Montserrat, Poppins, Playfair Dis
 css/styles.css           tokens, base, header, cinta, hero, pie
 css/components.css       secciones y componentes
 js/nav.js                header, menú, cinta, barra fija del celular, anclas (3 páginas)
-js/main.js               datos de destinos (PARAISOS_DATA), galería, formulario, video (inicio)
-js/colombia-map-3d.js    mapa 3D (Three.js r128 desde cdnjs, se carga al acercarse)
+js/main.js               datos de destinos (PARAISOS_DATA), chips y panel del mapa, galería, formulario, video (inicio)
+js/colombia-map-3d.js    mapa 3D (Three.js r128 desde cdnjs con SRI, se carga al acercarse; dibuja solo cuando algo cambia)
 js/wizard.js             cotizador de 5 pasos
 assets/fonts/            woff2, solo latín
-assets/images/           WebP con srcset (destinos, galeria/w480|w960|w1400, cruceros, tienda)
-assets/videos/           hero-bg-h.mp4 (escritorio) y hero-bg-v.mp4 (celular vertical)
+assets/images/           WebP con srcset (galeria/w480|w960|w1400, tienda), logo en 130/260/390 px
+assets/videos/           hero-bg-h-1920.mp4 (pantallas grandes o retina), hero-bg-h-1600.mp4 (resto)
+                         y hero-bg-v-1080.mp4 (celular vertical, 608x1080). Fuentes y receta:
+                         2 tomas de Pixabay (356820 y 356815), x264 CRF 21-22, bucle de 14 s
 assets/data/             colombia.geo.json simplificado
 ```
 

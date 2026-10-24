@@ -20,19 +20,24 @@
   const progress = document.getElementById('navProgress');
   const topbar = document.getElementById('topbar');
   const bar = document.getElementById('stickyCta');
-  const mobileMenu = window.matchMedia('(max-width: 880px)');
+  const mobileMenu = window.matchMedia('(max-width: 1000px)');
   const hasIO = 'IntersectionObserver' in window;
 
-  /* ---------- Header y progreso al hacer scroll ---------- */
+  /* ---------- Header y progreso al hacer scroll ----------
+     Tras un salto a un ancla (menú, botones, entrada con #) el header se
+     queda visible un momento: si se escondiera, scroll-padding-top dejaría
+     a la vista una franja de la sección anterior sobre el título. */
   let lastY = window.scrollY;
   let ticking = false;
+  let holdUntil = location.hash ? performance.now() + 3000 : 0;
+  const holdHeader = (ms) => { holdUntil = Math.max(holdUntil, performance.now() + ms); doc.classList.remove('header-hidden'); };
   function onScroll() {
     ticking = false;
     const y = window.scrollY;
     if (nav) {
       nav.classList.toggle('is-scrolled', y > 24);
       // No se esconde con el menú abierto ni mientras se recorre con teclado
-      const busy = nav.classList.contains('is-open') || !!nav.querySelector(':focus-visible');
+      const busy = nav.classList.contains('is-open') || !!nav.querySelector(':focus-visible') || performance.now() < holdUntil;
       if (!busy && y > 240 && y > lastY + 4) doc.classList.add('header-hidden');
       else if (busy || y <= 240 || y < lastY - 4) doc.classList.remove('header-hidden');
     }
@@ -163,6 +168,7 @@
     settling = stop;
     gestures.forEach((ev) => window.addEventListener(ev, stop, { capture: true, passive: true }));
     const check = () => {
+      holdHeader(500);
       const y = window.scrollY;
       still = Math.abs(y - prevY) < 1 ? still + 1 : 0;
       prevY = y;
@@ -178,6 +184,7 @@
     timer = setTimeout(check, 150);
   }
   function goTo(target, smooth) {
+    holdHeader(1600);
     target.scrollIntoView({ behavior: smooth && !reduceMotion() ? 'smooth' : 'auto', block: 'start' });
     // El siguiente Tab sigue desde el destino
     if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');

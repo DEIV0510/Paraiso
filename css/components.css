@@ -66,6 +66,36 @@
 .map-3d__canvas:active { cursor: grabbing; }
 .map-3d__canvas canvas { display: block; width: 100%; height: 100%; }
 
+/* Aviso de carga (está en el HTML) y aviso de Ctrl/Cmd + rueda (lo crea el JS) */
+.map-3d__loading {
+  position: absolute; inset: 0; z-index: 6;
+  display: grid; place-items: center;
+  background: rgba(221,235,248,.92);
+  color: var(--c-blue-dark);
+  font: 600 .95rem/1.4 var(--f-body);
+  pointer-events: none;
+  transition: opacity .4s;
+}
+.map-3d__loading.is-done { opacity: 0; }
+html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que esperar */
+.map-3d__notice {
+  position: absolute; left: 50%; top: 50%; z-index: 7;
+  transform: translate(-50%, -50%);
+  padding: .75rem 1.15rem;
+  background: rgba(15,40,69,.9);
+  color: #fff;
+  font: 600 .95rem/1.3 var(--f-body);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.map-3d__notice.is-shown { opacity: 1; }
+/* Sin 3D (Three.js no cargó): solo el panel con la lista, a lo ancho */
+.map-3d--sin-3d { grid-template-columns: minmax(0, 1fr); }
+.map-3d--sin-3d .map-3d__canvas { display: none; }
+.map-3d--sin-3d .map-3d__fares { display: block; }   /* en celular también */
+
 /* Abajo a la izquierda: arriba taparía las etiquetas del Caribe */
 .map-3d__hint {
   position: absolute; bottom: 12px; left: 12px; z-index: 4;
@@ -192,9 +222,6 @@
 .map-3d__fare:hover { background: var(--c-bg-soft); }
 
 .map-3d__panel-content { display: flex; flex-direction: column; gap: 1rem; height: 100%; animation: fadeIn .3s var(--ease-out); }
-.map-3d__panel-content img {
-  width: 100%; height: 220px; object-fit: cover;
-}
 .map-3d__panel-content .region {
   display: inline-block;
   background: var(--c-blue-tint); color: var(--c-blue-dark);
@@ -421,26 +448,10 @@
   box-shadow: inset 0 0 0 1px var(--c-blue-dark);
 }
 
-/* Destino: foto entera arriba y nombre abajo (sin texto sobre la foto) */
-.wiz-card--destino {
-  padding: 0;
-  gap: 0;
-  overflow: hidden;
-}
-.wiz-card--destino img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  background: var(--c-bg-soft);
-}
-.wiz-card--destino strong {
-  display: block;
-  width: 100%;
-  padding: .55rem .7rem .6rem;
-  font-size: .9375rem;
-}
-.wiz-card--destino.is-selected strong,
-.wiz-card--destino[aria-pressed="true"] strong { background: var(--c-blue-dark); color: #fff; }
+/* Destino: nombre y región (sin foto), en 5 columnas parejas */
+.wiz-card--destino { justify-content: center; gap: .2rem; min-height: 76px; padding: .85rem .9rem; }
+.wiz-card--destino strong { font-size: .9375rem; }
+.wiz-card--destino em { font-size: .8125rem; line-height: 1.35; }
 
 .wiz-card--budget { justify-content: center; min-height: 64px; }
 .wiz-card--budget strong { font-size: 1rem; }
@@ -536,9 +547,10 @@
 .wizard__prev .icon { display: none; width: 20px; height: 20px; }
 
 /* ============== DESTINOS ==============
-   Cada tarjeta es un enlace a WhatsApp: foto entera (5:3) arriba y datos
-   abajo, sin texto encima de la foto. 4 × 2 en escritorio, 2 columnas en
-   tableta y celular (sin filas huérfanas). */
+   Tarjetas de tarifa (sin foto: no hay fotos verificadas de cada destino).
+   Cada una es un enlace a WhatsApp: nombre, región, tarifa «desde» sobre
+   una línea y «Cotizar». 4 × 2 en escritorio, 2 columnas en tableta y
+   celular (sin filas huérfanas). */
 .destinos-section { padding: var(--gap-7) 0; }
 .destinos-grid {
   display: grid;
@@ -547,43 +559,38 @@
 }
 .destinos-grid > li { display: flex; min-width: 0; }
 .dest-card {
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; align-items: flex-start;
   width: 100%;
+  padding: 1.35rem 1.35rem 1.35rem;
   background: #fff;
-  border: 1px solid var(--c-line);
+  border: 1px solid #D3DEEC;
+  border-top: 3px solid var(--c-text);
   color: var(--c-text);
   transition: border-color .2s var(--ease);
 }
-.dest-card:hover { border-color: var(--c-line-strong); }
-.dest-card__img {
-  width: 100%; height: auto;
-  aspect-ratio: 5 / 3;
-  object-fit: cover;
-  background: var(--c-blue-tint);
-}
-.dest-card__body {
-  display: flex; flex-direction: column; align-items: flex-start;
-  flex: 1;
-  padding: 1rem 1.1rem 1.1rem;
-}
-.dest-card__name { font-size: 1.2rem; line-height: 1.2; }
-.dest-card__region { margin-top: .2rem; font-size: .875rem; line-height: 1.4; }
-/* Tarifa abajo, alineada entre tarjetas de la misma fila */
+.dest-card:hover { border-color: var(--c-text); }
+.dest-card__name { font-size: 1.375rem; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; }
+.dest-card__region { margin: .3rem 0 1.4rem; font-size: .9375rem; line-height: 1.4; }
+/* Tarifa sobre una línea (alineada entre tarjetas de la misma fila) y
+   «Cotizar» abajo, aunque «Precio por WhatsApp» ocupe dos líneas */
 .dest-card__price {
   display: flex; flex-direction: column;
-  margin: auto 0 .9rem;
-  padding-top: .85rem;
+  align-self: stretch;
+  margin: 0 0 1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--c-line);
   line-height: 1.3;
 }
-.dest-card__price span { font-size: .8125rem; color: var(--c-text-soft); }
+.dest-card__price span { font-size: .875rem; color: var(--c-text-soft); }
 .dest-card__price strong {
   font-family: var(--f-head);
-  font-size: 1.2rem; font-weight: 800;
-  line-height: 1.6rem;   /* mismo alto con tarifa o con «Precio por WhatsApp» */
+  font-size: 1.5rem; font-weight: 800;
+  line-height: 1.9rem;   /* mismo alto con tarifa o con «Precio por WhatsApp» */
   color: var(--c-blue-dark);
   white-space: nowrap;
 }
-.dest-card__price .is-ask { font-size: 1rem; font-weight: 700; white-space: normal; }
+.dest-card__price .is-ask { font-size: 1.0625rem; font-weight: 700; white-space: normal; }
+.dest-card__cta { margin-top: auto; }
 .dest-card:hover .dest-card__cta {
   background: var(--c-orange-dark);
   border-color: var(--c-orange-dark);
@@ -636,40 +643,39 @@
 .nowrap { white-space: nowrap; }
 
 /* ============== CRUCEROS ==============
-   Región y cotización; los itinerarios y fechas son de agencias aliadas.
-   En escritorio, 3 tarjetas; en celular, una lista (sin carrusel). */
-.cruceros { margin-top: var(--gap-6); }
-.cruceros__head { margin-bottom: 1.5rem; }
-.cruceros__title { font-size: clamp(1.5rem, 1rem + 1.6vw, 2.1rem); margin-bottom: .5rem; }
-.cruceros__grid {
+   Franja de tinta: título a la izquierda y las 3 regiones a la derecha,
+   cada una con «Cotizar». Itinerarios y fechas con agencias aliadas.
+   Celular: título arriba y regiones en lista. */
+.cruceros {
+  --focus: #fff;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2.2fr);
+  gap: 1.5rem 3rem;
+  align-items: center;
+  margin-top: var(--gap-5);
+  padding: 2rem 2.25rem;
+  background: var(--c-text);
+  color: #fff;
+}
+.cruceros__title { color: #fff; font-size: clamp(1.5rem, 1rem + 1.4vw, 2rem); font-weight: 800; margin-bottom: .4rem; }
+.cruceros__sub { color: #fff; font-size: 1rem; line-height: 1.5; }
+.cruceros__list {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  gap: 1rem;
 }
-.cruceros__grid > li { display: flex; min-width: 0; }
+.cruceros__list > li { display: flex; min-width: 0; }
 .cruise-card {
-  display: flex; flex-direction: column;
-  width: 100%;
-  background: #fff;
-  border: 1px solid var(--c-line);
-  color: var(--c-text);
-  transition: border-color .2s var(--ease);
-}
-.cruise-card:hover { border-color: var(--c-line-strong); }
-.cruise-card__img {
-  width: 100%; height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  background: var(--c-blue-tint);
-}
-/* Nombre arriba y «Cotizar» debajo, igual que en los destinos */
-.cruise-card__body {
   display: flex; flex-direction: column; align-items: flex-start;
-  gap: .75rem;
-  flex: 1;
-  padding: 1rem 1.1rem 1.1rem;
+  gap: .9rem;
+  width: 100%;
+  padding: 1.1rem 1.15rem 1.15rem;
+  border: 1px solid rgba(255,255,255,.45);
+  color: #fff;
+  transition: border-color .2s var(--ease), background-color .2s var(--ease);
 }
-.cruise-card__name { font-size: 1.2rem; line-height: 1.2; }
+.cruise-card:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+.cruise-card__name { font-family: var(--f-head); font-size: 1.25rem; font-weight: 800; line-height: 1.2; }
 .cruise-card:hover .cruise-card__cta {
   background: var(--c-orange-dark);
   border-color: var(--c-orange-dark);
@@ -1287,6 +1293,12 @@ html.lightbox-open { overflow: hidden; }
   font-weight: 700;
   color: var(--c-text);
 }
+.pueblos__intro {
+  margin-top: .7rem;
+  font-size: .9375rem;
+  line-height: 1.5;
+  color: var(--c-text-soft);
+}
 .putumayo__more,
 .pueblos__otros {
   margin-top: .9rem;
@@ -1435,11 +1447,12 @@ html.lightbox-open { overflow: hidden; }
   color: var(--c-text);
   margin-bottom: 1rem;
 }
-/* Contratos (OEI, Gobernación) más anchos que pólizas y RNT */
+/* 4 columnas iguales: los cuatro títulos caben en una línea y las
+   descripciones arrancan a la misma altura */
 .allies__list {
   display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 3fr) minmax(0, 2fr) minmax(0, 2fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
   margin: 0;
 }
 .allies__list > div {
@@ -1636,37 +1649,43 @@ html.lightbox-open { overflow: hidden; }
   .reveal { transform: none; }
 }
 
-/* Alto estimado de las secciones del final mientras no se pintan
-   (content-visibility en styles.css): evita saltos de la barra de scroll */
-#nosotros { --cis: 850px; }
-#tienda   { --cis: 310px; }
-#galeria  { --cis: 930px; }
-#faq      { --cis: 630px; }
-#contacto { --cis: 800px; }
+/* Alto estimado del CONTENIDO de cada sección mientras no se pinta
+   (content-visibility en styles.css; contain-intrinsic-size no incluye el
+   padding). Medidos en 1440, 1024 y 390 px el 2026-10-24: si una sección
+   cambia mucho de alto, volver a medir (alto real menos padding vertical). */
+/* index.html */
+#viajes    { --cis: 876px; }
+#putumayo  { --cis: 804px; }
+#asistente { --cis: 496px; }
+#servicios { --cis: 931px; }
+#nosotros  { --cis: 704px; }
+#tienda    { --cis: 165px; }
+#galeria   { --cis: 740px; }
+#faq       { --cis: 378px; }
+#contacto  { --cis: 599px; }
 /* nosotros.html */
-#mision      { --cis: 550px; }
-#valores     { --cis: 470px; }
-#politicas   { --cis: 850px; }
-#experiencia { --cis: 375px; }
-#cotizar     { --cis: 240px; }
+#mision      { --cis: 354px; }
+#valores     { --cis: 288px; }
+#politicas   { --cis: 647px; }
+#experiencia { --cis: 227px; }
+#cotizar     { --cis: 77px; }
 /* la-tienda.html */
-#productos { --cis: 1950px; }
-#comprar   { --cis: 450px; }
-#jornadas  { --cis: 310px; }
+#productos { --cis: 1809px; }
+#comprar   { --cis: 268px; }
+#jornadas  { --cis: 180px; }
+@media (max-width: 1199.98px) {
+  #viajes { --cis: 889px; } #putumayo { --cis: 1130px; } #asistente { --cis: 680px; }
+  #servicios { --cis: 966px; } #nosotros { --cis: 741px; } #galeria { --cis: 650px; }
+  #contacto { --cis: 664px; } #mision { --cis: 378px; } #politicas { --cis: 715px; }
+  #experiencia { --cis: 248px; } #cotizar { --cis: 149px; } #productos { --cis: 1678px; }
+}
 @media (max-width: 768px) {
-  #nosotros { --cis: 1300px; }
-  #tienda   { --cis: 370px; }
-  #galeria  { --cis: 950px; }
-  #faq      { --cis: 710px; }
-  #contacto { --cis: 1220px; }
-  #mision      { --cis: 740px; }
-  #valores     { --cis: 700px; }
-  #politicas   { --cis: 1460px; }
-  #experiencia { --cis: 480px; }
-  #cotizar     { --cis: 320px; }
-  #productos { --cis: 2900px; }
-  #comprar   { --cis: 480px; }
-  #jornadas  { --cis: 330px; }
+  #viajes { --cis: 1408px; } #putumayo { --cis: 1524px; } #asistente { --cis: 739px; }
+  #servicios { --cis: 1088px; } #nosotros { --cis: 1313px; } #tienda { --cis: 312px; }
+  #galeria { --cis: 892px; } #faq { --cis: 609px; } #contacto { --cis: 1147px; }
+  #mision { --cis: 664px; } #valores { --cis: 625px; } #politicas { --cis: 1389px; }
+  #experiencia { --cis: 400px; } #cotizar { --cis: 258px; }
+  #productos { --cis: 2631px; } #comprar { --cis: 413px; } #jornadas { --cis: 284px; }
 }
 
 /* =====================================================================
@@ -1719,13 +1738,16 @@ html.lightbox-open { overflow: hidden; }
   .destinos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Cruceros: lista de filas (foto pequeña + nombre + Cotizar), sin carrusel */
-@media (max-width: 767px) {
-  .cruceros__grid { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
-  .cruise-card { flex-direction: row; }
-  .cruise-card__img { flex: none; width: 128px; min-height: 86px; aspect-ratio: auto; }
-  .cruise-card__body { justify-content: center; gap: .5rem; padding: .75rem .9rem; }
-  .cruise-card__name { font-size: 1.0625rem; }
+/* Cruceros: título arriba; regiones en 3 columnas (tableta) o en filas
+   con el nombre a la izquierda y «Cotizar» a la derecha (celular) */
+@media (max-width: 900px) {
+  .cruceros { grid-template-columns: minmax(0, 1fr); padding: 1.75rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .cruceros { padding: 1.5rem 1.1rem; gap: 1.1rem; }
+  .cruceros__list { grid-template-columns: minmax(0, 1fr); gap: .6rem; }
+  .cruise-card { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem .7rem .7rem 1rem; }
+  .cruise-card__name { font-size: 1.125rem; }
 }
 
 /* Nosotros: los 4 puntos en 2 columnas */
@@ -1789,7 +1811,6 @@ html.lightbox-open { overflow: hidden; }
   .map-3d__compass { width: 44px; height: 44px; }
   .map-3d__compass-needle { height: 16px; }
   .map-3d__panel { padding: 1rem; }
-  .map-3d__panel-content img { height: 160px; }
   .map-3d__panel-content h3 { font-size: 1.3rem; }
   .map-3d__chips { gap: .4rem; margin-bottom: 1rem; }
   .map-3d__chip { font-size: .875rem; padding: .5rem .85rem; }
@@ -1814,7 +1835,7 @@ html.lightbox-open { overflow: hidden; }
   .wiz-card { padding: .85rem; }
   .wiz-card__ico { font-size: 1.4rem; }
   .wiz-card strong { font-size: .9375rem; }
-  .wiz-card em { font-size: .875rem; }
+  .wiz-card em { font-size: .9375rem; }
   .wiz-card--budget { min-height: 56px; }
   .wizard__nav { padding: .85rem 1rem; gap: .5rem; }
   .wizard__nav .btn { flex: 1 1 auto; }
@@ -1883,6 +1904,12 @@ html.lightbox-open { overflow: hidden; }
   .contact__form { padding: 1.25rem; gap: .85rem; }
   .contact__form h3 { font-size: 1.2rem; }
 
+  /* Texto de cuerpo de 15 px en celular (las micro-etiquetas siguen en 12-13 px) */
+  .contact__note,
+  .prod-card__detail,
+  .shop__legal,
+  .footer__bottom-inner { font-size: .9375rem; }
+
   /* Pie */
   .footer .footer__top { padding-top: 1.5rem; padding-bottom: 1.25rem; gap: 1rem 1.5rem; }
   .footer__slogan { flex-basis: 100%; order: 3; font-size: 1.1rem; }
@@ -1892,23 +1919,20 @@ html.lightbox-open { overflow: hidden; }
   .field input, .field select, .field textarea { font-size: 16px; }
 }
 
-/* Asistente ≤640 px: destinos en 2 columnas de filas (miniatura + nombre) */
+/* Asistente ≤640 px: destinos en 2 columnas, solo el nombre */
 @media (max-width: 640px) {
   .wizard__grid--destinos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
-  .wizard__grid--destinos .wiz-card {
-    flex-direction: row; align-items: center; gap: .6rem;
-    min-height: 56px;
-    padding: .35rem .5rem .35rem .35rem;
-  }
-  .wizard__grid--destinos .wiz-card img { flex: none; width: 52px; height: 44px; aspect-ratio: auto; }
-  .wizard__grid--destinos .wiz-card__ico {
-    flex: none; width: 52px; height: 44px; margin: 0;
-    background: var(--c-blue-tint); font-size: 1.25rem;
-  }
-  .wizard__grid--destinos .wiz-card strong { width: auto; padding: 0; font-size: .9375rem; }
+  .wizard__grid--destinos .wiz-card { min-height: 52px; padding: .6rem .8rem; }
   .wizard__grid--destinos .wiz-card em { display: none; }
-  .wiz-card--destino.is-selected strong,
-  .wiz-card--destino[aria-pressed="true"] strong { background: none; color: var(--c-text); }
+}
+
+/* Servicios ≤599 px: ícono y título (la descripción vuelve desde 600 px) para
+   que la lista no ocupe más de pantalla y media; la nota de pólizas se ve
+   completa */
+@media (max-width: 599px) {
+  .service { align-items: center; padding: .55rem 0; }
+  .service .service__ico { grid-row: auto; }
+  .service p { display: none; }
 }
 
 /* Putumayo ≤640 px: miniatura de 112 px junto a la tarifa y botón a lo ancho */
@@ -1956,7 +1980,8 @@ html.lightbox-open { overflow: hidden; }
   .tienda-teaser__btn { grid-column: 1 / -1; grid-row: 3; width: 100%; }
   /* Servicios: ícono de 36 px para dar más ancho al texto */
   .service,
-  .services__cover { grid-template-columns: 36px minmax(0, 1fr); column-gap: .85rem; padding: .9rem 0; }
+  .services__cover { grid-template-columns: 36px minmax(0, 1fr); column-gap: .85rem; }
+  .services__cover { padding: .9rem 0; }
   .service .service__ico,
   .services__cover .service__ico { width: 36px; height: 36px; font-size: 1.125rem; }
 
@@ -1976,14 +2001,15 @@ html.lightbox-open { overflow: hidden; }
   /* Las características de Putumayo ya están en su sección: el panel queda corto */
   .map-3d__panel-content .features { display: none; }
 
-  /* Destinos: 2 columnas legibles (nombre 17 px, tarifa 17 px, rótulos 13 px) */
+  /* Destinos: 2 columnas legibles (nombre 18 px, tarifa 19 px, región 13 px) */
   .destinos-grid { gap: .75rem; }
-  .dest-card__body { padding: .8rem .8rem .9rem; }
-  .dest-card__name { font-size: 1.0625rem; }
-  .dest-card__region { font-size: .8125rem; }
-  .dest-card__price { padding-top: .7rem; margin-bottom: .75rem; }
-  .dest-card__price strong { font-size: 1.0625rem; }
-  .dest-card__price .is-ask { font-size: .9375rem; }
+  .dest-card { padding: 1rem .9rem .95rem; }
+  .dest-card__name { font-size: 1.125rem; }
+  .dest-card__region { font-size: .8125rem; margin-bottom: 1rem; }
+  .dest-card__price { padding-top: .75rem; margin-bottom: .8rem; }
+  .dest-card__price span { font-size: .8125rem; }
+  .dest-card__price strong { font-size: 1.1875rem; line-height: 1.5rem; }
+  .dest-card__price .is-ask { font-size: .9375rem; line-height: 1.3; }
   .dest-card__cta { padding: .55rem .85rem; gap: .5rem; }
 
   /* Botones a todo el ancho */
@@ -1995,14 +2021,16 @@ html.lightbox-open { overflow: hidden; }
   .buy__foot .btn { width: 100%; }
   .experience__content > .btn { padding-inline: 1rem; }
 
-  /* Tienda: tarjetas de 2 columnas legibles (nombre 16 px, línea 14 px).
+  /* Tienda: tarjetas de 2 columnas legibles (nombre 16 px, línea 15 px).
      El botón dice «Preguntar» en una línea; «precio por WhatsApp» sigue
-     para lectores de pantalla. */
+     para lectores de pantalla. Lo mismo con «Pregunta por WhatsApp» del
+     primer pliegue y de «Cómo comprar» (la frase completa queda oculta). */
   .prod-card__body { padding: .75rem .75rem .8rem; }
   .prod-card__name { font-size: 1rem; }
   .prod-card__detail { margin-bottom: .75rem; }
   .prod-card__cta { width: 100%; padding-inline: .5rem; gap: .45rem; }
-  .prod-card__cta-more {
+  .prod-card__cta-more,
+  .btn__long {
     position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
@@ -2021,8 +2049,6 @@ html.lightbox-open { overflow: hidden; }
 @media (max-width: 380px) {
   .container { padding: 0 .85rem; }
   .section-title { font-size: 1.6rem; }
-  .wizard__grid--destinos .wiz-card img,
-  .wizard__grid--destinos .wiz-card__ico { display: none; }
   .wizard__grid--destinos .wiz-card { padding: .5rem .75rem; }
   .wizard__resume dl { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .wizard__resume dd { margin-bottom: .45rem; }
