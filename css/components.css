@@ -1,8 +1,8 @@
 /* =====================================================================
    PARAISOS — components.css
-   Secciones: íconos, proceso, mapa 3D, asistente, destinos, nosotros,
-   cruceros, galería, FAQ, CTA final, contacto, pie, botones fijos,
-   Putumayo, servicios, aliados, pilares, franja de la tienda.
+   Secciones: íconos, mapa 3D, asistente, destinos, nosotros (con
+   respaldo), cruceros, galería, FAQ, bloque oscuro, contacto, pie,
+   acciones fijas, Putumayo, servicios y franja de la tienda.
    Reglas comunes: esquinas rectas (tokens --r-* en 0), colores sólidos,
    un solo estilo de tarjeta (borde 1 px, sin sombra) y de ícono.
    ===================================================================== */
@@ -22,7 +22,6 @@
   pointer-events: none;
 }
 /* Un solo tratamiento de ícono en caja: 40 px, celeste, trazo azul oscuro */
-.process__ico,
 .service-card__ico,
 .exp-card__ico,
 .experience__features .ico,
@@ -37,51 +36,9 @@
   font-size: 1.25rem;
   box-shadow: none;
 }
-.process__ico .icon,
 .service-card__ico .icon,
 .exp-card__ico .icon,
 .experience__features .ico .icon { stroke-width: 1.75; }
-
-/* ============== PROCESO ============== */
-.process {
-  padding: var(--gap-7) 0;
-  background: #fff;
-}
-.process__timeline {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding-top: 1rem;
-}
-.process__line {
-  position: absolute;
-  top: calc(1rem + 31px + 20px); left: 0; right: 0;   /* centro de los íconos */
-  height: 2px;
-  background: var(--c-line);
-  z-index: 0;
-}
-.process__line-fill {
-  position: absolute; top: 0; left: 0;
-  height: 100%; width: 0%;
-  background: var(--c-orange);
-  transition: width .8s var(--ease-out);
-}
-.process__step {
-  position: relative;
-  z-index: 1;
-}
-.process__num {
-  font-family: var(--f-head);
-  font-weight: 700;
-  font-size: .8125rem;
-  color: var(--c-text-soft);
-  margin-bottom: .6rem;
-}
-.process__ico { margin-bottom: 1rem; }
-.process__step.is-active .process__ico { background: var(--c-blue-dark); color: #fff; }
-.process__step h3 { font-size: 1.05rem; margin-bottom: .4rem; }
-.process__step p { font-size: .9375rem; }
 
 /* ============== MAPA 3D ============== */
 .map-section {
@@ -574,7 +531,7 @@
 }
 .experience__media { position: relative; }
 .experience__media img {
-  width: 100%; aspect-ratio: 3/2; object-fit: cover;
+  width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover;
 }
 /* Dato real fijo en la esquina de la foto (sin flotar) */
 .experience__badge {
@@ -598,7 +555,6 @@
 .experience__features li { display: flex; align-items: flex-start; gap: 1rem; }
 .experience__features strong { display: block; font-family: var(--f-head); margin-bottom: .15rem; }
 .experience__features em { font-style: normal; font-size: .9375rem; color: var(--c-text-soft); }
-.experience__more { margin-top: 2rem; }
 
 /* ============== CRUCEROS ============== */
 .cruceros__inner { margin-top: var(--gap-5); }
@@ -832,61 +788,64 @@
 .contact__form h3 { font-size: 1.4rem; margin-bottom: .3rem; }
 .contact__form .btn { margin-top: .5rem; align-self: flex-start; }
 
-/* ============== PIE ============== */
+/* ============== PIE ==============
+   Claro y compacto: logo sin caja, lema una vez, datos en una línea y el
+   RNT una sola vez. */
 .footer {
-  background: var(--c-bg-ink);
-  color: rgba(255,255,255,.82);
-  padding-top: var(--gap-6);
+  background: #fff;
+  border-top: 1px solid var(--c-line);
+  color: var(--c-text-soft);
 }
-.footer__grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 2rem;
-  padding-bottom: var(--gap-5);
+/* .footer .footer__top: gana al padding de .container en celular */
+.footer .footer__top {
+  display: flex; align-items: center; flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  padding-top: 2rem;
+  padding-bottom: 1.75rem;
 }
-.footer__brand p { color: rgba(255,255,255,.75); margin: .9rem 0 1.2rem; max-width: 320px; }
-.footer__brand .footer__slogan {
+.footer__slogan {
+  flex: 1 1 280px;
+  margin: 0;
   font-family: var(--f-script);
   font-style: italic;
   font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--c-orange-light);
-  margin: .8rem 0 .9rem;
+  font-size: 1.2rem;
   line-height: 1.4;
+  color: var(--c-blue-dark);
 }
 .footer__social { display: flex; gap: .5rem; }
 .footer__social a {
   width: 44px; height: 44px;
   display: grid; place-items: center;
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.2);
-  color: #fff;
-  transition: background-color .2s var(--ease), color .2s var(--ease);
+  border: 1px solid var(--c-line-strong);
+  color: var(--c-text);
+  transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
 }
-.footer__social a:hover { background: var(--c-orange); border-color: var(--c-orange); color: var(--c-text); }
-.footer h4 {
-  color: #fff;
-  font-size: .875rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  margin-bottom: .9rem;
-}
-.footer ul li { margin-bottom: .35rem; font-size: .9375rem; color: rgba(255,255,255,.75); }
-.footer ul li a { display: inline-block; padding: .2rem 0; transition: color .2s var(--ease); }
-.footer ul li a:hover { color: var(--c-orange-light); text-decoration: underline; text-underline-offset: 3px; }
+.footer__social a:hover { background: var(--c-text); border-color: var(--c-text); color: #fff; }
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,.12);
-  padding: 1.2rem 0;
+  border-top: 1px solid var(--c-line);
+  padding: .5rem 0 1rem;
 }
 .footer__bottom-inner {
-  display: flex; justify-content: space-between; align-items: center;
-  gap: 1rem; flex-wrap: wrap;
+  display: flex; flex-direction: column;
   font-size: .875rem;
-  color: rgba(255,255,255,.7);
 }
+.footer__contact,
+.footer__legal {
+  display: flex; flex-wrap: wrap; align-items: center;
+  column-gap: 1.75rem;
+  margin: 0;
+  color: var(--c-text-soft);
+}
+.footer__contact > *,
+.footer__legal > * { display: inline-block; padding: .55rem 0; }
+/* Enlaces con área táctil de 44 px */
+.footer__contact a { padding: .75rem 0; color: var(--c-blue-dark); font-weight: 600; }
+.footer__contact a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-/* ============== BOTONES FIJOS ============== */
-/* Botón redondo de WhatsApp (escritorio): verde oscuro, ícono blanco 4,3:1 */
+/* ============== ACCIONES FIJAS ==============
+   Escritorio: botón redondo de WhatsApp. Celular (≤768 px): barra inferior
+   en su lugar (sin el botón redondo, para no duplicar). */
 .float-wa {
   position: fixed; bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)); right: calc(1.5rem + env(safe-area-inset-right, 0px));
   width: 60px; height: 60px;
@@ -916,57 +875,61 @@
 .float-wa:hover .float-wa__tip,
 .float-wa:focus-visible .float-wa__tip { opacity: 1; }
 
-.scroll-top {
-  position: fixed; bottom: 1.5rem; left: 1.5rem;
-  width: 44px; height: 44px;
-  background: #fff;
-  border: 1px solid var(--c-line-strong);
-  color: var(--c-blue-dark);
-  display: grid; place-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .25s var(--ease), background-color .2s var(--ease);
-  z-index: 90;
-}
-.scroll-top.is-visible { opacity: 1; pointer-events: auto; }
-.scroll-top:hover { background: var(--c-blue-dark); color: #fff; }
-
-/* Barra inferior de celular */
+/* Barra inferior de celular: «Llamar» + «Cotizar por WhatsApp» */
 .sticky-cta {
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 88;
   display: none;
+  gap: .5rem;
+  padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom, 0px));
   background: #fff;
   border-top: 1px solid var(--c-line);
-  padding: .6rem .75rem calc(.6rem + env(safe-area-inset-bottom, 0px));
-  gap: .5rem;
   box-shadow: 0 -4px 16px rgba(15,40,69,.08);
-  transform: translateY(100%);
-  transition: transform .3s var(--ease);
+  transition: transform .3s var(--ease), visibility 0s;
 }
-.sticky-cta.is-visible { transform: translateY(0); }
 .sticky-cta__call,
 .sticky-cta__wa {
-  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: .45rem;
   min-height: 48px;
   padding: .7rem;
   font-family: var(--f-head);
   font-weight: 700;
-  font-size: .9rem;
+  font-size: .9375rem;
+  line-height: 1.2;
   text-align: center;
 }
 .sticky-cta__call {
-  flex: 0 0 36%;
+  flex: 0 0 34%;
   background: #fff;
   color: var(--c-text);
   border: 1px solid var(--c-text);
 }
+.sticky-cta__call .icon { width: 18px; height: 18px; }
 .sticky-cta__wa {
   flex: 1;
   background: var(--c-orange);
   color: var(--c-text);
   border: 1px solid var(--c-orange);
+}
+.sticky-cta__wa svg { flex: none; }
+.sticky-cta__call:hover { background: var(--c-text); color: #fff; }
+.sticky-cta__wa:hover { background: var(--c-orange-dark); border-color: var(--c-orange-dark); }
+
+@media (max-width: 768px) {
+  :root { --sticky-h: calc(69px + env(safe-area-inset-bottom, 0px)); }
+  .float-wa { display: none; }
+  .sticky-cta { display: flex; }
+  body { padding-bottom: var(--sticky-h); }
+  /* En el inicio espera a que pase el hero; también se aparta con el menú
+     abierto o mientras se escribe en un campo */
+  .js .sticky-cta[data-after]:not(.is-shown),
+  .menu-open .sticky-cta,
+  .is-typing .sticky-cta {
+    transform: translateY(100%);
+    visibility: hidden;
+    transition: transform .3s var(--ease), visibility 0s linear .3s;
+  }
 }
 
 /* ============== PUTUMAYO ============== */
@@ -1016,26 +979,16 @@
   margin-bottom: 1rem;
   color: var(--c-text);
 }
-.putumayo__highlights {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-.putumayo__highlights li {
-  background: #fff;
-  padding: 1rem;
-  border: 1px solid var(--c-line);
-  border-top: 3px solid var(--c-green);
-}
-.putumayo__highlights strong {
-  display: block;
-  font-family: var(--f-head);
-  font-size: 2rem; font-weight: 900;
+/* Los 3 Parques Nacionales Naturales, en una línea */
+.putumayo__parks {
+  margin-top: 1.25rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--c-green);
+  font-size: .9375rem;
+  line-height: 1.6;
   color: var(--c-text);
-  line-height: 1;
 }
-.putumayo__highlights span { font-size: .875rem; color: var(--c-text-soft); display: block; margin-top: .35rem; }
+.putumayo__parks strong { font-family: var(--f-head); }
 
 .putumayo__subhead {
   font-size: clamp(1.35rem, 1rem + 1.2vw, 1.8rem);
@@ -1077,47 +1030,6 @@
   color: var(--c-text-soft);
   font-size: .9375rem;
   line-height: 1.6;
-}
-
-.symbols-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1rem;
-  margin-bottom: 3rem;
-}
-.symbol-card {
-  background: #fff;
-  overflow: hidden;
-  border: 1px solid var(--c-line);
-  display: flex;
-  flex-direction: column;
-}
-.symbol-card__art {
-  height: 80px;
-  overflow: hidden;
-  border-bottom: 1px solid var(--c-line);
-}
-.symbol-card__art svg { display: block; width: 100%; height: 100%; }
-.symbol-card strong {
-  font-family: var(--f-head);
-  font-weight: 800;
-  font-size: 1.1rem;
-  color: var(--c-text);
-  margin: .9rem 1rem 0;
-}
-.symbol-card em {
-  font-style: normal;
-  font-size: .8125rem;
-  color: var(--c-text-soft);
-  font-weight: 600;
-  margin: .15rem 1rem 0;
-}
-.symbol-card span {
-  display: block;
-  font-size: .9375rem;
-  color: var(--c-text-soft);
-  line-height: 1.5;
-  padding: .5rem 1rem 1.1rem;
 }
 
 .putumayo__experiences {
@@ -1174,7 +1086,7 @@
 /* ============== SERVICIOS (Portafolio 2026) ============== */
 .services {
   padding: var(--gap-7) 0;
-  background: var(--c-bg-soft);
+  background: #fff;
 }
 .services__grid {
   display: grid;
@@ -1189,8 +1101,6 @@
   transition: border-color .2s var(--ease);
 }
 .service-card:hover { border-color: var(--c-line-strong); }
-/* Sin números decorativos (01, 02…) */
-.service-card__num { display: none; }
 .service-card__ico { margin-bottom: .9rem; }
 .service-card h3 {
   font-size: 1.05rem;
@@ -1222,155 +1132,64 @@
 .student-deal p { font-size: .9375rem; line-height: 1.55; color: var(--c-text-soft); max-width: 60ch; }
 .student-deal .btn { flex-shrink: 0; }
 
-/* ============== ALIADOS Y CLIENTES ============== */
-.allies {
-  padding: var(--gap-6) 0 var(--gap-7);
-  background: #fff;
+/* Respaldo dentro de «Quiénes somos»: OEI, Gobernación, pólizas y RNT */
+.allies { margin-top: var(--gap-5); }
+.allies__title {
+  font-size: 1.15rem;
+  font-family: var(--f-head); font-weight: 800;
+  color: var(--c-text);
+  margin-bottom: 1rem;
 }
-.allies__grid {
+.allies__list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 0;
 }
-.ally-card {
-  background: var(--c-bg-soft);
-  border: 1px solid var(--c-line);
-  padding: 1.4rem 1.3rem;
-  display: flex; flex-direction: column; gap: .35rem;
+.allies__list > div {
+  border-top: 2px solid var(--c-text);
+  padding-top: .9rem;
 }
-.ally-card__tag {
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--c-text-soft);
-  margin-bottom: .2rem;
-}
-.ally-card strong {
+.allies__list dt {
   font-family: var(--f-head);
   font-weight: 800;
-  font-size: 1.3rem;
-  color: var(--c-text);
-  line-height: 1.15;
-}
-.ally-card em {
-  font-style: normal;
-  font-size: .9375rem;
-  color: var(--c-text-soft);
-  line-height: 1.5;
-}
-
-/* ============== PILARES ============== */
-.pillars {
-  padding: var(--gap-7) 0;
-  background: #fff;
-}
-.pillars__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
-.pillar-card {
-  display: flex;
-  flex-direction: column;
-  background: #fff;
-  overflow: hidden;
-  border: 1px solid var(--c-line);
-  color: inherit;
-  transition: border-color .2s var(--ease);
-}
-.pillar-card:hover { border-color: var(--c-line-strong); }
-.pillar-card__media {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-}
-.pillar-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
-.pillar-card:hover .pillar-card__media img { transform: scale(1.04); }
-/* Sin números gigantes decorativos */
-.pillar-card__num { display: none; }
-.pillar-card__body {
-  padding: 1.3rem 1.4rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  flex: 1;
-}
-.pillar-card__tag {
-  font-size: .8125rem;
-  font-weight: 600;
-  color: var(--c-text-soft);
-}
-.pillar-card h3 {
-  font-size: 1.3rem;
-  font-family: var(--f-head);
-  font-weight: 800;
-  color: var(--c-text);
+  font-size: 1.125rem;
   line-height: 1.2;
+  color: var(--c-text);
+  margin-bottom: .35rem;
 }
-.pillar-card p {
+.allies__list dd {
+  margin: 0;
   font-size: .9375rem;
+  line-height: 1.5;
   color: var(--c-text-soft);
-  line-height: 1.55;
-  flex: 1;
-}
-.pillar-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  font-family: var(--f-head);
-  font-weight: 700;
-  font-size: .9rem;
-  color: var(--c-blue-dark);
-  margin-top: .25rem;
 }
 
 /* ============== FRANJA DE LA TIENDA (→ la-tienda.html) ============== */
 .tienda-teaser {
-  padding: var(--gap-7) 0;
-  background: var(--c-bg-soft);
+  padding: var(--gap-6) 0;
+  background: #fff;
 }
 .tienda-teaser__inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 3.5rem;
+  grid-template-columns: minmax(0, 360px) minmax(0, 1fr);
+  gap: 3rem;
   align-items: center;
 }
-.tienda-teaser__content { max-width: 560px; }
+.tienda-teaser__content { max-width: 620px; }
 .tienda-teaser__content p {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--c-text);
   margin-bottom: 1.5rem;
 }
-.tienda-teaser__bullets {
-  display: flex; flex-direction: column;
-  gap: .5rem;
-  margin-bottom: 1.8rem;
-}
-.tienda-teaser__bullets li {
-  position: relative;
-  padding-left: 1.1rem;
-  font-size: .9375rem;
-  color: var(--c-text);
-  line-height: 1.5;
-}
-.tienda-teaser__bullets li::before {
-  content: '';
-  position: absolute; left: 0; top: .6em;
-  width: 6px; height: 6px;
-  background: var(--c-blue-dark);
-}
-.tienda-teaser__bullets li span { display: none; }
-.tienda-teaser__ctas { display: flex; gap: .8rem; flex-wrap: wrap; }
-.tienda-teaser__media {
-  max-width: 440px;
-  margin-left: auto;
-}
 .tienda-teaser__photo {
   display: block;
   width: 100%;
-  aspect-ratio: 3/4;
+  height: auto;
+  aspect-ratio: 4/3;
   object-fit: cover;
-  background: #fff;
+  background: var(--c-bg-soft);
 }
 
 /* ============== REALCE AL HACER SCROLL ==============
@@ -1405,20 +1224,13 @@
 }
 
 @media (max-width: 880px) {
-  .process__timeline { grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .process__line { display: none; }
-  .process__step { padding: 1.2rem; background: var(--c-bg-soft); border: 1px solid var(--c-line); }
   .experience__grid { grid-template-columns: 1fr; gap: 2rem; }
   .contact__grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-  .footer__grid { grid-template-columns: 1fr 1fr; }
-  /* Enlaces del pie con área táctil de 44 px */
-  .footer ul li { margin: 0; }
-  .footer ul li a { display: block; padding: .65rem 0; }
-  .footer ul li:not(:has(> a)) { padding: .45rem 0; }
   .putumayo__hero { grid-template-columns: 1fr; gap: 1.75rem; }
   .pueblos { grid-template-columns: 1fr 1fr; }
-  .tienda-teaser__inner { grid-template-columns: 1fr; gap: 2rem; }
-  .tienda-teaser__media { max-width: 360px; margin: 0; order: -1; }
+  .allies__list { grid-template-columns: 1fr 1fr; }
+  .tienda-teaser__inner { grid-template-columns: 1fr; gap: 1.5rem; }
+  .tienda-teaser__media { max-width: 420px; }
   .tienda-teaser__content { max-width: 100%; }
 }
 
@@ -1442,22 +1254,17 @@
   /* Hero */
   .hero {
     min-height: auto;
-    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 1.5rem);
-    padding-bottom: 3rem;
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 2rem);
+    padding-bottom: calc(44px + 2.25rem);   /* deja libre el botón de pausa */
   }
+  .hero__video-toggle { left: 1rem; bottom: 1rem; }
   .hero__title { font-size: clamp(2.1rem, 8vw, 2.8rem); margin-bottom: 1rem; }
   .hero__subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
-  .hero__cta-row { gap: .75rem; margin-bottom: 1.8rem; }
+  .hero__cta-row { gap: .75rem; }
   .hero__cta-row .btn { min-height: 48px; }
-  .hero__stats { padding-top: 1rem; gap: 1rem; }
-  .hero__stats strong { font-size: 1.5rem; }
-  .hero__stats span { font-size: .75rem; }
-  .hero__visual { height: 320px; }
-  .hero__quote { display: none; }
+  .hero__trust { margin-top: 1.5rem; }
 
   /* Carruseles táctiles (snap) para listas de 3 a 6 tarjetas */
-  .pillars__grid,
-  .symbols-grid,
   .putumayo__experiences,
   .cruceros__grid {
     grid-auto-flow: column;
@@ -1477,32 +1284,19 @@
             mask-image: linear-gradient(90deg, transparent 0%, #000 3%, #000 97%, transparent 100%);
   }
   .cruceros__grid { margin-bottom: 0; }
-  .pillars__grid::-webkit-scrollbar,
-  .symbols-grid::-webkit-scrollbar,
   .putumayo__experiences::-webkit-scrollbar,
   .cruceros__grid::-webkit-scrollbar { display: none; }
-  .pillars__grid > *,
-  .symbols-grid > *,
   .putumayo__experiences > *,
   .cruceros__grid > * { scroll-snap-align: start; }
-
-  /* Proceso */
-  .process__step h3 { font-size: 1rem; }
-  .process__step p { font-size: .9375rem; line-height: 1.5; }
 
   /* Putumayo */
   .putumayo__hero { gap: 1.5rem; margin-bottom: 2rem; }
   .putumayo__media { aspect-ratio: 16/10; }
   .putumayo__media-badge { font-size: 1rem; padding: .7rem .9rem; }
   .putumayo__intro p { font-size: 1rem; line-height: 1.65; margin-bottom: .8rem; }
-  .putumayo__highlights { gap: .6rem; }
-  .putumayo__highlights li { padding: .75rem .6rem; }
-  .putumayo__highlights strong { font-size: 1.4rem; }
-  .putumayo__highlights span { font-size: .8125rem; }
   .putumayo__subhead { margin: 1.25rem 0 .8rem; }
   .putumayo__symbols-intro { margin-bottom: 1rem; }
   .putumayo__activities { margin-bottom: 1.5rem; }
-  .symbol-card__art { height: 70px; }
   .exp-card { padding: 1.1rem 1rem; }
 
   /* Mapa */
@@ -1557,10 +1351,9 @@
   .experience__lead { font-size: 1rem; line-height: 1.65; }
   .experience__features { gap: .9rem; margin: 1.2rem 0 1.5rem; }
 
-  /* Aliados */
-  .allies__grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
-  .ally-card { padding: 1.1rem 1rem; }
-  .ally-card strong { font-size: 1.1rem; }
+  /* Respaldo */
+  .allies__list { gap: 1.25rem; }
+  .allies__list dt { font-size: 1.0625rem; }
 
   /* Cruceros */
   .cruise-card__img { aspect-ratio: 16/9; }
@@ -1592,8 +1385,9 @@
   .contact__form h3 { font-size: 1.2rem; }
 
   /* Pie */
-  .footer { padding-top: var(--gap-5); }
-  .footer__grid { padding-bottom: var(--gap-4); }
+  .footer .footer__top { padding-top: 1.5rem; padding-bottom: 1.25rem; gap: 1rem 1.5rem; }
+  .footer__slogan { flex-basis: 100%; order: 3; font-size: 1.1rem; }
+  .footer__social { margin-left: auto; }
 
   /* iOS hace zoom en campos de menos de 16 px */
   .field input, .field select, .field textarea { font-size: 16px; }
@@ -1609,23 +1403,17 @@
   .container { padding: 0 1rem; }
   .btn { white-space: normal; }
 
-  /* Hero: una sola foto */
+  /* Hero */
   .hero__title { font-size: clamp(1.9rem, 9vw, 2.5rem); }
   .hero__cta-row { flex-direction: column; align-items: stretch; }
   .hero__cta-row .btn { width: 100%; }
-  .hero__visual { height: 260px; }
-  .hero__card--2,
-  .hero__card--3 { display: none; }
-  .hero__card--1 { width: 100%; height: 100%; top: 0; right: 0; left: 0; }
 
   /* Listas a una columna para que el texto no baje de 15 px */
-  .process__timeline { grid-template-columns: 1fr; }
   .services__grid { grid-template-columns: 1fr; }
-  .allies__grid { grid-template-columns: 1fr; }
+  .allies__list { grid-template-columns: 1fr; }
   .pueblos { grid-template-columns: 1fr; }
   .wizard__grid--cards { grid-template-columns: 1fr; }
   .wizard__grid--cards[data-key="budget"] { grid-template-columns: 1fr 1fr; }
-  .putumayo__highlights strong { font-size: 1.25rem; }
 
   /* Mapa */
   .map-3d__canvas { height: 320px; }
@@ -1637,27 +1425,23 @@
   .dest-card h3 { font-size: 1rem; }
 
   /* Botones a todo el ancho */
-  .tienda-teaser__ctas .btn,
+  .tienda-teaser__content .btn,
+  .experience__content > .btn,
   .cta-final__row .btn { width: 100%; }
   .cta-final__row { flex-direction: column; align-items: stretch; }
   .student-deal .btn { width: 100%; }
 
-  /* Pie: una columna */
-  .footer__grid { grid-template-columns: 1fr; }
-  .footer__brand p { font-size: .9375rem; }
-  .footer__brand .footer__slogan { font-size: 1rem; }
-
-  /* Barra inferior de celular (reemplaza al botón redondo) */
-  .float-wa { display: none; }
-  .scroll-top { display: none; }
-  .sticky-cta { display: flex; }
-  body { padding-bottom: 72px; }
+  /* Pie */
+  .footer__contact,
+  .footer__legal { flex-direction: column; align-items: flex-start; }
+  .footer__contact > *,
+  .footer__legal > * { padding: .35rem 0; }
+  .footer__contact a { padding: .7rem 0; }
 }
 
 @media (max-width: 380px) {
   .container { padding: 0 .85rem; }
   .hero__title { font-size: 1.85rem; }
   .section-title { font-size: 1.6rem; }
-  .putumayo__highlights { grid-template-columns: 1fr; }
   .wizard__grid--destinos { grid-template-columns: 1fr; }
 }

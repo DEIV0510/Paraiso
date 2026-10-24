@@ -1,14 +1,11 @@
 /* =====================================================================
-   PARAISOS — main.js
-   Orquestación general:
-   - Navbar inteligente, progress bar, sticky CTA mobile
-   - Text reveals palabra-por-palabra / línea-por-línea con stagger
-   - ScrollTrigger orchestration: proceso timeline, contadores, parallax
-   - Galería + lightbox + filtros
+   PARAISOS — main.js (solo el inicio)
+   - Datos compartidos (PARAISOS_DATA) que leen el mapa y el asistente
+   - Realce al hacer scroll (solo un realce: sin JS todo se ve)
+   - Tarjetas de destino, galería y visor
    - Formulario de contacto → WhatsApp
-   - Floating: scroll-top
-   - Video del hero diferido (versión liviana en celular)
-   - Tilt 3D real en cards de destinos
+   - Video del hero: se reproduce para todos, con botón de pausa
+   Header, menú, cinta, barra fija y año del pie viven en nav.js.
    ===================================================================== */
 
 'use strict';
@@ -16,9 +13,6 @@
 /* ------------------ DATOS COMPARTIDOS ------------------ */
 window.PARAISOS_DATA = {
   whatsapp: '573157347306',
-  email: 'gerencia.paraisos@gmail.com',
-  emailAlt: 'agenciadeviajesparaisos@gmail.com',
-  slogan: 'Más que un destino turístico, somos territorio de vida',
   destinos: [
     { id:'putumayo', nombre:'Putumayo · Nuestra casa', region:'Andino-amazónica · Sur de Colombia',
       lat:1.15, lng:-76.65,
@@ -86,177 +80,27 @@ const isMobile = matchMedia('(hover: none) and (pointer: coarse)').matches;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ======================================================================
-   NAVBAR INTELIGENTE (scrolled, hide-on-scroll-down, progress bar,
-   menu hamburger, active link según sección visible)
-   ====================================================================== */
-(function navbar() {
-  const nav = $('#navbar');
-  const burger = $('#navBurger');
-  const progress = $('#navProgress');
-  const scrollTopBtn = $('#scrollTop');
-  let lastY = window.scrollY;
-  let ticking = false;
-
-  function update() {
-    const y = window.scrollY;
-    nav.classList.toggle('is-scrolled', y > 24);
-    // Esconder al scroll down rápido, mostrar al up
-    if (y > 200 && y > lastY + 4) nav.classList.add('is-hidden');
-    else if (y < lastY - 4) nav.classList.remove('is-hidden');
-    lastY = y;
-    // Barra de progreso (se escala; no cambia el ancho)
-    const max = document.documentElement.scrollHeight - innerHeight;
-    if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
-    // Botón «subir»
-    if (scrollTopBtn) scrollTopBtn.classList.toggle('is-visible', y > 600);
-    ticking = false;
-  }
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(update); ticking = true; }
-  }, { passive: true });
-  update();
-
-  burger?.addEventListener('click', () => {
-    const open = nav.classList.toggle('is-open');
-    burger.setAttribute('aria-expanded', String(open));
-    document.body.classList.toggle('no-scroll', open);
-  });
-  $$('.navbar__menu a').forEach(a => a.addEventListener('click', () => {
-    nav.classList.remove('is-open');
-    burger?.setAttribute('aria-expanded', 'false');
-    document.body.classList.remove('no-scroll');
-  }));
-
-  // Active link según sección en viewport
-  const sections = $$('main section[id]');
-  const links = $$('.navbar__menu a');
-  const ioActive = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const id = e.target.id;
-        links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + id));
-      }
-    });
-  }, { threshold: 0.4 });
-  sections.forEach(s => ioActive.observe(s));
-})();
-
-/* ======================================================================
-   TEXT REVEALS palabra-por-palabra / línea-por-línea
-   - Para .reveal-line: cada hijo directo se envuelve en un span y se
-     anima desde translateY(110%) opacity 0 → 0/1.
-   - Para .reveal-up: el elemento aparece desde abajo con stagger.
-   ====================================================================== */
-function prepareReveals() {
-  // Líneas: ya están envueltas en HTML — solo aseguramos el inner span
-  $$('.reveal-line').forEach(line => {
-    if (line.children.length === 0) {
-      const inner = document.createElement('span');
-      inner.textContent = line.textContent;
-      line.textContent = '';
-      line.appendChild(inner);
-    }
-  });
-  // Aplicar delays incrementales en hijos directos de elementos con clase .reveal-up dentro de un padre con .stagger
-  $$('.stagger').forEach(parent => {
-    $$(':scope > *', parent).forEach((child, i) => {
-      child.style.setProperty('--d', (i * 0.08) + 's');
-    });
-  });
-}
-function triggerInitialReveals() {
-  // Hero: revelar inmediatamente
-  $$('.hero .reveal-line, .hero .reveal-up').forEach((el, i) => {
-    setTimeout(() => {
-      const parent = el.classList.contains('reveal-line') ? el : null;
-      const target = parent || el;
-      target.classList.add('is-revealed');
-      // En .reveal-line también añadimos clase al padre si es necesario
-      const grand = el.closest('.hero__title, .hero__content');
-      if (grand && !grand.classList.contains('is-revealed')) {
-        grand.classList.add('is-revealed');
-      }
-    }, 150 + i * 120);
-  });
-}
-prepareReveals();
-requestAnimationFrame(triggerInitialReveals);
-
-/* ======================================================================
-   SCROLL REVEALS GENÉRICOS (para no-hero)
+   REALCE AL HACER SCROLL
+   El JS pone .reveal y lo quita al entrar en pantalla. Sin JS, sin
+   IntersectionObserver o con «reducir movimiento» no se oculta nada.
    ====================================================================== */
 (function reveal() {
+  if (reducedMotion || !('IntersectionObserver' in window)) return;
   const selectors = [
-    '.section-head', '.map-3d', '.wizard', '.cruise-card', '.dest-card',
-    '.experience__media', '.experience__content',
-    '.testimonial', '.accordion details', '.contact__info', '.contact__form',
-    '.cta-final__inner', '.newsletter__inner', '.process__step',
-    // Nuevas secciones del portafolio 2026
-    '.exp-card', '.service-card', '.ally-card', '.mvv__card', '.policy',
-    '.putumayo__media', '.putumayo__intro', '.putumayo__highlights li',
-    '.act-chip'
+    '.section-head', '.map-3d', '.wizard', '.cruise-card',
+    '.experience__media', '.experience__content', '.allies__list',
+    '.accordion details', '.contact__info', '.contact__form',
+    '.exp-card', '.service-card', '.putumayo__media', '.putumayo__intro'
   ].join(',');
-  $$(selectors).forEach(el => {
-    if (!el.closest('.hero')) el.classList.add('reveal');
-  });
+  const items = $$(selectors).filter(el => !el.closest('.hero'));
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('is-in');
-        // Activar reveals dentro
-        $$('.reveal-line, .reveal-up', e.target).forEach(el => {
-          const target = el.classList.contains('reveal-line') ? el : el;
-          target.classList.add('is-revealed');
-        });
-        io.unobserve(e.target);
-      }
+      if (!e.isIntersecting) return;
+      e.target.classList.add('is-in');
+      io.unobserve(e.target);
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-  $$('.reveal').forEach(el => io.observe(el));
-})();
-
-/* ======================================================================
-   PROCESO TIMELINE (línea naranja se llena + steps active)
-   ====================================================================== */
-(function processTimeline() {
-  const tl = $('#processTimeline');
-  if (!tl) return;
-  const fill = $('#processLine');
-  const steps = $$('.process__step', tl);
-  const io = new IntersectionObserver((entries) => {
-    if (!entries[0].isIntersecting) return;
-    // Animar línea
-    fill.style.width = '100%';
-    // Activar pasos con stagger
-    steps.forEach((s, i) => {
-      setTimeout(() => s.classList.add('is-active'), 400 + i * 400);
-    });
-    io.disconnect();
-  }, { threshold: 0.3 });
-  io.observe(tl);
-})();
-
-/* ======================================================================
-   PARALLAX HERO (cards siguen el mouse en eje X/Y)
-   ====================================================================== */
-(function heroParallax() {
-  if (isMobile || reducedMotion) return;
-  const hero = $('.hero__visual');
-  if (!hero) return;
-  const cards = $$('[data-parallax]', hero);
-  hero.addEventListener('mousemove', (e) => {
-    const r = hero.getBoundingClientRect();
-    const cx = (e.clientX - r.left) / r.width - 0.5;
-    const cy = (e.clientY - r.top) / r.height - 0.5;
-    cards.forEach(card => {
-      const f = parseFloat(card.dataset.parallax) || 0.05;
-      const rot = card.style.getPropertyValue('--rot') || '0deg';
-      card.style.transform = `translate3d(${cx * 30 * f * 4}px, ${cy * 30 * f * 4}px, 0) rotate(${rot})`;
-    });
-  });
-  hero.addEventListener('mouseleave', () => {
-    cards.forEach(c => c.style.transform = '');
-  });
+  items.forEach(el => { el.classList.add('reveal'); io.observe(el); });
 })();
 
 /* ======================================================================
@@ -384,7 +228,7 @@ requestAnimationFrame(triggerInitialReveals);
 })();
 
 /* ======================================================================
-   CONTACT FORM → WhatsApp
+   FORMULARIO DE CONTACTO → WhatsApp (nombre opcional, destino y mensaje)
    ====================================================================== */
 (function contactForm() {
   const form = $('#contactForm');
@@ -392,49 +236,20 @@ requestAnimationFrame(triggerInitialReveals);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const fd = new FormData(form);
-    const required = ['name', 'phone', 'email'];
-    let valid = true;
-    required.forEach(k => {
-      const input = form.querySelector(`[name="${k}"]`);
-      const field = input.closest('.field');
-      const v = String(fd.get(k) || '').trim();
-      const ok = v && (k !== 'email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v));
-      field.classList.toggle('is-error', !ok);
-      if (!ok) valid = false;
-    });
-    if (!valid) return;
-    const msg =
-`Hola PARAISOS, soy *${fd.get('name')}* y quiero más información.
-📍 Destino: ${fd.get('destino')}
-📞 Tel: ${fd.get('phone')}
-✉️ Email: ${fd.get('email')}
-
-📝 ${fd.get('msg') || 'Sin mensaje adicional.'}`;
-    window.open(`https://wa.me/${D.whatsapp}?text=${encodeURIComponent(msg)}`, '_blank');
+    const name = String(fd.get('name') || '').trim();
+    const destino = String(fd.get('destino') || '').trim();
+    const msg = String(fd.get('msg') || '').trim();
+    const lines = [
+      name ? `Hola PARAISOS, soy ${name}. Quiero cotizar un viaje.` : 'Hola PARAISOS, quiero cotizar un viaje.',
+      `Destino: ${destino}`
+    ];
+    if (msg) lines.push(`Mensaje: ${msg}`);
+    const url = `https://wa.me/${D.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
+    // Con 'noopener' window.open devuelve null: se corta el opener a mano
+    const w = window.open(url, '_blank');
+    if (w) w.opener = null;
+    else location.href = url;
   });
-})();
-
-/* ======================================================================
-   STICKY CTA MOBILE: aparece al pasar el hero
-   ====================================================================== */
-(function stickyCta() {
-  const cta = $('#stickyCta');
-  if (!cta) return;
-  const hero = $('.hero');
-  const io = new IntersectionObserver((entries) => {
-    cta.classList.toggle('is-visible', !entries[0].isIntersecting);
-  }, { threshold: 0.05 });
-  io.observe(hero);
-})();
-
-/* ======================================================================
-   MISCELÁNEA: scroll-top, year
-   ====================================================================== */
-(function misc() {
-  const year = $('#year');
-  if (year) year.textContent = new Date().getFullYear();
-  const top = $('#scrollTop');
-  if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
 })();
 
 /* ------------------ VIDEO HERO FONDO ------------------ */
@@ -442,17 +257,6 @@ requestAnimationFrame(triggerInitialReveals);
   const hero  = document.querySelector('.hero');
   const video = document.querySelector('.hero__video-el');
   if (!hero || !video) return;
-
-  // Marca el hero cuando el video empiece a reproducirse (quita el gradiente cielo)
-  let loaded = false;
-  function markLoaded() {
-    if (loaded) return;
-    loaded = true;
-    hero.classList.add('video-loaded');
-  }
-
-  video.addEventListener('canplay', markLoaded, { once: true });
-  video.addEventListener('playing', markLoaded, { once: true });
 
   // Se reproduce para todos (también con «reducir movimiento»): es mudo,
   // corto y tiene botón de pausa. Se pide cuando la página ya cargó para no
@@ -480,7 +284,4 @@ requestAnimationFrame(triggerInitialReveals);
   }).observe(hero);
   if (document.readyState === 'complete') play();
   else window.addEventListener('load', play, { once: true });
-
-  // Fallback: si en 3 s el video no disparó canplay, marcar igual
-  setTimeout(markLoaded, 3000);
 })();
