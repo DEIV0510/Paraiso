@@ -130,6 +130,7 @@
       <symbol id="ico-tent" viewBox="0 0 24 24"><path d="M3.5 21 12 3l8.5 18M12 3v18M3.5 21h17"/></symbol>
       <symbol id="ico-bed" viewBox="0 0 24 24"><path d="M2 20V8M22 20v-6a2 2 0 0 0-2-2H8M2 14h20M6 12V8a2 2 0 0 1 2-2h4"/><circle cx="6" cy="10" r="1"/></symbol>
       <symbol id="ico-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
+      <symbol id="ico-feather" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></symbol>
       <symbol id="ico-handshake" viewBox="0 0 24 24"><path d="m11 17 2 2a1 1 0 0 0 1.4 0l4-4a1 1 0 0 0 0-1.4l-4-4a1 1 0 0 0-1.4 0l-2 2M13 7l-2-2a1 1 0 0 0-1.4 0l-4 4a1 1 0 0 0 0 1.4l4 4a1 1 0 0 0 1.4 0l2-2"/></symbol>
 
       <!-- políticas -->
@@ -582,10 +583,12 @@
 
   <!-- ====== ASISTENTE ====== -->
   <section id="asistente" class="wizard-section" aria-labelledby="wizTitle">
-    <div class="container">
-      <header class="section-head">
+    <div class="container wizard-layout">
+      <header class="section-head wizard-layout__head">
         <h2 id="wizTitle" class="section-title">Cotiza tu viaje</h2>
-        <p class="section-sub">Cinco pasos cortos. Envías tu solicitud por WhatsApp y te diseñamos el itinerario a tu medida.</p>
+        <p class="section-sub">Cinco pasos cortos. Al final se abre WhatsApp con tu solicitud lista.</p>
+        <p class="wizard-layout__note">La tarifa depende del número de pasajeros, el destino, los días, la fecha y el tipo de alojamiento.</p>
+        <p class="wizard-layout__direct">¿Prefieres escribir directo? <a href="https://wa.me/573157347306" target="_blank" rel="noopener">WhatsApp +57 315 734 7306</a></p>
       </header>
 
       <div class="wizard" id="wizard">
@@ -643,17 +646,17 @@
               <div class="counter" role="group" aria-labelledby="wizAdultsLbl">
                 <span id="wizAdultsLbl">Adultos</span>
                 <div class="counter__ctrls">
-                  <button type="button" data-counter="adults" data-op="-1" aria-label="Quitar un adulto">−</button>
+                  <button type="button" data-counter="adults" data-op="-1" aria-label="Quitar un adulto"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
                   <strong id="wizAdults">2</strong>
-                  <button type="button" data-counter="adults" data-op="1" aria-label="Agregar un adulto">+</button>
+                  <button type="button" data-counter="adults" data-op="1" aria-label="Agregar un adulto"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
                 </div>
               </div>
               <div class="counter" role="group" aria-labelledby="wizKidsLbl">
                 <span id="wizKidsLbl">Niños</span>
                 <div class="counter__ctrls">
-                  <button type="button" data-counter="kids" data-op="-1" aria-label="Quitar un niño">−</button>
+                  <button type="button" data-counter="kids" data-op="-1" aria-label="Quitar un niño"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
                   <strong id="wizKids">0</strong>
-                  <button type="button" data-counter="kids" data-op="1" aria-label="Agregar un niño">+</button>
+                  <button type="button" data-counter="kids" data-op="1" aria-label="Agregar un niño"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg></button>
                 </div>
               </div>
             </div>
@@ -680,7 +683,7 @@
         </div>
 
         <div class="wizard__nav">
-          <button type="button" class="btn btn--ghost" id="wizPrev" disabled>Atrás</button>
+          <button type="button" class="btn btn--ghost wizard__prev" id="wizPrev" disabled><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg><span class="wizard__prev-label">Atrás</span></button>
           <button type="button" class="btn btn--primary" id="wizNext">Continuar</button>
           <a class="btn btn--whatsapp" id="wizSend" href="https://wa.me/573157347306" target="_blank" rel="noopener" hidden>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -696,67 +699,82 @@
     <div class="container">
       <header class="section-head">
         <h2 id="servTitle" class="section-title">Servicios</h2>
-        <p class="section-sub">Para viajeros, empresas, colegios y otras agencias de viajes.</p>
+        <p class="section-sub">Para viajeros, empresas, entidades y otras agencias de viajes.</p>
       </header>
-      <div class="services__grid">
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-globe"/></svg></span>
-          <h3>Planes y paquetes turísticos</h3>
-          <p>Organización de planes y paquetes turísticos dentro de Colombia y en el exterior. Terrestres, aéreos y cruceros, directos o en alianza con agencias seleccionadas.</p>
-        </article>
-        <article class="service-card service-card--accent">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-leaf"/></svg></span>
-          <h3>Eco planes en Putumayo</h3>
-          <p>Senderismo, kayaking, espeleísmo, cañoning, observación de aves, fotografía y más con guías profesionales y baquianos.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-bus"/></svg></span>
-          <h3>Traslados especializados</h3>
-          <p>Aeropuerto–hotel–aeropuerto con transporte adecuado según el número de pasajeros.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-building"/></svg></span>
-          <h3>Viajes empresariales y educativos</h3>
-          <p>Fortalecimiento empresarial y prácticas estudiantiles con enfoque étnico y de territorio.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-tent"/></svg></span>
-          <h3>Organización de eventos</h3>
-          <p>Ferias artesanales, gastronómicas, deportivas y culturales. Eventos corporativos y comunitarios a la medida.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-plane"/></svg></span>
-          <h3>Tiquetes y vuelos chárter</h3>
-          <p>Venta de tiquetes aéreos comerciales y vuelos chárter.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-palette"/></svg></span>
-          <h3>Artesanías putumayenses</h3>
-          <p>Promoción y comercialización de productos artesanales y agroindustriales de comunidades étnicas y campesinas.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-bed"/></svg></span>
-          <h3>Reservas hoteleras</h3>
-          <p>Hoteles, restaurantes e ingresos a sitios turísticos en cualquier destino que elijas.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-bag"/></svg></span>
-          <h3>Jornadas de compra de artesanía</h3>
-          <p>Conexión directa con talleres y artesanos locales con visita guiada.</p>
-        </article>
-        <article class="service-card">
-          <span class="service-card__ico"><svg class="icon"><use href="#ico-handshake"/></svg></span>
-          <h3>Alianzas con fundaciones</h3>
-          <p>Actividades ambientales, sociales y culturales. Turismo con propósito.</p>
-        </article>
+      <!-- 10 servicios del Portafolio 2026 (con sus palabras) + «Ancestralidad»
+           (texto del cliente, 2026-10-24). Escritorio: 2 columnas que se leen de
+           arriba abajo (6 + 5) y la nota de pólizas cierra la 2.ª; celular: 1. -->
+      <div class="services__body">
+        <ul class="services__list">
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-leaf"/></svg></span>
+            <h3>Eco planes en Putumayo</h3>
+            <p>Con guías con tarjeta profesional y baquianos, especializados en cada tipo de actividad.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-feather"/></svg></span>
+            <h3>Ancestralidad</h3>
+            <p>Conexión con las comunidades étnicas del Putumayo para compartir experiencias a través de sus ceremonias, que limpian el espíritu y liberan las cargas negativas de la modernidad.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-building"/></svg></span>
+            <h3>Experiencias para empresas y estudiantes</h3>
+            <p>Fortalecimiento empresarial y prácticas estudiantiles, con enfoque étnico y de territorio.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-palette"/></svg></span>
+            <h3>Productos artesanales y agroindustriales</h3>
+            <p>De origen putumayense, con participación de comunidades étnicas y campesinas.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-bag"/></svg></span>
+            <h3>Jornadas de compra de artesanía</h3>
+            <p>Visita a talleres para aprender sobre el tallado y comprar recordatorios.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-handshake"/></svg></span>
+            <h3>Alianzas con fundaciones</h3>
+            <p>Para desarrollar actividades de tipo ambiental, social y cultural.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-globe"/></svg></span>
+            <h3>Planes nacionales y al exterior</h3>
+            <p>Terrestres, aéreos y cruceros, de manera directa o en alianza con otras agencias de viajes.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-plane"/></svg></span>
+            <h3>Tiquetes aéreos</h3>
+            <p>Venta de tiquetes aéreos comerciales y vuelos chárter.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-bus"/></svg></span>
+            <h3>Traslados aeropuerto-hotel-aeropuerto</h3>
+            <p>Con transporte adecuado de acuerdo al número de personas.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-bed"/></svg></span>
+            <h3>Reservaciones</h3>
+            <p>Hoteles, restaurantes e ingresos a sitios turísticos, entre otros.</p>
+          </li>
+          <li class="service">
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-tent"/></svg></span>
+            <h3>Organización de eventos</h3>
+            <p>Eventos feriales de tipo artesanal, gastronómico, deportivo y cultural.</p>
+          </li>
+        </ul>
+        <p class="services__cover">
+          <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-shield"/></svg></span>
+          <strong>Pólizas contra accidentes</strong>
+          <span>Contamos con el cubrimiento de Colasistencia y Magenta.</span>
+        </p>
       </div>
       <aside class="student-deal" aria-labelledby="studentTitle">
         <div>
           <h3 id="studentTitle">Excursiones de colegios y universidades</h3>
-          <p>Grandes descuentos para estudiantes presentando su carnet. Cuéntanos el destino y el tamaño del grupo y te armamos la propuesta.</p>
+          <p>Grandes descuentos para estudiantes presentando su carnet. Cuéntanos el destino y cuántos viajan.</p>
         </div>
         <a class="btn btn--whatsapp"
-           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20una%20excursi%C3%B3n%20para%20un%20colegio%20o%20universidad."
+           href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20una%20excursi%C3%B3n%20para%20un%20colegio%20o%20universidad."
            target="_blank" rel="noopener">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
           Cotizar por WhatsApp
