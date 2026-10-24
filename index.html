@@ -40,20 +40,17 @@
   <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="512x512" href="assets/images/favicon-512.png" />
 
-  <!-- Preconnects -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://images.unsplash.com" />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
 
-  <!-- Fuentes Google -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,700;1,800&family=Poppins:wght@300;400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Playfair+Display:ital,wght@1,700;1,800&family=Poppins:wght@300;400;500;600;700&display=swap" />
+  <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
+  <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024" />
 
   <!-- Estilos propios -->
   <link rel="preload" as="image" href="assets/images/hero-poster.jpg" />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024" />
+  <link rel="stylesheet" href="css/components.css?v=20261024" />
 
   <!-- Schema.org Travel Agency -->
   <script type="application/ld+json">
@@ -240,19 +237,11 @@
       </div>
       <!-- Overlay de marca para legibilidad del texto -->
       <div class="hero__video-overlay"></div>
-      <div class="hero__bg-grid"></div>
-      <div class="hero__glow hero__glow--1"></div>
-      <div class="hero__glow hero__glow--2"></div>
-      <div class="hero__glow hero__glow--3"></div>
-      <div class="hero__shape hero__shape--1"></div>
-      <div class="hero__shape hero__shape--2"></div>
-      <div class="hero__shape hero__shape--3"></div>
     </div>
 
     <div class="container hero__inner">
       <div class="hero__content">
         <span class="hero__eyebrow reveal-up">
-          <span class="hero__eyebrow-dot"></span>
           Agencia colombiana · Origen andino-amazónico
         </span>
         <h1 id="heroTitle" class="hero__title">
@@ -272,7 +261,6 @@
              target="_blank" rel="noopener">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
             Cotizar ahora
-            <span class="btn__ripple"></span>
           </a>
           <a class="btn btn--ghost" href="#putumayo">
             Conoce Putumayo
@@ -324,38 +312,6 @@
       </div>
     </div>
 
-    <div class="hero__marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Putumayo</span><span class="dot">●</span>
-        <span>Cartagena</span><span class="dot">●</span>
-        <span>San Andrés</span><span class="dot">●</span>
-        <span>Eje Cafetero</span><span class="dot">●</span>
-        <span>Santa Marta</span><span class="dot">●</span>
-        <span>Tumaco</span><span class="dot">●</span>
-        <span>Huila</span><span class="dot">●</span>
-        <span>Atacames</span><span class="dot">●</span>
-        <span>Crucero Caribe</span><span class="dot">●</span>
-        <span>Mediterráneo</span><span class="dot">●</span>
-        <span>Asia</span><span class="dot">●</span>
-        <span>Putumayo</span><span class="dot">●</span>
-        <span>Cartagena</span><span class="dot">●</span>
-        <span>San Andrés</span><span class="dot">●</span>
-        <span>Eje Cafetero</span><span class="dot">●</span>
-        <span>Santa Marta</span><span class="dot">●</span>
-        <span>Tumaco</span><span class="dot">●</span>
-        <span>Huila</span><span class="dot">●</span>
-        <span>Atacames</span><span class="dot">●</span>
-        <span>Crucero Caribe</span><span class="dot">●</span>
-        <span>Mediterráneo</span><span class="dot">●</span>
-        <span>Asia</span><span class="dot">●</span>
-      </div>
-    </div>
-
-    <a class="hero__scroll" href="#proceso" aria-label="Desplazar">
-      <span>scroll</span>
-      <div class="hero__scroll-line"></div>
-    </a>
-
     <button class="hero__video-toggle" type="button" aria-label="Pausar video de fondo" hidden>
       <svg class="hero__video-toggle-pause" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="4" width="5" height="16" rx="1"/><rect x="14" y="4" width="5" height="16" rx="1"/></svg>
       <svg class="hero__video-toggle-play" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12-7.5a1 1 0 0 0 0-1.72l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
@@ -366,10 +322,7 @@
   <section id="proceso" class="process" aria-labelledby="procTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Cómo trabajamos</span>
-        <h2 id="procTitle" class="section-title">
-          Tu viaje en <span class="text-grad">4 pasos simples</span>
-        </h2>
+        <h2 id="procTitle" class="section-title">Tu viaje en 4 pasos</h2>
         <p class="section-sub">
           Sin formularios infinitos ni esperas. Un asesor humano te acompaña de principio a fin.
         </p>
@@ -409,10 +362,7 @@
   <section id="pilares" class="pillars" aria-labelledby="pillarsTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Nuestro mundo</span>
-        <h2 id="pillarsTitle" class="section-title">
-          Tres formas de <span class="text-grad">vivir PARAISOS</span>
-        </h2>
+        <h2 id="pillarsTitle" class="section-title">Qué hacemos</h2>
         <p class="section-sub">
           Diseñamos experiencias completas: te llevamos al lugar y te dejamos un recuerdo
           tejido a mano.
@@ -470,17 +420,10 @@
 
   <!-- ====== PUTUMAYO · NUESTRA ESENCIA ====== -->
   <section id="putumayo" class="putumayo" aria-labelledby="putTitle">
-    <div class="putumayo__bg" aria-hidden="true">
-      <svg class="putumayo__bg-leaf putumayo__bg-leaf--1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2c1 2 2 4.18 2 8.4 0 4.62-4.42 9.6-10.2 9.6Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
-      <svg class="putumayo__bg-leaf putumayo__bg-leaf--2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2c1 2 2 4.18 2 8.4 0 4.62-4.42 9.6-10.2 9.6Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg>
-      <svg class="putumayo__bg-leaf putumayo__bg-leaf--3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M10 20c5.5-2.5.42-6.5 5-10M9 14C5.5 12.5 7 9 4 8c0 3 0 5 4 6z"/></svg>
-      <svg class="putumayo__bg-leaf putumayo__bg-leaf--4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10M10 20c5.5-2.5.42-6.5 5-10M9 14C5.5 12.5 7 9 4 8c0 3 0 5 4 6z"/></svg>
-    </div>
     <div class="container">
-      <header class="section-head section-head--light">
-        <span class="section-eyebrow">Turismo en Putumayo</span>
+      <header class="section-head">
         <h2 id="putTitle" class="section-title">
-          Putumayo, donde <span class="text-grad">nacen las nubes</span>
+          Putumayo, donde <span class="text-accent">nacen las nubes</span>
         </h2>
         <p class="section-sub">
           Nuestro lugar de origen. Selva, montaña, ríos cristalinos y comunidades ancestrales
@@ -700,48 +643,31 @@
   <section id="mapa" class="map-section" aria-labelledby="mapTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Mapa interactivo</span>
-        <h2 id="mapTitle" class="section-title">
-          Recorre <span class="text-grad">Colombia</span> en 3D
-        </h2>
-        <p class="section-sub">
-          Arrastra para rotar, haz zoom y toca los marcadores para descubrir cada destino.
-          Cada paraíso esconde una historia.
-        </p>
+        <h2 id="mapTitle" class="section-title">Mapa de destinos</h2>
+        <p class="section-sub">Toca un destino para ver la tarifa y cotizar.</p>
       </header>
 
+      <div class="map-3d__chips" id="destChips" role="group" aria-label="Elegir destino"></div>
+
       <div class="map-3d">
-        <div id="canvas3d" class="map-3d__canvas" aria-label="Mapa 3D de Colombia">
-          <div class="map-3d__hint">
-            <span>✋</span> Arrastra · 🖱️ Zoom · 👉 Toca un pin
-          </div>
+        <div id="canvas3d" class="map-3d__canvas">
+          <div class="map-3d__hint"></div>
           <div class="map-3d__compass" aria-hidden="true">
             <span>N</span>
             <div class="map-3d__compass-needle"></div>
           </div>
           <div id="mapLabels" class="map-3d__labels" aria-hidden="true"></div>
           <div id="mapPopup" class="map-3d__popup" hidden></div>
-          <div class="map-3d__legend">
-            <span><i class="leg leg--pin"></i> Destino</span>
-            <span><i class="leg leg--arc"></i> Conexión</span>
-            <span><i class="leg leg--cloud"></i> Atmósfera</span>
-          </div>
         </div>
 
-        <aside class="map-3d__panel" id="destPanel" aria-live="polite">
+        <aside class="map-3d__panel" id="destPanel">
           <div class="map-3d__panel-empty" id="panelEmpty">
-            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#1976D2" stroke-width="1.5"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <h3>Selecciona un destino</h3>
-            <p>Haz clic en cualquier pin del mapa para ver detalles, fotos y cotizar tu viaje.</p>
-            <div class="map-3d__panel-tip">
-              💡 Tip: arrastra el mapa para girar y usa la rueda del mouse para zoom.
-            </div>
+            <h3>Elige un destino</h3>
+            <p>Toca un punto del mapa o elige un destino.</p>
           </div>
           <div class="map-3d__panel-content" id="panelContent" hidden></div>
         </aside>
       </div>
-
-      <div class="map-3d__chips" id="destChips" role="list" aria-label="Destinos rápidos"></div>
     </div>
   </section>
 
@@ -860,25 +786,16 @@
   <section id="viajes" class="destinos-section" aria-labelledby="destTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Turismo nacional e internacional</span>
-        <h2 id="destTitle" class="section-title">
-          Destinos que <span class="text-grad">enamoran</span>
-        </h2>
-        <p class="section-sub">
-          Una selección curada de paraísos colombianos y del exterior, listos para cotizar.
-          Planes terrestres, aéreos y cruceros.
-        </p>
+        <h2 id="destTitle" class="section-title">Destinos y tarifas</h2>
+        <p class="section-sub">El valor final depende de la fecha, el número de viajeros y el alojamiento.</p>
       </header>
       <div class="destinos-grid" id="destinosGrid"></div>
     </div>
 
     <!-- Sub-bloque cruceros -->
     <div class="container cruceros__inner">
-      <header class="section-head section-head--compact" style="margin-top: 3rem;">
-        <span class="section-eyebrow">A bordo · cruceros</span>
-        <h3 class="section-title" style="font-size: clamp(1.5rem, 3vw, 2.2rem);">
-          Tres mares, <span class="text-grad">un sinfín de historias</span>
-        </h3>
+      <header class="section-head cruceros__head">
+        <h3 class="section-title">Cruceros</h3>
       </header>
       <div class="cruceros__grid">
         <article class="cruise-card">
@@ -927,42 +844,12 @@
     </div>
   </section>
 
-  <!-- ====== BIG MARQUEE ====== -->
-  <section class="big-marquee" aria-hidden="true">
-    <div class="big-marquee__track">
-      <span>Putumayo <em>·</em></span>
-      <span>Cartagena <em>·</em></span>
-      <span>San Andrés <em>·</em></span>
-      <span>Eje Cafetero <em>·</em></span>
-      <span>Santa Marta <em>·</em></span>
-      <span>Tumaco <em>·</em></span>
-      <span>Huila <em>·</em></span>
-      <span>Atacames <em>·</em></span>
-    </div>
-    <div class="big-marquee__track big-marquee__track--rev">
-      <span>Territorio de vida <em>·</em></span>
-      <span>Caribe <em>·</em></span>
-      <span>Mediterráneo <em>·</em></span>
-      <span>Asia <em>·</em></span>
-      <span>Vivenciales <em>·</em></span>
-      <span>Ecoturismo <em>·</em></span>
-      <span>Cruceros <em>·</em></span>
-      <span>Aventura <em>·</em></span>
-    </div>
-  </section>
-
   <!-- ====== SERVICIOS COMPLETOS ====== -->
   <section id="servicios" class="services" aria-labelledby="servTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Portafolio de servicios 2026</span>
-        <h2 id="servTitle" class="section-title">
-          Todo lo que <span class="text-grad">diseñamos</span> para ti
-        </h2>
-        <p class="section-sub">
-          Más de una década estructurando experiencias para clientes directos, empresariales,
-          institucionales y otras agencias.
-        </p>
+        <h2 id="servTitle" class="section-title">Servicios</h2>
+        <p class="section-sub">Para viajeros, empresas, colegios y otras agencias de viajes.</p>
       </header>
       <div class="services__grid">
         <article class="service-card">
@@ -1049,14 +936,11 @@
           <strong>RNT 84258</strong>
           <span>Registro Nacional de Turismo</span>
         </div>
-        <div class="experience__sticker">
-          <span>Guías</span><strong>Certificados</strong>
-        </div>
       </div>
       <div class="experience__content">
         <span class="section-eyebrow">Quiénes somos</span>
         <h2 id="expTitle" class="section-title section-title--left">
-          Empresa colombiana de origen <span class="text-grad">andino-amazónico</span>
+          Empresa colombiana de origen <span class="text-accent">andino-amazónico</span>
         </h2>
         <p class="experience__lead">
           Facilitamos experiencias inolvidables en turismo de naturaleza y turismo convencional,
@@ -1085,9 +969,9 @@
     </div>
 
     <!-- Misión · Visión · Valores · Políticas → ahora viven en nosotros.html -->
-    <div class="container" style="text-align:center; margin-top: 2rem;">
+    <div class="container experience__more">
       <a class="btn btn--ghost btn--lg" href="nosotros.html">
-        Conoce nuestra misión, visión y políticas →
+        Conoce nuestra misión, visión y políticas
       </a>
     </div>
   </section>
@@ -1096,9 +980,8 @@
   <section class="allies" aria-labelledby="allyTitle">
     <div class="container">
       <header class="section-head section-head--compact">
-        <span class="section-eyebrow">Trayectoria que respalda</span>
-        <h2 id="allyTitle" class="section-title">Aliados y <span class="text-grad">clientes destacados</span></h2>
-        <p class="section-sub">Confianza construida con instituciones, organismos internacionales y aseguradoras.</p>
+        <h2 id="allyTitle" class="section-title">Clientes y aliados</h2>
+        <p class="section-sub">Contratos con la OEI y la Gobernación del Putumayo, y pólizas de Colasistencia y Magenta.</p>
       </header>
       <div class="allies__grid">
         <div class="ally-card">
@@ -1130,9 +1013,8 @@
   <section id="tienda" class="tienda-teaser" aria-labelledby="tiendaTeaserTitle">
     <div class="container tienda-teaser__inner">
       <div class="tienda-teaser__content">
-        <span class="section-eyebrow">Tienda turística</span>
         <h2 id="tiendaTeaserTitle" class="section-title section-title--left">
-          Llévate <span class="text-grad">un pedazo del Putumayo</span>
+          Productos artesanales y agroindustriales del Putumayo
         </h2>
         <p>
           <strong>Velas artesanales</strong> con cera natural y piedras volcánicas,
@@ -1146,8 +1028,8 @@
           <li><span>✓</span> Envíos a toda Colombia · empaque biodegradable</li>
         </ul>
         <div class="tienda-teaser__ctas">
-          <a class="btn btn--primary btn--lg" href="la-tienda.html">
-            Entrar a la tienda →
+          <a class="btn btn--ghost btn--lg" href="la-tienda.html">
+            Entrar a la tienda
           </a>
           <a class="btn btn--whatsapp"
              href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20ver%20el%20catálogo."
@@ -1156,9 +1038,6 @@
       </div>
       <div class="tienda-teaser__media">
         <img loading="lazy" src="assets/images/tienda/velas-piedras.jpg" alt="Velas artesanales con cera natural y piedras volcánicas del Putumayo" class="tienda-teaser__photo" />
-        <div class="tienda-teaser__sticker">
-          Hecho con manos<br/>del territorio
-        </div>
       </div>
     </div>
   </section>
@@ -1167,9 +1046,7 @@
   <section id="galeria" class="gallery" aria-labelledby="galTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Galería</span>
-        <h2 id="galTitle" class="section-title">Momentos <span class="text-grad">capturados</span></h2>
-        <p class="section-sub">Fotos de nuestros destinos y experiencias, del Putumayo al Caribe.</p>
+        <h2 id="galTitle" class="section-title">Galería</h2>
       </header>
       <div class="gallery__filters" id="galFilters" role="tablist"></div>
       <div class="gallery__grid" id="galGrid"></div>
@@ -1184,8 +1061,7 @@
   <section class="faq" aria-labelledby="faqTitle">
     <div class="container faq__inner">
       <header class="section-head section-head--compact">
-        <span class="section-eyebrow">Preguntas frecuentes</span>
-        <h2 id="faqTitle" class="section-title">Resolvemos tus <span class="text-grad">dudas</span></h2>
+        <h2 id="faqTitle" class="section-title">Preguntas frecuentes</h2>
       </header>
       <div class="accordion" id="faqAcc">
         <details><summary>¿Qué seguros incluyen los viajes?</summary><p>Contamos con cubrimiento de <strong>Colasistencia y Magenta</strong> con pólizas contra accidentes. Para viajes internacionales te asesoramos sobre la asistencia médica de viaje que pide cada destino.</p></details>
@@ -1201,11 +1077,6 @@
 
   <!-- ====== CTA FINAL ====== -->
   <section class="cta-final" aria-labelledby="ctaTitle">
-    <div class="cta-final__orbits" aria-hidden="true">
-      <div class="cta-final__orb cta-final__orb--1"></div>
-      <div class="cta-final__orb cta-final__orb--2"></div>
-      <div class="cta-final__orb cta-final__orb--3"></div>
-    </div>
     <div class="container cta-final__inner">
       <h2 id="ctaTitle">"Más que un destino turístico, somos territorio de vida"</h2>
       <p>Te atiende una persona de nuestro equipo por WhatsApp, de lunes a sábado. Sin compromiso.</p>
@@ -1222,8 +1093,7 @@
   <section id="contacto" class="contact" aria-labelledby="contactTitle">
     <div class="container contact__grid">
       <div class="contact__info">
-        <span class="section-eyebrow">Contacto</span>
-        <h2 id="contactTitle" class="section-title section-title--left">Visítanos o <span class="text-grad">escríbenos</span></h2>
+        <h2 id="contactTitle" class="section-title section-title--left">Visítanos o escríbenos</h2>
         <ul class="contact__list">
           <li><span class="contact__ico"><svg class="icon"><use href="#ico-pin"/></svg></span><div><strong>Dirección</strong><em>Calle 11 Nro 9-146 · Barrio Progreso · Mocoa, Putumayo, Colombia</em></div></li>
           <li><span class="contact__ico"><svg class="icon"><use href="#ico-chat"/></svg></span><div><strong>WhatsApp</strong><a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a></div></li>
@@ -1329,8 +1199,6 @@
   <!-- ====== FLOATING ELEMENTS ====== -->
   <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
      class="float-wa" id="floatWa" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <span class="float-wa__pulse"></span>
-    <span class="float-wa__pulse float-wa__pulse--2"></span>
     <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
     <span class="float-wa__tip">Escríbenos</span>
   </a>

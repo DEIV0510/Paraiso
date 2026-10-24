@@ -93,6 +93,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const nav = $('#navbar');
   const burger = $('#navBurger');
   const progress = $('#navProgress');
+  const scrollTopBtn = $('#scrollTop');
   let lastY = window.scrollY;
   let ticking = false;
 
@@ -103,9 +104,11 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (y > 200 && y > lastY + 4) nav.classList.add('is-hidden');
     else if (y < lastY - 4) nav.classList.remove('is-hidden');
     lastY = y;
-    // Progress bar
+    // Barra de progreso (se escala; no cambia el ancho)
     const max = document.documentElement.scrollHeight - innerHeight;
-    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(y / max, 1) : 0})`;
+    // Botón «subir»
+    if (scrollTopBtn) scrollTopBtn.classList.toggle('is-visible', y > 600);
     ticking = false;
   }
   window.addEventListener('scroll', () => {
@@ -231,33 +234,6 @@ requestAnimationFrame(triggerInitialReveals);
     io.disconnect();
   }, { threshold: 0.3 });
   io.observe(tl);
-})();
-
-/* ======================================================================
-   CONTADORES animados con easeOutCubic
-   ====================================================================== */
-(function counters() {
-  const els = $$('[data-count-to]');
-  const io = new IntersectionObserver((ents) => {
-    ents.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const to = parseFloat(el.dataset.countTo);
-      const decimals = parseInt(el.dataset.decimal || '0', 10);
-      const suffix = el.dataset.suffix || '';
-      const dur = 1800;
-      const start = performance.now();
-      function step(now) {
-        const t = Math.min((now - start) / dur, 1);
-        const val = to * (1 - Math.pow(1 - t, 3));
-        el.textContent = val.toFixed(decimals).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + suffix;
-        if (t < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      io.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  els.forEach(el => io.observe(el));
 })();
 
 /* ======================================================================
@@ -455,12 +431,10 @@ requestAnimationFrame(triggerInitialReveals);
    MISCELÁNEA: scroll-top, year
    ====================================================================== */
 (function misc() {
-  $('#year').textContent = new Date().getFullYear();
+  const year = $('#year');
+  if (year) year.textContent = new Date().getFullYear();
   const top = $('#scrollTop');
-  window.addEventListener('scroll', () => {
-    top.classList.toggle('is-visible', window.scrollY > 600);
-  }, { passive: true });
-  top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (top) top.addEventListener('click', () => window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }));
 })();
 
 /* ------------------ VIDEO HERO FONDO ------------------ */
