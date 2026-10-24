@@ -22,7 +22,7 @@
   pointer-events: none;
 }
 /* Un solo tratamiento de ícono en caja: 40 px, celeste, trazo azul oscuro */
-.service-card__ico,
+.politica__ico,
 .service__ico,
 .experience__features .ico,
 .contact__list .contact__ico {
@@ -36,7 +36,7 @@
   font-size: 1.25rem;
   box-shadow: none;
 }
-.service-card__ico .icon,
+.politica__ico .icon,
 .service__ico .icon,
 .experience__features .ico .icon { stroke-width: 1.75; }
 
@@ -601,18 +601,6 @@
   width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover;
   background: var(--c-blue-tint);
 }
-/* Dato real fijo en la esquina de la foto (lo usa nosotros.html) */
-.experience__badge {
-  position: absolute; bottom: 0; left: 0;
-  background: #fff;
-  padding: .9rem 1.2rem;
-  display: flex; flex-direction: column; gap: .2rem;
-  max-width: 240px;
-  border-top: 3px solid var(--c-orange);
-}
-.experience__badge strong { font-family: var(--f-head); font-size: 1.35rem; color: var(--c-blue-dark); }
-.experience__badge span { font-size: .8125rem; color: var(--c-text-soft); }
-
 .experience__lead {
   font-size: 1.0625rem;
   line-height: 1.7;
@@ -853,26 +841,169 @@ html.lightbox-open { overflow: hidden; }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* ============== BLOQUE OSCURO (lo usa nosotros.html) ============== */
+/* ============== PÁGINA NOSOTROS ==============
+   Quiénes somos (foto = LCP) · misión y visión · valores y principios ·
+   políticas · experiencia y respaldo · cotizar. Fondos alternos (suave /
+   blanco), encabezados a la izquierda y listas en vez de tarjetas. */
+.page-hero {
+  padding: calc(var(--topbar-h) + var(--navbar-h) + 3.5rem) 0 var(--gap-6);
+  background: var(--c-bg-soft);
+}
+.page-hero__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  gap: 2rem 4rem;
+  align-items: center;
+}
+.page-hero__title {
+  font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3rem);
+  line-height: 1.08;
+  margin-bottom: 1.25rem;
+  text-wrap: balance;
+}
+/* «andino-amazónico» no se parte en el guion */
+.page-hero__title .text-accent { white-space: nowrap; }
+.page-hero__lead {
+  max-width: 50ch;
+  margin-bottom: 2rem;
+  font-size: 1.125rem;
+  line-height: 1.65;
+  color: var(--c-text);
+}
+.page-hero__cta { display: flex; flex-wrap: wrap; gap: .75rem 1rem; }
+.page-hero__trust {
+  margin-top: 1.75rem;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-text-soft);
+}
+.page-hero__trust abbr { text-decoration: none; }
+.page-hero__media { margin: 0; }
+.page-hero__media img {
+  width: 100%; height: auto;
+  aspect-ratio: 1400 / 837;
+  object-fit: cover;
+  background: var(--c-blue-tint);
+}
+.page-hero__features { padding-top: var(--gap-4); border-top: 1px solid #DCE5F0; }
+
+/* Misión y visión: dos columnas con raya de tinta arriba */
+.mv { padding: var(--gap-7) 0; background: #fff; }
+.mv__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 4rem;
+}
+.mv__item { border-top: 2px solid var(--c-text); padding-top: 1.25rem; }
+.mv__title { font-size: clamp(1.6rem, 1.1rem + 1.4vw, 2.25rem); margin-bottom: 1rem; }
+.mv__item p {
+  max-width: 60ch;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--c-text);
+}
+.mv__item p + p { margin-top: .9rem; }
+
+/* Valores (7, en 2 columnas) y principios (4): 4 filas parejas en escritorio */
+.valores { padding: var(--gap-7) 0; background: var(--c-bg-soft); }
+.valores__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 2rem 4rem;
+  margin-top: 1.5rem;
+}
+.valores__title {
+  padding-bottom: .75rem;
+  border-bottom: 2px solid var(--c-text);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.valores__list { padding-top: .5rem; }
+.valores__list--2col { columns: 2; column-gap: 4rem; }
+.valores__list li {
+  display: flex; align-items: center; gap: .85rem;
+  padding: .6rem 0;
+  break-inside: avoid;
+  font-family: var(--f-head);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--c-text);
+}
+/* Marca cuadrada (no es un glifo que lea el lector) */
+.valores__list li::before {
+  content: '';
+  flex: none;
+  width: 7px; height: 7px;
+  background: var(--c-orange);
+}
+
+/* Políticas: ícono + nombre + lema real + una línea; 2 columnas de 4 filas */
+.politicas { padding: var(--gap-7) 0; background: #fff; }
+.politicas__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 4rem;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid #DCE5F0;
+}
+.politica {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  column-gap: 1rem;
+  row-gap: .2rem;
+  align-content: start;
+  padding: 1.25rem 0 1.3rem;
+  border-top: 1px solid #DCE5F0;
+}
+.politica__ico { grid-row: 1 / span 3; }
+.politica h3 {
+  grid-column: 2;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+/* El lema de cada política va en la itálica de acento de la marca */
+.politica__lema {
+  grid-column: 2;
+  font-family: var(--f-script);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  color: var(--c-blue-dark);
+}
+.politica__text {
+  grid-column: 2;
+  margin-top: .2rem;
+  font-size: .9375rem;
+  line-height: 1.55;
+  color: var(--c-text-soft);
+}
+
+/* Experiencia y respaldo (usa .allies__list, igual que el inicio) */
+.respaldo { padding: var(--gap-7) 0; background: var(--c-bg-soft); }
+.respaldo .allies__list { margin-top: 1.5rem; }
+
+/* Cotizar: franja oscura con el texto a la izquierda y los botones a la derecha */
 .cta-final {
-  padding: var(--gap-7) 0;
+  padding: var(--gap-6) 0;
   background: var(--c-text);
   color: #fff;
-  position: relative;
 }
 .cta-final__inner {
-  position: relative;
-  text-align: center;
-  max-width: 760px;
-  margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem 3rem;
 }
 .cta-final h2 {
   color: #fff;
-  font-size: clamp(1.75rem, 1.1rem + 2.4vw, 2.8rem);
-  margin-bottom: 1rem;
+  font-size: clamp(1.6rem, 1.1rem + 1.5vw, 2.25rem);
+  margin-bottom: .5rem;
 }
-.cta-final p { color: rgba(255,255,255,.9); font-size: 1.1rem; margin-bottom: 2rem; }
-.cta-final__row { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.cta-final p { color: #fff; font-size: 1.0625rem; }
+.cta-final__row { display: flex; gap: .75rem 1rem; flex-wrap: wrap; }
 
 /* ============== CONTACTO ==============
    Lista compacta (sin tarjetas) y formulario a la derecha, sin estirarse. */
@@ -1209,7 +1340,7 @@ html.lightbox-open { overflow: hidden; }
    de pólizas con el mismo formato. Desde 700 px van en 2 columnas que se
    leen de arriba abajo: 6 + 5 + la nota = 6 filas completas. La lista usa
    subgrid para que las filas de las dos columnas queden alineadas.
-   Celular: 1 columna. nosotros.html sigue usando .services__grid / .service-card. */
+   Celular: 1 columna. */
 .services {
   --c-line-list: #DCE5F0;   /* divisores de la lista */
   padding: var(--gap-7) 0;
@@ -1275,29 +1406,6 @@ html.lightbox-open { overflow: hidden; }
     }
   }
 }
-
-.services__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
-}
-.service-card {
-  position: relative;
-  background: #fff;
-  padding: 1.5rem 1.3rem;
-  border: 1px solid var(--c-line);
-  transition: border-color .2s var(--ease);
-}
-.service-card:hover { border-color: var(--c-line-strong); }
-.service-card__ico { margin-bottom: .9rem; }
-.service-card h3 {
-  font-size: 1.05rem;
-  font-family: var(--f-head); font-weight: 800;
-  color: var(--c-text);
-  margin-bottom: .5rem;
-  line-height: 1.3;
-}
-.service-card p { font-size: .9375rem; color: var(--c-text-soft); line-height: 1.55; }
 
 /* Franja de excursiones de colegios y universidades */
 .student-deal {
@@ -1404,12 +1512,23 @@ html.lightbox-open { overflow: hidden; }
 #galeria  { --cis: 930px; }
 #faq      { --cis: 630px; }
 #contacto { --cis: 800px; }
+/* nosotros.html */
+#mision      { --cis: 550px; }
+#valores     { --cis: 470px; }
+#politicas   { --cis: 850px; }
+#experiencia { --cis: 375px; }
+#cotizar     { --cis: 240px; }
 @media (max-width: 768px) {
   #nosotros { --cis: 1300px; }
   #tienda   { --cis: 370px; }
   #galeria  { --cis: 950px; }
   #faq      { --cis: 710px; }
   #contacto { --cis: 1220px; }
+  #mision      { --cis: 740px; }
+  #valores     { --cis: 700px; }
+  #politicas   { --cis: 1460px; }
+  #experiencia { --cis: 480px; }
+  #cotizar     { --cis: 320px; }
 }
 
 /* =====================================================================
@@ -1488,6 +1607,11 @@ html.lightbox-open { overflow: hidden; }
   .contact__form { max-width: 560px; }
   .faq__inner { grid-template-columns: minmax(0, 1fr); }
   .allies__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Nosotros: la foto pasa debajo del texto */
+  .page-hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .page-hero__media { max-width: 600px; }
+  .valores__grid { column-gap: 2.5rem; }
+  .valores__list--2col { column-gap: 2rem; }
   /* Tienda: el botón pasa debajo del texto */
   .tienda-teaser__inner { grid-template-columns: 180px minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 1.5rem; }
   .tienda-teaser__photo { grid-row: 1 / span 3; }
@@ -1559,10 +1683,6 @@ html.lightbox-open { overflow: hidden; }
   .services__body { column-gap: 2rem; }
   .service, .services__cover { padding: 1rem 0; }
   .service h3, .services__cover strong { font-size: 1rem; }
-  .services__grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
-  .service-card { padding: 1.1rem 1rem; }
-  .service-card__ico { margin-bottom: .6rem; }
-  .service-card h3 { font-size: 1rem; }
   .student-deal { flex-direction: column; align-items: flex-start; margin-top: 2rem; padding: 1.25rem; gap: 1rem; }
 
   /* Nosotros */
@@ -1596,8 +1716,17 @@ html.lightbox-open { overflow: hidden; }
   .accordion summary { padding: .85rem 1rem; font-size: 1rem; }
   .accordion p { padding: 0 1rem 1rem; font-size: .9375rem; line-height: 1.6; }
 
-  /* Bloque oscuro (nosotros.html) */
-  .cta-final p { font-size: 1rem; margin-bottom: 1.5rem; }
+  /* Nosotros: misión y visión, políticas y cotizar en una columna */
+  .page-hero { padding-top: calc(var(--topbar-h) + var(--navbar-h) + 2rem); }
+  .page-hero__lead { font-size: 1rem; margin-bottom: 1.5rem; }
+  .page-hero__trust { margin-top: 1.25rem; }
+  .mv__grid { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }
+  .mv__item p { font-size: 1rem; line-height: 1.65; }
+  .valores__list li { font-size: 1.0625rem; }
+  .politicas__list { grid-template-columns: minmax(0, 1fr); }
+  .politica { padding: 1rem 0 1.1rem; }
+  .politica__lema { font-size: 1rem; }
+  .cta-final p { font-size: 1rem; }
   .cta-final__row .btn { min-height: 48px; }
 
   /* Contacto */
@@ -1641,6 +1770,15 @@ html.lightbox-open { overflow: hidden; }
   .putumayo__cta .btn { grid-column: 1 / -1; justify-self: stretch; margin-top: 1rem; }
 }
 
+/* Nosotros: valores y principios uno debajo del otro */
+@media (max-width: 700px) {
+  .valores__grid { grid-template-columns: minmax(0, 1fr); }
+}
+/* Nosotros ≤480 px: los 7 valores en una sola columna */
+@media (max-width: 480px) {
+  .valores__list--2col { columns: 1; }
+}
+
 /* Galería en 2 columnas y puntos de «Quiénes somos» en 1 */
 @media (max-width: 599px) {
   .gallery__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1657,8 +1795,6 @@ html.lightbox-open { overflow: hidden; }
   .container { padding: 0 1rem; }
   .btn { white-space: normal; }
 
-  /* Listas a una columna para que el texto no baje de 15 px */
-  .services__grid { grid-template-columns: 1fr; }
   /* Respaldo: contratos a lo ancho; pólizas y RNT lado a lado */
   .allies__list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem 1rem; }
   .allies__item--wide { grid-column: 1 / -1; }
@@ -1705,9 +1841,11 @@ html.lightbox-open { overflow: hidden; }
   .putumayo__cta .btn,
   .experience__content > .btn,
   .contact__form .btn,
+  .page-hero__cta .btn,
   .cta-final__row .btn { width: 100%; }
   .experience__content > .btn { padding-inline: 1rem; }
-  .cta-final__row { flex-direction: column; align-items: stretch; }
+  .page-hero__cta,
+  .cta-final__row { flex-direction: column; align-items: stretch; width: 100%; }
   .student-deal .btn { width: 100%; }
 
   /* Pie */

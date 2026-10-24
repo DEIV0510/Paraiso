@@ -168,6 +168,8 @@ input, textarea, select { font: inherit; color: inherit; }
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+/* Sprite de íconos: presente en el documento pero sin ocupar lugar */
+.svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 /* ---------- TIPOGRAFÍA ---------- */
 h1, h2, h3, h4 { font-family: var(--f-head); color: var(--c-text); line-height: 1.15; margin: 0; }
@@ -525,7 +527,6 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   margin-bottom: .75rem;
   text-wrap: balance;
 }
-.section-title--left { text-align: left; }
 .section-sub {
   font-size: 1.0625rem;
   color: var(--c-text-soft);
