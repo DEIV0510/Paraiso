@@ -1,0 +1,8 @@
+# Archivos de trabajo y herramientas locales: no se publican
+_test.html
+_material-paraisos2/
+extract-favicon.ps1
+start-server.*
+README.md
+.claude/
+.playwright-mcp/

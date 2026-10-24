@@ -6,22 +6,34 @@
   <meta name="theme-color" content="#1976D2" />
   <meta name="color-scheme" content="light" />
 
-  <title>Tienda · Productos artesanales del Putumayo | PARAISOS</title>
-  <meta name="description" content="Productos artesanales y agroindustriales del Putumayo: velas, miel de abejas nativas, tallas de madera y pinturas. Pregunta disponibilidad y precio por WhatsApp." />
+  <!-- SEO: title ≤ 60 caracteres y description ≤ 155 -->
+  <title>Tienda: productos artesanales del Putumayo | PARAISOS</title>
+  <meta name="description" content="Productos artesanales y agroindustriales del Putumayo: velas, miel de abejas nativas, tallas y pinturas. Pregunta disponibilidad y precio por WhatsApp." />
+  <meta name="author" content="PARAISOS - Agencia de Viajes &amp; Turismo" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://paraisosagencia.vercel.app/la-tienda.html" />
 
+  <!-- Open Graph (og-tienda.jpg: recorte 1200×630 de la foto real de velas) -->
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_CO" />
   <meta property="og:site_name" content="PARAISOS - Agencia de Viajes &amp; Turismo" />
   <meta property="og:url" content="https://paraisosagencia.vercel.app/la-tienda.html" />
-  <meta property="og:title" content="Tienda PARAISOS · Productos del Putumayo" />
+  <meta property="og:title" content="Tienda PARAISOS: productos del Putumayo" />
   <meta property="og:description" content="Productos artesanales y agroindustriales de origen putumayense, con participación de comunidades étnicas y campesinas." />
-  <meta property="og:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
+  <meta property="og:image" content="https://paraisosagencia.vercel.app/assets/images/og-tienda.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:image:alt" content="Velas artesanales de colores en un estante" />
 
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Tienda PARAISOS: productos del Putumayo" />
+  <meta name="twitter:description" content="Productos artesanales y agroindustriales de origen putumayense, con participación de comunidades étnicas y campesinas." />
+  <meta name="twitter:image" content="https://paraisosagencia.vercel.app/assets/images/og-tienda.jpg" />
+  <meta name="twitter:image:alt" content="Velas artesanales de colores en un estante" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
@@ -39,19 +51,22 @@
        las secciones se pintan completas para que el salto caiga en su sitio -->
   <script>document.documentElement.classList.add('js');if(location.hash)document.documentElement.classList.add('cv-off');</script>
 
-  <!-- Schema.org: solo datos confirmados (sin precios ni horario) -->
+  <!-- Schema.org: solo datos confirmados (sin productos, precios ni horario).
+       La tienda pertenece a la agencia del inicio (mismo @id). -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "PARAISOS - Agencia de Viajes & Turismo",
+    "@id": "https://paraisosagencia.vercel.app/la-tienda.html#tienda",
+    "name": "Tienda PARAISOS",
     "description": "Promoción y comercialización de productos artesanales y agroindustriales de origen putumayense, con participación de comunidades étnicas y campesinas. Jornadas de compra de artesanía.",
     "url": "https://paraisosagencia.vercel.app/la-tienda.html",
-    "image": "https://paraisosagencia.vercel.app/assets/images/tienda/velas-colores-960.webp",
+    "image": "https://paraisosagencia.vercel.app/assets/images/og-tienda.jpg",
     "logo": "https://paraisosagencia.vercel.app/assets/images/logo-paraisos.png",
-    "telephone": "+573157347306",
+    "telephone": "+57 315 734 7306",
     "email": "gerencia.paraisos@gmail.com",
-    "paymentAccepted": "Efectivo, Nequi, transferencia bancaria",
+    "paymentAccepted": "Efectivo, Nequi, Transferencia bancaria",
+    "currenciesAccepted": "COP",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Calle 11 Nro 9-146, Barrio Progreso",
@@ -59,7 +74,14 @@
       "addressRegion": "Putumayo",
       "addressCountry": "CO"
     },
-    "sameAs": ["https://www.facebook.com/viajesparaisos/"]
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=calle+11+%23+9-146+barrio+progreso+mocoa+putumayo+colombia",
+    "sameAs": ["https://www.facebook.com/viajesparaisos/"],
+    "parentOrganization": {
+      "@type": "TravelAgency",
+      "@id": "https://paraisosagencia.vercel.app/#agencia",
+      "name": "PARAISOS - Agencia de Viajes & Turismo",
+      "url": "https://paraisosagencia.vercel.app/"
+    }
   }
   </script>
 </head>
@@ -120,7 +142,7 @@
           <li><a href="la-tienda.html" aria-current="page">Tienda</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
           <li class="navbar__menu-cta">
-            <a class="btn btn--whatsapp" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener">
+            <a class="btn btn--whatsapp" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener">
               <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
               Cotizar por WhatsApp
             </a>
@@ -129,7 +151,7 @@
       </nav>
 
       <a class="btn btn--whatsapp navbar__cta"
-         href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje."
+         href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
          target="_blank" rel="noopener">
         <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
         Cotizar por WhatsApp
@@ -155,7 +177,7 @@
         </p>
         <div class="page-hero__cta">
           <a class="btn btn--whatsapp"
-             href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+             href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
              target="_blank" rel="noopener">
             <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
             Pregunta disponibilidad y precio por WhatsApp
@@ -197,7 +219,7 @@
         </div>
         <ul class="shop__grid">
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20de%20cera%20pura%20de%20abeja." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Velas%20de%20cera%20pura%20de%20abeja." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/velas-cera-abeja-480.webp"
                    srcset="assets/images/tienda/velas-cera-abeja-480.webp 480w, assets/images/tienda/velas-cera-abeja-960.webp 960w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -210,7 +232,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20de%20colores." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Velas%20de%20colores." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/velas-colores-480.webp"
                    srcset="assets/images/tienda/velas-colores-480.webp 480w, assets/images/tienda/velas-colores-960.webp 960w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -223,7 +245,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20rectangulares." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Velas%20rectangulares." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/velas-rectangulares-480.webp"
                    srcset="assets/images/tienda/velas-rectangulares-480.webp 480w, assets/images/tienda/velas-rectangulares-960.webp 960w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -236,7 +258,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20cuadradas." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Velas%20cuadradas." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/velas-cuadradas-480.webp"
                    srcset="assets/images/tienda/velas-cuadradas-480.webp 480w, assets/images/tienda/velas-cuadradas-960.webp 960w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -259,7 +281,7 @@
         </div>
         <ul class="shop__grid">
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Miel%20de%20abejas%20nativas." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Miel%20de%20abejas%20nativas." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/miel-melipona-480.webp"
                    srcset="assets/images/tienda/miel-melipona-480.webp 480w, assets/images/tienda/miel-melipona-900.webp 900w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -272,7 +294,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Jab%C3%B3n%20artesanal%20de%20miel." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Jab%C3%B3n%20artesanal%20de%20miel." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/jabon-miel-480.webp"
                    srcset="assets/images/tienda/jabon-miel-480.webp 480w, assets/images/tienda/jabon-miel-960.webp 960w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -285,7 +307,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20T%C3%B3nico%20natural." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20T%C3%B3nico%20natural." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/tonico-natural-480.webp"
                    srcset="assets/images/tienda/tonico-natural-480.webp 480w, assets/images/tienda/tonico-natural-760.webp 760w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -298,7 +320,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Hidromiel." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Hidromiel." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/hidromiel-480.webp"
                    srcset="assets/images/tienda/hidromiel-480.webp 480w, assets/images/tienda/hidromiel-802.webp 802w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -322,7 +344,7 @@
         </div>
         <ul class="shop__grid shop__grid--tall">
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Tallas%20de%20madera%20pintadas." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Tallas%20de%20madera%20pintadas." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/tallas-madera-480.webp"
                    srcset="assets/images/tienda/tallas-madera-480.webp 480w, assets/images/tienda/tallas-madera-800.webp 800w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -335,7 +357,7 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20ave." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Pintura%20de%20ave." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/pintura-ave-480.webp"
                    srcset="assets/images/tienda/pintura-ave-480.webp 480w, assets/images/tienda/pintura-ave-800.webp 800w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -348,20 +370,20 @@
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20dos%20aves." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Pintura%20de%20dos%20aves." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/pintura-aves-480.webp"
                    srcset="assets/images/tienda/pintura-aves-480.webp 480w, assets/images/tienda/pintura-aves-800.webp 800w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
                    width="800" height="1000" alt="" loading="lazy" decoding="async" />
               <div class="prod-card__body">
                 <h4 class="prod-card__name">Pintura de dos aves</h4>
-                <p class="prod-card__detail">Aves azul y amarillo en un tronco.</p>
+                <p class="prod-card__detail">Azules y amarillas, en un tronco con musgo.</p>
                 <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
               </div>
             </a>
           </li>
           <li>
-            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20colibr%C3%ADes." target="_blank" rel="noopener">
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20este%20producto%3A%20Pintura%20de%20colibr%C3%ADes." target="_blank" rel="noopener">
               <img class="prod-card__img" src="assets/images/tienda/pintura-colibries-480.webp"
                    srcset="assets/images/tienda/pintura-colibries-480.webp 480w, assets/images/tienda/pintura-colibries-670.webp 670w"
                    sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
@@ -388,9 +410,9 @@
         <li>Pagas en efectivo, Nequi o transferencia a cuenta de ahorros Bancolombia.</li>
       </ol>
       <div class="buy__foot">
-        <p class="buy__note">No recibimos tarjetas. ¿Envío? Pregunta por envío a tu ciudad.</p>
+        <p class="buy__note">No recibimos tarjetas. Pregunta por el envío a tu ciudad.</p>
         <a class="btn btn--whatsapp"
-           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+           href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
            target="_blank" rel="noopener">
           <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
           Pregunta disponibilidad y precio por WhatsApp
@@ -408,7 +430,7 @@
       </div>
       <div class="cta-final__row">
         <a class="btn btn--whatsapp btn--lg"
-           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20informaci%C3%B3n%20de%20las%20jornadas%20de%20compra%20de%20artesan%C3%ADa."
+           href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20informaci%C3%B3n%20de%20las%20jornadas%20de%20compra%20de%20artesan%C3%ADa."
            target="_blank" rel="noopener">
           <svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
           Cotizar por WhatsApp
@@ -454,7 +476,7 @@
        visible desde el inicio (sin data-after: esta página no tiene hero de video).
        Van dentro de un <aside> con nombre para que no queden fuera de las regiones. -->
   <aside class="quick-contact" aria-label="Contacto rápido">
-    <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+    <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
        class="float-wa" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
       <svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
       <span class="float-wa__tip" aria-hidden="true">Cotizar por WhatsApp</span>
@@ -462,7 +484,7 @@
 
     <div class="sticky-cta" id="stickyCta">
       <a href="tel:+573157347306" class="sticky-cta__call"><svg class="icon" aria-hidden="true"><use href="#ico-phone"/></svg> Llamar</a>
-      <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda." target="_blank" rel="noopener" class="sticky-cta__wa">
+      <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda." target="_blank" rel="noopener" class="sticky-cta__wa">
         <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
         Cotizar por WhatsApp
       </a>

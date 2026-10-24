@@ -14,3 +14,7 @@ Desktop.ini
 # Temporales
 *.log
 *.tmp
+
+# Material de trabajo del cliente y pruebas viejas (no se versionan)
+_material-paraisos2/
+_test.html

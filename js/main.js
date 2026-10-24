@@ -122,7 +122,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
         li.hidden = !show;
         if (show) n++;
       });
-      if (status) status.textContent = `${n} fotos: ${b.textContent}.`;
+      if (status) status.textContent = `${n} ${n === 1 ? 'foto' : 'fotos'}: ${b.textContent}.`;
     });
   }
 
@@ -255,7 +255,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!destino) { setError(true); dest.focus(); return; }
     setError(false);
     const lines = [
-      name ? `Hola PARAISOS, soy ${name}. Quiero cotizar un viaje.` : 'Hola PARAISOS, quiero cotizar un viaje.',
+      name ? `Hola, PARAISOS. Soy ${name} y quiero cotizar un viaje.` : 'Hola, PARAISOS. Quiero cotizar un viaje.',
       `Destino: ${destino}`
     ];
     if (msg) lines.push(`Mensaje: ${msg}`);
