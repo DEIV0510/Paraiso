@@ -749,102 +749,107 @@
   <section id="asistente" class="wizard-section" aria-labelledby="wizTitle">
     <div class="container">
       <header class="section-head">
-        <span class="section-eyebrow">Asistente personalizado</span>
-        <h2 id="wizTitle" class="section-title">
-          Tu viaje ideal en <span class="text-grad">5 pasos</span>
-        </h2>
-        <p class="section-sub">
-          Cuéntanos qué buscas y armaremos una propuesta a tu medida. Sin compromiso.
-        </p>
+        <h2 id="wizTitle" class="section-title">Cotiza tu viaje</h2>
+        <p class="section-sub">Cinco pasos cortos y envías tu solicitud por WhatsApp.</p>
       </header>
 
       <div class="wizard" id="wizard">
         <div class="wizard__progress">
-          <div class="wizard__progress-bar" id="wizBar"></div>
-          <ul class="wizard__steps" id="wizSteps">
-            <li class="is-active" data-step="1"><span>1</span>Tipo</li>
-            <li data-step="2"><span>2</span>Destino</li>
-            <li data-step="3"><span>3</span>Fechas</li>
-            <li data-step="4"><span>4</span>Personas</li>
-            <li data-step="5"><span>5</span>Resumen</li>
+          <div class="wizard__progress-bar" id="wizBar" aria-hidden="true"></div>
+          <ul class="wizard__steps" id="wizSteps" aria-label="Pasos de la cotización">
+            <li class="is-active" aria-current="step"><span aria-hidden="true">1</span>Tipo</li>
+            <li><span aria-hidden="true">2</span>Destino</li>
+            <li><span aria-hidden="true">3</span>Fecha</li>
+            <li><span aria-hidden="true">4</span>Personas</li>
+            <li><span aria-hidden="true">5</span>Enviar</li>
           </ul>
         </div>
 
         <div class="wizard__viewport">
+          <noscript><p class="wizard__note">Para cotizar, escríbenos por WhatsApp al <a href="https://wa.me/573157347306">+57 315 734 7306</a>.</p></noscript>
+
           <div class="wizard__step is-active" data-step="1">
-            <h3>¿Qué buscas con PARAISOS?</h3>
-            <div class="wizard__grid wizard__grid--cards">
-              <button class="wiz-card" data-value="Vivencial Putumayo"><span class="wiz-card__ico"><svg class="icon"><use href="#ico-leaf"/></svg></span><strong>Vivencial Putumayo</strong><em>Ecoturismo, taita, yagé</em></button>
-              <button class="wiz-card" data-value="Viaje nacional o internacional"><span class="wiz-card__ico"><svg class="icon"><use href="#ico-globe"/></svg></span><strong>Viaje nacional/internacional</strong><em>Destinos y cruceros</em></button>
-              <button class="wiz-card" data-value="Compra en tienda turística"><span class="wiz-card__ico"><svg class="icon"><use href="#ico-bag"/></svg></span><strong>Tienda turística</strong><em>Artesanías, café, miel</em></button>
-              <button class="wiz-card" data-value="Aventura"><span class="wiz-card__ico"><svg class="icon"><use href="#ico-mountain"/></svg></span><strong>Aventura</strong><em>Trekking, rappel, kayaking</em></button>
-              <button class="wiz-card" data-value="Evento o grupo"><span class="wiz-card__ico"><svg class="icon"><use href="#ico-tent"/></svg></span><strong>Evento / grupo</strong><em>Empresarial, educativo, ferial</em></button>
+            <h3 id="wizH1" tabindex="-1"><span class="sr-only">Paso 1 de 5: </span>¿Qué tipo de viaje buscas?</h3>
+            <div class="wizard__grid wizard__grid--cards" role="group" aria-labelledby="wizH1" data-key="tipo">
+              <button type="button" class="wiz-card" data-value="Vivencial Putumayo" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-leaf"/></svg></span><strong>Vivencial Putumayo</strong><em>Eco planes y experiencias</em></button>
+              <button type="button" class="wiz-card" data-value="Viaje nacional o internacional" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-globe"/></svg></span><strong>Viaje nacional o internacional</strong><em>Terrestre, aéreo o crucero</em></button>
+              <button type="button" class="wiz-card" data-value="Aventura" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-mountain"/></svg></span><strong>Aventura</strong><em>Rappel, kayaking, neumating</em></button>
+              <button type="button" class="wiz-card" data-value="Grupo o evento" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-bus"/></svg></span><strong>Grupo o evento</strong><em>Empresas, colegios, ferias</em></button>
+            </div>
+            <p class="wizard__note">Pagas en efectivo, Nequi, transferencia Bancolombia o con crédito de cooperativas en convenio.</p>
+          </div>
+
+          <div class="wizard__step" data-step="2" hidden>
+            <h3 id="wizH2" tabindex="-1"><span class="sr-only">Paso 2 de 5: </span>¿A dónde quieres ir?</h3>
+            <div class="wizard__grid wizard__grid--destinos" id="wizDestinos" role="group" aria-labelledby="wizH2" data-key="destino">
+              <!-- wizard.js agrega aquí los destinos de PARAISOS_DATA -->
+              <button type="button" class="wiz-card" data-value="Crucero" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-ship"/></svg></span><strong>Crucero</strong><em>Con agencias aliadas</em></button>
+              <button type="button" class="wiz-card" data-value="Otro destino" aria-pressed="false"><span class="wiz-card__ico" aria-hidden="true"><svg class="icon"><use href="#ico-pin"/></svg></span><strong>Otro destino</strong><em>Nacional o internacional</em></button>
             </div>
           </div>
 
-          <div class="wizard__step" data-step="2">
-            <h3>Elige tu destino soñado</h3>
-            <div class="wizard__grid wizard__grid--destinos" id="wizDestinos"></div>
-          </div>
-
-          <div class="wizard__step" data-step="3">
-            <h3>¿Cuándo te gustaría viajar?</h3>
+          <div class="wizard__step" data-step="3" hidden>
+            <h3 id="wizH3" tabindex="-1"><span class="sr-only">Paso 3 de 5: </span>¿Cuándo quieres viajar?</h3>
             <div class="wizard__fields">
               <label class="field">
                 <span>Fecha de salida</span>
-                <input type="date" id="wizDate" min="" />
+                <input type="date" id="wizDate" required aria-describedby="wizMsg" />
               </label>
               <label class="field">
                 <span>Duración: <strong id="wizDurOut">5</strong> días</span>
-                <input type="range" id="wizDur" min="2" max="21" value="5" />
+                <input type="range" id="wizDur" min="2" max="21" value="5" aria-valuetext="5 días" />
               </label>
             </div>
           </div>
 
-          <div class="wizard__step" data-step="4">
-            <h3>¿Cuántos viajeros y qué presupuesto?</h3>
+          <div class="wizard__step" data-step="4" hidden>
+            <h3 id="wizH4" tabindex="-1"><span class="sr-only">Paso 4 de 5: </span>¿Cuántos viajan?</h3>
             <div class="wizard__fields wizard__fields--counters">
-              <div class="counter">
-                <span>Adultos</span>
+              <div class="counter" role="group" aria-labelledby="wizAdultsLbl">
+                <span id="wizAdultsLbl">Adultos</span>
                 <div class="counter__ctrls">
-                  <button type="button" data-counter="adults" data-op="-1" aria-label="Restar adulto">−</button>
+                  <button type="button" data-counter="adults" data-op="-1" aria-label="Quitar un adulto">−</button>
                   <strong id="wizAdults">2</strong>
-                  <button type="button" data-counter="adults" data-op="1" aria-label="Sumar adulto">+</button>
+                  <button type="button" data-counter="adults" data-op="1" aria-label="Agregar un adulto">+</button>
                 </div>
               </div>
-              <div class="counter">
-                <span>Niños</span>
+              <div class="counter" role="group" aria-labelledby="wizKidsLbl">
+                <span id="wizKidsLbl">Niños</span>
                 <div class="counter__ctrls">
-                  <button type="button" data-counter="kids" data-op="-1" aria-label="Restar niño">−</button>
+                  <button type="button" data-counter="kids" data-op="-1" aria-label="Quitar un niño">−</button>
                   <strong id="wizKids">0</strong>
-                  <button type="button" data-counter="kids" data-op="1" aria-label="Sumar niño">+</button>
+                  <button type="button" data-counter="kids" data-op="1" aria-label="Agregar un niño">+</button>
                 </div>
               </div>
             </div>
-            <h4 class="wizard__subhead">Presupuesto por persona</h4>
-            <div class="wizard__grid wizard__grid--budget">
-              <button class="wiz-card wiz-card--budget" data-value="Económico"><strong>Económico</strong><em>$800.000 – $1.800.000 COP</em></button>
-              <button class="wiz-card wiz-card--budget" data-value="Estándar"><strong>Estándar</strong><em>$1.800.000 – $3.500.000 COP</em></button>
-              <button class="wiz-card wiz-card--budget" data-value="Premium"><strong>Premium</strong><em>$3.500.000+ COP</em></button>
+            <h4 class="wizard__subhead" id="wizBudgetLbl">Presupuesto por persona</h4>
+            <div class="wizard__grid wizard__grid--cards" role="group" aria-labelledby="wizBudgetLbl" data-key="budget">
+              <button type="button" class="wiz-card wiz-card--budget" data-value="Hasta $1.000.000" aria-pressed="false"><strong>Hasta $1.000.000</strong></button>
+              <button type="button" class="wiz-card wiz-card--budget" data-value="$1.000.000 – $2.500.000" aria-pressed="false"><strong>$1.000.000 – $2.500.000</strong></button>
+              <button type="button" class="wiz-card wiz-card--budget" data-value="Más de $2.500.000" aria-pressed="false"><strong>Más de $2.500.000</strong></button>
+              <button type="button" class="wiz-card wiz-card--budget" data-value="Aún no lo sé" aria-pressed="false"><strong>Aún no lo sé</strong></button>
             </div>
           </div>
 
-          <div class="wizard__step" data-step="5">
-            <h3>Último paso · te contactamos</h3>
+          <div class="wizard__step" data-step="5" hidden>
+            <h3 id="wizH5" tabindex="-1"><span class="sr-only">Paso 5 de 5: </span>Revisa y envía</h3>
             <div class="wizard__resume" id="wizResume"></div>
             <div class="wizard__fields">
-              <label class="field"><span>Nombre completo</span><input type="text" id="wizName" placeholder="Tu nombre" required /></label>
-              <label class="field"><span>Teléfono</span><input type="tel" id="wizPhone" placeholder="+57 300 000 0000" required /></label>
-              <label class="field"><span>Email</span><input type="email" id="wizEmail" placeholder="tu@email.com" required /></label>
+              <label class="field"><span>Tu nombre (opcional)</span><input type="text" id="wizName" autocomplete="name" maxlength="80" /></label>
             </div>
+            <p class="wizard__note">Se abre WhatsApp con tu solicitud lista. Solo tienes que enviarla.</p>
           </div>
+
+          <p class="wizard__msg" id="wizMsg" role="alert"></p>
+          <p class="sr-only" id="wizStatus" role="status" aria-live="polite"></p>
         </div>
 
         <div class="wizard__nav">
-          <button type="button" class="btn btn--ghost" id="wizPrev" disabled>← Atrás</button>
-          <button type="button" class="btn btn--primary" id="wizNext">Continuar →</button>
-          <a class="btn btn--whatsapp" id="wizSend" href="#" target="_blank" rel="noopener" hidden>
-            Enviar por WhatsApp
+          <button type="button" class="btn btn--ghost" id="wizPrev" disabled>Atrás</button>
+          <button type="button" class="btn btn--primary" id="wizNext">Continuar</button>
+          <a class="btn btn--whatsapp" id="wizSend" href="https://wa.me/573157347306" target="_blank" rel="noopener" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Cotizar por WhatsApp
           </a>
         </div>
       </div>

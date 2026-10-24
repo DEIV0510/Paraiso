@@ -1,0 +1,273 @@
+/* =====================================================================
+   PARAISOS · Fuentes autoalojadas (subconjunto latino de Google Fonts)
+   - Montserrat: un solo archivo variable (pesos 600 a 900)
+   - Poppins: 400, 500, 600 y 700 (estáticas)
+   - Playfair Display: itálica 700 (estática)
+   Respaldos métricos: Arial / Georgia (Windows, macOS, iOS) y
+   Roboto / Noto Serif (Android) ajustados con size-adjust y
+   ascent/descent-override, calculados con los avances reales de cada fuente (fontkit) sobre el texto del sitio, para
+   que el cambio de fuente no mueva el contenido (CLS).
+   Uso:
+     --f-head:   'Montserrat', 'Montserrat Fallback', 'Montserrat Fallback R', system-ui, -apple-system, sans-serif;
+     --f-body:   'Poppins', 'Poppins Fallback', 'Poppins Fallback R', system-ui, -apple-system, sans-serif;
+     --f-script: 'Playfair Display', 'Playfair Fallback', 'Playfair Fallback N', Georgia, serif;
+   ===================================================================== */
+
+/* ---------- Fuentes web ---------- */
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url(../assets/fonts/montserrat-var-latin.woff2) format('woff2');
+  font-weight: 600 900;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-400-latin.woff2) format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-500-latin.woff2) format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-600-latin.woff2) format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(../assets/fonts/poppins-700-latin.woff2) format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(../assets/fonts/playfair-display-700i-latin.woff2) format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Respaldos métricos: Arial / Georgia ---------- */
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 600;
+  font-style: normal;
+  size-adjust: 106.69%;
+  ascent-override: 90.73%;
+  descent-override: 23.53%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 700;
+  font-style: normal;
+  size-adjust: 108.62%;
+  ascent-override: 89.12%;
+  descent-override: 23.11%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 800;
+  font-style: normal;
+  size-adjust: 110.71%;
+  ascent-override: 87.43%;
+  descent-override: 22.67%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 900;
+  font-style: normal;
+  size-adjust: 112.96%;
+  ascent-override: 85.70%;
+  descent-override: 22.22%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial'), local('ArialMT');
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 110.27%;
+  ascent-override: 95.22%;
+  descent-override: 31.74%;
+  line-gap-override: 9.07%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial'), local('ArialMT');
+  font-weight: 500;
+  font-style: normal;
+  size-adjust: 111.51%;
+  ascent-override: 94.16%;
+  descent-override: 31.39%;
+  line-gap-override: 8.97%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 600;
+  font-style: normal;
+  size-adjust: 105.43%;
+  ascent-override: 99.59%;
+  descent-override: 33.20%;
+  line-gap-override: 9.48%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback';
+  src: local('Arial Bold'), local('Arial-BoldMT');
+  font-weight: 700;
+  font-style: normal;
+  size-adjust: 106.32%;
+  ascent-override: 98.76%;
+  descent-override: 32.92%;
+  line-gap-override: 9.41%;
+}
+
+@font-face {
+  font-family: 'Playfair Fallback';
+  src: local('Georgia Bold Italic'), local('Georgia-BoldItalic');
+  font-weight: 700;
+  font-style: italic;
+  size-adjust: 86.67%;
+  ascent-override: 124.84%;
+  descent-override: 28.96%;
+  line-gap-override: 0.00%;
+}
+
+/* ---------- Respaldos métricos: Roboto / Noto Serif (Android) ---------- */
+
+@font-face {
+  font-family: 'Montserrat Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600;
+  font-style: normal;
+  size-adjust: 113.60%;
+  ascent-override: 85.21%;
+  descent-override: 22.10%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 700;
+  font-style: normal;
+  size-adjust: 115.65%;
+  ascent-override: 83.70%;
+  descent-override: 21.70%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 800;
+  font-style: normal;
+  size-adjust: 117.88%;
+  ascent-override: 82.12%;
+  descent-override: 21.29%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 900;
+  font-style: normal;
+  size-adjust: 120.27%;
+  ascent-override: 80.49%;
+  descent-override: 20.87%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback R';
+  src: local('Roboto'), local('Roboto-Regular');
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 111.74%;
+  ascent-override: 93.97%;
+  descent-override: 31.32%;
+  line-gap-override: 8.95%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback R';
+  src: local('Roboto Medium'), local('Roboto-Medium');
+  font-weight: 500;
+  font-style: normal;
+  size-adjust: 112.14%;
+  ascent-override: 93.63%;
+  descent-override: 31.21%;
+  line-gap-override: 8.92%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 600;
+  font-style: normal;
+  size-adjust: 112.26%;
+  ascent-override: 93.53%;
+  descent-override: 31.18%;
+  line-gap-override: 8.91%;
+}
+
+@font-face {
+  font-family: 'Poppins Fallback R';
+  src: local('Roboto Bold'), local('Roboto-Bold');
+  font-weight: 700;
+  font-style: normal;
+  size-adjust: 113.20%;
+  ascent-override: 92.76%;
+  descent-override: 30.92%;
+  line-gap-override: 8.83%;
+}
+
+@font-face {
+  font-family: 'Playfair Fallback N';
+  src: local('Noto Serif Bold Italic'), local('NotoSerif-BoldItalic');
+  font-weight: 700;
+  font-style: italic;
+  size-adjust: 89.12%;
+  ascent-override: 121.41%;
+  descent-override: 28.17%;
+  line-gap-override: 0.00%;
+}
+
