@@ -554,7 +554,9 @@ function initColombiaMap() {
   const DEFAULT_ZOOM = 18, SELECT_ZOOM = 14;
   const minZoom = 10, maxZoom = 28;
   let rotY = 0, rotX = 0.5, velY = 0, velX = 0;
-  let zoom = DEFAULT_ZOOM;
+  // En lienzos angostos (celular) la cámara arranca más lejos para que quepa
+  // el país: 18 con un lienzo 1,45:1, ~22 con uno casi cuadrado.
+  let zoom = clamp(DEFAULT_ZOOM * Math.pow(Math.max(1, 1.45 / (cw / ch)), 0.7), minZoom, 23);
   const focus = new THREE.Vector3();
   const focusGoal = new THREE.Vector3();
   const focusOffset = new THREE.Vector3();   // resto de un vuelo interrumpido; se desvanece

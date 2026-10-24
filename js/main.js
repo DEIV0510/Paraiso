@@ -75,7 +75,7 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
     '.section-head', '.map-3d', '.wizard',
     '.experience__media', '.experience__content', '.allies__list',
     '.accordion details', '.contact__info', '.contact__form',
-    '.exp-card', '.service-card', '.putumayo__media', '.putumayo__intro'
+    '.service-card', '.putumayo__media', '.putumayo__intro', '.putumayo__col'
   ].join(',');
   const items = $$(selectors).filter(el => !el.closest('.hero'));
   const io = new IntersectionObserver((entries) => {
