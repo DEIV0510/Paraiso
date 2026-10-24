@@ -3,40 +3,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="theme-color" content="#B85C28" />
+  <meta name="theme-color" content="#1976D2" />
+  <meta name="color-scheme" content="light" />
 
-  <!-- SEO -->
-  <title>Tienda PARAISOS · Artesanías y productos del Putumayo</title>
-  <meta name="description" content="Artesanías de chaquira con símbolos ancestrales, café del sur, cacao orgánico, hierbas medicinales, miel de abejas nativas y textiles del Putumayo. Hecho con manos del territorio." />
-  <meta name="keywords" content="tienda putumayo, artesanías indígenas, chaquira yaco samai, café del sur, cacao putumayo, miel abeja angelita, copaiba, ruana, productos artesanales colombia" />
-  <meta name="robots" content="index, follow" />
+  <title>Tienda · Productos artesanales del Putumayo | PARAISOS</title>
+  <meta name="description" content="Productos artesanales y agroindustriales del Putumayo: velas, miel de abejas nativas, tallas de madera y pinturas. Pregunta disponibilidad y precio por WhatsApp." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
   <link rel="canonical" href="https://paraisosagencia.vercel.app/la-tienda.html" />
 
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:site_name" content="PARAISOS - Agencia de Viajes &amp; Turismo" />
   <meta property="og:url" content="https://paraisosagencia.vercel.app/la-tienda.html" />
+  <meta property="og:title" content="Tienda PARAISOS · Productos del Putumayo" />
+  <meta property="og:description" content="Productos artesanales y agroindustriales de origen putumayense, con participación de comunidades étnicas y campesinas." />
   <meta property="og:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
-  <meta property="og:title" content="Tienda PARAISOS · Artesanías del Putumayo" />
-  <meta property="og:description" content="Productos artesanales y agroindustriales del sur de Colombia. Hecho a mano por comunidades indígenas y campesinas." />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,700;1,900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" />
+  <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
+  <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024" />
 
-  <link rel="stylesheet" href="css/tienda.css" />
+  <!-- Misma CSS que el inicio y Nosotros -->
+  <link rel="stylesheet" href="css/styles.css?v=20261024" />
+  <link rel="stylesheet" href="css/components.css?v=20261024" />
 
-  <!-- Schema.org Store -->
+  <!-- «js» activa los realces que dependen de JS; si se entra con #ancla, todas
+       las secciones se pintan completas para que el salto caiga en su sitio -->
+  <script>document.documentElement.classList.add('js');if(location.hash)document.documentElement.classList.add('cv-off');</script>
+
+  <!-- Schema.org: solo datos confirmados (sin precios ni horario) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "Tienda PARAISOS",
-    "description": "Artesanías y productos del Putumayo: chaquira, café, cacao, miel, hierbas medicinales y textiles tradicionales.",
+    "name": "PARAISOS - Agencia de Viajes & Turismo",
+    "description": "Promoción y comercialización de productos artesanales y agroindustriales de origen putumayense, con participación de comunidades étnicas y campesinas. Jornadas de compra de artesanía.",
+    "url": "https://paraisosagencia.vercel.app/la-tienda.html",
+    "image": "https://paraisosagencia.vercel.app/assets/images/tienda/velas-colores-960.webp",
+    "logo": "https://paraisosagencia.vercel.app/assets/images/logo-paraisos.png",
     "telephone": "+573157347306",
-    "priceRange": "$",
+    "email": "gerencia.paraisos@gmail.com",
+    "paymentAccepted": "Efectivo, Nequi, transferencia bancaria",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Calle 11 Nro 9-146, Barrio Progreso",
@@ -49,726 +64,411 @@
   </script>
 </head>
 <body>
-  <!-- ====== LOADER ====== -->
-  <div class="tnd-loader" id="tndLoader" aria-hidden="true">
-    <div class="tnd-loader__logo">T</div>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ====== SPRITE SVG (íconos que usa esta página) ====== -->
+  <svg class="svg-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="ico-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="ico-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ====== CINTA SUPERIOR (datos reales; igual que en el inicio) ====== -->
+  <div class="topbar" id="topbar" role="region" aria-label="Tarifas y datos de PARAISOS" tabindex="0">
+    <div class="topbar__track">
+      <ul class="topbar__list">
+        <li>Putumayo fin de semana desde $999.000</li>
+        <li>Tumaco desde $680.000</li>
+        <li>Atacames desde $699.000</li>
+        <li>Financia tu viaje con cooperativas en convenio</li>
+        <li>Colegios y universidades: descuentos con carnet</li>
+        <li>Registro Nacional de Turismo 84258</li>
+      </ul>
+      <ul class="topbar__list" aria-hidden="true">
+        <li>Putumayo fin de semana desde $999.000</li>
+        <li>Tumaco desde $680.000</li>
+        <li>Atacames desde $699.000</li>
+        <li>Financia tu viaje con cooperativas en convenio</li>
+        <li>Colegios y universidades: descuentos con carnet</li>
+        <li>Registro Nacional de Turismo 84258</li>
+      </ul>
+    </div>
   </div>
 
-  <!-- ====== NAVBAR ====== -->
-  <header class="tnd-nav" id="tndNav" role="banner">
-    <div class="tnd-container tnd-nav__inner">
-      <a href="#inicio" class="tnd-nav__brand" aria-label="Tienda PARAISOS">
-        <div class="tnd-nav__brand-mark">T</div>
-        <div class="tnd-nav__brand-text">
-          <strong>Tienda PARAISOS</strong>
-          <em>Putumayo · hecho a mano</em>
-        </div>
+  <!-- ====== MENÚ (el mismo del inicio) ====== -->
+  <header id="navbar" class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__brand">
+        <img class="navbar__brand-img"
+             src="assets/images/logo-paraisos.png"
+             alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
+             width="1400" height="620" />
       </a>
-      <nav aria-label="Navegación principal">
-        <ul class="tnd-nav__menu" id="tndMenu">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#categorias">Categorías</a></li>
-          <li><a href="#simbolos">Símbolos</a></li>
-          <li><a href="#productos">Productos</a></li>
-          <li><a href="#artesanos">Artesanos</a></li>
-          <li><a href="#envios">Envíos</a></li>
-          <li class="tnd-nav__back-mobile"><a href="index.html">← Volver a PARAISOS</a></li>
+
+      <!-- La hamburguesa va antes del menú: con el menú abierto, Tab pasa a sus enlaces -->
+      <button class="navbar__burger" id="navBurger" type="button" aria-label="Abrir menú" aria-controls="primaryMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navbar__nav" aria-label="Principal">
+        <ul class="navbar__menu" id="primaryMenu">
+          <li><a href="index.html#viajes">Destinos</a></li>
+          <li><a href="index.html#putumayo">Putumayo</a></li>
+          <li><a href="index.html#asistente">Cotizar</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="la-tienda.html" aria-current="page">Tienda</a></li>
+          <li><a href="index.html#contacto">Contacto</a></li>
+          <li class="navbar__menu-cta">
+            <a class="btn btn--whatsapp" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener">
+              <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+              Cotizar por WhatsApp
+            </a>
+          </li>
         </ul>
       </nav>
-      <div class="tnd-nav__cta-row">
-        <a href="index.html" class="tnd-nav__back" aria-label="Volver a PARAISOS">← PARAISOS</a>
-        <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-           href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20del%20cat%C3%A1logo."
-           target="_blank" rel="noopener">Comprar</a>
-        <button class="tnd-nav__burger" id="tndBurger" aria-label="Menú">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
+
+      <a class="btn btn--whatsapp navbar__cta"
+         href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20cotizar%20un%20viaje."
+         target="_blank" rel="noopener">
+        <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+        Cotizar por WhatsApp
+      </a>
     </div>
+    <div class="navbar__progress" id="navProgress" aria-hidden="true"></div>
   </header>
 
-  <!-- ====== HERO ====== -->
-  <section id="inicio" class="tnd-hero">
-    <div class="tnd-hero__pattern" aria-hidden="true"></div>
-    <div class="tnd-container tnd-hero__inner">
-      <div class="tnd-hero__content">
-        <span class="tnd-hero__eyebrow">
-          <span></span> Tienda turística · PARAISOS
-        </span>
-        <h1 class="tnd-hero__title">
-          Velas y artesanías que cuentan <em>historias</em>
+  <main id="contenido" tabindex="-1">
+  <!-- ====== PRIMER PLIEGUE ======
+       Texto del Portafolio 2026. La foto solo se ve en escritorio; en celular
+       los productos quedan justo debajo. Es el mismo archivo de la tarjeta
+       «Velas de colores», así que no se descarga dos veces. -->
+  <section id="inicio" class="page-hero page-hero--tienda" aria-labelledby="tiendaTitle">
+    <div class="container page-hero__grid">
+      <div class="page-hero__text">
+        <h1 id="tiendaTitle" class="page-hero__title">
+          Productos del <span class="text-accent">Putumayo</span>
         </h1>
-        <p class="tnd-hero__sub">
-          Velas artesanales coladas a mano con cera natural y piedras volcánicas, chaquira
-          tejida con símbolos ancestrales, café de fincas pequeñas, cacao orgánico y miel
-          nativa. Cada pieza, una historia. Cada compra, un apoyo directo a las comunidades
-          del Putumayo.
+        <p class="page-hero__lead">
+          Promovemos y comercializamos productos artesanales y agroindustriales de origen
+          putumayense, con participación de comunidades étnicas y campesinas.
         </p>
-        <div class="tnd-hero__ctas">
-          <a class="tnd-btn tnd-btn--primary tnd-btn--lg" href="#productos">Ver catálogo</a>
-          <a class="tnd-btn tnd-btn--ghost tnd-btn--lg"
-             href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20cotizar%20productos."
-             target="_blank" rel="noopener">Comprar por WhatsApp</a>
+        <div class="page-hero__cta">
+          <a class="btn btn--whatsapp"
+             href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+             target="_blank" rel="noopener">
+            <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+            Pregunta disponibilidad y precio por WhatsApp
+          </a>
+          <a class="btn btn--ghost" href="#productos">Ver productos</a>
         </div>
-        <ul class="tnd-hero__trust">
-          <li><strong>15+</strong><span>Comunidades aliadas</span></li>
-          <li><strong>100%</strong><span>Hecho a mano</span></li>
-          <li><strong>📦</strong><span>Envíos a Colombia</span></li>
+      </div>
+      <figure class="page-hero__media">
+        <img src="assets/images/tienda/velas-colores-960.webp"
+             srcset="assets/images/tienda/velas-colores-480.webp 480w, assets/images/tienda/velas-colores-960.webp 960w"
+             sizes="(max-width: 899px) 46vw, 480px"
+             width="960" height="720"
+             fetchpriority="high" decoding="async"
+             alt="Velas cilíndricas de colores en un estante" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ====== PRODUCTOS ======
+       Solo fotos reales del material del cliente, sin precios ni
+       especificaciones: cada tarjeta abre WhatsApp con el nombre del producto. -->
+  <section id="productos" class="shop" aria-labelledby="productosTitle">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="productosTitle" class="section-title">Productos</h2>
+        <p class="section-sub">Toca un producto para preguntar disponibilidad y precio por WhatsApp.</p>
+        <nav class="shop__jump" aria-label="Categorías de productos">
+          <a href="#velas">Velas</a>
+          <a href="#colmena">Miel y colmena</a>
+          <a href="#artesania">Artesanía</a>
+        </nav>
+      </div>
+
+      <!-- Velas -->
+      <section class="shop__group" id="velas" aria-labelledby="velasTitle">
+        <div class="shop__group-head">
+          <h3 id="velasTitle" class="shop__group-title">Velas</h3>
+          <p class="shop__group-sub">De cera de abeja y decorativas.</p>
+        </div>
+        <ul class="shop__grid">
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20de%20cera%20pura%20de%20abeja." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/velas-cera-abeja-480.webp"
+                   srcset="assets/images/tienda/velas-cera-abeja-480.webp 480w, assets/images/tienda/velas-cera-abeja-960.webp 960w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="960" height="720" alt="" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Velas de cera pura de abeja</h4>
+                <p class="prod-card__detail">Con relieves de abejas y panal. Lili&nbsp;Miel.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20de%20colores." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/velas-colores-480.webp"
+                   srcset="assets/images/tienda/velas-colores-480.webp 480w, assets/images/tienda/velas-colores-960.webp 960w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="960" height="720" alt="" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Velas de colores</h4>
+                <p class="prod-card__detail">Cilíndricas, en varios tonos.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20rectangulares." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/velas-rectangulares-480.webp"
+                   srcset="assets/images/tienda/velas-rectangulares-480.webp 480w, assets/images/tienda/velas-rectangulares-960.webp 960w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="960" height="720" alt="" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Velas rectangulares</h4>
+                <p class="prod-card__detail">En tonos miel y café.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Velas%20cuadradas." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/velas-cuadradas-480.webp"
+                   srcset="assets/images/tienda/velas-cuadradas-480.webp 480w, assets/images/tienda/velas-cuadradas-960.webp 960w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="960" height="720" alt="" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Velas cuadradas</h4>
+                <p class="prod-card__detail">En tonos café, crema y blanco.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
         </ul>
-      </div>
+      </section>
 
-      <div class="tnd-hero__visual" aria-hidden="true">
-        <div class="tnd-hero__photo tnd-hero__photo--main">
-          <img src="assets/images/tienda/velas-piedras.jpg" alt="Velas artesanales con piedras volcánicas" />
+      <!-- Miel y productos de la colmena (marca de la etiqueta: Lili Miel) -->
+      <section class="shop__group" id="colmena" aria-labelledby="colmenaTitle">
+        <div class="shop__group-head">
+          <h3 id="colmenaTitle" class="shop__group-title">Miel y productos de la colmena</h3>
+          <p class="shop__group-sub">Lili Miel, abejas nativas.</p>
         </div>
-        <div class="tnd-hero__photo tnd-hero__photo--accent">
-          <img src="assets/images/tienda/velas-terrazo.jpg" alt="Velas terrazo de colores" />
-        </div>
-        <div class="tnd-hero__sticker">
-          Hecho con manos del territorio
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== CATEGORÍAS ====== -->
-  <section id="categorias" class="tnd-section">
-    <div class="tnd-container">
-      <header class="tnd-section-head tnd-reveal">
-        <span class="tnd-section-eyebrow">Explora</span>
-        <h2 class="tnd-section-title">Por <em>categoría</em></h2>
-        <p class="tnd-section-sub">
-          Cuatro mundos curados desde el Putumayo. Cada categoría con historia, ingredientes
-          y manos detrás.
-        </p>
-      </header>
-
-      <div class="tnd-categories">
-        <a href="#productos" data-filter="velas" class="tnd-cat tnd-cat--velas tnd-reveal">
-          <div class="tnd-cat__bg"></div>
-          <div class="tnd-cat__pattern"></div>
-          <div class="tnd-cat__body">
-            <span class="tnd-cat__ico">V</span>
-            <strong>Velas artesanales</strong>
-            <em>Cera natural, piedras volcánicas</em>
-            <span class="tnd-cat__arrow">Explorar →</span>
-          </div>
-        </a>
-        <a href="#productos" data-filter="artesania" class="tnd-cat tnd-cat--artesania tnd-reveal">
-          <div class="tnd-cat__bg"></div>
-          <div class="tnd-cat__pattern"></div>
-          <div class="tnd-cat__body">
-            <span class="tnd-cat__ico">A</span>
-            <strong>Artesanías</strong>
-            <em>Chaquira, semillas, mola</em>
-            <span class="tnd-cat__arrow">Explorar →</span>
-          </div>
-        </a>
-        <a href="#productos" data-filter="bebidas" class="tnd-cat tnd-cat--bebidas tnd-reveal">
-          <div class="tnd-cat__bg"></div>
-          <div class="tnd-cat__pattern"></div>
-          <div class="tnd-cat__body">
-            <span class="tnd-cat__ico">B</span>
-            <strong>Café y cacao</strong>
-            <em>Del sur de Colombia</em>
-            <span class="tnd-cat__arrow">Explorar →</span>
-          </div>
-        </a>
-        <a href="#productos" data-filter="medicina" class="tnd-cat tnd-cat--medicina tnd-reveal">
-          <div class="tnd-cat__bg"></div>
-          <div class="tnd-cat__pattern"></div>
-          <div class="tnd-cat__body">
-            <span class="tnd-cat__ico">M</span>
-            <strong>Plantas medicinales</strong>
-            <em>Sabiduría amazónica</em>
-            <span class="tnd-cat__arrow">Explorar →</span>
-          </div>
-        </a>
-        <a href="#productos" data-filter="textil" class="tnd-cat tnd-cat--textil tnd-reveal">
-          <div class="tnd-cat__bg"></div>
-          <div class="tnd-cat__pattern"></div>
-          <div class="tnd-cat__body">
-            <span class="tnd-cat__ico">T</span>
-            <strong>Textiles</strong>
-            <em>Tejidos en telar</em>
-            <span class="tnd-cat__arrow">Explorar →</span>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== SÍMBOLOS ANCESTRALES ====== -->
-  <section id="simbolos" class="tnd-section tnd-section--sand">
-    <div class="tnd-container">
-      <header class="tnd-section-head tnd-reveal">
-        <span class="tnd-section-eyebrow">Significado</span>
-        <h2 class="tnd-section-title">Los cinco <em>símbolos</em> ancestrales</h2>
-        <p class="tnd-section-sub">
-          Las pulseras de chaquira llevan tejidos estos motivos. Cada uno cuenta una historia
-          que llevarás contigo después del viaje.
-        </p>
-      </header>
-
-      <div class="tnd-symbols">
-        <article class="tnd-symbol tnd-reveal">
-          <div class="tnd-symbol__art">
-            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
-              <defs><pattern id="tYaco" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="#1976D2"/>
-                <path d="M5 10 L10 5 L15 10 L10 15 Z" fill="#42A5F5"/>
-                <circle cx="10" cy="10" r="2" fill="#fff"/>
-              </pattern></defs>
-              <rect width="120" height="60" fill="url(#tYaco)"/>
-            </svg>
-          </div>
-          <div class="tnd-symbol__body">
-            <strong>Yaco</strong>
-            <em>Agua</em>
-          </div>
-        </article>
-        <article class="tnd-symbol tnd-reveal">
-          <div class="tnd-symbol__art">
-            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
-              <defs><pattern id="tSamai" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                <path d="M12 2 L22 12 L12 22 L2 12 Z" fill="#0D47A1"/>
-                <path d="M12 6 L18 12 L12 18 L6 12 Z" fill="#F39A1F"/>
-                <circle cx="12" cy="12" r="2.5" fill="#fff"/>
-              </pattern></defs>
-              <rect width="120" height="60" fill="url(#tSamai)"/>
-            </svg>
-          </div>
-          <div class="tnd-symbol__body">
-            <strong>Samai</strong>
-            <em>Espíritu</em>
-          </div>
-        </article>
-        <article class="tnd-symbol tnd-reveal">
-          <div class="tnd-symbol__art">
-            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
-              <defs><pattern id="tLlactu" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-                <circle cx="15" cy="15" r="11" fill="#E67E22"/>
-                <circle cx="15" cy="15" r="7" fill="#FFB74D"/>
-                <circle cx="15" cy="15" r="3" fill="#0D47A1"/>
-                <path d="M0 15 L7 8 L15 4 L23 8 L30 15 L23 22 L15 26 L7 22 Z" fill="none" stroke="#8BC34A" stroke-width="1.5"/>
-              </pattern></defs>
-              <rect width="120" height="60" fill="url(#tLlactu)"/>
-            </svg>
-          </div>
-          <div class="tnd-symbol__body">
-            <strong>Llactu</strong>
-            <em>Plumaje</em>
-          </div>
-        </article>
-        <article class="tnd-symbol tnd-reveal">
-          <div class="tnd-symbol__art">
-            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
-              <defs><pattern id="tMontana" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                <path d="M0 18 L6 6 L12 18 L18 6 L24 18 L24 24 L0 24 Z" fill="#0D47A1"/>
-                <path d="M4 18 L8 12 L12 18 Z" fill="#F39A1F"/>
-                <path d="M14 18 L18 12 L22 18 Z" fill="#F39A1F"/>
-                <circle cx="8" cy="14" r="1.5" fill="#fff"/>
-                <circle cx="18" cy="14" r="1.5" fill="#fff"/>
-              </pattern></defs>
-              <rect width="120" height="60" fill="url(#tMontana)"/>
-            </svg>
-          </div>
-          <div class="tnd-symbol__body">
-            <strong>Montaña</strong>
-            <em>Cumbre sagrada</em>
-          </div>
-        </article>
-        <article class="tnd-symbol tnd-reveal">
-          <div class="tnd-symbol__art">
-            <svg viewBox="0 0 120 60" preserveAspectRatio="none">
-              <defs><pattern id="tArco" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
-                <path d="M0 0 L9 9 L0 18 Z" fill="#E74C3C"/>
-                <path d="M3 0 L12 9 L3 18 Z" fill="#F39A1F"/>
-                <path d="M6 0 L15 9 L6 18 Z" fill="#FFC107"/>
-                <path d="M9 0 L18 9 L9 18 Z" fill="#8BC34A"/>
-                <path d="M12 0 L21 9 L12 18 Z" fill="#42A5F5"/>
-                <path d="M15 0 L24 9 L15 18 Z" fill="#7E57C2"/>
-              </pattern></defs>
-              <rect width="120" height="60" fill="url(#tArco)"/>
-            </svg>
-          </div>
-          <div class="tnd-symbol__body">
-            <strong>Arco iris</strong>
-            <em>Camino divino</em>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== PRODUCTOS / CATÁLOGO ====== -->
-  <section id="productos" class="tnd-section">
-    <div class="tnd-container">
-      <header class="tnd-section-head tnd-reveal">
-        <span class="tnd-section-eyebrow">Catálogo</span>
-        <h2 class="tnd-section-title">Productos <em>destacados</em></h2>
-        <p class="tnd-section-sub">
-          Una selección de lo que más se vende y lo que nos enorgullece. Cotiza directamente por WhatsApp.
-        </p>
-      </header>
-
-      <div class="tnd-shop__filters">
-        <button class="tnd-filter is-active" data-cat="todos">Todos</button>
-        <button class="tnd-filter" data-cat="velas">Velas</button>
-        <button class="tnd-filter" data-cat="artesania">Artesanías</button>
-        <button class="tnd-filter" data-cat="bebidas">Café y cacao</button>
-        <button class="tnd-filter" data-cat="medicina">Medicinales</button>
-        <button class="tnd-filter" data-cat="textil">Textiles</button>
-      </div>
-
-      <div class="tnd-shop__grid">
-        <!-- VELAS ARTESANALES (3 productos estrella, fotos reales) -->
-        <article class="tnd-product tnd-reveal" data-cat="velas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="assets/images/tienda/velas-piedras.jpg" alt="Velas artesanales con piedras volcánicas" />
-            <span class="tnd-product__badge">Hecho a mano</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Velas decorativas</span>
-            <h3>Velas Piedras · cuadradas</h3>
-            <p>Cera natural fundida sobre piedras volcánicas del Putumayo. Base con guijarros embebidos, mecha de algodón orgánico. Cuadradas y portavela. Disponible en blanco, beige y café.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">desde $32.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Piedras."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="velas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="assets/images/tienda/velas-terrazo.jpg" alt="Velas artesanales terrazo de colores" />
-            <span class="tnd-product__badge tnd-product__badge--mustard">Colección color</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Velas decorativas</span>
-            <h3>Velas Terrazo · pilares</h3>
-            <p>Pilar cilíndrico con fragmentos de cera reciclada multicolor — estilo terrazo único. Disponibles en naranja, púrpura, verde, azul, fucsia y rojo. Cada vela es irrepetible.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$48.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Terrazo."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="velas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="assets/images/tienda/velas-brick.jpg" alt="Velas brick aromáticas con piedras al pie" />
-            <span class="tnd-product__badge tnd-product__badge--indigo">Aromática</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Velas aromáticas</span>
-            <h3>Velas Brick · aromáticas</h3>
-            <p>Forma de ladrillo en cera de soya con fragancia natural de copoazú, cacao o palo santo. Base con piedras volcánicas para mejor combustión. Hasta 18 horas de aroma.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$38.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20velas%20Brick%20aromáticas."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="artesania">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1612466453530-ff8b8e2f9b4f?auto=format&fit=crop&w=600&q=70" alt="Pulseras de chaquira tradicionales" />
-            <span class="tnd-product__badge">Hecho a mano</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Artesanía indígena</span>
-            <h3>Pulseras de chaquira</h3>
-            <p>Tejidas a mano con los cinco símbolos ancestrales del Putumayo. Hilo encerado y mostacilla checa de alta calidad.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">desde $35.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesan%20las%20pulseras%20de%20chaquira."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="bebidas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=70" alt="Café del sur de Colombia" />
-            <span class="tnd-product__badge tnd-product__badge--mustard">Orgánico</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Café gourmet</span>
-            <h3>Café del sur · 500g</h3>
-            <p>Tostado lento de fincas del piedemonte amazónico. Notas a chocolate, panela y un fondo cítrico delicado.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$48.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20comprar%20café%20del%20sur."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="bebidas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=600&q=70" alt="Chocolate de cacao del Putumayo" />
-            <span class="tnd-product__badge">Fino de aroma</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Cacao orgánico</span>
-            <h3>Tableta de chocolate 70%</h3>
-            <p>Cacao fino de aroma del Putumayo. Sin azúcar refinada, sin emulsionantes. Empaque biodegradable.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$24.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20chocolate%20de%20cacao."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="medicina">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=600&q=70" alt="Hierbas medicinales amazónicas" />
-            <span class="tnd-product__badge tnd-product__badge--indigo">Tradicional</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Plantas medicinales</span>
-            <h3>Kit hierbas amazónicas</h3>
-            <p>Chuchuhuasa, ayahuma, ortiga y sangre de drago. Bendecidas por el taita antes de empacar.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$65.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20el%20kit%20de%20hierbas%20amazónicas."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="bebidas">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=600&q=70" alt="Miel de abeja angelita" />
-            <span class="tnd-product__badge">Abejas nativas</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Miel pura</span>
-            <h3>Miel de abeja angelita · 250ml</h3>
-            <p>Producida por abejas sin aguijón nativas del Amazonas. Sabor cítrico, propiedades medicinales únicas.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$42.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20miel%20de%20abeja%20angelita."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="textil">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=600&q=70" alt="Ruana putumayense tejida a mano" />
-            <span class="tnd-product__badge tnd-product__badge--mustard">Tejido a mano</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Textil tradicional</span>
-            <h3>Ruana putumayense</h3>
-            <p>Lana virgen tejida en telar de cintura por manos campesinas. Abriga las noches de selva alta.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$185.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20una%20ruana%20putumayense."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="artesania">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f0?auto=format&fit=crop&w=600&q=70" alt="Collares de semillas naturales" />
-            <span class="tnd-product__badge">Semillas naturales</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Bisutería natural</span>
-            <h3>Collares de semillas</h3>
-            <p>Acaí, huayruro, peonia y ojo de buey. Cada semilla recolectada en el bosque, sin tala.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">desde $28.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20collares%20de%20semillas."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="medicina">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=70" alt="Aceite esencial de copaiba" />
-            <span class="tnd-product__badge tnd-product__badge--indigo">Aromaterapia</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Aceite esencial</span>
-            <h3>Aceite de copaiba</h3>
-            <p>Resina amazónica milenaria. Antiinflamatorio natural y conexión espiritual.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">$58.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20aceite%20de%20copaiba."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="tnd-product tnd-reveal" data-cat="textil">
-          <div class="tnd-product__media">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?auto=format&fit=crop&w=600&q=70" alt="Mola decorativa tejida" />
-            <span class="tnd-product__badge tnd-product__badge--mustard">Pieza única</span>
-          </div>
-          <div class="tnd-product__body">
-            <span class="tnd-product__cat">Decoración</span>
-            <h3>Mola decorativa</h3>
-            <p>Aplique textil tradicional con motivos étnicos. Para enmarcar o usar como tapete.</p>
-            <div class="tnd-product__foot">
-              <span class="tnd-product__price">desde $72.000</span>
-              <a class="tnd-btn tnd-btn--primary tnd-btn--sm"
-                 href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20me%20interesa%20una%20mola."
-                 target="_blank" rel="noopener">Comprar</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== SOBRE LA TIENDA / ARTESANOS ====== -->
-  <section id="artesanos" class="tnd-section tnd-section--sand">
-    <div class="tnd-container">
-      <div class="tnd-about__grid">
-        <div class="tnd-about__media tnd-reveal">
-          <img src="https://images.unsplash.com/photo-1606820854416-439b3305ff39?auto=format&fit=crop&w=700&q=70" alt="Manos de artesana tejiendo chaquira" />
-          <div class="tnd-about__media-quote">
-            "Cada hilo lleva una intención. Cada pieza, una bendición."
-            <em>— Mama Pastora · Artesana del pueblo Inga</em>
-          </div>
-        </div>
-        <div class="tnd-about__content tnd-reveal">
-          <span class="tnd-section-eyebrow">Nuestros artesanos</span>
-          <h2>Hecho en el <em>territorio</em>, raíz andino-amazónica</h2>
-          <p>
-            Promovemos y comercializamos productos artesanales y agroindustriales de origen
-            putumayense, con la participación de <strong>comunidades indígenas y campesinas</strong>
-            del territorio.
-          </p>
-          <p>
-            Trabajamos con artesanos de pueblos como el Inga, el Kamëntsá y el Kofán, y con familias
-            campesinas del Valle de Sibundoy y el piedemonte amazónico. Cada producto pasa por sus manos:
-            del bosque al taller, del taller a tu casa.
-          </p>
-          <ul class="tnd-about__stats">
-            <li><strong>15</strong><span>Pueblos indígenas en Putumayo</span></li>
-            <li><strong>100%</strong><span>Origen putumayense</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== CÓMO COMPRAR ====== -->
-  <section id="comprar" class="tnd-section">
-    <div class="tnd-container">
-      <header class="tnd-section-head tnd-reveal">
-        <span class="tnd-section-eyebrow">Cómo comprar</span>
-        <h2 class="tnd-section-title">Tan simple como <em>tres pasos</em></h2>
-        <p class="tnd-section-sub">
-          Sin carrito, sin formularios infinitos. Atención humana por WhatsApp.
-        </p>
-      </header>
-      <div class="tnd-process">
-        <article class="tnd-process__step tnd-reveal">
-          <div class="tnd-process__num">1</div>
-          <h3>Explora el catálogo</h3>
-          <p>Recorre los productos, filtra por categoría, descubre los símbolos ancestrales.</p>
-        </article>
-        <article class="tnd-process__step tnd-reveal">
-          <div class="tnd-process__num">2</div>
-          <h3>Cotiza por WhatsApp</h3>
-          <p>Te respondemos con disponibilidad, formas de pago y opciones de envío en minutos.</p>
-        </article>
-        <article class="tnd-process__step tnd-reveal">
-          <div class="tnd-process__num">3</div>
-          <h3>Recibe en tu casa</h3>
-          <p>Empacado a mano, despachado en 24h. Te enviamos guía de seguimiento.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== ENVÍOS / INFO ====== -->
-  <section id="envios" class="tnd-section tnd-section--sand">
-    <div class="tnd-container">
-      <header class="tnd-section-head tnd-reveal">
-        <span class="tnd-section-eyebrow">Logística</span>
-        <h2 class="tnd-section-title">Llegamos a <em>toda Colombia</em></h2>
-      </header>
-      <div class="tnd-info">
-        <div class="tnd-info-card tnd-reveal">
-          <div class="tnd-info-card__ico">E</div>
-          <h3>Envíos a domicilio</h3>
-          <p>Cobertura nacional vía Servientrega, Coordinadora y TCC. Tarifa según destino y peso, te la cotizamos al momento.</p>
-        </div>
-        <div class="tnd-info-card tnd-reveal">
-          <div class="tnd-info-card__ico">P</div>
-          <h3>Formas de pago</h3>
-          <p>Efectivo, Nequi o transferencia a cuenta de ahorros Bancolombia (te damos los datos al confirmar tu pedido). No recibimos tarjetas. Contraentrega disponible solo en Mocoa y municipios cercanos.</p>
-        </div>
-        <div class="tnd-info-card tnd-reveal">
-          <div class="tnd-info-card__ico">G</div>
-          <h3>Garantía artesanal</h3>
-          <p>Si algo llega con desperfectos, lo reemplazamos sin costo. Empaque resistente y seguro de envío incluido.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== CTA FINAL ====== -->
-  <section class="tnd-cta">
-    <div class="tnd-container">
-      <h2>Llévate un pedazo del <em>Putumayo</em></h2>
-      <p>Cada compra apoya directamente a una familia artesana. Cotiza sin compromiso por WhatsApp y te ayudamos a elegir.</p>
-      <div class="tnd-cta__row">
-        <a class="tnd-btn tnd-btn--whatsapp tnd-btn--lg"
-           href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20ver%20el%20catálogo%20completo."
-           target="_blank" rel="noopener">Hablar con la tienda</a>
-        <a class="tnd-btn tnd-btn--indigo tnd-btn--lg" href="#productos">Volver al catálogo</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="tnd-footer">
-    <div class="tnd-container">
-      <div class="tnd-footer__grid">
-        <div class="tnd-footer__brand">
-          <strong>Tienda PARAISOS</strong>
-          <em>Putumayo · hecho a mano</em>
-          <p>Artesanías, café, cacao, hierbas medicinales y textiles del sur de Colombia, de comunidades indígenas y campesinas.</p>
-          <div class="tnd-footer__social">
-            <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
+        <ul class="shop__grid">
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Miel%20de%20abejas%20nativas." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/miel-melipona-480.webp"
+                   srcset="assets/images/tienda/miel-melipona-480.webp 480w, assets/images/tienda/miel-melipona-900.webp 900w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="900" height="675" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Miel de abejas nativas</h4>
+                <p class="prod-card__detail"><i lang="la">Melipona eburnea</i>, en frasco de vidrio.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
             </a>
-            <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Jab%C3%B3n%20artesanal%20de%20miel." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/jabon-miel-480.webp"
+                   srcset="assets/images/tienda/jabon-miel-480.webp 480w, assets/images/tienda/jabon-miel-960.webp 960w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="960" height="720" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Jabón artesanal de miel</h4>
+                <p class="prod-card__detail">Con cera y propóleo.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
             </a>
-          </div>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20T%C3%B3nico%20natural." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/tonico-natural-480.webp"
+                   srcset="assets/images/tienda/tonico-natural-480.webp 480w, assets/images/tienda/tonico-natural-760.webp 760w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="760" height="570" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Tónico natural</h4>
+                <p class="prod-card__detail">En frasco con atomizador.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Hidromiel." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/hidromiel-480.webp"
+                   srcset="assets/images/tienda/hidromiel-480.webp 480w, assets/images/tienda/hidromiel-802.webp 802w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="802" height="602" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Hidromiel</h4>
+                <p class="prod-card__detail">Bebida alcohólica. Solo para mayores de 18 años.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <p class="shop__legal">El exceso de alcohol es perjudicial para la salud. Prohíbase el expendio de bebidas embriagantes a menores de edad.</p>
+      </section>
+
+      <!-- Artesanía y pintura (rótulos del cliente: «Artesanía» y «Bio Arte») -->
+      <section class="shop__group" id="artesania" aria-labelledby="artesaniaTitle">
+        <div class="shop__group-head">
+          <h3 id="artesaniaTitle" class="shop__group-title">Artesanía y pintura</h3>
+          <p class="shop__group-sub">Tallas de madera y pinturas de Bio Arte.</p>
         </div>
-        <div>
-          <h4>Categorías</h4>
-          <ul>
-            <li><a href="#productos">Artesanías</a></li>
-            <li><a href="#productos">Café y cacao</a></li>
-            <li><a href="#productos">Plantas medicinales</a></li>
-            <li><a href="#productos">Textiles</a></li>
-            <li><a href="#simbolos">Símbolos ancestrales</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Más de PARAISOS</h4>
-          <ul>
-            <li><a href="index.html">Inicio PARAISOS</a></li>
-            <li><a href="index.html#putumayo">Turismo Putumayo</a></li>
-            <li><a href="index.html#viajes">Viajes y Cruceros</a></li>
-            <li><a href="nosotros.html">Quiénes somos</a></li>
-            <li><a href="index.html#contacto">Contacto</a></li>
-          </ul>
-        </div>
+        <ul class="shop__grid shop__grid--tall">
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Tallas%20de%20madera%20pintadas." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/tallas-madera-480.webp"
+                   srcset="assets/images/tienda/tallas-madera-480.webp 480w, assets/images/tienda/tallas-madera-800.webp 800w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="800" height="1000" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Tallas de madera pintadas</h4>
+                <p class="prod-card__detail">Rostros con penacho, jaguar y loro.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20ave." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/pintura-ave-480.webp"
+                   srcset="assets/images/tienda/pintura-ave-480.webp 480w, assets/images/tienda/pintura-ave-800.webp 800w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="800" height="1000" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Pintura de ave</h4>
+                <p class="prod-card__detail">Ave de cabeza verde sobre una rama con flores.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20dos%20aves." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/pintura-aves-480.webp"
+                   srcset="assets/images/tienda/pintura-aves-480.webp 480w, assets/images/tienda/pintura-aves-800.webp 800w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="800" height="1000" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Pintura de dos aves</h4>
+                <p class="prod-card__detail">Aves azul y amarillo en un tronco.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="prod-card" href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%3A%20Pintura%20de%20colibr%C3%ADes." target="_blank" rel="noopener">
+              <img class="prod-card__img" src="assets/images/tienda/pintura-colibries-480.webp"
+                   srcset="assets/images/tienda/pintura-colibries-480.webp 480w, assets/images/tienda/pintura-colibries-670.webp 670w"
+                   sizes="(max-width: 899px) 46vw, (max-width: 1240px) 22vw, 280px"
+                   width="670" height="838" alt="" loading="lazy" decoding="async" />
+              <div class="prod-card__body">
+                <h4 class="prod-card__name">Pintura de colibríes</h4>
+                <p class="prod-card__detail">Colibríes entre flores.</p>
+                <span class="btn btn--whatsapp btn--sm prod-card__cta"><svg width="16" height="16" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg><span>Preguntar<span class="prod-card__cta-more"> precio</span></span><span class="sr-only"> por WhatsApp</span></span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <!-- ====== CÓMO COMPRAR (pagos confirmados por el cliente) ====== -->
+  <section id="comprar" class="buy" aria-labelledby="comprarTitle">
+    <div class="container">
+      <h2 id="comprarTitle" class="section-title">Cómo comprar</h2>
+      <ol class="buy__steps">
+        <li>Escríbenos por WhatsApp con el producto que te interesa.</li>
+        <li>Te confirmamos disponibilidad y precio.</li>
+        <li>Pagas en efectivo, Nequi o transferencia a cuenta de ahorros Bancolombia.</li>
+      </ol>
+      <div class="buy__foot">
+        <p class="buy__note">No recibimos tarjetas. ¿Envío? Pregunta por envío a tu ciudad.</p>
+        <a class="btn btn--whatsapp"
+           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+           target="_blank" rel="noopener">
+          <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+          Pregunta disponibilidad y precio por WhatsApp
+        </a>
       </div>
-      <div class="tnd-footer__bottom">
-        © <span id="tndYear"></span> Tienda PARAISOS · una experiencia de
-        <a href="index.html">PARAISOS Agencia de Viajes &amp; Turismo</a> · RNT 84258
+    </div>
+  </section>
+
+  <!-- ====== JORNADAS DE COMPRA DE ARTESANÍA (Portafolio 2026) ====== -->
+  <section id="jornadas" class="cta-final" aria-labelledby="jornadasTitle">
+    <div class="container cta-final__inner">
+      <div class="cta-final__text">
+        <h2 id="jornadasTitle">Jornadas de compra de artesanía</h2>
+        <p>Visitas a talleres artesanales para aprender sobre el tallado y las técnicas de elaboración, y comprar tus recordatorios.</p>
+      </div>
+      <div class="cta-final__row">
+        <a class="btn btn--whatsapp btn--lg"
+           href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20informaci%C3%B3n%20de%20las%20jornadas%20de%20compra%20de%20artesan%C3%ADa."
+           target="_blank" rel="noopener">
+          <svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+          Cotizar por WhatsApp
+        </a>
+        <a class="btn btn--ghost btn--lg" href="index.html#putumayo">Ver planes en Putumayo</a>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <!-- ====== PIE (el mismo del inicio) ====== -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <a href="index.html" class="footer__brand-link">
+        <img class="footer__brand-img"
+             src="assets/images/logo-paraisos.png"
+             alt="PARAISOS, Agencia de Viajes &amp; Turismo: inicio"
+             width="1400" height="620" loading="lazy" decoding="async" />
+      </a>
+      <p class="footer__slogan">Más que un destino turístico, somos territorio de vida.</p>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/viajesparaisos/" target="_blank" rel="noopener" aria-label="Facebook de PARAISOS"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.4c0-2.4 1.4-3.7 3.5-3.7 1 0 2.1.2 2.1.2v2.3h-1.2c-1.2 0-1.5.7-1.5 1.5V12h2.6l-.4 3h-2.2v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="https://wa.me/573157347306" target="_blank" rel="noopener" aria-label="WhatsApp de PARAISOS"><svg width="20" height="20" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg></a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p class="footer__contact">
+          <span>Calle 11 Nro 9-146, Barrio Progreso, Mocoa, Putumayo</span>
+          <a href="https://wa.me/573157347306" target="_blank" rel="noopener">+57 315 734 7306</a>
+          <a href="mailto:gerencia.paraisos@gmail.com">gerencia.paraisos@gmail.com</a>
+        </p>
+        <p class="footer__legal">
+          <span>© <span id="year">2026</span> PARAISOS, Agencia de Viajes &amp; Turismo</span>
+          <span>Registro Nacional de Turismo 84258</span>
+        </p>
       </div>
     </div>
   </footer>
 
-  <!-- ====== FAB WhatsApp ====== -->
-  <a class="tnd-fab-wa"
-     href="https://wa.me/573157347306?text=Hola%20Tienda%20PARAISOS%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n."
-     target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24z"/></svg>
-  </a>
+  <!-- ====== ACCIONES FIJAS ======
+       Escritorio: botón redondo de WhatsApp. Celular (≤768 px): barra inferior
+       visible desde el inicio (sin data-after: esta página no tiene hero de video).
+       Van dentro de un <aside> con nombre para que no queden fuera de las regiones. -->
+  <aside class="quick-contact" aria-label="Contacto rápido">
+    <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda."
+       class="float-wa" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+      <svg width="28" height="28" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+      <span class="float-wa__tip" aria-hidden="true">Cotizar por WhatsApp</span>
+    </a>
 
-  <!-- ====== JS ============== -->
-  <script>
-    // Loader con timeout absoluto (no espera al evento `load`)
-    setTimeout(() => {
-      document.getElementById('tndLoader')?.classList.add('is-hidden');
-    }, 1400);
+    <div class="sticky-cta" id="stickyCta">
+      <a href="tel:+573157347306" class="sticky-cta__call"><svg class="icon" aria-hidden="true"><use href="#ico-phone"/></svg> Llamar</a>
+      <a href="https://wa.me/573157347306?text=Hola%20PARAISOS%2C%20quiero%20saber%20la%20disponibilidad%20y%20el%20precio%20de%20los%20productos%20de%20la%20tienda." target="_blank" rel="noopener" class="sticky-cta__wa">
+        <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
+        Cotizar por WhatsApp
+      </a>
+    </div>
+  </aside>
 
-    // Navbar scroll
-    const nav = document.getElementById('tndNav');
-    addEventListener('scroll', () => nav.classList.toggle('is-scrolled', scrollY > 24), { passive: true });
-
-    // Burger
-    document.getElementById('tndBurger').addEventListener('click', () => nav.classList.toggle('is-open'));
-    document.querySelectorAll('.tnd-nav__menu a').forEach(a =>
-      a.addEventListener('click', () => nav.classList.remove('is-open'))
-    );
-
-    // Active link
-    const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.tnd-nav__menu a');
-    new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, { threshold: 0.35 }).observe = (function(target) {
-      sections.forEach(s => this.observe(s));
-    });
-    const ioA = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === '#' + e.target.id));
-        }
-      });
-    }, { threshold: 0.35 });
-    sections.forEach(s => ioA.observe(s));
-
-    // Filtros de productos
-    const filters = document.querySelectorAll('.tnd-filter');
-    const products = document.querySelectorAll('.tnd-product');
-    function applyFilter(cat) {
-      filters.forEach(f => f.classList.toggle('is-active', f.dataset.cat === cat));
-      products.forEach(p => {
-        const show = cat === 'todos' || p.dataset.cat === cat;
-        p.classList.toggle('is-hidden', !show);
-      });
-    }
-    filters.forEach(f => f.addEventListener('click', () => applyFilter(f.dataset.cat)));
-
-    // Click en categoría también filtra
-    document.querySelectorAll('.tnd-cat[data-filter]').forEach(c => {
-      c.addEventListener('click', (e) => {
-        const cat = c.dataset.filter;
-        setTimeout(() => applyFilter(cat), 600);
-      });
-    });
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('is-in');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.tnd-reveal').forEach(el => io.observe(el));
-
-    // Year
-    document.getElementById('tndYear').textContent = new Date().getFullYear();
-  </script>
+  <script src="js/nav.js?v=20261024" defer></script>
 </body>
 </html>

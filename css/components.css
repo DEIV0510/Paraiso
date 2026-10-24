@@ -2,7 +2,8 @@
    PARAISOS — components.css
    Secciones: íconos, mapa 3D, asistente, destinos, nosotros (con
    respaldo), cruceros, galería, FAQ, bloque oscuro, contacto, pie,
-   acciones fijas, Putumayo, servicios y franja de la tienda.
+   acciones fijas, Putumayo, servicios, franja de la tienda y página
+   de la tienda (la-tienda.html).
    Reglas comunes: esquinas rectas (tokens --r-* en 0), colores sólidos,
    un solo estilo de tarjeta (borde 1 px, sin sombra) y de ícono.
    ===================================================================== */
@@ -1497,6 +1498,136 @@ html.lightbox-open { overflow: hidden; }
 }
 .tienda-teaser__btn { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
 
+/* ============== PÁGINA TIENDA (la-tienda.html) ==============
+   Primer pliegue (texto + foto en escritorio) · productos · cómo comprar ·
+   jornadas de compra de artesanía (franja oscura .cta-final).
+   Solo fotos reales del cliente y sin precios: cada tarjeta es un enlace a
+   WhatsApp con el nombre del producto. Grupos de 4 tarjetas: 4 columnas en
+   escritorio y 2 en tableta y celular, sin filas incompletas. */
+.page-hero--tienda .page-hero__media img { aspect-ratio: 4 / 3; }
+
+.shop { padding: var(--gap-6) 0 var(--gap-7); background: #fff; }
+/* Atajos a cada grupo (enlaces de 44 px, mismo estilo que los filtros) */
+.shop__jump { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.25rem; }
+.shop__jump a {
+  display: inline-flex; align-items: center;
+  min-height: 44px;
+  padding: .5rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--c-line-strong);
+  font-size: .9rem; font-weight: 600;
+  color: var(--c-text);
+  transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.shop__jump a:hover { background: var(--c-text); border-color: var(--c-text); color: #fff; }
+
+.shop__group + .shop__group { margin-top: var(--gap-6); }
+/* Título del grupo con raya de tinta arriba (igual que misión y visión) */
+.shop__group-head {
+  display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: .25rem 1rem;
+  margin-bottom: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--c-text);
+}
+.shop__group-title { font-size: clamp(1.25rem, 1rem + .8vw, 1.6rem); }
+.shop__group-sub { font-size: .9375rem; line-height: 1.5; color: var(--c-text-soft); }
+
+.shop__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.shop__grid > li { display: flex; min-width: 0; }
+/* Tarjeta de producto: foto entera arriba, nombre, una línea y «Preguntar precio» */
+.prod-card {
+  display: flex; flex-direction: column;
+  width: 100%;
+  background: #fff;
+  border: 1px solid var(--c-line);
+  color: var(--c-text);
+  transition: border-color .2s var(--ease);
+}
+.prod-card:hover { border-color: var(--c-line-strong); }
+.prod-card__img {
+  width: 100%; height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--c-blue-tint);
+}
+/* Tallas y pinturas son verticales */
+.shop__grid--tall .prod-card__img { aspect-ratio: 4 / 5; }
+.prod-card__body {
+  display: flex; flex-direction: column; align-items: flex-start;
+  flex: 1;
+  padding: .9rem 1rem 1rem;
+}
+.prod-card__name { font-size: 1.0625rem; line-height: 1.25; }
+.prod-card__detail {
+  margin: .3rem 0 .9rem;
+  font-size: .875rem;
+  line-height: 1.45;
+  color: var(--c-text-soft);
+}
+/* El botón queda abajo, alineado entre tarjetas de la misma fila */
+.prod-card__cta { margin-top: auto; }
+.prod-card:hover .prod-card__cta {
+  background: var(--c-orange-dark);
+  border-color: var(--c-orange-dark);
+}
+.shop__legal {
+  margin-top: 1rem;
+  font-size: .8125rem;
+  line-height: 1.5;
+  color: var(--c-text-soft);
+}
+
+/* Cómo comprar: 3 pasos de una línea con número en un cuadro de tinta */
+.buy { padding: var(--gap-7) 0; background: var(--c-bg-soft); }
+.buy .section-title { margin-bottom: 1.5rem; }
+.buy__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: paso;
+}
+.buy__steps li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: .9rem;
+  align-items: start;
+  counter-increment: paso;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--c-text);
+}
+.buy__steps li::before {
+  content: counter(paso);
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  margin-top: -.2rem;
+  background: var(--c-text);
+  color: #fff;
+  font-family: var(--f-head);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1;
+}
+.buy__foot {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: var(--gap-5);
+  padding-top: 1.5rem;
+  border-top: 1px solid #DCE5F0;
+}
+.buy__note { font-size: 1rem; line-height: 1.5; color: var(--c-text); }
+
+/* Jornadas: la franja oscura usa .cta-final; el texto no se estira */
+#jornadas .cta-final__text { max-width: 640px; }
+
 /* ============== REALCE AL HACER SCROLL ==============
    La clase .reveal la pone el JS: sin JS todo se ve. */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
@@ -1518,6 +1649,10 @@ html.lightbox-open { overflow: hidden; }
 #politicas   { --cis: 850px; }
 #experiencia { --cis: 375px; }
 #cotizar     { --cis: 240px; }
+/* la-tienda.html */
+#productos { --cis: 1950px; }
+#comprar   { --cis: 450px; }
+#jornadas  { --cis: 310px; }
 @media (max-width: 768px) {
   #nosotros { --cis: 1300px; }
   #tienda   { --cis: 370px; }
@@ -1529,6 +1664,9 @@ html.lightbox-open { overflow: hidden; }
   #politicas   { --cis: 1460px; }
   #experiencia { --cis: 480px; }
   #cotizar     { --cis: 320px; }
+  #productos { --cis: 2900px; }
+  #comprar   { --cis: 480px; }
+  #jornadas  { --cis: 330px; }
 }
 
 /* =====================================================================
@@ -1595,9 +1733,10 @@ html.lightbox-open { overflow: hidden; }
   .experience__features { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-/* Galería: 3 columnas */
+/* Galería: 3 columnas. Tienda: productos en 2 columnas (grupos de 4 = 2 filas) */
 @media (max-width: 899px) {
   .gallery__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .shop__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 880px) {
@@ -1610,6 +1749,8 @@ html.lightbox-open { overflow: hidden; }
   /* Nosotros: la foto pasa debajo del texto */
   .page-hero__grid { grid-template-columns: minmax(0, 1fr); }
   .page-hero__media { max-width: 600px; }
+  /* Tienda: sin la foto del primer pliegue; los productos quedan justo debajo */
+  .page-hero--tienda .page-hero__media { display: none; }
   .valores__grid { column-gap: 2.5rem; }
   .valores__list--2col { column-gap: 2rem; }
   /* Tienda: el botón pasa debajo del texto */
@@ -1729,6 +1870,14 @@ html.lightbox-open { overflow: hidden; }
   .cta-final p { font-size: 1rem; }
   .cta-final__row .btn { min-height: 48px; }
 
+  /* Tienda: pasos uno debajo del otro */
+  .shop__grid { gap: .75rem; }
+  .shop__jump { margin-top: 1rem; gap: .4rem; }
+  .shop__jump a { padding: .5rem .9rem; font-size: .875rem; }
+  .buy .section-title { margin-bottom: 1.25rem; }
+  .buy__steps { grid-template-columns: minmax(0, 1fr); gap: .9rem; }
+  .buy__steps li { font-size: 1rem; }
+
   /* Contacto */
   .contact__list li { gap: .85rem; padding: .75rem 0; }
   .contact__form { padding: 1.25rem; gap: .85rem; }
@@ -1842,8 +1991,21 @@ html.lightbox-open { overflow: hidden; }
   .experience__content > .btn,
   .contact__form .btn,
   .page-hero__cta .btn,
-  .cta-final__row .btn { width: 100%; }
+  .cta-final__row .btn,
+  .buy__foot .btn { width: 100%; }
   .experience__content > .btn { padding-inline: 1rem; }
+
+  /* Tienda: tarjetas de 2 columnas legibles (nombre 16 px, línea 14 px).
+     El botón dice «Preguntar» en una línea; «precio por WhatsApp» sigue
+     para lectores de pantalla. */
+  .prod-card__body { padding: .75rem .75rem .8rem; }
+  .prod-card__name { font-size: 1rem; }
+  .prod-card__detail { margin-bottom: .75rem; }
+  .prod-card__cta { width: 100%; padding-inline: .5rem; gap: .45rem; }
+  .prod-card__cta-more {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
   .page-hero__cta,
   .cta-final__row { flex-direction: column; align-items: stretch; width: 100%; }
   .student-deal .btn { width: 100%; }

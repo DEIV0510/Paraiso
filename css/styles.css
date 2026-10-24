@@ -76,6 +76,8 @@ html {
   scroll-behavior: smooth;
   /* Las anclas quedan justo bajo la cinta y el menú fijos */
   scroll-padding-top: calc(var(--topbar-h) + var(--navbar-h));
+  /* …y lo que recibe el foco con Tab no queda debajo de la barra fija de celular */
+  scroll-padding-bottom: var(--sticky-h);
   overflow-x: clip;
 }
 /* Con el menú de celular abierto la página no se desplaza detrás */
@@ -513,14 +515,6 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   text-align: left;
 }
 .section-head--compact { margin-bottom: 1.5rem; }
-/* Rótulo pequeño (sin píldora ni raya); solo donde aporta un dato */
-.section-eyebrow {
-  display: block;
-  margin: 0 0 .5rem;
-  font-size: .875rem;
-  font-weight: 600;
-  color: var(--c-text-soft);
-}
 .section-title {
   font-size: clamp(1.75rem, 1.1rem + 2.2vw, 2.6rem);
   line-height: 1.12;
