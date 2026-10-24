@@ -383,12 +383,19 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 }
 .hero__bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
-/* Video de fondo (archivo local) */
+/* Video de fondo (archivo local). El póster es el fondo del contenedor: se
+   ve mientras el video carga o si el navegador no lo deja reproducir. La
+   condición del póster vertical es la misma del <source> vertical y del
+   preload del <head>. */
 .hero__video-wrap {
   position: absolute; inset: 0;
   overflow: hidden;
   z-index: 0;
   pointer-events: none;
+  background: var(--c-text) url(../assets/images/hero-poster.webp) center / cover no-repeat;
+}
+@media (max-width: 540px) and (orientation: portrait) {
+  .hero__video-wrap { background-image: url(../assets/images/hero-poster-v.webp); }
 }
 .hero__video-el {
   position: absolute;
@@ -402,19 +409,29 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 /* Sin JS, Chrome dibuja los controles nativos sobre el video de fondo */
 .hero__video-el::-webkit-media-controls,
 .hero__video-el::-webkit-media-controls-enclosure { display: none !important; }
-/* Velo de tinta para que el texto blanco se lea sobre cualquier toma */
+/* Velo de tinta para que el texto blanco se lea sobre cualquier toma.
+   Escritorio: el texto va a la izquierda, así que el velo es denso hasta
+   donde termina el texto (los cortes van en px desde el centro porque el
+   texto sigue al contenedor) y deja ver el video a la derecha. En celular
+   el texto ocupa todo el ancho y el velo es vertical (ver más abajo).
+   Contraste medido sobre fotogramas del video de 360 a 1440 px: texto
+   ≥ 4,5:1 y «de vida» (texto grande) ≥ 3:1. */
 .hero__video-overlay {
   position: absolute; inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(15,40,69,.78) 0%, rgba(15,40,69,.45) 50%, rgba(15,40,69,.12) 100%),
-    linear-gradient(160deg, rgba(15,40,69,.55) 0%, rgba(25,118,210,.18) 48%, rgba(15,40,69,.6) 100%);
+    linear-gradient(90deg,
+      rgba(15,40,69,.85) 0%, rgba(15,40,69,.79) calc(50% + 120px),
+      rgba(15,40,69,.62) calc(50% + 260px), rgba(15,40,69,.22) calc(50% + 480px),
+      rgba(15,40,69,.12) 100%),
+    linear-gradient(180deg, rgba(15,40,69,.28) 0%, rgba(15,40,69,0) 30%, rgba(15,40,69,0) 75%, rgba(15,40,69,.35) 100%);
 }
 
 .hero__inner {
   position: relative; z-index: 2;
 }
 .hero__content { max-width: 720px; }
+.hero--video .hero__content { max-width: 780px; }
 /* Línea de qué y dónde dentro del H1 (D13) */
 .hero__kicker {
   display: block;
@@ -456,13 +473,17 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   color: var(--c-text-soft);
 }
 
-/* Hero con video (inicio): fondo oscuro desde el primer pintado, texto claro */
+.hero__trust abbr { text-decoration: none; }
+
+/* Hero con video (inicio): fondo oscuro desde el primer pintado, texto
+   blanco sólido (sin transparencias que bajen el contraste) y el acento
+   «de vida» en naranja. El subtítulo cabe en una línea en escritorio. */
 .hero--video { background: var(--c-text); }
 .hero--video .hero__title { color: #fff; }
 .hero--video .hero__title-script { color: var(--c-orange); }
 .hero--video .hero__kicker { color: #fff; }
-.hero--video .hero__subtitle { color: rgba(255,255,255,.92); }
-.hero--video .hero__trust { color: rgba(255,255,255,.88); }
+.hero--video .hero__subtitle { color: #fff; max-width: none; }
+.hero--video .hero__trust { color: #fff; }
 
 /* Pausa / reproducción del video de fondo (circular por naturaleza) */
 .hero__video-toggle {
@@ -580,6 +601,35 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   .topbar__list li::after { margin-left: 2rem; }
   .navbar__brand-img { height: 40px; }
   .footer__brand-img { height: 48px; }
+}
+
+/* ---------- RESPONSIVE: HERO ----------
+   En celular el hero mide lo que su contenido (cabe en 390 × 844 con los dos
+   botones a la vista) y el velo es vertical, parejo en todo el ancho. */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 2rem);
+    padding-bottom: calc(44px + 2.25rem);   /* deja libre el botón de pausa */
+  }
+  .hero--video .hero__video-overlay {
+    background: linear-gradient(180deg,
+      rgba(15,40,69,.64) 0%, rgba(15,40,69,.75) 30%,
+      rgba(15,40,69,.72) 70%, rgba(15,40,69,.80) 100%);
+  }
+  .hero__video-toggle { left: 1rem; bottom: 1rem; }
+  .hero__title { font-size: clamp(2.1rem, 8vw, 2.8rem); margin-bottom: 1rem; }
+  .hero__subtitle { font-size: 1rem; margin-bottom: 1.5rem; }
+  .hero__cta-row { gap: .75rem; }
+  .hero__trust { margin-top: 1.5rem; }
+}
+@media (max-width: 540px) {
+  .hero__title { font-size: clamp(1.9rem, 9vw, 2.5rem); }
+  .hero__cta-row { flex-direction: column; align-items: stretch; }
+  .hero__cta-row .btn { width: 100%; }
+}
+@media (max-width: 380px) {
+  .hero__title { font-size: 1.85rem; }
 }
 
 /* ---------- REDUCIR MOVIMIENTO ----------
