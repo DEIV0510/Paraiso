@@ -16,7 +16,9 @@
    tarjetas de #viajes están escritas en index.html: si cambia una tarifa,
    hay que cambiarla aquí, en esas tarjetas y en la cinta superior.
    precio: tarifa «desde» confirmada por el cliente, o null («Precio por
-   WhatsApp»). Solo Putumayo tiene plan confirmado (fin de semana).
+   WhatsApp»). Solo Putumayo tiene plan confirmado (fin de semana) y
+   descripción (del Portafolio 2026); los demás destinos no llevan atractivos
+   ni itinerario hasta que el cliente los confirme.
    Sin fotos: el material del cliente no trae fotos verificadas de cada
    destino (las tarjetas, el panel del mapa y el asistente van sin foto). */
 window.PARAISOS_DATA = {
@@ -25,35 +27,28 @@ window.PARAISOS_DATA = {
     { id:'putumayo', nombre:'Putumayo', region:'Andes y Amazonía',
       lat:1.15, lng:-76.65,
       desc:'Territorio andino-amazónico con 3 parques nacionales naturales, cascadas y ríos cristalinos.',
-      features:['Fin del Mundo','Cascada del Hornoyaco','Cañón del Mandiyaco','Limpia con taita indígena','Sembrando vida','Yagesito','Ruta del cacao','Kayaking y rappel'],
+      features:['Fin del Mundo','Cascada del Hornoyaco','Cañón del Mandiyaco','Limpia espiritual con taita indígena','Sembrando vida','Yagesito','Ruta del cacao','Kayaking y rappel'],
       precio:'$999.000', plan:'Plan fin de semana' },
     { id:'cartagena', nombre:'Cartagena', region:'Caribe colombiano',
       lat:10.39, lng:-75.51,
-      desc:'Ciudad amurallada frente al mar Caribe.',
       precio:'$999.000' },
     { id:'san-andres', nombre:'San Andrés', region:'Isla del Caribe',
       lat:12.58, lng:-81.71,
-      desc:'Isla del Caribe colombiano con playas de arena blanca.',
       precio:'$1.250.000' },
     { id:'santa-marta', nombre:'Santa Marta', region:'Caribe colombiano',
       lat:11.24, lng:-74.21,
-      desc:'Playas del Caribe al pie de la Sierra Nevada.',
       precio:'$999.000' },
     { id:'eje-cafetero', nombre:'Eje Cafetero', region:'Andes colombianos',
       lat:4.81, lng:-75.69,
-      desc:'Paisaje cultural cafetero y Valle del Cocora.',
       precio:null },
     { id:'tumaco', nombre:'Tumaco', region:'Pacífico colombiano',
       lat:1.81, lng:-78.76,
-      desc:'Playas y manglares del Pacífico nariñense.',
       precio:'$680.000' },
     { id:'huila', nombre:'Huila', region:'Andes del sur',
       lat:2.93, lng:-75.28,
-      desc:'Desierto de la Tatacoa y Parque Arqueológico de San Agustín.',
       precio:null },
     { id:'atacames', nombre:'Atacames', region:'Pacífico de Ecuador',
       lat:0.86, lng:-79.85,
-      desc:'Playas del Pacífico ecuatoriano.',
       precio:'$699.000' }
   ]
 };
@@ -144,7 +139,7 @@ window.PARAISOS_MAP = (function mapUI() {
     content.innerHTML = `
       ${d.region ? `<span class="region">${d.region}</span>` : ''}
       <h3 tabindex="-1">${d.nombre}</h3>
-      ${d.desc ? `<p>${d.desc}</p>` : ''}
+      <p>${d.desc || 'Pregunta por WhatsApp qué incluye el plan.'}</p>
       ${feats}
       <div class="meta">${price}${plan ? `<div><span>Plan</span><strong>${plan.charAt(0).toUpperCase() + plan.slice(1)}</strong></div>` : ''}</div>
       <a class="btn btn--whatsapp" target="_blank" rel="noopener" href="${waHref(d)}">${WA_ICON}<span>Cotizar por WhatsApp</span></a>`;
@@ -421,10 +416,14 @@ window.PARAISOS_MAP = (function mapUI() {
     sync();
   }
   if ('IntersectionObserver' in window) {
+    // «Se ve» = se ve debajo de la cinta y el menú fijos (opacos). Sin este
+    // margen, tras saltar a #viajes el borde inferior del hero queda justo
+    // bajo el header y el video se bajaba y corría sin verse.
+    const top = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 110;
     new IntersectionObserver(([e]) => {
       inView = e.isIntersecting;
       if (inView) play(); else video.pause();
-    }).observe(hero);
+    }, { rootMargin: `-${Math.ceil(top) + 1}px 0px 0px 0px` }).observe(hero);
   } else {
     inView = true;
   }

@@ -41,11 +41,11 @@
   <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
   <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=20261024b" />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024c" />
 
   <!-- Misma CSS que el inicio y Nosotros -->
-  <link rel="stylesheet" href="css/styles.css?v=20261024b" />
-  <link rel="stylesheet" href="css/components.css?v=20261024b" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <link rel="stylesheet" href="css/components.css?v=20261024c" />
 
   <!-- «js» activa los realces que dependen de JS; si se entra con #ancla, todas
        las secciones se pintan completas para que el salto caiga en su sitio -->
@@ -158,7 +158,6 @@
         Cotizar por WhatsApp
       </a>
     </div>
-    <div class="navbar__progress" id="navProgress" aria-hidden="true"></div>
   </header>
 
   <main id="contenido" tabindex="-1">
@@ -186,13 +185,18 @@
           <a class="btn btn--ghost" href="#productos">Ver productos</a>
         </div>
       </div>
+      <!-- Hasta 880 px la foto no se muestra (components.css): el <source> con
+           un GIF de 1 px en línea evita que el celular la descargue -->
       <figure class="page-hero__media">
-        <img src="assets/images/tienda/artesania-aves-960.webp"
-             srcset="assets/images/tienda/artesania-aves-480.webp 480w, assets/images/tienda/artesania-aves-960.webp 960w"
-             sizes="(max-width: 899px) 46vw, 480px"
-             width="960" height="720"
-             fetchpriority="high" decoding="async"
-             alt="Tallas de madera pintadas con guacamayas y un tucán" />
+        <picture>
+          <source media="(max-width: 880px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+          <img src="assets/images/tienda/artesania-aves-960.webp"
+               srcset="assets/images/tienda/artesania-aves-480.webp 480w, assets/images/tienda/artesania-aves-960.webp 960w"
+               sizes="480px"
+               width="960" height="720"
+               fetchpriority="high" decoding="async"
+               alt="Tallas de madera pintadas con guacamayas y un tucán" />
+        </picture>
       </figure>
     </div>
   </section>
@@ -493,6 +497,6 @@
     </div>
   </aside>
 
-  <script src="js/nav.js?v=20261024b" defer></script>
+  <script src="js/nav.js?v=20261024c" defer></script>
 </body>
 </html>

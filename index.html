@@ -24,14 +24,14 @@
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Logo de PARAISOS sobre un pozo de agua verde esmeralda en la selva del Putumayo" />
+  <meta property="og:image:alt" content="PARAISOS, agencia de viajes en Mocoa, Putumayo. Más que un destino, somos territorio de vida. RNT 84258" />
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="PARAISOS, agencia de viajes en Mocoa, Putumayo" />
   <meta name="twitter:description" content="Eco planes en Putumayo, viajes nacionales e internacionales y cruceros. Cotiza por WhatsApp." />
   <meta name="twitter:image" content="https://paraisosagencia.vercel.app/assets/images/og-cover.jpg" />
-  <meta name="twitter:image:alt" content="Logo de PARAISOS sobre un pozo de agua verde esmeralda en la selva del Putumayo" />
+  <meta name="twitter:image:alt" content="PARAISOS, agencia de viajes en Mocoa, Putumayo. Más que un destino, somos territorio de vida. RNT 84258" />
 
   <!-- Favicon extraído del logo oficial (símbolo O) -->
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
@@ -47,16 +47,18 @@
   <!-- Fuentes autoalojadas: se precargan las dos que pintan el primer pliegue -->
   <link rel="preload" href="assets/fonts/montserrat-var-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/poppins-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/fonts.css?v=20261024b" />
+  <link rel="stylesheet" href="css/fonts.css?v=20261024c" />
 
-  <!-- Póster del hero: vertical en celular, horizontal en el resto (mismas
-       condiciones que el video, su atributo poster y el fondo de .hero__video-wrap) -->
-  <link rel="preload" as="image" href="assets/images/hero-poster-v-1080.webp" media="(max-width: 540px) and (orientation: portrait)" />
+  <!-- Póster del hero: vertical en celular, horizontal en el resto (la
+       tableta vertical lo recorta al centro, igual que su video 3:4). Mismas
+       condiciones que el video, su atributo poster y el fondo de
+       .hero__video-wrap -->
+  <link rel="preload" as="image" href="assets/images/hero-poster-v-720.webp" media="(max-width: 540px) and (orientation: portrait)" />
   <link rel="preload" as="image" href="assets/images/hero-poster-h-1600.webp" media="(min-width: 540.02px), (orientation: landscape)" />
 
   <!-- Estilos propios -->
-  <link rel="stylesheet" href="css/styles.css?v=20261024b" />
-  <link rel="stylesheet" href="css/components.css?v=20261024b" />
+  <link rel="stylesheet" href="css/styles.css?v=20261024c" />
+  <link rel="stylesheet" href="css/components.css?v=20261024c" />
 
   <!-- «js» activa los realces que dependen de JS; si se entra con #ancla, todas
        las secciones se pintan completas para que el salto caiga en su sitio -->
@@ -75,7 +77,7 @@
         "@id": "https://paraisosagencia.vercel.app/#agencia",
         "name": "PARAISOS - Agencia de Viajes & Turismo",
         "alternateName": "PARAISOS",
-        "slogan": "Más que un destino turístico, somos territorio de vida",
+        "slogan": "Más que un destino, somos territorio de vida",
         "description": "Agencia de viajes en Mocoa, Putumayo. Eco planes en Putumayo, viajes nacionales e internacionales y cruceros.",
         "url": "https://paraisosagencia.vercel.app/",
         "image": "https://paraisosagencia.vercel.app/assets/images/og-cover.jpg",
@@ -138,7 +140,7 @@
       {"@type":"Question","name":"¿Cómo se define el precio de mi viaje?","acceptedAnswer":{"@type":"Answer","text":"Te enviamos una cotización con las tarifas según la disponibilidad del momento de la compra. El valor depende del número de pasajeros, el destino, los días, la fecha y el tipo de alojamiento."}},
       {"@type":"Question","name":"¿Con qué seguros cuentan?","acceptedAnswer":{"@type":"Answer","text":"Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes."}},
       {"@type":"Question","name":"¿Qué documentos necesito para viajar?","acceptedAnswer":{"@type":"Answer","text":"Dentro de Colombia, tu documento de identidad: cédula, o tarjeta de identidad o registro civil para los menores. Para viajar a otro país, pregúntanos qué pide tu destino."}},
-      {"@type":"Question","name":"¿Qué incluyen las experiencias vivenciales en Putumayo?","acceptedAnswer":{"@type":"Answer","text":"Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos."}},
+      {"@type":"Question","name":"¿Qué experiencias vivenciales tienen en Putumayo?","acceptedAnswer":{"@type":"Answer","text":"Limpia espiritual con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos."}},
       {"@type":"Question","name":"¿Trabajan con colegios, universidades y empresas?","acceptedAnswer":{"@type":"Answer","text":"Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles."}}
     ]
   }
@@ -157,7 +159,6 @@
 
       <!-- wizard tipos -->
       <symbol id="ico-mountain" viewBox="0 0 24 24"><path d="m8 3-6 18h20L13 5l-2 4"/></symbol>
-      <symbol id="ico-ship" viewBox="0 0 24 24"><path d="M2 20c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2s2.5 2 5 2 2.5-2 5-2c1.3 0 1.9.5 2.5 1"/><path d="M19.4 13H4.6L4 18h16zM12 4v9M8 8h8"/></symbol>
       <symbol id="ico-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2c1 2 2 4.18 2 8.4 0 4.62-4.42 9.6-10.2 9.6Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></symbol>
 
       <!-- servicios -->
@@ -165,7 +166,8 @@
       <symbol id="ico-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
       <symbol id="ico-bus" viewBox="0 0 24 24"><path d="M8 6v6M16 6v6M2 12h20M3 6v12a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6c0-2-2-2-9-2S3 4 3 6z"/><circle cx="7" cy="18" r="1.5"/><circle cx="17" cy="18" r="1.5"/></symbol>
       <symbol id="ico-building" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01M12 6h.01M12 10h.01M12 14h.01"/></symbol>
-      <symbol id="ico-tent" viewBox="0 0 24 24"><path d="M3.5 21 12 3l8.5 18M12 3v18M3.5 21h17"/></symbol>
+      <!-- puesto de feria (toldo, mostrador y puerta) -->
+      <symbol id="ico-stall" viewBox="0 0 24 24"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12a2 2 0 0 1-2-2V7"/></symbol>
       <symbol id="ico-bed" viewBox="0 0 24 24"><path d="M2 20V8M22 20v-6a2 2 0 0 0-2-2H8M2 14h20M6 12V8a2 2 0 0 1 2-2h4"/><circle cx="6" cy="10" r="1"/></symbol>
       <symbol id="ico-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></symbol>
       <symbol id="ico-feather" viewBox="0 0 24 24"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><path d="M16 8 2 22M17.5 15H9"/></symbol>
@@ -181,7 +183,8 @@
       <symbol id="ico-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
       <symbol id="ico-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
 
-      <!-- nosotros (guías con tarjeta profesional) y visor de la galería -->
+      <!-- nosotros (guías con tarjeta profesional y crédito) y visor de la galería -->
+      <symbol id="ico-wallet" viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></symbol>
       <symbol id="ico-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="1"/><circle cx="8.5" cy="11" r="2"/><path d="M5.5 16a3.2 3.2 0 0 1 6 0M15 10h4M15 14h4"/></symbol>
       <symbol id="ico-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
       <symbol id="ico-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
@@ -256,7 +259,6 @@
         Cotizar por WhatsApp
       </a>
     </div>
-    <div class="navbar__progress" id="navProgress" aria-hidden="true"></div>
   </header>
 
   <main id="contenido" tabindex="-1">
@@ -264,8 +266,12 @@
   <section id="inicio" class="hero hero--video" aria-labelledby="heroTitle">
     <div class="hero__bg" aria-hidden="true">
       <!-- Video de fondo (2 tomas reales del Putumayo, bucle de 14 s, sin
-           reescalar donde se puede): vertical 608×1080 en celular; 1920×1080
-           en pantallas grandes o de alta densidad; 1600×900 en el resto.
+           reescalar). Celular vertical: 720×1080 (2:3, la forma del hero en
+           celular). Tableta vertical: 810×1080 (3:4). Horizontal: 1920×1080
+           en pantallas grandes o de alta densidad (también portátiles a
+           1,25x) y 1600×900 en el resto. Cada tamaño va en AV1 (más detalle
+           con menos peso) y en H.264 para los navegadores sin AV1: se queda
+           el primero que el navegador puede reproducir.
            Lo reproduce main.js al terminar de cargar la página (para todos,
            con botón de pausa) y solo mientras el hero se ve. El póster es el
            atributo poster (lo pone el script de abajo según la pantalla, así
@@ -275,11 +281,16 @@
         <video class="hero__video-el"
           muted loop playsinline webkit-playsinline preload="none" disableremoteplayback
           aria-hidden="true" tabindex="-1">
-          <source src="assets/videos/hero-bg-v-1080.mp4" type="video/mp4" media="(max-width: 540px) and (orientation: portrait)">
-          <source src="assets/videos/hero-bg-h-1920.mp4" type="video/mp4" media="(min-width: 1600px), (min-width: 700px) and (min-height: 600px) and (min-resolution: 1.5dppx)">
+          <source src="assets/videos/hero-bg-v-720-av1.mp4" type="video/mp4; codecs=&quot;av01.0.05M.08&quot;" media="(max-width: 540px) and (orientation: portrait)">
+          <source src="assets/videos/hero-bg-v-720.mp4" type="video/mp4" media="(max-width: 540px) and (orientation: portrait)">
+          <source src="assets/videos/hero-bg-t-810-av1.mp4" type="video/mp4; codecs=&quot;av01.0.05M.08&quot;" media="(orientation: portrait)">
+          <source src="assets/videos/hero-bg-t-810.mp4" type="video/mp4" media="(orientation: portrait)">
+          <source src="assets/videos/hero-bg-h-1920-av1.mp4" type="video/mp4; codecs=&quot;av01.0.08M.08&quot;" media="(min-width: 1600px), (min-width: 1200px) and (min-resolution: 1.2dppx), (min-width: 700px) and (min-height: 600px) and (min-resolution: 1.5dppx)">
+          <source src="assets/videos/hero-bg-h-1920.mp4" type="video/mp4" media="(min-width: 1600px), (min-width: 1200px) and (min-resolution: 1.2dppx), (min-width: 700px) and (min-height: 600px) and (min-resolution: 1.5dppx)">
+          <source src="assets/videos/hero-bg-h-1600-av1.mp4" type="video/mp4; codecs=&quot;av01.0.08M.08&quot;">
           <source src="assets/videos/hero-bg-h-1600.mp4" type="video/mp4">
         </video>
-        <script>(function(v){v.poster=matchMedia('(max-width: 540px) and (orientation: portrait)').matches?'assets/images/hero-poster-v-1080.webp':'assets/images/hero-poster-h-1600.webp';})(document.currentScript.previousElementSibling);</script>
+        <script>(function(v){v.poster=matchMedia('(max-width: 540px) and (orientation: portrait)').matches?'assets/images/hero-poster-v-720.webp':'assets/images/hero-poster-h-1600.webp';})(document.currentScript.previousElementSibling);</script>
       </div>
       <!-- Velo de tinta para que el texto se lea sobre cualquier toma -->
       <div class="hero__video-overlay"></div>
@@ -455,11 +466,12 @@
           </div>
         </div>
         <figure class="putumayo__media">
-          <img src="assets/images/galeria/w960/19.webp"
-            srcset="assets/images/galeria/w480/19.webp 480w, assets/images/galeria/w960/19.webp 960w, assets/images/galeria/w1400/19.webp 1400w"
-            sizes="(max-width: 640px) 112px, (max-width: 1024px) 300px, 560px"
-            width="1400" height="837" loading="lazy" decoding="async"
-            alt="Pozo de agua verde esmeralda en la selva del Putumayo" />
+          <!-- Foto del cliente recortada sin la palabra grabada ni el logo -->
+          <img src="assets/images/fotos/putumayo-pozo-880.webp"
+            srcset="assets/images/fotos/putumayo-pozo-480.webp 480w, assets/images/fotos/putumayo-pozo-880.webp 880w"
+            sizes="(max-width: 600px) calc(100vw - 2rem), (max-width: 1024px) 300px, 560px"
+            width="880" height="760" loading="lazy" decoding="async"
+            alt="Pareja frente a un pozo de agua verde esmeralda en la selva del Putumayo" />
         </figure>
       </div>
 
@@ -479,7 +491,7 @@
           <h3 class="putumayo__subhead">Pasadías y aventura</h3>
           <ul class="putumayo__list">
             <li><strong>Senderismo:</strong> Suruma (fauna amazónica), Centro ecoturístico Fin del Mundo, cascada del Hornoyaco, cañón del Mandiyaco (mil rostros), chorrera del Canalendres y Ojo de Dios.</li>
-            <li><strong>Rappel y torrentismo:</strong> Fin del Mundo y Hornoyaco.</li>
+            <li><strong>Rappel:</strong> Fin del Mundo y Hornoyaco. <strong>Torrentismo:</strong> cascada del Fin del Mundo.</li>
             <li><strong>Kayaking:</strong> ríos Umbría y Mocoa.</li>
             <li><strong>Neumating:</strong> ríos Caquetá y Vides.</li>
             <li><strong>Espeleísmo:</strong> cueva de Urcusique.</li>
@@ -489,7 +501,7 @@
 
         <div class="putumayo__col putumayo__col--pueblos">
           <h3 class="putumayo__subhead">15 pueblos indígenas</h3>
-          <p class="pueblos__intro">Estos son los principales:</p>
+          <p class="pueblos__intro">Algunos de ellos:</p>
           <ul class="pueblos">
             <li>
               <details>
@@ -748,7 +760,7 @@
             <p>También ingresos a sitios turísticos, entre otros.</p>
           </li>
           <li class="service">
-            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-tent"/></svg></span>
+            <span class="service__ico" aria-hidden="true"><svg class="icon"><use href="#ico-stall"/></svg></span>
             <h3>Organización de eventos feriales</h3>
             <p>De tipo artesanal, gastronómico, deportivo y cultural.</p>
           </li>
@@ -779,10 +791,10 @@
     <div class="container experience__grid">
       <div class="experience__media">
         <img loading="lazy" decoding="async"
-             src="assets/images/galeria/w960/45.webp"
-             srcset="assets/images/galeria/w480/45.webp 480w, assets/images/galeria/w960/45.webp 960w, assets/images/galeria/w1400/45.webp 1400w"
-             sizes="(max-width: 600px) 92vw, 550px"
-             width="1400" height="837"
+             src="assets/images/fotos/quienes-somos-senderismo-960.webp"
+             srcset="assets/images/fotos/quienes-somos-senderismo-480.webp 480w, assets/images/fotos/quienes-somos-senderismo-960.webp 960w, assets/images/fotos/quienes-somos-senderismo-1235.webp 1235w"
+             sizes="(max-width: 600px) 92vw, 560px"
+             width="1235" height="669"
              alt="Grupo de viajeros de PARAISOS en una jornada de senderismo" />
       </div>
       <div class="experience__content">
@@ -805,11 +817,11 @@
         </li>
         <li>
           <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-chat"/></svg></span>
-          <div><strong>Acompañamiento en cada etapa</strong><span>Antes, durante y después del viaje.</span></div>
+          <div><strong>Comunicación en cada etapa</strong><span>Te atendemos antes, durante y después del viaje.</span></div>
         </li>
         <li>
-          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-shield"/></svg></span>
-          <div><strong>Pólizas Colasistencia y Magenta</strong><span>Cubrimiento con pólizas contra accidentes.</span></div>
+          <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-wallet"/></svg></span>
+          <div><strong>Crédito con cooperativas</strong><span>Financia tu viaje con cooperativas en convenio, previo estudio de crédito.</span></div>
         </li>
         <li>
           <span class="ico" aria-hidden="true"><svg class="icon"><use href="#ico-id"/></svg></span>
@@ -877,15 +889,15 @@
       <ul class="gallery__grid" id="galGrid">
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="33"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/33.webp" srcset="assets/images/galeria/w480/33.webp 480w, assets/images/galeria/w960/33.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada en la selva del Putumayo vista desde arriba" /></button></li>
         <li data-cat="fauna"><button type="button" class="gallery__item" data-n="15"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/15.webp" srcset="assets/images/galeria/w480/15.webp 480w, assets/images/galeria/w960/15.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Tigrillo caminando sobre una baranda de guadua" /></button></li>
-        <li data-cat="cultura"><button type="button" class="gallery__item" data-n="47"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/47.webp" srcset="assets/images/galeria/w480/47.webp 480w, assets/images/galeria/w960/47.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Taita indígena junto a una fogata con un grupo de viajeros" /></button></li>
+        <li data-cat="cultura"><button type="button" class="gallery__item gallery__item--txt-r" data-n="47"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/47.webp" srcset="assets/images/galeria/w480/47.webp 480w, assets/images/galeria/w960/47.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Taita indígena junto a una fogata con un grupo de viajeros" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="34"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/34.webp" srcset="assets/images/galeria/w480/34.webp 480w, assets/images/galeria/w960/34.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Pozo de agua verde esmeralda en el Putumayo" /></button></li>
-        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="23"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/23.webp" srcset="assets/images/galeria/w480/23.webp 480w, assets/images/galeria/w960/23.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Neumating en un río del Putumayo" /></button></li>
-        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="22"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/22.webp" srcset="assets/images/galeria/w480/22.webp 480w, assets/images/galeria/w960/22.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Dos monos titíes en una rama" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item gallery__item--txt-r" data-n="23"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/23.webp" srcset="assets/images/galeria/w480/23.webp 480w, assets/images/galeria/w960/23.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Neumating en un río del Putumayo" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="22"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/22.webp" srcset="assets/images/galeria/w480/22.webp 480w, assets/images/galeria/w960/22.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Tití pigmeo con su cría sobre un tronco" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="29"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/29.webp" srcset="assets/images/galeria/w480/29.webp 480w, assets/images/galeria/w960/29.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Valle con niebla, bosque y palmas al pie de las montañas" /></button></li>
         <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="35"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/35.webp" srcset="assets/images/galeria/w480/35.webp 480w, assets/images/galeria/w960/35.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Cascada y pozo de agua cristalina en el Putumayo" /></button></li>
         <li data-cat="cultura"><button type="button" class="gallery__item" data-n="9"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/9.webp" srcset="assets/images/galeria/w480/9.webp 480w, assets/images/galeria/w960/9.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Petroglifo tallado en una roca" /></button></li>
-        <li data-cat="naturaleza"><button type="button" class="gallery__item" data-n="40"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/40.webp" srcset="assets/images/galeria/w480/40.webp 480w, assets/images/galeria/w960/40.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Bañista bajo una cascada en el Putumayo" /></button></li>
-        <li data-cat="fauna"><button type="button" class="gallery__item" data-n="49"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/49.webp" srcset="assets/images/galeria/w480/49.webp 480w, assets/images/galeria/w960/49.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Ave silvestre comiendo plátano maduro" /></button></li>
+        <li data-cat="naturaleza"><button type="button" class="gallery__item gallery__item--txt-r" data-n="40"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/40.webp" srcset="assets/images/galeria/w480/40.webp 480w, assets/images/galeria/w960/40.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Bañista bajo una cascada en el Putumayo" /></button></li>
+        <li data-cat="fauna"><button type="button" class="gallery__item gallery__item--txt-r" data-n="49"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/49.webp" srcset="assets/images/galeria/w480/49.webp 480w, assets/images/galeria/w960/49.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Ave silvestre comiendo plátano maduro" /></button></li>
         <li data-cat="fauna"><button type="button" class="gallery__item" data-n="21"><span class="sr-only">Ampliar foto: </span><img src="assets/images/galeria/w480/21.webp" srcset="assets/images/galeria/w480/21.webp 480w, assets/images/galeria/w960/21.webp 960w" sizes="(max-width: 599px) 50vw, (max-width: 899px) 33vw, 290px" width="1400" height="837" loading="lazy" decoding="async" alt="Dos aves negras con antifaz amarillo asomadas entre dos troncos" /></button></li>
       </ul>
       <p class="gallery__more">
@@ -911,7 +923,7 @@
         <details><summary>¿Cómo se define el precio de mi viaje?</summary><p>Te enviamos una cotización con las tarifas según la disponibilidad del momento de la compra. El valor depende del número de pasajeros, el destino, los días, la fecha y el tipo de alojamiento.</p></details>
         <details><summary>¿Con qué seguros cuentan?</summary><p>Contamos con el cubrimiento de Colasistencia y Magenta, con pólizas contra accidentes.</p></details>
         <details><summary>¿Qué documentos necesito para viajar?</summary><p>Dentro de Colombia, tu documento de identidad: cédula, o tarjeta de identidad o registro civil para los menores. Para viajar a otro país, pregúntanos qué pide tu destino.</p></details>
-        <details><summary>¿Qué incluyen las experiencias vivenciales en Putumayo?</summary><p>Limpia con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos.</p></details>
+        <details><summary>¿Qué experiencias vivenciales tienen en Putumayo?</summary><p>Limpia espiritual con taita indígena, Sembrando vida (siembra de árboles), Aprendiendo lengua nativa, Yagesito y Ruta del cacao. Te acompañan guías con tarjeta profesional y baquianos.</p></details>
         <details><summary>¿Trabajan con colegios, universidades y empresas?</summary><p>Sí. Organizamos excursiones de colegios y universidades con grandes descuentos presentando el carnet, y experiencias vivenciales para empresas y prácticas estudiantiles.</p></details>
       </div>
     </div>
@@ -1052,7 +1064,9 @@
 
   <!-- ====== ACCIONES FIJAS ======
        Escritorio: botón redondo de WhatsApp. Celular (≤768 px): barra inferior,
-       que en el inicio aparece al pasar el hero (data-after). Van dentro de un
+       que en el inicio aparece al pasar el hero (data-after) y se aparta
+       mientras se ven los botones de enviar del asistente y del formulario
+       (data-avoid), para no repetir el mismo botón. Van dentro de un
        <aside> con nombre, igual que en Nosotros y la Tienda. -->
   <aside class="quick-contact" aria-label="Contacto rápido">
     <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje."
@@ -1061,7 +1075,7 @@
       <span class="float-wa__tip" aria-hidden="true">Cotizar por WhatsApp</span>
     </a>
 
-    <div class="sticky-cta" id="stickyCta" data-after="#inicio">
+    <div class="sticky-cta" id="stickyCta" data-after="#inicio" data-avoid=".wizard__nav, #contactForm [type=submit]">
       <a href="tel:+573157347306" class="sticky-cta__call"><svg class="icon" aria-hidden="true"><use href="#ico-phone"/></svg> Llamar</a>
       <a href="https://wa.me/573157347306?text=Hola%2C%20PARAISOS.%20Quiero%20cotizar%20un%20viaje." target="_blank" rel="noopener" class="sticky-cta__wa">
         <svg width="18" height="18" aria-hidden="true" focusable="false"><use href="#ico-whatsapp"/></svg>
@@ -1071,9 +1085,9 @@
   </aside>
 
   <!-- Scripts propios -->
-  <script src="js/nav.js?v=20261024b" defer></script>
-  <script src="js/main.js?v=20261024b" defer></script>
-  <script src="js/colombia-map-3d.js?v=20261024b" defer></script>
-  <script src="js/wizard.js?v=20261024b" defer></script>
+  <script src="js/nav.js?v=20261024c" defer></script>
+  <script src="js/main.js?v=20261024c" defer></script>
+  <script src="js/colombia-map-3d.js?v=20261024c" defer></script>
+  <script src="js/wizard.js?v=20261024c" defer></script>
 </body>
 </html>

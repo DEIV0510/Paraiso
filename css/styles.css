@@ -266,8 +266,14 @@ p  { margin: 0; color: var(--c-text-soft); }
   margin-left: 2.5rem;
   background: var(--c-orange);
 }
-.topbar:hover .topbar__track,
-.topbar:focus-within .topbar__track,
+/* Con teclado (:focus-visible) se detiene mientras tiene el foco; al tocarla
+   o hacer clic manda .is-paused (un toque la pausa y otro la reanuda). El
+   :hover solo cuenta con mouse: en pantallas táctiles queda pegado tras el
+   toque y no dejaba reanudarla. */
+@media (hover: hover) {
+  .topbar:hover .topbar__track { animation-play-state: paused; }
+}
+.topbar:focus-visible .topbar__track,
 .topbar:active .topbar__track,
 .topbar.is-paused .topbar__track { animation-play-state: paused; }
 
@@ -294,14 +300,6 @@ p  { margin: 0; color: var(--c-text-soft); }
 html.header-hidden .topbar { transform: translateY(-100%); }
 html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) - 8px)); }
 
-/* Barra de progreso de lectura: se escala, no cambia el ancho */
-.navbar__progress {
-  position: absolute; bottom: 0; left: 0;
-  width: 100%; height: 3px;
-  background: var(--c-orange);
-  transform: scaleX(0);
-  transform-origin: left center;
-}
 .navbar__inner {
   display: flex; align-items: center; justify-content: space-between;
   gap: 1.5rem;
@@ -318,16 +316,18 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 .navbar__menu {
   display: flex; gap: clamp(1rem, 1.6vw, 2rem);
 }
+/* 44 px de alto: en tabletas táctiles en horizontal se ve este menú */
 .navbar__menu a {
   position: relative;
-  display: inline-block;
+  display: flex; align-items: center;
+  min-height: 44px;
   font-weight: 500; font-size: .95rem;
   color: var(--c-text);
   padding: .35rem 0;
 }
 .navbar__menu a::after {
   content: '';
-  position: absolute; left: 0; right: 0; bottom: -2px;
+  position: absolute; left: 0; right: 0; bottom: 4px;
   height: 2px;
   background: var(--c-blue-dark);
   transform: scaleX(0); transform-origin: left;
@@ -382,7 +382,7 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   background: var(--c-text) url(../assets/images/hero-poster-h-1600.webp) center / cover no-repeat;
 }
 @media (max-width: 540px) and (orientation: portrait) {
-  .hero__video-wrap { background-image: url(../assets/images/hero-poster-v-1080.webp); }
+  .hero__video-wrap { background-image: url(../assets/images/hero-poster-v-720.webp); }
 }
 .hero__video-el {
   position: absolute;
@@ -397,19 +397,23 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 .hero__video-el::-webkit-media-controls,
 .hero__video-el::-webkit-media-controls-enclosure { display: none !important; }
 /* Velo de tinta para que el texto blanco se lea sobre cualquier toma.
-   Escritorio: el texto va a la izquierda, así que el velo es denso hasta
-   donde termina el texto (los cortes van en px desde el centro porque el
-   texto sigue al contenedor) y deja ver el video a la derecha. En celular
-   el texto ocupa todo el ancho y el velo es vertical (ver más abajo).
-   Contraste medido sobre fotogramas del video de 360 a 1440 px: texto
-   ≥ 4,5:1 y «de vida» (texto grande) ≥ 3:1. */
+   Escritorio (horizontal): el texto va a la izquierda y termina en la mitad
+   de la pantalla (el título mide ~560 px y el subtítulo va en 2 líneas), así
+   que el velo es parejo solo hasta ahí (--veil-end: el corte sigue al
+   contenedor) y se abre enseguida para que la cascada y la selva se vean
+   con su color. En pantallas verticales el texto ocupa todo el ancho y el
+   velo es vertical (ver más abajo).
+   Contraste medido en 12 cuadros del video (sin contar la sombra del texto)
+   a 1280, 1440 y 1920 px: texto blanco ≥ 4,5:1 y «de vida» (texto grande)
+   ≥ 3:1. Si se cambia el velo, volver a medir. */
 .hero__video-overlay {
+  --veil-end: max(calc(50% - 20px), 600px);
   position: absolute; inset: 0;
   z-index: 1;
   background:
     linear-gradient(90deg,
-      rgba(15,40,69,.85) 0%, rgba(15,40,69,.79) calc(50% + 120px),
-      rgba(15,40,69,.62) calc(50% + 260px), rgba(15,40,69,.22) calc(50% + 480px),
+      rgba(15,40,69,.68) 0%, rgba(15,40,69,.66) var(--veil-end),
+      rgba(15,40,69,.28) calc(var(--veil-end) + 170px),
       rgba(15,40,69,.12) 100%),
     linear-gradient(180deg, rgba(15,40,69,.28) 0%, rgba(15,40,69,0) 30%, rgba(15,40,69,0) 75%, rgba(15,40,69,.35) 100%);
 }
@@ -475,7 +479,9 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 .hero--video .hero__title { color: #fff; }
 .hero--video .hero__title-script { color: var(--c-orange); }
 .hero--video .hero__kicker { color: #fff; }
-.hero--video .hero__subtitle { color: #fff; max-width: none; }
+/* Subtítulo en 2 líneas parejas: el texto termina en la mitad de la pantalla
+   y la mitad derecha deja ver el video casi sin velo */
+.hero--video .hero__subtitle { color: #fff; max-width: 600px; text-wrap: balance; }
 .hero--video .hero__trust { color: #fff; }
 
 /* Pausa / reproducción del video de fondo (circular por naturaleza) */
@@ -577,18 +583,42 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   .navbar__cta { display: none; }
   .navbar__brand-img { height: 44px; max-width: 160px; }
   .navbar__inner { gap: .5rem; }
+
+  /* La cinta se toca para pausarla: su área táctil llega a 44 px con una
+     franja invisible sobre el margen vacío del menú (el enlace del logo y la
+     hamburguesa empiezan más abajo: en y = 48 y 50 con la cinta de 34 px).
+     El recorte con clip-path reemplaza a overflow: hidden para que esa
+     franja reciba el toque. */
+  .topbar { overflow: visible; clip-path: inset(0 0 -10px 0); }
+  .topbar::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 10px; }
+  html.header-hidden .topbar::after { display: none; }
+}
+
+/* Sin JS la hamburguesa no abriría nada: el menú queda como una fila de
+   enlaces junto al logo (se desliza de lado si no cabe) */
+@media (max-width: 1000px) {
+  html:not(.js) .navbar__burger { display: none; }
+  html:not(.js) .navbar__nav {
+    flex: 1; min-width: 0;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  html:not(.js) .navbar__menu {
+    position: static;
+    flex-direction: row; gap: 1.25rem;
+    padding: 0; border: 0; box-shadow: none; background: none;
+    max-height: none; overflow: visible;
+    opacity: 1; transform: none; visibility: visible;
+  }
+  html:not(.js) .navbar__menu li { width: auto; border: 0; }
+  html:not(.js) .navbar__menu a { min-height: 44px; padding: 0; font-size: .95rem; white-space: nowrap; }
+  html:not(.js) .navbar__menu .navbar__menu-cta { display: none; }
 }
 
 @media (max-width: 540px) {
-  /* Celular: menú de 64 px y cinta de 36 px. La cinta se toca para pausarla:
-     su área táctil llega a 44 px con 8 px invisibles sobre el margen vacío
-     del menú (el enlace del logo y la hamburguesa empiezan más abajo). El
-     recorte con clip-path reemplaza a overflow: hidden para que esos 8 px
-     reciban el toque. */
+  /* Celular: menú de 64 px y cinta de 36 px (+ 8 px de área táctil) */
   :root { --navbar-h: 64px; --topbar-h: 36px; }
-  .topbar { font-size: .75rem; overflow: visible; clip-path: inset(0 0 -8px 0); }
-  .topbar::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 8px; }
-  html.header-hidden .topbar::after { display: none; }
+  .topbar { font-size: .75rem; clip-path: inset(0 0 -8px 0); }
+  .topbar::after { height: 8px; }
   .topbar__list li { padding: 0 1rem; }
   .topbar__list li::after { margin-left: 2rem; }
   .navbar__brand-img { height: 40px; }
@@ -597,19 +627,30 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 
 /* ---------- RESPONSIVE: HERO ----------
    En celular el hero mide lo que su contenido (cabe en 390 × 844 con los dos
-   botones a la vista) y el velo es vertical, parejo en todo el ancho. */
+   botones a la vista). En celular (también acostado) y en tableta vertical
+   el texto ocupa todo el ancho: el velo es vertical, parejo de lado a lado;
+   la sombra suave del texto lo separa de las zonas claras del video. */
+@media (max-width: 768px), (orientation: portrait), (max-height: 500px) {
+  .hero--video .hero__video-overlay {
+    background: linear-gradient(180deg,
+      rgba(15,40,69,.60) 0%, rgba(15,40,69,.70) 26%, rgba(15,40,69,.68) 50%,
+      rgba(15,40,69,.62) 75%, rgba(15,40,69,.55) 100%);
+  }
+}
+/* Tableta vertical: el título es más grande y «de vida» cae sobre las copas
+   más claras del recorte 3:4; el velo sube un poco en la franja del texto */
+@media (min-width: 541px) and (orientation: portrait) {
+  .hero--video .hero__video-overlay {
+    background: linear-gradient(180deg,
+      rgba(15,40,69,.60) 0%, rgba(15,40,69,.74) 30%, rgba(15,40,69,.74) 60%,
+      rgba(15,40,69,.64) 80%, rgba(15,40,69,.55) 100%);
+  }
+}
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
     padding-top: calc(var(--navbar-h) + var(--topbar-h) + 2rem);
     padding-bottom: calc(44px + 2.25rem);   /* deja libre el botón de pausa */
-  }
-  /* Velo más claro que en escritorio para que las cascadas se reconozcan;
-     la sombra suave del texto lo separa de las zonas claras del video */
-  .hero--video .hero__video-overlay {
-    background: linear-gradient(180deg,
-      rgba(15,40,69,.60) 0%, rgba(15,40,69,.70) 26%, rgba(15,40,69,.68) 50%,
-      rgba(15,40,69,.62) 75%, rgba(15,40,69,.55) 100%);
   }
   .hero__video-toggle { left: 1rem; bottom: 1rem; }
   .hero__title { font-size: clamp(2.1rem, 8vw, 2.8rem); margin-bottom: 1rem; }
@@ -624,6 +665,22 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 }
 @media (max-width: 380px) {
   .hero__title { font-size: 1.85rem; }
+}
+/* Celular acostado (p. ej. 844 × 390): la cinta y el menú ocupan 110 px.
+   El hero se compacta para que «Cotizar por WhatsApp» entre en la primera
+   pantalla; el botón de pausa queda debajo de los botones, sin taparlos. */
+@media (orientation: landscape) and (max-height: 500px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--navbar-h) + var(--topbar-h) + 1.25rem);
+    padding-bottom: calc(44px + 1.75rem);
+  }
+  .hero__kicker { font-size: .95rem; margin-bottom: .35rem; }
+  .hero__title { font-size: 2rem; margin-bottom: .6rem; }
+  .hero__subtitle { font-size: 1rem; margin-bottom: 1rem; }
+  .hero__cta-row .btn--lg { min-height: 48px; padding-block: .7rem; }
+  .hero__trust { display: none; }
+  .hero__video-toggle { bottom: 1rem; }
 }
 
 /* ---------- REDUCIR MOVIMIENTO ----------

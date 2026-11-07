@@ -77,7 +77,9 @@
   transition: opacity .4s;
 }
 .map-3d__loading.is-done { opacity: 0; }
-html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que esperar */
+/* Sin JS no hay mapa ni lista que armar: la sección no se muestra (las
+   tarifas ya están en #viajes y el menú no enlaza aquí) */
+html:not(.js) #mapa { display: none; }
 .map-3d__notice {
   position: absolute; left: 50%; top: 50%; z-index: 7;
   transform: translate(-50%, -50%);
@@ -105,9 +107,11 @@ html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que es
   font-size: .8125rem; color: var(--c-text);
   font-weight: 500;
   pointer-events: none;
-  animation: fadeOutHint .6s ease-out 6s forwards;
 }
-.map-3d__hint:empty { display: none; }
+/* Se va 6 s después de que el mapa se ve (el JS pone .is-on) */
+.map-3d__hint.is-on { animation: fadeOutHint .6s ease-out 6s forwards; }
+.map-3d__hint:empty,
+.map-3d__hint.is-gone { display: none; }
 @keyframes fadeOutHint { to { opacity: 0; } }
 
 .map-3d__compass {
@@ -163,6 +167,32 @@ html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que es
   width: 8px; height: 8px;
   background: inherit;
   transform: translateX(-50%) rotate(45deg);
+}
+/* Si arriba choca con otra etiqueta o con un pin, el JS la pone debajo de
+   la base del pin, a la derecha o a la izquierda (data-side); la flecha
+   sigue apuntando al pin */
+.map-3d__label[data-side="bottom"] { transform: translate(-50%, 10px); }
+.map-3d__label[data-side="bottom"]::after { top: -4px; bottom: auto; }
+.map-3d__label[data-side="right"] { transform: translate(14px, -50%); }
+.map-3d__label[data-side="left"] { transform: translate(calc(-100% - 14px), -50%); }
+.map-3d__label[data-side="right"]::after,
+.map-3d__label[data-side="left"]::after { top: 50%; bottom: auto; transform: translateY(-50%) rotate(45deg); }
+.map-3d__label[data-side="right"]::after { left: -4px; }
+.map-3d__label[data-side="left"]::after { left: auto; right: -4px; }
+.map-3d__label[data-side="top-r"] { transform: translate(-14px, -120%); }
+.map-3d__label[data-side="top-r"]::after { left: 14px; }
+.map-3d__label[data-side="top-l"] { transform: translate(calc(-100% + 14px), -120%); }
+.map-3d__label[data-side="top-l"]::after { left: auto; right: 14px; transform: translateX(50%) rotate(45deg); }
+/* Nombre del país vecino (Atacames está en Ecuador): texto del mapa, sin caja */
+.map-3d__country {
+  position: absolute; left: 0; top: 0;
+  transform: translate(-50%, -50%);
+  font-family: var(--f-head);
+  font-size: .75rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--c-text);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .map-3d__popup {
@@ -543,6 +573,11 @@ html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que es
   background: var(--c-bg-soft);
 }
 .wizard__nav .btn:disabled { opacity: .4; pointer-events: none; }
+/* Sin JS los botones del asistente no responden: queda solo el aviso
+   del <noscript> con el WhatsApp */
+html:not(.js) .wizard__progress,
+html:not(.js) .wizard__step,
+html:not(.js) .wizard__nav { display: none; }
 /* «Atrás» lleva una flecha SVG que solo se ve cuando no cabe el texto */
 .wizard__prev .icon { display: none; width: 20px; height: 20px; }
 
@@ -615,8 +650,9 @@ html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que es
   color: var(--c-text);
   margin: 1rem 0 .5rem;
 }
-/* Inicio (#nosotros): foto 5:3 sin recorte y el enlace bajo el texto */
-#nosotros .experience__media img { aspect-ratio: 5/3; }
+/* Inicio (#nosotros): foto entera (ya recortada sin la palabra grabada ni
+   el logo) y el enlace bajo el texto */
+#nosotros .experience__media img { aspect-ratio: 1235 / 669; }
 #nosotros .experience__lead { max-width: 60ch; margin-bottom: 1.75rem; }
 /* 4 puntos a lo ancho bajo la foto y el texto (2 en tableta, 1 en celular) */
 .experience__features {
@@ -709,12 +745,19 @@ html:not(.js) .map-3d__loading { display: none; }   /* sin JS no hay mapa que es
   overflow: hidden;
   cursor: zoom-in;
 }
+/* Miniaturas 4:3: las fotos del cliente (5:3) traen una palabra vertical
+   grabada en un borde («Ecoaventura», «Biodiversidad»…). El recorte 4:3
+   deja fuera ese 20 % del lado de la palabra (a la izquierda por defecto;
+   .gallery__item--txt-r cuando está a la derecha). El visor muestra la
+   foto completa. */
 .gallery__item img {
   width: 100%; height: auto;
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: 100% 50%;
   transition: opacity .2s var(--ease);
 }
+.gallery__item--txt-r img { object-position: 0 50%; }
 .gallery__item:hover img { opacity: .88; }
 .gallery__item:focus-visible { outline-offset: 2px; }
 .gallery__more { margin-top: 1.25rem; }
@@ -889,7 +932,7 @@ html.lightbox-open { overflow: hidden; }
 .page-hero__media { margin: 0; }
 .page-hero__media img {
   width: 100%; height: auto;
-  aspect-ratio: 1400 / 837;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   background: var(--c-blue-tint);
 }
@@ -1150,6 +1193,9 @@ html.lightbox-open { overflow: hidden; }
 }
 .float-wa:hover .float-wa__tip,
 .float-wa:focus-visible .float-wa__tip { opacity: 1; }
+/* Con el menú de celular abierto (también en horizontal, 769–1000 px) el
+   botón redondo se aparta: no tapa el menú ni su botón de WhatsApp */
+.menu-open .float-wa { visibility: hidden; opacity: 0; pointer-events: none; }
 
 /* Barra inferior de celular: «Llamar» + «Cotizar por WhatsApp» */
 .sticky-cta {
@@ -1197,9 +1243,10 @@ html.lightbox-open { overflow: hidden; }
   .float-wa { display: none; }
   .sticky-cta { display: flex; }
   body { padding-bottom: var(--sticky-h); }
-  /* En el inicio espera a que pase el hero; también se aparta con el menú
-     abierto o mientras se escribe en un campo */
-  .js .sticky-cta[data-after]:not(.is-shown),
+  /* En el inicio espera a que pase el hero y se aparta mientras se ven los
+     botones de enviar del asistente y del formulario (nav.js pone
+     .is-shown); también con el menú abierto o mientras se escribe */
+  .js .sticky-cta:not(.is-shown),
   .menu-open .sticky-cta,
   .is-typing .sticky-cta {
     transform: translateY(100%);
@@ -1264,7 +1311,8 @@ html.lightbox-open { overflow: hidden; }
 .putumayo__media img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1400 / 837;
+  aspect-ratio: 880 / 760;
+  object-fit: cover;
   background: #DCE7D3;
 }
 
@@ -1638,8 +1686,18 @@ html.lightbox-open { overflow: hidden; }
 }
 .buy__note { font-size: 1rem; line-height: 1.5; color: var(--c-text); }
 
-/* Jornadas: la franja oscura usa .cta-final; el texto no se estira */
+/* Jornadas: la franja oscura usa .cta-final; el texto no se estira. En
+   escritorio los botones van apilados a la derecha (como en Cruceros) para
+   que la franja no quede vacía en su mitad derecha. */
 #jornadas .cta-final__text { max-width: 640px; }
+@media (min-width: 901px) {
+  #jornadas .cta-final__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 640px) auto;
+    justify-content: space-between;
+  }
+  #jornadas .cta-final__row { flex-direction: column; align-items: stretch; }
+}
 
 /* ============== REALCE AL HACER SCROLL ==============
    La clase .reveal la pone el JS: sin JS todo se ve. */
@@ -1651,16 +1709,16 @@ html.lightbox-open { overflow: hidden; }
 
 /* Alto estimado del CONTENIDO de cada sección mientras no se pinta
    (content-visibility en styles.css; contain-intrinsic-size no incluye el
-   padding). Medidos en 1440, 1024 y 390 px el 2026-10-24: si una sección
+   padding). Medidos en 1440, 1024 y 390 px el 2026-10-24 (ronda 2): si una sección
    cambia mucho de alto, volver a medir (alto real menos padding vertical). */
 /* index.html */
 #viajes    { --cis: 876px; }
-#putumayo  { --cis: 804px; }
+#putumayo  { --cis: 952px; }
 #asistente { --cis: 496px; }
 #servicios { --cis: 931px; }
-#nosotros  { --cis: 704px; }
+#nosotros  { --cis: 675px; }
 #tienda    { --cis: 165px; }
-#galeria   { --cis: 740px; }
+#galeria   { --cis: 868px; }
 #faq       { --cis: 378px; }
 #contacto  { --cis: 599px; }
 /* nosotros.html */
@@ -1672,17 +1730,17 @@ html.lightbox-open { overflow: hidden; }
 /* la-tienda.html */
 #productos { --cis: 1809px; }
 #comprar   { --cis: 268px; }
-#jornadas  { --cis: 180px; }
+#jornadas  { --cis: 116px; }
 @media (max-width: 1199.98px) {
-  #viajes { --cis: 889px; } #putumayo { --cis: 1130px; } #asistente { --cis: 680px; }
-  #servicios { --cis: 966px; } #nosotros { --cis: 741px; } #galeria { --cis: 650px; }
+  #viajes { --cis: 889px; } #putumayo { --cis: 1233px; } #asistente { --cis: 680px; }
+  #servicios { --cis: 966px; } #nosotros { --cis: 764px; } #galeria { --cis: 754px; }
   #contacto { --cis: 664px; } #mision { --cis: 378px; } #politicas { --cis: 715px; }
   #experiencia { --cis: 248px; } #cotizar { --cis: 149px; } #productos { --cis: 1678px; }
 }
 @media (max-width: 768px) {
-  #viajes { --cis: 1408px; } #putumayo { --cis: 1524px; } #asistente { --cis: 739px; }
-  #servicios { --cis: 1088px; } #nosotros { --cis: 1313px; } #tienda { --cis: 312px; }
-  #galeria { --cis: 892px; } #faq { --cis: 609px; } #contacto { --cis: 1147px; }
+  #viajes { --cis: 1300px; } #putumayo { --cis: 1726px; } #asistente { --cis: 739px; }
+  #servicios { --cis: 1088px; } #nosotros { --cis: 1315px; } #tienda { --cis: 312px; }
+  #galeria { --cis: 1049px; } #faq { --cis: 609px; } #contacto { --cis: 1147px; }
   #mision { --cis: 664px; } #valores { --cis: 625px; } #politicas { --cis: 1389px; }
   #experiencia { --cis: 400px; } #cotizar { --cis: 258px; }
   #productos { --cis: 2631px; } #comprar { --cis: 413px; } #jornadas { --cis: 284px; }
@@ -1935,12 +1993,14 @@ html.lightbox-open { overflow: hidden; }
   .service p { display: none; }
 }
 
-/* Putumayo ≤640 px: miniatura de 112 px junto a la tarifa y botón a lo ancho */
+/* Putumayo ≤640 px: la foto a lo ancho (16:9) bajo los parques; debajo la
+   tarifa y el botón a lo ancho */
 @media (max-width: 640px) {
-  .putumayo__top { grid-template-columns: 112px minmax(0, 1fr); column-gap: 1rem; }
-  .putumayo__media { grid-row: 4; margin-top: 1rem; }
-  .putumayo__price { grid-row: 4; margin-top: 1rem; align-self: center; }
-  .putumayo__cta .btn { grid-column: 1 / -1; justify-self: stretch; margin-top: 1rem; }
+  .putumayo__top { grid-template-columns: minmax(0, 1fr); }
+  .putumayo__media { grid-column: 1; grid-row: 4; margin-top: 1.25rem; }
+  .putumayo__media img { aspect-ratio: 16 / 9; object-position: 50% 70%; }
+  .putumayo__price { grid-column: 1; grid-row: 5; margin-top: 1rem; align-self: start; }
+  .putumayo__cta .btn { grid-column: 1; grid-row: 6; justify-self: stretch; margin-top: .85rem; }
 }
 
 /* Nosotros: valores y principios uno debajo del otro */
@@ -2001,16 +2061,33 @@ html.lightbox-open { overflow: hidden; }
   /* Las características de Putumayo ya están en su sección: el panel queda corto */
   .map-3d__panel-content .features { display: none; }
 
-  /* Destinos: 2 columnas legibles (nombre 18 px, tarifa 19 px, región 13 px) */
-  .destinos-grid { gap: .75rem; }
-  .dest-card { padding: 1rem .9rem .95rem; }
-  .dest-card__name { font-size: 1.125rem; }
-  .dest-card__region { font-size: .8125rem; margin-bottom: 1rem; }
-  .dest-card__price { padding-top: .75rem; margin-bottom: .8rem; }
+  /* Destinos: filas compactas (~80 px) en vez de tarjetas de 290 px: nombre,
+     región y tarifa a la izquierda y «Cotizar» a la derecha. La fila entera
+     sigue siendo el enlace a WhatsApp. */
+  .destinos-grid { grid-template-columns: minmax(0, 1fr); gap: .5rem; }
+  .dest-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "name cta" "region cta" "price cta";
+    column-gap: .75rem;
+    align-items: center;
+    padding: .65rem .75rem .7rem .9rem;
+    border-top-width: 1px;
+    border-left: 3px solid var(--c-text);
+  }
+  .dest-card__name { grid-area: name; font-size: 1.125rem; }
+  .dest-card__region { grid-area: region; font-size: .8125rem; margin: 0; }
+  .dest-card__price {
+    grid-area: price;
+    flex-direction: row; flex-wrap: wrap; align-items: baseline;
+    column-gap: .35rem;
+    margin: .15rem 0 0; padding: 0; border: 0;
+  }
   .dest-card__price span { font-size: .8125rem; }
-  .dest-card__price strong { font-size: 1.1875rem; line-height: 1.5rem; }
-  .dest-card__price .is-ask { font-size: .9375rem; line-height: 1.3; }
-  .dest-card__cta { padding: .55rem .85rem; gap: .5rem; }
+  .dest-card__price strong { font-size: 1.0625rem; line-height: 1.4; }
+  .dest-card__price .is-ask { font-size: .9375rem; line-height: 1.4; }
+  .dest-card__price span:has(+ .is-ask) { display: none; }   /* «Tarifa» sobra en la fila */
+  .dest-card__cta { grid-area: cta; margin: 0; padding: .55rem .85rem; gap: .5rem; }
 
   /* Botones a todo el ancho */
   .putumayo__cta .btn,

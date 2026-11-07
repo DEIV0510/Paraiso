@@ -1,12 +1,12 @@
 /* =====================================================================
    PARAISOS — nav.js (piezas globales, compartido por todas las páginas)
    - Header: sombra al bajar y se esconde al hacer scroll hacia abajo
-   - Barra de progreso de lectura (se escala con transform)
    - Menú de celular: aria-expanded, cerrado de verdad (inert), Esc,
      clic fuera, al elegir un enlace o al salir del header con Tab
    - Enlace activo según la sección que se ve (anclas de esta página)
    - Cinta superior: un toque la pausa y otro la reanuda
-   - Barra fija de celular: con data-after aparece al pasar ese bloque
+   - Barra fija de celular: con data-after aparece al pasar ese bloque y
+     con data-avoid se aparta mientras se ve otro botón que hace lo mismo
    - Saltos a anclas con content-visibility y año del pie
    No depende de ninguna librería.
    ===================================================================== */
@@ -17,13 +17,12 @@
   const nav = document.getElementById('navbar');
   const burger = document.getElementById('navBurger');
   const menu = document.getElementById('primaryMenu');
-  const progress = document.getElementById('navProgress');
   const topbar = document.getElementById('topbar');
   const bar = document.getElementById('stickyCta');
   const mobileMenu = window.matchMedia('(max-width: 1000px)');
   const hasIO = 'IntersectionObserver' in window;
 
-  /* ---------- Header y progreso al hacer scroll ----------
+  /* ---------- Header al hacer scroll ----------
      Tras un salto a un ancla (menú, botones, entrada con #) el header se
      queda visible un momento: si se escondiera, scroll-padding-top dejaría
      a la vista una franja de la sección anterior sobre el título. */
@@ -40,10 +39,6 @@
       const busy = nav.classList.contains('is-open') || !!nav.querySelector(':focus-visible') || performance.now() < holdUntil;
       if (!busy && y > 240 && y > lastY + 4) doc.classList.add('header-hidden');
       else if (busy || y <= 240 || y < lastY - 4) doc.classList.remove('header-hidden');
-    }
-    if (progress) {
-      const max = doc.scrollHeight - window.innerHeight;
-      progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
     }
     lastY = y;
   }
@@ -124,13 +119,25 @@
   if (bar) {
     const sel = bar.getAttribute('data-after');
     const ref = sel ? document.querySelector(sel) : null;
+    // Botones que hacen lo mismo que la barra (enviar del asistente o del
+    // formulario): mientras se ven, la barra se aparta para no duplicarlos
+    // ni tapar el que lleva el mensaje armado.
+    const avoidSel = bar.getAttribute('data-avoid');
+    const avoid = avoidSel ? Array.from(document.querySelectorAll(avoidSel)) : [];
+    let past = !(ref && hasIO);
+    const seen = new Set();
+    const sync = () => bar.classList.toggle('is-shown', past && seen.size === 0);
     if (ref && hasIO) {
-      new IntersectionObserver(([e]) => {
-        bar.classList.toggle('is-shown', !e.isIntersecting);
-      }).observe(ref);
-    } else {
-      bar.classList.add('is-shown');
+      new IntersectionObserver(([e]) => { past = !e.isIntersecting; sync(); }).observe(ref);
     }
+    if (avoid.length && hasIO) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+        sync();
+      });
+      avoid.forEach((el) => io.observe(el));
+    }
+    sync();
     // Mientras se escribe en un campo, la barra no tapa el teclado ni el campo
     const isField = (el) => el && el.matches && el.matches('input, textarea, select');
     document.addEventListener('focusin', (e) => { if (isField(e.target)) doc.classList.add('is-typing'); });

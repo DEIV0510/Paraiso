@@ -7,16 +7,18 @@
    - Océano, cielo en degradado, arcos entre destinos y barco: todo quieto
      (sin olas, giro solo ni luces que corren). Solo se dibuja cuando algo
      cambia: arrastre, zoom, vuelo a un destino o cambio de tamaño.
-   - Pines con etiqueta HTML. Las etiquetas que se pisan o se salen del lienzo
-     se ocultan por prioridad: primero la elegida y las que tienen tarifa.
+   - Pines con etiqueta HTML. Si arriba del pin choca con otra etiqueta o se
+     sale del lienzo, prueba debajo, a la derecha y a la izquierda; solo si
+     no cabe en ningún lado se oculta (prioridad: la elegida y las que tienen
+     tarifa). Ecuador va dibujado bajo y con su nombre, para ubicar Atacames.
    - Escritorio: arrastrar gira; Ctrl/Cmd + rueda acerca. La rueda sola sigue
      bajando la página (se muestra un aviso breve).
    - Táctil: un dedo en horizontal gira, en vertical baja la página; dos dedos
      acercan.
    - Los chips, la lista de tarifas y el panel viven en main.js
      (PARAISOS_MAP) y funcionan sin este archivo. Aquí se engancha el 3D:
-     al elegir un destino el mapa vuela al pin y, en escritorio, abre una
-     ficha corta sobre él.
+     al elegir un destino el mapa vuela al pin y, con ratón y el panel debajo
+     del mapa, abre una ficha corta sobre él.
    - El bucle de render se detiene fuera de pantalla y con la pestaña oculta.
    ===================================================================== */
 function initColombiaMap() {
@@ -231,9 +233,11 @@ function initColombiaMap() {
     steps: 1
   };
   const islands = [];                  // cajas lng/lat de las islas, para bajar sus pines
-  // Alto de la superficie en un punto (para pines y arcos)
+  // Alto de la superficie en un punto (para pines y arcos): islas y Ecuador
+  // son más bajos que el continente
   const surfaceY = (lat, lng) => (islands.some(b =>
-    lng >= b.w - 0.15 && lng <= b.e + 0.15 && lat >= b.s - 0.15 && lat <= b.n + 0.15) ? ISLAND_TOP_Y : COUNTRY_TOP_Y);
+    lng >= b.w - 0.15 && lng <= b.e + 0.15 && lat >= b.s - 0.15 && lat <= b.n + 0.15) ? ISLAND_TOP_Y
+    : inEcuador(lat, lng) ? ECUADOR_TOP_Y : COUNTRY_TOP_Y);
 
   // Quita vértices más cercanos que `tol` grados (≈1 px en pantalla): el
   // GeoJSON trae ~24.000 puntos y extruirlos todos bloquea el celular.
@@ -404,6 +408,58 @@ function initColombiaMap() {
     countryGroup.visible = true;
   }
 
+  /* ---------------------------------------------------------------------
+     ECUADOR (contorno simplificado, bajo y sin límites internos): solo para
+     que Atacames no quede como un pin en el mar. El borde norte entra un poco
+     en Colombia y queda tapado por su relieve.
+     --------------------------------------------------------------------- */
+  const ECUADOR_OUTLINE = [
+    [1.55,-78.90],[1.25,-79.05],[1.07,-79.40],[0.97,-79.65],[0.87,-79.85],
+    [0.82,-80.03],[0.62,-80.10],[0.35,-80.05],[0.05,-80.07],[-0.20,-80.28],
+    [-0.50,-80.46],[-0.92,-80.73],[-1.06,-80.92],[-1.55,-80.82],[-1.98,-80.76],
+    [-2.21,-80.98],[-2.32,-80.90],[-2.63,-80.40],[-2.70,-80.22],[-2.55,-79.95],
+    [-2.95,-79.82],[-3.27,-80.00],[-3.48,-80.25],[-4.05,-80.45],[-4.40,-80.30],
+    [-4.45,-79.90],[-4.95,-79.40],[-5.00,-78.95],[-4.40,-78.50],[-3.50,-78.20],
+    [-2.95,-77.10],[-2.55,-76.65],[-1.55,-75.60],[-0.95,-75.25],[-0.15,-75.20],
+    [0.15,-75.60],[0.35,-76.35],[0.40,-76.95],[0.70,-77.45],[0.95,-77.75],
+    [1.25,-78.30],[1.55,-78.90]
+  ];
+  const ECUADOR_DEPTH = 0.22;
+  const ECUADOR_TOP_Y = ECUADOR_DEPTH + 0.03;
+  // Punto dentro del contorno (Atacames queda en la costa: margen de 0,05°)
+  function inEcuador(lat, lng) {
+    if (lat > 1.4) return false;   // al norte de la frontera: Colombia
+    let inside = false;
+    for (let i = 0, j = ECUADOR_OUTLINE.length - 1; i < ECUADOR_OUTLINE.length; j = i++) {
+      const [ya, xa] = ECUADOR_OUTLINE[i], [yb, xb] = ECUADOR_OUTLINE[j];
+      if ((ya > lat) !== (yb > lat) && lng < (xb - xa) * (lat - ya) / (yb - ya) + xa) inside = !inside;
+    }
+    return inside || (lat > -5 && lat < 1.4 && ECUADOR_OUTLINE.some(([a, b]) => Math.abs(a - lat) < 0.05 && Math.abs(b - lng) < 0.05));
+  }
+  function buildEcuador() {
+    const shape = new THREE.Shape();
+    ECUADOR_OUTLINE.forEach(([lat, lng], i) => {
+      const { x, z } = project(lat, lng);
+      if (i === 0) shape.moveTo(x, -z); else shape.lineTo(x, -z);
+    });
+    const geo = new THREE.ExtrudeGeometry(shape, {
+      depth: ECUADOR_DEPTH, bevelEnabled: true, bevelThickness: 0.03, bevelSize: 0.03,
+      bevelSegments: 1, curveSegments: 4, steps: 1
+    });
+    geo.rotateX(-Math.PI / 2);
+    geo.computeVertexNormals();
+    const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: 0xD3DCE6, roughness: 0.9, metalness: 0.02 }));
+    mesh.receiveShadow = true;
+    countryGroup.add(mesh);
+  }
+  // Nombre del país vecino (texto del mapa, sin caja): lo ubica updateScreen
+  const ecuadorPos = project(-0.55, -78.85);
+  const ecuadorLabel = document.createElement('div');
+  ecuadorLabel.className = 'map-3d__country';
+  ecuadorLabel.textContent = 'Ecuador';
+  if (overlay) overlay.appendChild(ecuadorLabel);
+  let ecuadorShown = true, ecW = 0, ecH = 0;
+
   // Sombra plana bajo el país
   const shadowPlane = new THREE.Mesh(new THREE.PlaneGeometry(40, 40), new THREE.ShadowMaterial({ opacity: 0.22 }));
   shadowPlane.rotation.x = -Math.PI / 2;
@@ -449,6 +505,9 @@ function initColombiaMap() {
 
   const pins = [];
   const pinById = {};
+  // Nombre corto para cuando el largo no cabe (el lector de pantalla no los
+  // usa: las etiquetas son aria-hidden y los chips llevan el nombre completo)
+  const SHORT_NAMES = { 'santa-marta': 'S. Marta', 'san-andres': 'S. Andrés', 'eje-cafetero': 'E. Cafetero' };
   destinos.forEach((d, index) => {
     if (typeof d.lat !== 'number' || typeof d.lng !== 'number') return;
     const { x, z } = project(d.lat, d.lng);
@@ -498,7 +557,8 @@ function initColombiaMap() {
       id: d.id, destino: d, index, head, label,
       // posición en pantalla del último cuadro (px dentro del lienzo)
       sx: 0, sy: 0, bx: 0, by: 0, onScreen: false,
-      lw: 0, lh: 0, shown: true, lx: NaN, ly: NaN
+      lw: 0, lh: 0, shown: true, lx: NaN, ly: NaN,
+      fullName: label.textContent, shortName: SHORT_NAMES[d.id] || '', lwShort: 0, short: false
     };
     pins.push(pin);
     pinById[d.id] = pin;
@@ -510,10 +570,19 @@ function initColombiaMap() {
   function measureLabels() {
     pins.forEach(p => {
       const u = p.userData;
+      // Se mide con el nombre completo (si muestra el corto, se cambia un momento)
+      if (u.short) u.label.textContent = u.fullName;
       u.lw = u.label.offsetWidth;
       u.lh = u.label.offsetHeight;
+      if (u.shortName) {
+        u.label.textContent = u.shortName;
+        u.lwShort = u.label.offsetWidth;
+        u.label.textContent = u.short ? u.shortName : u.fullName;
+      }
     });
-    obstacles = Array.from(host.querySelectorAll('.map-3d__compass, .map-3d__legend'))
+    ecW = ecuadorLabel.offsetWidth; ecH = ecuadorLabel.offsetHeight;
+    // El aviso de abajo cuenta mientras se ve (se desvanece a los 6 s)
+    obstacles = Array.from(host.querySelectorAll('.map-3d__compass, .map-3d__legend, .map-3d__hint:not(.is-gone)'))
       .filter(el => el.offsetWidth && el.offsetParent === host)
       .map(el => ({ l: el.offsetLeft, t: el.offsetTop, r: el.offsetLeft + el.offsetWidth, b: el.offsetTop + el.offsetHeight }));
   }
@@ -582,7 +651,9 @@ function initColombiaMap() {
      --------------------------------------------------------------------- */
   const DEFAULT_ZOOM = 18, SELECT_ZOOM = 14;
   const minZoom = 10, maxZoom = 28;
-  let rotY = 0, rotX = 0.5, velY = 0, velX = 0;
+  // En lienzos angostos (celular) la cámara mira más desde arriba: los pines
+  // del Caribe y del sur se separan y caben sus etiquetas
+  let rotY = 0, rotX = cw < 560 ? 0.72 : 0.5, velY = 0, velX = 0;
   // En lienzos angostos (celular) la cámara arranca más lejos para que quepa
   // el país: 18 con un lienzo 1,45:1, ~22 con uno casi cuadrado.
   let zoom = clamp(DEFAULT_ZOOM * Math.pow(Math.max(1, 1.45 / (cw / ch)), 0.7), minZoom, 23);
@@ -601,10 +672,11 @@ function initColombiaMap() {
 
   function setZoom(z) { zoom = clamp(z, minZoom, maxZoom); }
 
-  // Lienzo angosto (celular): el encuadre se ajusta a los 8 pines con un
-  // margen de ~10 % (San Andrés y Atacames quedaban fuera o en el borde).
+  // Encuadre inicial ajustado a los 8 pines con un margen de ~10 % en todos
+  // los anchos (con el centro fijo en Colombia, Atacames quedaba cortado en
+  // el borde izquierdo y San Andrés en el borde en celular).
   function fitPins() {
-    if (cw >= 560 || !pins.length) return;
+    if (!pins.length) return;
     let w = Infinity, e = -Infinity, n = Infinity, s = -Infinity;
     pins.forEach(p => { w = Math.min(w, p.position.x); e = Math.max(e, p.position.x); n = Math.min(n, p.position.z); s = Math.max(s, p.position.z); });
     focus.set((w + e) / 2, 0, (n + s) / 2 + 0.6);
@@ -614,7 +686,7 @@ function initColombiaMap() {
       camera.lookAt(focus);
       camera.updateMatrixWorld();
       return pins.every(p => {
-        v.set(p.position.x, COUNTRY_TOP_Y + 0.6, p.position.z).project(camera);
+        v.set(p.position.x, COUNTRY_TOP_Y + p.position.y + 0.6, p.position.z).project(camera);
         const x = (v.x * 0.5 + 0.5) * cw, y = (-v.y * 0.5 + 0.5) * ch;
         return x > cw * 0.1 && x < cw * 0.9 && y > ch * 0.14 && y < ch * 0.94;
       });
@@ -807,9 +879,18 @@ function initColombiaMap() {
     sortLabels();
     measureLabels();
     startFlyTo(pin);
-    // Ficha sobre el pin solo en escritorio y con ratón (en táctil manda el panel)
-    if (!isTouchUI() && how !== 'keyboard' && how !== 'restore') openPopup(pin.userData.destino); else closePopup();
+    // Ficha sobre el pin solo con ratón y cuando el panel queda debajo del
+    // mapa (980 px o menos). Con el panel al lado, la ficha repetía el
+    // nombre, la tarifa y el botón: ahí basta la etiqueta naranja del pin.
+    if (!isTouchUI() && how !== 'keyboard' && how !== 'restore' && !panelBeside()) openPopup(pin.userData.destino); else closePopup();
     requestRender();
+  }
+
+  const panelEl = document.getElementById('destPanel');
+  function panelBeside() {
+    if (!panelEl) return false;
+    const a = host.getBoundingClientRect(), b = panelEl.getBoundingClientRect();
+    return b.width > 0 && b.left >= a.right - 1;
   }
 
   let popupW = 0, popupH = 0;
@@ -835,6 +916,13 @@ function initColombiaMap() {
     hintEl.textContent = isTouchUI()
       ? 'Desliza de lado para girar · Toca un destino'
       : `Arrastra para girar · ${zoomKey} + rueda para acercar`;
+    // Se desvanece 6 s después de que el mapa entra en pantalla (.is-on lo
+    // pone el observador de abajo); al irse, las etiquetas pueden usar ese lugar
+    hintEl.addEventListener('animationend', () => {
+      hintEl.classList.add('is-gone');
+      measureLabels();
+      requestRender();
+    });
   }
 
   document.addEventListener('keydown', (e) => {
@@ -918,42 +1006,84 @@ function initColombiaMap() {
     });
 
     const placed = obstacles.slice();
-    // La etiqueta del pin con la ficha abierta se oculta: la ficha ya lo nombra
+    // La ficha (si está abierta) va primero: las etiquetas que caerían
+    // debajo de ella buscan otro lado o se ocultan, no asoman cortadas.
     const popId = popup && !popup.hidden ? popup.dataset.id : '';
-    labelOrder.forEach(p => {
-      const u = p.userData;
-      const active = u.id === selectedId;
-      let show = u.onScreen && u.id !== popId;
-      let x = u.sx;
-      const y = u.sy;
-      if (show) {
-        const lh = u.lh || 26, s = active ? 1.1 : 1;
-        const w = (u.lw || 90) * s, h = lh * s;
-        const cy = y - (active ? 0.85 : 0.7) * lh;
-        const r = { l: x - w / 2, r: x + w / 2, t: cy - h / 2, b: cy + h / 2 + 6 };
-        const inside = r.l >= 2 && r.r <= cw - 2 && r.t >= 2 && r.b <= ch - 2;
-        if (active) {
-          // La elegida siempre se ve: si se sale por un lado, se corre adentro.
-          const shift = Math.max(0, 2 - r.l) - Math.max(0, r.r - (cw - 2));
-          x += shift; r.l += shift; r.r += shift;
-        } else if (!inside || placed.some(o => r.l < o.r + 4 && r.r > o.l - 4 && r.t < o.b + 2 && r.b > o.t - 2)) {
-          show = false;
-        }
-        if (show) placed.push(r);
-      }
-      if (show !== u.shown) { u.label.style.visibility = show ? '' : 'hidden'; u.shown = show; }
-      if (show) {
-        const rx = Math.round(x * 2) / 2, ry = Math.round(y * 2) / 2;
-        if (rx !== u.lx || ry !== u.ly) { place(u.label, rx, ry); u.lx = rx; u.ly = ry; }
-      }
-    });
-
-    if (popup && !popup.hidden && popup.dataset.id && pinById[popup.dataset.id]) {
-      const u = pinById[popup.dataset.id].userData;
+    if (popId && pinById[popId]) {
+      const u = pinById[popId].userData;
       const pw = popupW || 280, ph = popupH || 150;
       const ax = cw < pw + 16 ? cw / 2 : clamp(u.sx, pw / 2 + 8, cw - pw / 2 - 8);
       const ay = ch < ph + 30 ? ch - 8 : clamp(u.sy, ph + 22, ch - 8);
       place(popup, Math.round(ax), Math.round(ay));
+      // translate(-50%, -100%) translateY(-14px)
+      placed.push({ l: ax - pw / 2, r: ax + pw / 2, t: ay - ph - 14, b: ay - 14 });
+    }
+    // Cabezas y postes de los pines: una etiqueta no tapa otro pin
+    const pinBoxes = pins.filter(p => p.userData.onScreen).map(p => {
+      const u = p.userData;
+      return { id: u.id, l: u.sx - 9, r: u.sx + 9, t: u.sy - 9, b: Math.max(u.sy, u.by) + 3 };
+    });
+    const hits = (r, own) => placed.some(o => r.l < o.r + 4 && r.r > o.l - 4 && r.t < o.b + 2 && r.b > o.t - 2)
+      || pinBoxes.some(o => o.id !== own && r.l < o.r && r.r > o.l && r.t < o.b && r.b > o.t);
+    const inside = (r) => r.l >= 2 && r.r <= cw - 2 && r.t >= 2 && r.b <= ch - 2;
+    // Lados posibles de la etiqueta, en orden: arriba del pin (como siempre),
+    // debajo de su base, a la derecha y a la izquierda. Cada lado tiene su
+    // ancla y su caja (las mismas que usa el CSS de [data-side]).
+    function sideBox(side, u, w, h) {
+      if (side === 'bottom') return { x: u.bx, y: u.by, l: u.bx - w / 2, r: u.bx + w / 2, t: u.by + 4, b: u.by + 10 + h };
+      if (side === 'right') return { x: u.sx, y: u.sy, l: u.sx + 8, r: u.sx + 14 + w, t: u.sy - h / 2, b: u.sy + h / 2 };
+      if (side === 'left') return { x: u.sx, y: u.sy, l: u.sx - 14 - w, r: u.sx - 8, t: u.sy - h / 2, b: u.sy + h / 2 };
+      // arriba pero corrida hacia un lado (la flecha queda en la punta cercana al pin)
+      if (side === 'top-r') return { x: u.sx, y: u.sy, l: u.sx - 14, r: u.sx - 14 + w, t: u.sy - 1.2 * h, b: u.sy - 0.2 * h + 6 };
+      if (side === 'top-l') return { x: u.sx, y: u.sy, l: u.sx + 14 - w, r: u.sx + 14, t: u.sy - 1.2 * h, b: u.sy - 0.2 * h + 6 };
+      return { x: u.sx, y: u.sy, l: u.sx - w / 2, r: u.sx + w / 2, t: u.sy - 1.2 * h, b: u.sy - 0.2 * h + 6 };
+    }
+    labelOrder.forEach(p => {
+      const u = p.userData;
+      const active = u.id === selectedId;
+      let show = u.onScreen && u.id !== popId;
+      let box = null, side = 'top', short = false;
+      if (show) {
+        const lh = u.lh || 26, s = active ? 1.1 : 1;
+        const w = (u.lw || 90) * s, h = lh * s;
+        if (active) {
+          // La elegida siempre se ve arriba: si se sale por un lado, se corre adentro.
+          const cy = u.sy - 0.85 * lh;
+          box = { x: u.sx, y: u.sy, l: u.sx - w / 2, r: u.sx + w / 2, t: cy - h / 2, b: cy + h / 2 + 6 };
+          const shift = Math.max(0, 2 - box.l) - Math.max(0, box.r - (cw - 2));
+          box.x += shift; box.l += shift; box.r += shift;
+        } else {
+          // Primero con el nombre completo; si no cabe en ningún lado, con el corto
+          show = false;
+          const tries = u.lwShort ? [[w, false], [u.lwShort, true]] : [[w, false]];
+          find: for (const [ww, sh] of tries) {
+            for (const sd of ['top', 'bottom', 'right', 'left', 'top-r', 'top-l']) {
+              const b = sideBox(sd, u, ww, h);
+              if (inside(b) && !hits(b, u.id)) { box = b; side = sd; show = true; short = sh; break find; }
+            }
+          }
+        }
+        if (show) placed.push(box);
+      }
+      if (show !== u.shown) { u.label.style.visibility = show ? '' : 'hidden'; u.shown = show; }
+      if (show) {
+        if (side !== u.side) { if (side === 'top') delete u.label.dataset.side; else u.label.dataset.side = side; u.side = side; }
+        if (short !== u.short) { u.label.textContent = short ? u.shortName : u.fullName; u.short = short; }
+        const rx = Math.round(box.x * 2) / 2, ry = Math.round(box.y * 2) / 2;
+        if (rx !== u.lx || ry !== u.ly) { place(u.label, rx, ry); u.lx = rx; u.ly = ry; }
+      }
+    });
+
+    // «Ecuador»: texto de fondo; se oculta si choca con una etiqueta o la ficha
+    if (ecuadorLabel) {
+      const c = Math.cos(rotY), s = Math.sin(rotY);
+      tmpV.set(ecuadorPos.x * c + ecuadorPos.z * s, ECUADOR_DEPTH + 0.05, -ecuadorPos.x * s + ecuadorPos.z * c).project(camera);
+      const ex = (tmpV.x * 0.5 + 0.5) * cw, ey = (-tmpV.y * 0.5 + 0.5) * ch;
+      const ew = ecW || 70, eh = ecH || 18;
+      const r = { l: ex - ew / 2, r: ex + ew / 2, t: ey - eh / 2, b: ey + eh / 2 };
+      const show = tmpV.z > -1 && tmpV.z < 1 && inside(r) && !hits(r, '');
+      if (show !== ecuadorShown) { ecuadorLabel.style.visibility = show ? '' : 'hidden'; ecuadorShown = show; }
+      if (show) place(ecuadorLabel, Math.round(ex), Math.round(ey));
     }
 
     if (compassNeedle) {
@@ -1035,6 +1165,13 @@ function initColombiaMap() {
       inView = entries[entries.length - 1].isIntersecting;
       if (inView) wake();
     }, { rootMargin: '100px 0px' }).observe(host);
+    // El aviso de uso empieza a contar cuando el mapa ya se ve
+    if (hintEl) {
+      const hio = new IntersectionObserver((entries) => {
+        if (entries.some(e => e.isIntersecting)) { hintEl.classList.add('is-on'); hio.disconnect(); }
+      }, { threshold: 0.5 });
+      hio.observe(host);
+    }
   } else {
     inView = true;
   }
@@ -1049,12 +1186,14 @@ function initColombiaMap() {
   }
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { measureLabels(); requestRender(); });
 
-  // Primer cuadro ya mismo (compila los shaders antes de que el mapa entre
-  // en pantalla). El país aparece cuando termina de construirse.
+  // Primer cuadro en una tarea aparte (compila los shaders antes de que el
+  // mapa entre en pantalla): así armar la escena y dibujar no bloquean el
+  // hilo en un solo bloque. El país aparece cuando termina de construirse.
+  seatPins();               // Atacames va sobre Ecuador, más bajo
   fitPins();
   measureLabels();
-  tick();
   ui.attach({ select: select3D });
+  setTimeout(() => { if (!running) tick(); }, 0);
 
   /* ---------------------------------------------------------------------
      CARGA DEL PAÍS: archivo local y, si falla, el Gist público
@@ -1100,6 +1239,7 @@ function initColombiaMap() {
       countryGroup.clear ? countryGroup.clear() : countryGroup.children.slice().forEach(c => countryGroup.remove(c));
       buildCountryFallback();
     }
+    buildEcuador();
     seatPins();
     buildArcs();
     loadingEl.classList.add('is-done');
@@ -1125,7 +1265,9 @@ function initColombiaMap() {
     s.integrity = 'sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu';
     s.crossOrigin = 'anonymous';
     s.referrerPolicy = 'no-referrer';
-    s.onload = initColombiaMap;
+    // La evaluación de three.min.js ya es una tarea larga: el armado del
+    // mapa va en la siguiente para no sumarse en un solo bloqueo
+    s.onload = () => setTimeout(initColombiaMap, 0);
     // Sin 3D (CDN bloqueado, sin red o archivo distinto): queda la lista a lo ancho
     s.onerror = () => {
       console.warn('[mapa] Three.js no cargó');
