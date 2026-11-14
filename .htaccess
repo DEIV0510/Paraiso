@@ -1,4 +1,4 @@
-# PARAISOS en cPanel (LiteSpeed). Reemplaza lo que hacía vercel.json.
+# PARAISOS en cPanel (LiteSpeed): redirecciones, caché y seguridad del sitio.
 
 DirectoryIndex index.html
 Options -Indexes

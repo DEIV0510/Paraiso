@@ -15,7 +15,7 @@ terminan en WhatsApp (+57 315 734 7306).
   experiencia contractual.
 - `la-tienda.html`: productos artesanales y agroindustriales del Putumayo, sin
   precios (se preguntan por WhatsApp).
-- `el-piqueteadero.html`: oculto. `.htaccess` (y `vercel.json`) lo redirigen al inicio.
+- `el-piqueteadero.html`: oculto. `.htaccess` lo redirige al inicio.
 
 ## Archivos
 
@@ -79,7 +79,8 @@ cPanel clona este repositorio de GitHub con «Git Version Control» en
 `.htaccess` fuerza `https://viajesparaisos.com` (sin www), redirige El
 Piqueteadero, define la caché y bloquea `php.ini`.
 
-`vercel.json` y `.vercelignore` quedan por si se vuelve a usar Vercel.
+El sitio ya no usa Vercel: el proyecto `paraisosagencia` se borró el
+2026-11-13 y paraisosagencia.vercel.app dejó de existir.
 
 ## Seguridad
 
