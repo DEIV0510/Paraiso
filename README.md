@@ -1,7 +1,7 @@
 # PARAISOS, agencia de viajes en Mocoa, Putumayo
 
 Sitio estático de PARAISOS - Agencia de Viajes & Turismo (RNT 84258).
-En vivo: https://paraisosagencia.vercel.app/
+En vivo: https://viajesparaisos.com/
 
 HTML, CSS y JavaScript sin build ni dependencias. Todas las cotizaciones
 terminan en WhatsApp (+57 315 734 7306).
@@ -15,7 +15,7 @@ terminan en WhatsApp (+57 315 734 7306).
   experiencia contractual.
 - `la-tienda.html`: productos artesanales y agroindustriales del Putumayo, sin
   precios (se preguntan por WhatsApp).
-- `el-piqueteadero.html`: oculto. `vercel.json` lo redirige al inicio.
+- `el-piqueteadero.html`: oculto. `.htaccess` (y `vercel.json`) lo redirigen al inicio.
 
 ## Archivos
 
@@ -29,9 +29,10 @@ js/colombia-map-3d.js    mapa 3D (Three.js r128 desde cdnjs con SRI, se carga al
 js/wizard.js             cotizador de 5 pasos
 assets/fonts/            woff2, solo latín
 assets/images/           WebP con srcset (galeria/w480|w960|w1400, tienda), logo en 130/260/390 px
-assets/videos/           hero-bg-h-1920.mp4 (pantallas grandes o retina), hero-bg-h-1600.mp4 (resto)
-                         y hero-bg-v-1080.mp4 (celular vertical, 608x1080). Fuentes y receta:
-                         2 tomas de Pixabay (356820 y 356815), x264 CRF 21-22, bucle de 14 s
+assets/videos/           hero-bg-h-1920 (pantallas grandes o retina), hero-bg-h-1600 (resto),
+                         hero-bg-t-810 (tableta vertical) y hero-bg-v-720 (celular), cada uno
+                         en H.264 y AV1 (-av1). Fuentes: 2 tomas de Pixabay (356820 y 356815),
+                         bucle de 14 s
 assets/data/             colombia.geo.json simplificado
 ```
 
@@ -54,8 +55,8 @@ Por confirmar con el cliente: el horario (lunes a sábado, 8:00 a. m. a
 
 ## Caché y versiones
 
-`vercel.json` guarda `css/`, `js/` y `assets/fonts/` un año (`immutable`) y el
-resto de `assets/` siete días. Por eso:
+`.htaccess` guarda `css/`, `js/` y las fuentes un año (`immutable`), el resto de
+`assets/` siete días y los HTML sin caché. Por eso:
 
 - Cada vez que cambie un CSS o JS, sube el `?v=AAAAMMDD` en los `<link>` y
   `<script>` de las 3 páginas antes de publicar. Si publicas dos veces el mismo
@@ -64,5 +65,18 @@ resto de `assets/` siete días. Por eso:
 
 ## Publicación
 
-Vercel publica el contenido del repositorio. `.vercelignore` deja fuera las
-herramientas locales (`start-server.*`, `extract-favicon.ps1`, este README).
+El sitio vive en el hosting cPanel de viajesparaisos.com (usuario `viajespa`).
+cPanel clona este repositorio de GitHub con «Git Version Control» en
+`/home/viajespa/repositories/paraiso`. Para publicar un cambio:
+
+1. Commit y push a `main` en GitHub.
+2. En cPanel > Git Version Control > Manage > Pull or Deploy: «Update from
+   Remote» y después «Deploy HEAD Commit».
+
+`.cpanel.yml` copia a `public_html` solo las páginas, `robots.txt`,
+`sitemap.xml`, `.htaccess`, `css/`, `js/` y `assets/`: las herramientas locales
+(`start-server.*`, `extract-favicon.ps1`, este README) no se publican.
+`.htaccess` fuerza `https://viajesparaisos.com` (sin www), redirige El
+Piqueteadero, define la caché y bloquea `php.ini`.
+
+`vercel.json` y `.vercelignore` quedan por si se vuelve a usar Vercel.

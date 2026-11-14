@@ -6,3 +6,5 @@ start-server.*
 README.md
 .claude/
 .playwright-mcp/
+.htaccess
+.cpanel.yml

@@ -1,0 +1,7 @@
+---
+# cPanel > Git Version Control > «Deploy HEAD Commit» copia el sitio a public_html.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/viajespa/public_html/
+    - /bin/cp -f index.html nosotros.html la-tienda.html el-piqueteadero.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
+    - /bin/cp -Rf css js assets $DEPLOYPATH

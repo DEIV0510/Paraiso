@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://paraisosagencia.vercel.app/sitemap.xml
+Sitemap: https://viajesparaisos.com/sitemap.xml
