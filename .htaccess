@@ -44,4 +44,13 @@ Options -Indexes
   </FilesMatch>
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Seguridad
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Frame-Options "DENY"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), accelerometer=(), gyroscope=(), magnetometer=()"
+  # CSP: solo código propio, Three.js de cdnjs (con SRI) y los 2 scripts en
+  # línea por hash. Si cambias un <script> en línea, recalcula su sha256
+  # (ver README) o el navegador lo bloqueará.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-di+WdXUtwkMfYktv3iJTO+C/e1u3sJ5Ft7ynxoC6JXA=' 'sha256-GDxEIdl7YhT3N/ECF1wd2WRN4oJFdg4fnymjd4u/NHg='; style-src 'self'; img-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self' https://gist.githubusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
 </IfModule>

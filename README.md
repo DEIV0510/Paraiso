@@ -80,3 +80,22 @@ cPanel clona este repositorio de GitHub con «Git Version Control» en
 Piqueteadero, define la caché y bloquea `php.ini`.
 
 `vercel.json` y `.vercelignore` quedan por si se vuelve a usar Vercel.
+
+## Seguridad
+
+`.htaccess` envía HSTS, `X-Frame-Options: DENY`, `Permissions-Policy` (sin
+cámara, micrófono, ubicación, pagos ni sensores) y una CSP estricta: solo
+archivos propios, Three.js de cdnjs (con SRI), el GeoJSON de respaldo de
+gist.githubusercontent.com y los 2 `<script>` en línea autorizados por hash
+(el que marca `html.js` en las 3 páginas y el que elige el póster del video en
+`index.html`). No hay estilos ni eventos en línea ni imágenes `data:`.
+
+Si cambias o agregas un `<script>` en línea, recalcula su hash y ponlo en la
+CSP del `.htaccess`, o el navegador lo bloqueará:
+
+```
+node -e "const s=require('fs').readFileSync('index.html','utf8');for(const m of s.matchAll(/<script>([\s\S]*?)<\/script>/g))console.log('sha256-'+require('crypto').createHash('sha256').update(m[1]).digest('base64'))"
+```
+
+Pendiente del dueño: verificación en dos pasos y contraseñas fuertes en el
+cPanel y en GitHub.
