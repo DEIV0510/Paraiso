@@ -466,6 +466,26 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 
 .hero__trust abbr { text-decoration: none; }
 
+/* Personas viendo la página ahora (número real de api/online.php) */
+.hero__online {
+  display: flex; align-items: center; gap: .55rem;
+  margin-top: .6rem;
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-text-soft);
+}
+.hero__online[hidden] { display: none; }
+.hero__online strong { font-weight: 800; }
+/* Punto de estado: circular por naturaleza, fijo (sin pulso) */
+.hero__online-dot {
+  flex: none;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--c-green);
+  box-shadow: 0 0 0 3px rgba(139,195,74,.3);
+}
+
 /* Hero con video (inicio): fondo oscuro desde el primer pintado, texto
    blanco sólido (sin transparencias que bajen el contraste) y el acento
    «de vida» en naranja. El subtítulo cabe en una línea en escritorio. */
@@ -475,14 +495,16 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
 .hero--video .hero__kicker,
 .hero--video .hero__title,
 .hero--video .hero__subtitle,
-.hero--video .hero__trust { text-shadow: 0 1px 2px rgba(10,26,47,.6), 0 2px 14px rgba(10,26,47,.45); }
+.hero--video .hero__trust,
+.hero--video .hero__online { text-shadow: 0 1px 2px rgba(10,26,47,.6), 0 2px 14px rgba(10,26,47,.45); }
 .hero--video .hero__title { color: #fff; }
 .hero--video .hero__title-script { color: var(--c-orange); }
 .hero--video .hero__kicker { color: #fff; }
 /* Subtítulo en 2 líneas parejas: el texto termina en la mitad de la pantalla
    y la mitad derecha deja ver el video casi sin velo */
 .hero--video .hero__subtitle { color: #fff; max-width: 600px; text-wrap: balance; }
-.hero--video .hero__trust { color: #fff; }
+.hero--video .hero__trust,
+.hero--video .hero__online { color: #fff; }
 
 /* Pausa / reproducción del video de fondo (circular por naturaleza) */
 .hero__video-toggle {
@@ -679,7 +701,8 @@ html.header-hidden .navbar { transform: translateY(calc(-100% - var(--topbar-h) 
   .hero__title { font-size: 2rem; margin-bottom: .6rem; }
   .hero__subtitle { font-size: 1rem; margin-bottom: 1rem; }
   .hero__cta-row .btn--lg { min-height: 48px; padding-block: .7rem; }
-  .hero__trust { display: none; }
+  .hero__trust,
+  .hero__online { display: none; }
   .hero__video-toggle { bottom: 1rem; }
 }
 

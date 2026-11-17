@@ -4,4 +4,4 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/viajespa/public_html/
     - /bin/cp -f index.html nosotros.html la-tienda.html el-piqueteadero.html robots.txt sitemap.xml .htaccess $DEPLOYPATH
-    - /bin/cp -Rf css js assets $DEPLOYPATH
+    - /bin/cp -Rf css js assets api $DEPLOYPATH

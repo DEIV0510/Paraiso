@@ -34,12 +34,27 @@ assets/videos/           hero-bg-h-1920 (pantallas grandes o retina), hero-bg-h-
                          en H.264 y AV1 (-av1). Fuentes: 2 tomas de Pixabay (356820 y 356815),
                          bucle de 14 s
 assets/data/             colombia.geo.json simplificado
+api/online.php           personas viendo la página ahora (PHP del hosting, sin base de datos)
 ```
+
+### Personas viendo la página
+
+`js/nav.js` manda desde las 3 páginas un latido a `api/online.php` cada 25 s
+mientras la pestaña está a la vista (y avisa al cerrarla). El PHP cuenta quien
+latió en el último minuto y lo guarda en `/home/viajespa/paraisos-data/online.json`,
+fuera de `public_html`. Es el número real: sin cookies ni datos personales
+(cada navegador manda un id aleatorio; la IP solo se usa resumida con un hash
+que cambia cada día, para que una conexión no sume más de 4). No cuenta
+robots ni navegadores automáticos. La línea del hero (`#enLinea`) solo se ve
+desde 2 personas, porque con 1 serías tú.
 
 ## Probar en local
 
-Doble clic en `start-server.bat` (abre http://localhost:8080), o
-`npx serve .`. El mapa necesita servidor: con `file://` no carga.
+Con PHP (incluye el contador de personas): `php -S localhost:8080 -t .` y
+abrir http://localhost:8080. Para no escribir datos de prueba fuera del
+proyecto, antes `set PARAISOS_DATA=%TEMP%\paraisos-data`. Sin PHP también
+sirve `npx serve .` (el contador simplemente no aparece). El mapa necesita
+servidor: con `file://` no carga.
 
 ## Datos que se repiten
 

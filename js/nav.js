@@ -225,4 +225,38 @@
   /* ---------- Año del pie ---------- */
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
+
+  /* ---------- Personas viendo la página ahora ----------
+     Las 3 páginas mandan un latido a api/online.php cada 25 s mientras la
+     pestaña está a la vista; el número real se muestra donde exista
+     #enLinea y solo desde 2 personas (con 1 serías tú). */
+  const online = document.getElementById('enLinea');
+  const onlineNum = online && online.querySelector('[data-online]');
+  let visitId = '';
+  try { visitId = localStorage.getItem('paraisos_vid') || ''; } catch (e) { /* sin almacenamiento */ }
+  if (!/^[a-f0-9]{24}$/.test(visitId)) {
+    visitId = Array.from(crypto.getRandomValues(new Uint8Array(12)), (b) => b.toString(16).padStart(2, '0')).join('');
+    try { localStorage.setItem('paraisos_vid', visitId); } catch (e) { /* sin almacenamiento */ }
+  }
+  const showOnline = (n) => {
+    if (!online) return;
+    const ok = typeof n === 'number' && n >= 2;
+    if (ok) onlineNum.textContent = String(n);
+    online.hidden = !ok;
+  };
+  const beat = () => {
+    if (document.hidden) return;
+    fetch('api/online.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: visitId }),
+      cache: 'no-store',
+    }).then((r) => (r.ok ? r.json() : null)).then((d) => showOnline(d && d.online)).catch(() => showOnline(null));
+  };
+  beat();
+  setInterval(beat, 25000);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) beat(); });
+  window.addEventListener('pagehide', () => {
+    if (navigator.sendBeacon) navigator.sendBeacon('api/online.php', JSON.stringify({ id: visitId, bye: true }));
+  });
 })();
