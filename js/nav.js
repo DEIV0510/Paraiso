@@ -229,9 +229,10 @@
   /* ---------- Personas viendo la página ahora ----------
      Las 3 páginas mandan un latido a api/online.php cada 25 s mientras la
      pestaña está a la vista; el número real se muestra donde exista
-     #enLinea y solo desde 2 personas (con 1 serías tú). */
+     #enLinea, también con 1 sola persona (en singular). */
   const online = document.getElementById('enLinea');
   const onlineNum = online && online.querySelector('[data-online]');
+  const onlineLabel = online && online.querySelector('[data-online-label]');
   let visitId = '';
   try { visitId = localStorage.getItem('paraisos_vid') || ''; } catch (e) { /* sin almacenamiento */ }
   if (!/^[a-f0-9]{24}$/.test(visitId)) {
@@ -240,8 +241,11 @@
   }
   const showOnline = (n) => {
     if (!online) return;
-    const ok = typeof n === 'number' && n >= 2;
-    if (ok) onlineNum.textContent = String(n);
+    const ok = typeof n === 'number' && n >= 1;
+    if (ok) {
+      onlineNum.textContent = String(n);
+      if (onlineLabel) onlineLabel.textContent = n === 1 ? 'persona' : 'personas';
+    }
     online.hidden = !ok;
   };
   const beat = () => {

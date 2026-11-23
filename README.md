@@ -45,8 +45,8 @@ latió en el último minuto y lo guarda en `/home/viajespa/paraisos-data/online.
 fuera de `public_html`. Es el número real: sin cookies ni datos personales
 (cada navegador manda un id aleatorio; la IP solo se usa resumida con un hash
 que cambia cada día, para que una conexión no sume más de 4). No cuenta
-robots ni navegadores automáticos. La línea del hero (`#enLinea`) solo se ve
-desde 2 personas, porque con 1 serías tú.
+robots ni navegadores automáticos. La línea del hero (`#enLinea`) se ve en
+computador y celular desde 1 persona («1 persona viendo la página ahora»).
 
 ## Probar en local
 
